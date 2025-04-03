@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
-import cvData from '../data/cv-data.json';
+import React, { useState } from "react";
+import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import cvData from "../data/cv-data.json";
 
 const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,29 +11,32 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
   const closeMenu = () => setMenuOpen(false);
 
   const navLinks = [
-    'home',
-    'about',
-    'skills',
-    'experience',
-    'projects',
-    'education',
-    'languages',
+    "home",
+    "about",
+    "skills",
+    "experience",
+    "projects",
+    "education",
+    "languages",
   ];
 
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 shadow-md transition-colors duration-500 ${
-        darkMode ? 'bg-slate-900 text-white' : 'bg-white text-gray-900'
+        darkMode ? "bg-slate-900 text-white" : "bg-white text-gray-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
+        {/* Logo with favicon.svg */}
         <div
-          onClick={() => scrollToSection('hero')}
-          className="font-bold text-lg cursor-pointer"
+          onClick={() => scrollToSection("hero")}
+          className="flex items-center gap-2 font-bold text-lg cursor-pointer"
         >
-          <span className="text-indigo-600">{cvData.hero.name.split(' ')[0]}</span>{' '}
-          {cvData.hero.name.split(' ')[1]}
+          <img src="/favicon.svg" alt="Logo" className="w-6 h-6" />
+          <span className="text-indigo-600">
+            {cvData.hero.name.split(" ")[0]}
+          </span>{" "}
+          {cvData.hero.name.split(" ")[1]}
         </div>
 
         {/* Desktop nav */}
@@ -43,7 +46,7 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
               key={link}
               onClick={() => scrollToSection(link)}
               className={`capitalize font-medium hover:text-indigo-600 transition ${
-                activeSection === link ? 'text-indigo-600 font-semibold' : ''
+                activeSection === link ? "text-indigo-600 font-semibold" : ""
               }`}
             >
               {link}
@@ -54,7 +57,9 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
         {/* Theme toggle */}
         <button
           onClick={toggleTheme}
-          className={`text-lg p-2 ml-4 rounded-full ${darkMode ? 'bg-slate-700' : 'bg-indigo-100'} hover:scale-105 transition`}
+          className={`text-lg p-2 ml-4 rounded-full ${
+            darkMode ? "bg-slate-700" : "bg-indigo-100"
+          } hover:scale-105 transition`}
           title="Toggle dark mode"
         >
           {darkMode ? <FaSun /> : <FaMoon />}
@@ -71,10 +76,10 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
         {menuOpen && (
           <motion.div
             initial={{ height: 0 }}
-            animate={{ height: 'auto' }}
+            animate={{ height: "auto" }}
             exit={{ height: 0 }}
             className={`md:hidden overflow-hidden transition-all duration-300 ${
-              darkMode ? 'bg-slate-900 text-white' : 'bg-white text-gray-900'
+              darkMode ? "bg-slate-900 text-white" : "bg-white text-gray-900"
             }`}
           >
             <div className="px-6 py-4 flex flex-col space-y-4">
@@ -86,7 +91,9 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
                     closeMenu();
                   }}
                   className={`capitalize font-medium text-left hover:text-indigo-600 ${
-                    activeSection === link ? 'text-indigo-600 font-semibold' : ''
+                    activeSection === link
+                      ? "text-indigo-600 font-semibold"
+                      : ""
                   }`}
                 >
                   {link}

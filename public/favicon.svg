@@ -1,0 +1,23 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7F2DF3"/>
+      <stop offset="100%" stop-color="#00C8B5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Gradient Background -->
+  <rect width="128" height="128" rx="24" fill="url(#bgGradient)"/>
+
+  <!-- GB Text -->
+  <text x="50%" y="72" text-anchor="middle" fill="white"
+        font-family="'Poppins', 'Segoe UI', sans-serif" font-size="80" font-weight="700">
+    GB
+  </text>
+
+  <!-- Bigger but properly positioned </> -->
+  <text x="50%" y="110" text-anchor="middle" fill="white"
+        font-family="'Fira Code', monospace" font-size="40" font-weight="600">
+    &lt;/&gt;
+  </text>
+</svg>

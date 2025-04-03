@@ -56,14 +56,13 @@ const About = ({ darkMode }) => {
         >
           About <span className="text-indigo-600">Me</span>
         </motion.h2>
-
         <div className="max-w-3xl mx-auto space-y-6">
           {paragraphs.map((paragraph, index) => (
             <motion.p
               key={index}
               className={`text-base md:text-lg ${
-                darkMode ? 'text-gray-400' : 'text-gray-700'
-              } dark:text-gray-100 leading-relaxed`}
+                darkMode ? 'text-gray-400' : 'text-black-700'
+              } leading-relaxed`}
               custom={index}
               initial="hidden"
               whileInView="visible"

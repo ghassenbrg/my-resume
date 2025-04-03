@@ -39,9 +39,17 @@ const Education = ({ darkMode }) => {
             >
               <h3 className="text-lg font-semibold mb-1">{edu.degree}</h3>
               <p className="text-sm text-indigo-500">{edu.institution}</p>
-              <p className="text-sm italic text-gray-400 dark:text-gray-300">{edu.period}</p>
+              <p
+              className={`text-sm italic ${
+                darkMode ? 'text-gray-400' : 'text-gray-400'
+              }`}
+              >{edu.period}</p>
               {edu.location && (
-                <p className="text-sm text-gray-400 dark:text-gray-400">{edu.location}</p>
+                <p 
+                className={`text-sm ${
+                  darkMode ? 'text-gray-400' : 'text-gray-500'
+                }`}
+                >{edu.location}</p>
               )}
             </motion.div>
           ))}
@@ -74,7 +82,11 @@ const Education = ({ darkMode }) => {
                 viewport={{ once: true }}
               >
                 <p className="font-semibold">{cert.name}</p>
-                <p className="text-sm text-gray-500 dark:text-gray-300">
+                <p 
+                className={`text-sm ${
+                  darkMode ? 'text-gray-400' : 'text-gray-400'
+                }`}
+                >
                   Issued by {cert.issuer} – {cert.date}
                 </p>
                 {cert.link && (

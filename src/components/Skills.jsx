@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 const Skills = ({ darkMode }) => {
   const allCategories = Object.entries(cvData.skills || {});
   const highlightSkills = allCategories
-    .flatMap(([_, skills]) => skills.filter((s) => s.highlight))
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .flatMap(([_, skills]) => skills.filter((s) => s.highlight));
+    //.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <section
