@@ -1,8 +1,8 @@
-import React from 'react';
-import cvData from '../data/cv-data.json';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import React from "react";
+import { FaUser } from "react-icons/fa";
 
-const About = ({ darkMode }) => {
+const About = ({ darkMode, cvData }) => {
   const { paragraphs } = cvData.about;
 
   const fadeUp = {
@@ -10,29 +10,31 @@ const About = ({ darkMode }) => {
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.6 }
-    })
+      transition: { delay: i * 0.2, duration: 0.6 },
+    }),
   };
 
   // Keyword highlight
   const keywordHighlight = (text) => {
     const highlights = [
-      'Java',
-      'Spring Boot',
-      'Angular',
-      'CI/CD',
-      'containerization',
-      'microservices',
-      'Oracle Certified',
-      'Docker',
-      'Kubernetes',
-      'infrastructure automation'
+      "Java",
+      "Spring Boot",
+      "Angular",
+      "CI/CD",
+      "containerization",
+      "microservices",
+      "Oracle Certified",
+      "Docker",
+      "Kubernetes",
+      "infrastructure automation",
     ];
 
-    const regex = new RegExp(`(${highlights.join('|')})`, 'gi');
+    const regex = new RegExp(`(${highlights.join("|")})`, "gi");
     return text.split(regex).map((part, i) =>
       highlights.includes(part) || highlights.includes(part.toLowerCase()) ? (
-        <span key={i} className="text-indigo-500 font-semibold">{part}</span>
+        <span key={i} className="text-indigo-500 font-semibold">
+          {part}
+        </span>
       ) : (
         part
       )
@@ -43,17 +45,18 @@ const About = ({ darkMode }) => {
     <section
       id="about"
       className={`py-20 transition-colors duration-500 ${
-        darkMode ? 'bg-slate-900 text-white' : 'bg-slate-50 text-gray-900'
+        darkMode ? "bg-slate-900 text-white" : "bg-slate-50 text-gray-900"
       }`}
     >
       <div className="container mx-auto px-6">
         <motion.h2
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-3xl font-bold mb-12 text-center flex items-center justify-center gap-2"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
+          <FaUser className="text-indigo-600  w-6 h-6" />
           About <span className="text-indigo-600">Me</span>
         </motion.h2>
         <div className="max-w-3xl mx-auto space-y-6">
@@ -61,7 +64,7 @@ const About = ({ darkMode }) => {
             <motion.p
               key={index}
               className={`text-base md:text-lg ${
-                darkMode ? 'text-gray-400' : 'text-black-700'
+                darkMode ? "text-gray-400" : "text-black-700"
               } leading-relaxed`}
               custom={index}
               initial="hidden"

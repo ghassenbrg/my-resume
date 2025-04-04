@@ -1,9 +1,8 @@
-import React from 'react';
-import cvData from '../data/cv-data.json';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import React from "react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-const Hero = ({ darkMode }) => {
+const Hero = ({ darkMode, cvData }) => {
   const { name, title, github, linkedin, email, cvLink } = cvData.hero;
 
   return (
@@ -19,7 +18,12 @@ const Hero = ({ darkMode }) => {
           className="w-full h-full object-cover scale-110 blur-1xl opacity-100"
           initial={{ scale: 1.05 }}
           animate={{ scale: 1.5 }}
-          transition={{ duration: 15, ease: 'easeInOut', repeat: Infinity, repeatType: 'reverse' }}
+          transition={{
+            duration: 15,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
         />
         <div className="absolute inset-0 bg-black/60" />
       </div>
@@ -32,8 +36,8 @@ const Hero = ({ darkMode }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {name.split(' ')[0]}{' '}
-          <span className="text-indigo-500">{name.split(' ')[1]}</span>
+          {name.split(" ")[0]}{" "}
+          <span className="text-indigo-500">{name.split(" ")[1]}</span>
         </motion.h1>
 
         <motion.h2
@@ -51,10 +55,20 @@ const Hero = ({ darkMode }) => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <a href={github} className="hover:text-indigo-400" target="_blank" rel="noreferrer">
+          <a
+            href={github}
+            className="hover:text-indigo-400"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaGithub size={24} />
           </a>
-          <a href={linkedin} className="hover:text-indigo-400" target="_blank" rel="noreferrer">
+          <a
+            href={linkedin}
+            className="hover:text-indigo-400"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaLinkedin size={24} />
           </a>
           <a href={`mailto:${email}`} className="hover:text-indigo-400">

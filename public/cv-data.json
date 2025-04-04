@@ -187,7 +187,7 @@
           },
           {
             "name": "Integration Tests",
-            "icon": "integration"
+            "icon": "test"
           },
           {
             "name": "SonarQube",
@@ -195,7 +195,7 @@
           },
           {
             "name": "Code Review Best Practices",
-            "icon": "code-review"
+            "icon": "coding"
           }
         ],
         "Agile & Collaboration": [
@@ -335,13 +335,13 @@
     "education": [
       {
         "degree": "Engineer’s Degree in Software Engineering",
-        "institution": "ESPRIT",
+        "institution": "ESPRIT (Private Higher School of Engineering and Technology)",
         "location": "Tunis, Tunisia",
         "period": "Sept 2019 – July 2023"
       },
       {
         "degree": "Bachelor’s Degree in Computer Science",
-        "institution": "ISIMM",
+        "institution": "ISIMM (Higher Institute of Computer Science and Mathematics)",
         "location": "Monastir, Tunisia",
         "period": "Sept 2015 – June 2019"
       }
@@ -351,7 +351,8 @@
         "name": "Oracle Certified Professional, Java SE 11 Developer",
         "issuer": "Oracle",
         "date": "Sept 2022",
-        "link": "https://bit.ly/ocp11gb"
+        "link": "https://bit.ly/ocp11gb",
+        "image": "/ocp11.png"
       }
     ],
     "languages": [

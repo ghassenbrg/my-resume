@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { FaMoon, FaSun, FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import cvData from "../data/cv-data.json";
 
-const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection }) => {
+const Header = ({
+  darkMode,
+  setDarkMode,
+  activeSection,
+  scrollToSection,
+  cvData,
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleTheme = () => setDarkMode(!darkMode);

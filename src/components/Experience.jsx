@@ -1,8 +1,8 @@
-import React from "react";
-import cvData from "../data/cv-data.json";
 import { motion } from "framer-motion";
+import React from "react";
+import { FaBriefcase } from "react-icons/fa";
 
-const Experience = ({ darkMode }) => {
+const Experience = ({ darkMode, cvData }) => {
   const experiences = cvData.experience || [];
 
   return (
@@ -14,12 +14,13 @@ const Experience = ({ darkMode }) => {
     >
       <div className="container mx-auto px-4 md:px-10">
         <motion.h2
-          className="text-3xl font-bold mb-16 text-center"
+          className="text-3xl font-bold mb-12 text-center flex items-center justify-center gap-2"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
+          <FaBriefcase className="text-indigo-600  w-6 h-6" />
           Professional <span className="text-indigo-600">Experience</span>
         </motion.h2>
 

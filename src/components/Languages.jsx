@@ -1,25 +1,26 @@
-import React from 'react';
-import cvData from '../data/cv-data.json';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import React from "react";
+import { FaLanguage } from "react-icons/fa";
 
-const Languages = ({ darkMode }) => {
+const Languages = ({ darkMode, cvData }) => {
   const languages = cvData.languages;
 
   return (
     <section
       id="languages"
       className={`py-20 transition-colors duration-500 ${
-        darkMode ? 'bg-slate-900 text-white' : 'bg-slate-50 text-gray-900'
+        darkMode ? "bg-slate-900 text-white" : "bg-slate-50 text-gray-900"
       }`}
     >
       <div className="container mx-auto px-6">
         <motion.h2
-          className="text-3xl font-bold mb-12 text-center"
+          className="text-3xl font-bold mb-12 text-center flex items-center justify-center gap-2"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
+          <FaLanguage className="text-indigo-600" />
           Language <span className="text-indigo-600">Proficiency</span>
         </motion.h2>
 
@@ -34,7 +35,9 @@ const Languages = ({ darkMode }) => {
             >
               <div className="flex justify-between mb-1">
                 <span className="font-medium text-base">{lang.language}</span>
-                <span className="text-sm text-indigo-500 font-semibold">{lang.level}</span>
+                <span className="text-sm text-indigo-500 font-semibold">
+                  {lang.level}
+                </span>
               </div>
               <div className="w-full h-3 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                 <motion.div

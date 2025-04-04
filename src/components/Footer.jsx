@@ -1,20 +1,21 @@
-import React from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import cvData from '../data/cv-data.json';
+import React from "react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
-const Footer = ({ darkMode }) => {
+const Footer = ({ darkMode, cvData }) => {
   const { github, linkedin, email } = cvData.hero;
 
   return (
     <footer
       className={`py-10 border-t transition-colors duration-500 ${
         darkMode
-          ? 'bg-slate-900 border-slate-700 text-white'
-          : 'bg-slate-50 border-slate-200 text-gray-800'
+          ? "bg-slate-900 border-slate-700 text-white"
+          : "bg-slate-50 border-slate-200 text-gray-800"
       }`}
     >
       <div className="container mx-auto px-6 text-center">
-        <h4 className="text-lg font-semibold mb-4 text-indigo-600">Let’s Connect</h4>
+        <h4 className="text-lg font-semibold mb-4 text-indigo-600">
+          Let’s Connect
+        </h4>
 
         <div className="flex justify-center gap-6 mb-6 text-gray-400 dark:text-gray-300">
           <a
