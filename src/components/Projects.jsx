@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import { FaRocket } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 
 const Projects = ({ darkMode, cvData }) => {
   const projects = cvData.projects;
@@ -20,7 +21,7 @@ const Projects = ({ darkMode, cvData }) => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <FaRocket className="text-indigo-600  w-6 h-6" />
+          <FaRocket className="text-indigo-600 w-6 h-6" />
           Featured <span className="text-indigo-600">Projects</span>
         </motion.h2>
 
@@ -38,7 +39,21 @@ const Projects = ({ darkMode, cvData }) => {
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xl font-bold mb-1">{project.title}</h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xl font-bold">{project.title}</h3>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-indigo-500 hover:text-indigo-700"
+                    title="View project"
+                  >
+                    <span>{project.linkLabel}</span>
+                    <FiExternalLink className="w-5 h-5" />
+                  </a>
+                )}
+              </div>
               <p className="text-sm text-indigo-400 mb-2 italic">
                 {project.role}
               </p>

@@ -15,7 +15,7 @@ import React, { useState, useEffect } from "react";
 
 const PersonalCV = () => {
   const [activeSection, setActiveSection] = useState("hero");
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [showContactModal, setShowContactModal] = useState(false);
 
   const [cvData, setCvData] = useState(null);

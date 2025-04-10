@@ -39,6 +39,7 @@ import {
   SiMongodb,
   SiMysql,
   SiNginx,
+  SiOracle,
   SiPostgresql,
   SiPrimeng,
   SiSonarqube,
@@ -94,6 +95,8 @@ const skillIcons = {
   poi: HiOutlineChartBar,
   scrum: GiSprint,
   javaee: FaBuilding,
+  gitlab: FaGitAlt,
+  oracle: SiOracle
   // ➕ add more mappings if needed
 };
 
