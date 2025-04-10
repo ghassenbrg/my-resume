@@ -1,380 +1,384 @@
 {
-    "hero": {
-        "name": "Ghassen Bargougui",
-        "title": "Software Engineer · Full-Stack & Backend Specialist",
-        "location": "Luxembourg City, Luxembourg",
-        "phone": "+352 661 120 421",
-        "email": "ghassen.brg16@gmail.com",
-        "github": "https://github.com/ghassenbrg",
-        "linkedin": "https://www.linkedin.com/in/ghassenbrg",
-        "cvLink": "/CV_Ghassen_Bargougui.pdf"
-      },
-      "about": {
-        "paragraphs": [
-          "Experienced Full-Stack Software Engineer with 5+ years of experience in back-end development, microservice architectures, and scalable enterprise applications.",
-          "Specialized in Java (Spring Boot, Java EE, Hibernate) and Angular. Oracle Certified Java SE 11 Developer, with additional hands-on experience in CI/CD pipelines, containerization, and infrastructure automation.",
-          "Passionate about clean architecture, code quality, and performance tuning in complex software systems.",
-          "Fluent in English and French, with basic proficiency in Japanese."
-        ]
-      },
-      "skills": {
-        "Backend & Full-Stack Development": [
-          {
-            "name": "Java",
-            "icon": "java",
-            "highlight": true
-          },
-          {
-            "name": "Spring Boot",
-            "icon": "spring",
-            "highlight": true
-          },
-          {
-            "name": "Java EE",
-            "icon": "javaee"
-          },
-          {
-            "name": "Hibernate",
-            "icon": "hibernate"
-          },
-          {
-            "name": "JPA",
-            "icon": "jpa"
-          },
-          {
-            "name": "Angular",
-            "icon": "angular",
-            "highlight": true
-          },
-          {
-            "name": "TypeScript",
-            "icon": "typescript",
-            "highlight": true
-          },
-          {
-            "name": "JavaScript",
-            "icon": "javascript"
-          },
-          {
-            "name": "Node.js",
-            "icon": "node"
-          },
-          {
-            "name": "HTML5",
-            "icon": "html"
-          },
-          {
-            "name": "CSS3",
-            "icon": "css"
-          },
-          {
-            "name": "PrimeNG",
-            "icon": "primeng"
-          },
-          {
-            "name": "RxJS",
-            "icon": "rxjs"
-          },
-          {
-            "name": "NgRx (Basic)",
-            "icon": "ngrx"
-          }
-        ],
-        "API Development": [
-          {
-            "name": "RESTful API Design",
-            "icon": "api"
-          },
-          {
-            "name": "OpenAPI",
-            "icon": "openapi"
-          }
-        ],
-        "Microservices & Event-Driven Systems": [
-          {
-            "name": "Spring Cloud",
-            "icon": "springcloud"
-          },
-          {
-            "name": "ActiveMQ",
-            "icon": "activemq"
-          }
-        ],
-        "High-Performance Computing": [
-          {
-            "name": "Asynchronous Processing",
-            "icon": "async"
-          },
-          {
-            "name": "Multi-threading",
-            "icon": "threads"
-          },
-          {
-            "name": "JProfiler",
-            "icon": "jprofiler"
-          }
-        ],
-        "Database & Data Processing": [
-          {
-            "name": "PostgreSQL",
-            "icon": "postgres"
-          },
-          {
-            "name": "MySQL",
-            "icon": "mysql"
-          },
-          {
-            "name": "Oracle (PL/SQL)",
-            "icon": "oracle"
-          },
-          {
-            "name": "MongoDB",
-            "icon": "mongodb"
-          },
-          {
-            "name": "Apache POI (Excel Processing)",
-            "icon": "poi"
-          }
-        ],
-        "DevOps & Infrastructure": [
-          {
-            "name": "Docker",
-            "icon": "docker"
-          },
-          {
-            "name": "Jenkins",
-            "icon": "jenkins"
-          },
-          {
-            "name": "GitLab CI/CD",
-            "icon": "gitlab"
-          },
-          {
-            "name": "AWS",
-            "icon": "aws"
-          },
-          {
-            "name": "Nginx",
-            "icon": "nginx"
-          },
-          {
-            "name": "WildFly",
-            "icon": "wildfly"
-          },
-          {
-            "name": "Tomcat",
-            "icon": "tomcat"
-          },
-          {
-            "name": "Linux Server Management",
-            "icon": "linux"
-          }
-        ],
-        "Security": [
-          {
-            "name": "Keycloak (OAuth2, OIDC, JWT)",
-            "icon": "keycloak"
-          }
-        ],
-        "Testing & Code Quality": [
-          {
-            "name": "JUnit",
-            "icon": "junit"
-          },
-          {
-            "name": "Mockito",
-            "icon": "mockito"
-          },
-          {
-            "name": "Integration Tests",
-            "icon": "test"
-          },
-          {
-            "name": "SonarQube",
-            "icon": "sonarqube"
-          },
-          {
-            "name": "Code Review Best Practices",
-            "icon": "coding"
-          }
-        ],
-        "Agile & Collaboration": [
-          {
-            "name": "Scrum",
-            "icon": "scrum"
-          },
-          {
-            "name": "Jira",
-            "icon": "jira"
-          },
-          {
-            "name": "Git",
-            "icon": "git"
-          },
-          {
-            "name": "Confluence",
-            "icon": "confluence"
-          }
-        ]
-      },
-    "experience": [
+  "hero": {
+    "name": "Ghassen Bargougui",
+    "title": "Software Engineer · Full-Stack & Backend Specialist",
+    "location": "Luxembourg City, Luxembourg",
+    "phone": "+352 661 120 421",
+    "email": "ghassen.brg16@gmail.com",
+    "github": "https://github.com/ghassenbrg",
+    "linkedin": "https://www.linkedin.com/in/ghassenbrg",
+    "cvLink": "/CV_Ghassen_Bargougui.pdf"
+  },
+  "about": {
+    "paragraphs": [
+      "Experienced Full-Stack Software Engineer with 5+ years of experience in back-end development, microservice architectures, and scalable enterprise applications.",
+      "Specialized in Java (Spring Boot, Java EE, Hibernate) and Angular. Oracle Certified Java SE 11 Developer, with additional hands-on experience in CI/CD pipelines, containerization, and infrastructure automation.",
+      "Passionate about clean architecture, code quality, and performance tuning in complex software systems.",
+      "Fluent in English and French, with basic proficiency in Japanese."
+    ]
+  },
+  "skills": {
+    "Backend & Full-Stack Development": [
       {
-        "company": "Sogeti",
-        "position": "Software Engineer",
-        "location": "Luxembourg",
-        "period": "Feb 2025 – Present",
-        "description": "Technical training and R&D activities focused on backend systems, DevOps, and cloud native solutions.",
-        "achievements": [
-          "Engaged in technical upskilling across backend and cloud-native tooling.",
-          "Contributed to internal R&D and API security initiatives."
-        ]
+        "name": "Java",
+        "icon": "java",
+        "highlight": true
       },
       {
-        "company": "CBTW",
-        "position": "Java Full-Stack Developer",
-        "location": "Luxembourg",
-        "period": "Sept 2024 – Jan 2025",
-        "description": "Enterprise application development using Spring Boot and Angular.",
-        "achievements": [
-          "Developed RESTful APIs and transitioned monolithic apps to microservices.",
-          "Automated deployments using Jenkins and Docker."
-        ]
+        "name": "Spring Boot",
+        "icon": "spring",
+        "highlight": true
       },
       {
-        "company": "VERMEG",
-        "position": "Software Engineer",
-        "location": "Tunis, Tunisia",
-        "period": "Oct 2019 – Aug 2024",
-        "description": "Led backend development across insurance and financial systems.",
-        "achievements": [
-          "Designed high-volume transactional APIs and implemented Keycloak-based security.",
-          "Optimized API performance and automated workflows using ActiveMQ.",
-          "Managed CI/CD and ensured seamless deployments."
-        ]
+        "name": "Java EE",
+        "icon": "javaee"
+      },
+      {
+        "name": "Hibernate",
+        "icon": "hibernate"
+      },
+      {
+        "name": "JPA",
+        "icon": "jpa"
+      },
+      {
+        "name": "Angular",
+        "icon": "angular",
+        "highlight": true
+      },
+      {
+        "name": "TypeScript",
+        "icon": "typescript",
+        "highlight": true
+      },
+      {
+        "name": "JavaScript",
+        "icon": "javascript"
+      },
+      {
+        "name": "Node.js",
+        "icon": "node"
+      },
+      {
+        "name": "HTML5",
+        "icon": "html"
+      },
+      {
+        "name": "CSS3",
+        "icon": "css"
+      },
+      {
+        "name": "PrimeNG",
+        "icon": "primeng"
+      },
+      {
+        "name": "RxJS",
+        "icon": "rxjs"
+      },
+      {
+        "name": "NgRx (Basic)",
+        "icon": "ngrx"
       }
     ],
-    "projects": [
+    "Database & Data Processing": [
       {
-        "title": "SalesFlow",
-        "role": "Lead Developer",
-        "outcomes": [
-          "Reduced manual processes by 30%",
-          "Integrated with Camunda BPM to automate complex workflows",
-          "Handled batch processing with multithreaded execution"
-        ],
-        "technologies": [
-          "Java",
-          "Spring Boot",
-          "Camunda",
-          "REST API",
-          "Batch Processing"
-        ]
+        "name": "PostgreSQL",
+        "icon": "postgres"
       },
       {
-        "title": "PackManager",
-        "role": "Backend Developer",
-        "outcomes": [
-          "Built product configuration platform for insurance pack setup",
-          "Refactored legacy code for modular maintenance",
-          "Improved code quality and reduced runtime memory usage with JProfiler"
-        ],
-        "technologies": [
-          "Java",
-          "REST API",
-          "JProfiler"
-        ]
+        "name": "MySQL",
+        "icon": "mysql"
       },
       {
-        "title": "Solife Digital & Generali Portal",
-        "role": "Full-Stack Developer",
-        "outcomes": [
-          "Developed secure insurance broker web application",
-          "Implemented Angular-based frontend",
-          "Integrated SSO using Keycloak",
-          "Built BPMN-driven user flow with Java backend"
-        ],
-        "technologies": [
-          "Angular",
-          "Java",
-          "Keycloak",
-          "BPMN"
-        ]
+        "name": "Oracle (PL/SQL)",
+        "icon": "oracle"
       },
       {
-        "title": "Magikforms",
-        "role": "Backend Developer",
-        "outcomes": [
-          "Designed document processing system for insurance automation",
-          "Managed high-volume event flows using ActiveMQ",
-          "Enabled secure document generation with Keycloak authorization",
-          "Profiled and optimized Java heap usage with JProfiler"
-        ],
-        "technologies": [
-          "Java",
-          "ActiveMQ",
-          "Keycloak",
-          "JProfiler"
-        ]
+        "name": "MongoDB",
+        "icon": "mongodb"
       },
       {
-        "title": "Insurance Pricing Module",
-        "role": "Full-Stack Developer",
-        "outcomes": [
-          "Built Excel-integrated pricing configuration system",
-          "Improved client-side validation and data integrity",
-          "Enabled fast updates using Apache POI for Excel templates"
-        ],
-        "technologies": [
-          "Java",
-          "Apache POI",
-          "Excel",
-          "Spring Boot"
-        ]
+        "name": "Apache POI (Excel Processing)",
+        "icon": "poi"
       }
     ],
-    "education": [
+    "API Development": [
       {
-        "degree": "Engineer’s Degree in Software Engineering",
-        "institution": "ESPRIT (Private Higher School of Engineering and Technology)",
-        "location": "Tunis, Tunisia",
-        "period": "Sept 2019 – July 2023"
+        "name": "RESTful API Design",
+        "icon": "api"
       },
       {
-        "degree": "Bachelor’s Degree in Computer Science",
-        "institution": "ISIMM (Higher Institute of Computer Science and Mathematics)",
-        "location": "Monastir, Tunisia",
-        "period": "Sept 2015 – June 2019"
+        "name": "OpenAPI",
+        "icon": "openapi"
       }
     ],
-    "certifications": [
+    "Microservices & Event-Driven Systems": [
       {
-        "name": "Oracle Certified Professional, Java SE 11 Developer",
-        "issuer": "Oracle",
-        "date": "Sept 2022",
-        "link": "https://bit.ly/ocp11gb",
-        "image": "/ocp11.png"
+        "name": "Spring Cloud",
+        "icon": "springcloud"
+      },
+      {
+        "name": "ActiveMQ",
+        "icon": "activemq"
       }
     ],
-    "languages": [
+    "DevOps & Infrastructure": [
       {
-        "language": "Arabic",
-        "level": "Native",
-        "percentage": 100
+        "name": "Docker",
+        "icon": "docker"
       },
       {
-        "language": "English",
-        "level": "Advanced, Fluent",
-        "percentage": 85
+        "name": "Jenkins",
+        "icon": "jenkins"
       },
       {
-        "language": "French",
-        "level": "Advanced, Fluent",
-        "percentage": 85
+        "name": "GitLab CI/CD",
+        "icon": "gitlab"
       },
       {
-        "language": "Japanese",
-        "level": "Beginner, Basic Proficiency",
-        "percentage": 10
+        "name": "AWS",
+        "icon": "aws"
+      },
+      {
+        "name": "Nginx",
+        "icon": "nginx"
+      },
+      {
+        "name": "WildFly",
+        "icon": "wildfly"
+      },
+      {
+        "name": "Tomcat",
+        "icon": "tomcat"
+      },
+      {
+        "name": "Linux Server Management",
+        "icon": "linux"
+      }
+    ],
+    "Testing & Code Quality": [
+      {
+        "name": "JUnit",
+        "icon": "junit"
+      },
+      {
+        "name": "Mockito",
+        "icon": "mockito"
+      },
+      {
+        "name": "Integration Tests",
+        "icon": "test"
+      },
+      {
+        "name": "SonarQube",
+        "icon": "sonarqube"
+      },
+      {
+        "name": "Code Review Best Practices",
+        "icon": "coding"
+      }
+    ],
+    "Security": [
+      {
+        "name": "Keycloak (OAuth2, OIDC, JWT)",
+        "icon": "keycloak"
+      }
+    ],
+    "High-Performance Computing": [
+      {
+        "name": "Asynchronous Processing",
+        "icon": "async"
+      },
+      {
+        "name": "Multi-threading",
+        "icon": "threads"
+      },
+      {
+        "name": "JProfiler",
+        "icon": "jprofiler"
+      }
+    ],
+    "Agile & Collaboration": [
+      {
+        "name": "Scrum",
+        "icon": "scrum"
+      },
+      {
+        "name": "Jira",
+        "icon": "jira"
+      },
+      {
+        "name": "Git",
+        "icon": "git"
+      },
+      {
+        "name": "Confluence",
+        "icon": "confluence"
       }
     ]
-  }
+  },
+  "experience": [
+    {
+      "company": "Sogeti",
+      "position": "Software Engineer",
+      "location": "Luxembourg",
+      "period": "Feb 2025 – Present",
+      "description": "Technical training and R&D activities focused on backend systems, DevOps, and cloud native solutions.",
+      "achievements": [
+        "Engaged in technical upskilling across backend and cloud-native tooling.",
+        "Contributed to internal R&D and API security initiatives."
+      ]
+    },
+    {
+      "company": "CBTW",
+      "position": "Java Full-Stack Developer",
+      "location": "Luxembourg",
+      "period": "Sept 2024 – Jan 2025",
+      "description": "Enterprise application development using Spring Boot and Angular.",
+      "achievements": [
+        "Developed RESTful APIs and transitioned monolithic apps to microservices.",
+        "Automated deployments using Jenkins and Docker."
+      ]
+    },
+    {
+      "company": "VERMEG",
+      "position": "Software Engineer",
+      "location": "Tunis, Tunisia",
+      "period": "Oct 2019 – Aug 2024",
+      "description": "Led backend development across insurance and financial systems.",
+      "achievements": [
+        "Designed high-volume transactional APIs and implemented Keycloak-based security.",
+        "Optimized API performance and automated workflows using ActiveMQ.",
+        "Managed CI/CD and ensured seamless deployments."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Orbit Ways",
+      "role": "Full Stack Game Developer",
+      "link": "https://ghassen.io/orbitways",
+      "linkLabel": "Play",
+      "outcomes": [
+        "Built a real-time multiplayer board game",
+        "Developed Spring Boot backend for sessions, state, and matchmaking",
+        "Implemented WebSocket for real-time communication",
+        "Crafted dynamic UI with Angular adn ionic",
+        "Dockerized app with NGINX as secure reverse proxy"
+      ],
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "Redis",
+        "WebSocket",
+        "Angular",
+        "TypeScript",
+        "Docker",
+        "Nginx"
+      ]
+    },
+    {
+      "title": "SalesFlow",
+      "role": "Lead Developer",
+      "outcomes": [
+        "Reduced manual processes by 30%",
+        "Integrated with Camunda BPM to automate complex workflows",
+        "Handled batch processing with multithreaded execution"
+      ],
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "Camunda",
+        "REST API",
+        "Batch Processing"
+      ]
+    },
+    {
+      "title": "PackManager",
+      "role": "Backend Developer",
+      "outcomes": [
+        "Built product configuration platform for insurance pack setup",
+        "Refactored legacy code for modular maintenance",
+        "Improved code quality and reduced runtime memory usage with JProfiler"
+      ],
+      "technologies": ["Java", "REST API", "JProfiler"]
+    },
+    {
+      "title": "Solife Digital & Generali Portal",
+      "role": "Full-Stack Developer",
+      "outcomes": [
+        "Developed secure insurance broker web application",
+        "Implemented Angular-based frontend",
+        "Integrated SSO using Keycloak",
+        "Built BPMN-driven user flow with Java backend"
+      ],
+      "technologies": ["Angular", "Java", "Keycloak", "BPMN"]
+    },
+    {
+      "title": "Magikforms",
+      "role": "Backend Developer",
+      "outcomes": [
+        "Designed document processing system for insurance automation",
+        "Managed high-volume event flows using ActiveMQ",
+        "Enabled secure document generation with Keycloak authorization",
+        "Profiled and optimized Java heap usage with JProfiler"
+      ],
+      "technologies": ["Java", "ActiveMQ", "Keycloak", "JProfiler"]
+    },
+    {
+      "title": "Insurance Pricing Module",
+      "role": "Full-Stack Developer",
+      "outcomes": [
+        "Built Excel-integrated pricing configuration system",
+        "Improved client-side validation and data integrity",
+        "Enabled fast updates using Apache POI for Excel templates"
+      ],
+      "technologies": ["Java", "Apache POI", "Excel", "Spring Boot"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Engineer’s Degree in Software Engineering",
+      "institution": "ESPRIT (Private Higher School of Engineering and Technology)",
+      "location": "Tunis, Tunisia",
+      "period": "Sept 2019 – July 2023"
+    },
+    {
+      "degree": "Bachelor’s Degree in Computer Science",
+      "institution": "ISIMM (Higher Institute of Computer Science and Mathematics)",
+      "location": "Monastir, Tunisia",
+      "period": "Sept 2015 – June 2019"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Oracle Certified Professional, Java SE 11 Developer",
+      "issuer": "Oracle",
+      "date": "Sept 2022",
+      "link": "https://bit.ly/ocp11gb",
+      "image": "/ocp11.png"
+    }
+  ],
+  "languages": [
+    {
+      "language": "Arabic",
+      "level": "Native",
+      "percentage": 100
+    },
+    {
+      "language": "English",
+      "level": "Advanced, Fluent",
+      "percentage": 85
+    },
+    {
+      "language": "French",
+      "level": "Advanced, Fluent",
+      "percentage": 85
+    },
+    {
+      "language": "Japanese",
+      "level": "Beginner, Basic Proficiency",
+      "percentage": 10
+    }
+  ]
+}
