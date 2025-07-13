@@ -219,14 +219,16 @@
   },
   "experience": [
     {
-      "company": "Sogeti",
+      "company": "Sogeti (on mission at BGL BNP Paribas)",
       "position": "Software Engineer",
       "location": "Luxembourg",
       "period": "Feb 2025 – Present",
-      "description": "Technical training and R&D activities focused on backend systems, DevOps, and cloud native solutions.",
+      "description": "Maintaining and extending secure internal banking applications within an Agile tribe.",
       "achievements": [
-        "Engaged in technical upskilling across backend and cloud-native tooling.",
-        "Contributed to internal R&D and API security initiatives."
+        "Developed and maintained internal apps using Java (Spring Boot, Hibernate), Angular, and PostgreSQL/Oracle.",
+        "Built and optimized RESTful APIs with strong focus on security and performance.",
+        "Implemented CI/CD pipelines using Maven, Jenkins, Git, and SonarQube.",
+        "Collaborated cross-functionally within Agile ceremonies and code reviews."
       ]
     },
     {
@@ -234,22 +236,25 @@
       "position": "Java Full-Stack Developer",
       "location": "Luxembourg",
       "period": "Sept 2024 – Jan 2025",
-      "description": "Enterprise application development using Spring Boot and Angular.",
+      "description": "Enterprise web application development using Java and Angular technologies.",
       "achievements": [
-        "Developed RESTful APIs and transitioned monolithic apps to microservices.",
-        "Automated deployments using Jenkins and Docker."
+        "Developed enterprise web applications using Spring Boot, Angular, and PostgreSQL.",
+        "Built high-performance RESTful APIs and improved scalability through microservices.",
+        "Automated deployment with Jenkins & Docker, reducing manual work."
       ]
     },
     {
-      "company": "VERMEG",
+      "company": "VERMEG for Banking and Insurance",
       "position": "Software Engineer",
       "location": "Tunis, Tunisia",
       "period": "Oct 2019 – Aug 2024",
-      "description": "Led backend development across insurance and financial systems.",
+      "description": "Led backend engineering for high-traffic insurance & financial applications.",
       "achievements": [
-        "Designed high-volume transactional APIs and implemented Keycloak-based security.",
-        "Optimized API performance and automated workflows using ActiveMQ.",
-        "Managed CI/CD and ensured seamless deployments."
+        "Designed and optimized high-volume transactional APIs, ensuring high availability and performance.",
+        "Implemented Keycloak-based authentication & RBAC, improving access security.",
+        "Reduced API response time by 50% through query optimization and caching strategies.",
+        "Built automated workflows using ActiveMQ for bulk processing, increasing efficiency by 40%.",
+        "Managed CI/CD pipelines, ensuring seamless deployments and rollback strategies."
       ]
     }
   ],
@@ -301,7 +306,11 @@
         "Refactored legacy code for modular maintenance",
         "Improved code quality and reduced runtime memory usage with JProfiler"
       ],
-      "technologies": ["Java", "REST API", "JProfiler"]
+      "technologies": [
+        "Java",
+        "REST API",
+        "JProfiler"
+      ]
     },
     {
       "title": "Solife Digital & Generali Portal",
@@ -312,7 +321,12 @@
         "Integrated SSO using Keycloak",
         "Built BPMN-driven user flow with Java backend"
       ],
-      "technologies": ["Angular", "Java", "Keycloak", "BPMN"]
+      "technologies": [
+        "Angular",
+        "Java",
+        "Keycloak",
+        "BPMN"
+      ]
     },
     {
       "title": "Magikforms",
@@ -323,7 +337,12 @@
         "Enabled secure document generation with Keycloak authorization",
         "Profiled and optimized Java heap usage with JProfiler"
       ],
-      "technologies": ["Java", "ActiveMQ", "Keycloak", "JProfiler"]
+      "technologies": [
+        "Java",
+        "ActiveMQ",
+        "Keycloak",
+        "JProfiler"
+      ]
     },
     {
       "title": "Insurance Pricing Module",
@@ -333,7 +352,12 @@
         "Improved client-side validation and data integrity",
         "Enabled fast updates using Apache POI for Excel templates"
       ],
-      "technologies": ["Java", "Apache POI", "Excel", "Spring Boot"]
+      "technologies": [
+        "Java",
+        "Apache POI",
+        "Excel",
+        "Spring Boot"
+      ]
     }
   ],
   "education": [
