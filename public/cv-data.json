@@ -19,202 +19,66 @@
   },
   "skills": {
     "Backend & Full-Stack Development": [
-      {
-        "name": "Java",
-        "icon": "java",
-        "highlight": true
-      },
-      {
-        "name": "Spring Boot",
-        "icon": "spring",
-        "highlight": true
-      },
-      {
-        "name": "Java EE",
-        "icon": "javaee"
-      },
-      {
-        "name": "Hibernate",
-        "icon": "hibernate"
-      },
-      {
-        "name": "JPA",
-        "icon": "jpa"
-      },
-      {
-        "name": "Angular",
-        "icon": "angular",
-        "highlight": true
-      },
-      {
-        "name": "TypeScript",
-        "icon": "typescript",
-        "highlight": true
-      },
-      {
-        "name": "JavaScript",
-        "icon": "javascript"
-      },
-      {
-        "name": "Node.js",
-        "icon": "node"
-      },
-      {
-        "name": "HTML5",
-        "icon": "html"
-      },
-      {
-        "name": "CSS3",
-        "icon": "css"
-      },
-      {
-        "name": "PrimeNG",
-        "icon": "primeng"
-      },
-      {
-        "name": "RxJS",
-        "icon": "rxjs"
-      },
-      {
-        "name": "NgRx (Basic)",
-        "icon": "ngrx"
-      }
+      { "name": "Java", "icon": "java", "highlight": true },
+      { "name": "Spring Boot", "icon": "spring", "highlight": true },
+      { "name": "Java EE", "icon": "javaee" },
+      { "name": "Hibernate", "icon": "hibernate" },
+      { "name": "JPA", "icon": "jpa" },
+      { "name": "Angular", "icon": "angular", "highlight": true },
+      { "name": "TypeScript", "icon": "typescript", "highlight": true },
+      { "name": "JavaScript", "icon": "javascript" },
+      { "name": "Node.js", "icon": "node" },
+      { "name": "HTML5", "icon": "html" },
+      { "name": "CSS3", "icon": "css" },
+      { "name": "PrimeNG", "icon": "primeng" },
+      { "name": "RxJS", "icon": "rxjs" },
+      { "name": "NgRx (Basic)", "icon": "ngrx" }
     ],
     "Database & Data Processing": [
-      {
-        "name": "PostgreSQL",
-        "icon": "postgres"
-      },
-      {
-        "name": "MySQL",
-        "icon": "mysql"
-      },
-      {
-        "name": "Oracle (PL/SQL)",
-        "icon": "oracle"
-      },
-      {
-        "name": "MongoDB",
-        "icon": "mongodb"
-      },
-      {
-        "name": "Apache POI (Excel Processing)",
-        "icon": "poi"
-      }
+      { "name": "PostgreSQL", "icon": "postgres" },
+      { "name": "MySQL", "icon": "mysql" },
+      { "name": "Oracle (PL/SQL)", "icon": "oracle" },
+      { "name": "MongoDB", "icon": "mongodb" },
+      { "name": "Apache POI (Excel Processing)", "icon": "poi" }
     ],
     "API Development": [
-      {
-        "name": "RESTful API Design",
-        "icon": "api"
-      },
-      {
-        "name": "OpenAPI",
-        "icon": "openapi"
-      }
+      { "name": "RESTful API Design", "icon": "api" },
+      { "name": "OpenAPI", "icon": "openapi" }
     ],
     "Microservices & Event-Driven Systems": [
-      {
-        "name": "Spring Cloud",
-        "icon": "springcloud"
-      },
-      {
-        "name": "ActiveMQ",
-        "icon": "activemq"
-      }
+      { "name": "Spring Cloud", "icon": "springcloud" },
+      { "name": "ActiveMQ", "icon": "activemq" }
     ],
     "DevOps & Infrastructure": [
-      {
-        "name": "Docker",
-        "icon": "docker"
-      },
-      {
-        "name": "Jenkins",
-        "icon": "jenkins"
-      },
-      {
-        "name": "GitLab CI/CD",
-        "icon": "gitlab"
-      },
-      {
-        "name": "AWS",
-        "icon": "aws"
-      },
-      {
-        "name": "Nginx",
-        "icon": "nginx"
-      },
-      {
-        "name": "WildFly",
-        "icon": "wildfly"
-      },
-      {
-        "name": "Tomcat",
-        "icon": "tomcat"
-      },
-      {
-        "name": "Linux Server Management",
-        "icon": "linux"
-      }
+      { "name": "Docker", "icon": "docker" },
+      { "name": "Jenkins", "icon": "jenkins" },
+      { "name": "GitLab CI/CD", "icon": "gitlab" },
+      { "name": "AWS", "icon": "aws" },
+      { "name": "Nginx", "icon": "nginx" },
+      { "name": "WildFly", "icon": "wildfly" },
+      { "name": "Tomcat", "icon": "tomcat" },
+      { "name": "Linux Server Management", "icon": "linux" }
     ],
     "Testing & Code Quality": [
-      {
-        "name": "JUnit",
-        "icon": "junit"
-      },
-      {
-        "name": "Mockito",
-        "icon": "mockito"
-      },
-      {
-        "name": "Integration Tests",
-        "icon": "test"
-      },
-      {
-        "name": "SonarQube",
-        "icon": "sonarqube"
-      },
-      {
-        "name": "Code Review Best Practices",
-        "icon": "coding"
-      }
+      { "name": "JUnit", "icon": "junit" },
+      { "name": "Mockito", "icon": "mockito" },
+      { "name": "Integration Tests", "icon": "test" },
+      { "name": "SonarQube", "icon": "sonarqube" },
+      { "name": "Code Review Best Practices", "icon": "coding" }
     ],
     "Security": [
-      {
-        "name": "Keycloak (OAuth2, OIDC, JWT)",
-        "icon": "keycloak"
-      }
+      { "name": "Keycloak (OAuth2, OIDC, JWT)", "icon": "keycloak" }
     ],
     "High-Performance Computing": [
-      {
-        "name": "Asynchronous Processing",
-        "icon": "async"
-      },
-      {
-        "name": "Multi-threading",
-        "icon": "threads"
-      },
-      {
-        "name": "JProfiler",
-        "icon": "jprofiler"
-      }
+      { "name": "Asynchronous Processing", "icon": "async" },
+      { "name": "Multi-threading", "icon": "threads" },
+      { "name": "JProfiler", "icon": "jprofiler" }
     ],
     "Agile & Collaboration": [
-      {
-        "name": "Scrum",
-        "icon": "scrum"
-      },
-      {
-        "name": "Jira",
-        "icon": "jira"
-      },
-      {
-        "name": "Git",
-        "icon": "git"
-      },
-      {
-        "name": "Confluence",
-        "icon": "confluence"
-      }
+      { "name": "Scrum", "icon": "scrum" },
+      { "name": "Jira", "icon": "jira" },
+      { "name": "Git", "icon": "git" },
+      { "name": "Confluence", "icon": "confluence" }
     ]
   },
   "experience": [
@@ -362,13 +226,13 @@
   ],
   "education": [
     {
-      "degree": "Engineer’s Degree in Software Engineering",
+      "degree": "Engineer's Degree in Software Engineering",
       "institution": "ESPRIT (Private Higher School of Engineering and Technology)",
       "location": "Tunis, Tunisia",
       "period": "Sept 2019 – July 2023"
     },
     {
-      "degree": "Bachelor’s Degree in Computer Science",
+      "degree": "Bachelor's Degree in Computer Science",
       "institution": "ISIMM (Higher Institute of Computer Science and Mathematics)",
       "location": "Monastir, Tunisia",
       "period": "Sept 2015 – June 2019"
@@ -384,25 +248,9 @@
     }
   ],
   "languages": [
-    {
-      "language": "Arabic",
-      "level": "Native",
-      "percentage": 100
-    },
-    {
-      "language": "English",
-      "level": "Advanced, Fluent",
-      "percentage": 85
-    },
-    {
-      "language": "French",
-      "level": "Advanced, Fluent",
-      "percentage": 85
-    },
-    {
-      "language": "Japanese",
-      "level": "Beginner, Basic Proficiency",
-      "percentage": 10
-    }
+    { "language": "Arabic", "level": "Native", "percentage": 100 },
+    { "language": "English", "level": "Advanced, Fluent", "percentage": 85 },
+    { "language": "French", "level": "Advanced, Fluent", "percentage": 85 },
+    { "language": "Japanese", "level": "Beginner, Basic Proficiency", "percentage": 10 }
   ]
 }

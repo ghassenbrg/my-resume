@@ -1,192 +1,303 @@
-import { motion } from "framer-motion";
-import React from "react";
-import { AiOutlineClockCircle } from "react-icons/ai";
-import { BsDatabaseFill } from "react-icons/bs";
-import { CgWorkAlt } from "react-icons/cg";
-import {
-  FaAngular,
-  FaAws,
-  FaBuilding,
-  FaCloud,
-  FaDocker,
-  FaGitAlt,
-  FaJava,
-  FaNode,
-  FaReact,
-  FaServer,
-  FaTools
-} from "react-icons/fa";
-import { FaJenkins } from "react-icons/fa6";
-import { FiLink, FiMonitor } from "react-icons/fi";
-import { GiSprint } from "react-icons/gi";
-import { GrTest } from "react-icons/gr";
-import { HiOutlineChartBar, HiOutlineDocumentText } from "react-icons/hi";
-import { IoCodeWorking } from "react-icons/io5";
-import { LuCupSoda } from "react-icons/lu";
-import { MdOutlineForwardToInbox } from "react-icons/md";
-import { RiLoopRightFill } from "react-icons/ri";
-import {
-  SiApachetomcat,
-  SiConfluence,
-  SiCss3,
-  SiHibernate,
-  SiHtml5,
-  SiJavascript,
-  SiJira,
-  SiJunit5,
-  SiKeycloak,
-  SiLinux,
-  SiMongodb,
-  SiMysql,
-  SiNginx,
-  SiOracle,
-  SiPostgresql,
-  SiPrimeng,
-  SiSonarqube,
-  SiSpring,
-  SiTestinglibrary,
-  SiTypescript,
-} from "react-icons/si";
-import { TbSettingsAutomation } from "react-icons/tb";
-
-// 🧠 Icon Map
-const skillIcons = {
-  java: FaJava,
-  spring: SiSpring,
-  angular: FaAngular,
-  react: FaReact,
-  node: FaNode,
-  typescript: SiTypescript,
-  javascript: SiJavascript,
-  docker: FaDocker,
-  aws: FaAws,
-  git: FaGitAlt,
-  mongodb: SiMongodb,
-  postgres: SiPostgresql,
-  mysql: SiMysql,
-  html: SiHtml5,
-  css: SiCss3,
-  junit: SiJunit5,
-  jira: SiJira,
-  confluence: SiConfluence,
-  linux: SiLinux,
-  tomcat: SiApachetomcat,
-  sonarqube: SiSonarqube,
-  nginx: SiNginx,
-  testing: SiTestinglibrary,
-  hibernate: SiHibernate,
-  primeng: SiPrimeng,
-  jenkins: FaJenkins,
-  test: GrTest,
-  coding: IoCodeWorking,
-  keycloak: SiKeycloak,
-  wildfly: FaServer,
-  mockito: LuCupSoda,
-  api: FiLink,
-  openapi: HiOutlineDocumentText,
-  rxjs: TbSettingsAutomation,
-  ngrx: RiLoopRightFill,
-  jpa: BsDatabaseFill,
-  springcloud: FaCloud,
-  activemq: MdOutlineForwardToInbox,
-  async: AiOutlineClockCircle,
-  threads: CgWorkAlt,
-  jprofiler: FiMonitor,
-  poi: HiOutlineChartBar,
-  scrum: GiSprint,
-  javaee: FaBuilding,
-  gitlab: FaGitAlt,
-  oracle: SiOracle
-  // ➕ add more mappings if needed
-};
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaCode, FaDatabase, FaCloud, FaShieldAlt, FaCogs, FaRocket, FaTools, FaUsers } from "react-icons/fa";
 
 const Skills = ({ darkMode, cvData }) => {
-  const allCategories = Object.entries(cvData.skills || {});
-  const highlightSkills = allCategories.flatMap(([_, skills]) =>
-    skills.filter((s) => s.highlight)
-  );
+  const [activeCategory, setActiveCategory] = useState("Backend & Full-Stack Development");
+  const { skills } = cvData;
+
+  const categoryIcons = {
+    "Backend & Full-Stack Development": FaCode,
+    "Database & Data Processing": FaDatabase,
+    "API Development": FaCode,
+    "Microservices & Event-Driven Systems": FaCogs,
+    "DevOps & Infrastructure": FaCloud,
+    "Testing & Code Quality": FaTools,
+    "Security": FaShieldAlt,
+    "High-Performance Computing": FaRocket,
+    "Agile & Collaboration": FaUsers,
+  };
+
+  // Devicon icon mapping for technologies
+  const getTechIcon = (skillName) => {
+    const iconMap = {
+      "Java": "devicon-java-plain",
+      "Spring Boot": "devicon-spring-plain",
+      "Java EE": "devicon-java-plain",
+      "Hibernate": "devicon-java-plain",
+      "JPA": "devicon-java-plain",
+      "Angular": "devicon-angularjs-plain",
+      "TypeScript": "devicon-typescript-plain",
+      "JavaScript": "devicon-javascript-plain",
+      "Node.js": "devicon-nodejs-plain",
+      "HTML5": "devicon-html5-plain",
+      "CSS3": "devicon-css3-plain",
+      "PrimeNG": "devicon-angularjs-plain",
+      "RxJS": "devicon-javascript-plain",
+      "NgRx (Basic)": "devicon-angularjs-plain",
+      "PostgreSQL": "devicon-postgresql-plain",
+      "MySQL": "devicon-mysql-plain",
+      "Oracle (PL/SQL)": "devicon-oracle-plain",
+      "MongoDB": "devicon-mongodb-plain",
+      "Apache POI (Excel Processing)": "devicon-java-plain",
+      "RESTful API Design": "devicon-javascript-plain",
+      "OpenAPI": "devicon-javascript-plain",
+      "Spring Cloud": "devicon-spring-plain",
+      "ActiveMQ": "devicon-java-plain",
+      "Docker": "devicon-docker-plain",
+      "Jenkins": "devicon-jenkins-plain",
+      "GitLab CI/CD": "devicon-gitlab-plain",
+      "AWS": "devicon-amazonwebservices-plain",
+      "Nginx": "devicon-nginx-plain",
+      "WildFly": "devicon-java-plain",
+      "Tomcat": "devicon-tomcat-plain",
+      "Linux Server Management": "devicon-linux-plain",
+      "JUnit": "devicon-java-plain",
+      "Mockito": "devicon-java-plain",
+      "Integration Tests": "devicon-java-plain",
+      "SonarQube": "devicon-java-plain",
+      "Code Review Best Practices": "devicon-git-plain",
+      "Keycloak (OAuth2, OIDC, JWT)": "devicon-java-plain",
+      "Asynchronous Processing": "devicon-java-plain",
+      "Multi-threading": "devicon-java-plain",
+      "JProfiler": "devicon-java-plain",
+      "Scrum": "devicon-git-plain",
+      "Jira": "devicon-jira-plain",
+      "Git": "devicon-git-plain",
+      "Confluence": "devicon-jira-plain"
+    };
+    
+    return iconMap[skillName] || "devicon-java-plain";
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
+  const skillCardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.3, ease: "easeOut" },
+    },
+  };
 
   return (
     <section
       id="skills"
-      className={`py-20 transition-colors duration-500 ${
-        darkMode ? "bg-slate-900 text-white" : "bg-slate-50 text-gray-900"
+      className={`py-20 ${
+        darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
-      <div className="container mx-auto px-6">
-        {/* Title */}
-        <motion.h2
-          className="text-3xl font-bold mb-12 text-center flex items-center justify-center gap-2"
-          initial={{ opacity: 0, y: -20 }}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
         >
-          <FaTools className="text-indigo-600  w-6 h-6" />
-          My <span className="text-indigo-600">Skills</span>
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Technical{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-500">
+              Skills
+            </span>
+          </h2>
+          <p className={`text-xl max-w-3xl mx-auto ${
+            darkMode ? "text-gray-400" : "text-gray-600"
+          }`}>
+            A comprehensive toolkit of technologies and methodologies I've mastered through years of hands-on experience
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mt-6" />
+        </motion.div>
 
-        {/* 🔹 Highlighted Skills */}
-        {highlightSkills.length > 0 && (
-          <motion.div
-            className="mb-12 flex flex-wrap justify-center gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            {highlightSkills.map((skill, i) => {
-              const Icon = skillIcons[skill.icon];
-              return (
-                <span
-                  key={i}
-                  className="inline-flex items-center gap-2 bg-indigo-100 dark:bg-indigo-700 text-indigo-700 dark:text-indigo-100 font-semibold text-sm px-4 py-2 rounded-full shadow-sm"
-                >
-                  {Icon && <Icon className="w-4 h-4" />}
-                  {skill.name}
-                </span>
-              );
-            })}
-          </motion.div>
-        )}
+        {/* Category Navigation */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {Object.keys(skills).map((category) => {
+            const Icon = categoryIcons[category];
+            return (
+              <motion.button
+                key={category}
+                variants={itemVariants}
+                onClick={() => setActiveCategory(category)}
+                className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                  activeCategory === category
+                    ? darkMode
+                      ? "bg-primary-600 text-white shadow-lg"
+                      : "bg-primary-100 text-primary-700 shadow-md"
+                    : darkMode
+                    ? "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"
+                    : "bg-white text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                } border ${
+                  activeCategory === category
+                    ? "border-primary-500"
+                    : darkMode
+                    ? "border-gray-700"
+                    : "border-gray-200"
+                }`}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Icon size={18} />
+                <span className="hidden sm:inline">{category}</span>
+                <span className="sm:hidden">{category.split(" ")[0]}</span>
+              </motion.button>
+            );
+          })}
+        </motion.div>
 
-        {/* 🔸 Categorized Skills */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {allCategories.map(([category, skills], index) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              viewport={{ once: true }}
-              className={`p-6 rounded-xl shadow-md transition ${
-                darkMode ? "bg-slate-800" : "bg-white"
-              }`}
-            >
-              <h3 className="text-lg font-semibold mb-4 text-indigo-600">
-                {category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill, i) => (
-                  <span
-                    key={i}
-                    className={`text-sm px-3 py-1 rounded-full font-medium inline-flex items-center gap-2 ${
-                      darkMode
-                        ? "bg-slate-700 text-slate-100"
-                        : "bg-slate-100 text-slate-800"
-                    }`}
-                  >
-                    {skillIcons[skill.icon] &&
-                      React.createElement(skillIcons[skill.icon], {
-                        className: "w-4 h-4",
-                      })}
-                    {skill.name}
-                  </span>
-                ))}
+        {/* Skills Grid */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <AnimatePresence mode="wait">
+            {skills[activeCategory]?.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                variants={skillCardVariants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                className={`group relative overflow-hidden rounded-xl p-6 ${
+                  darkMode
+                    ? "bg-gray-800/50 border border-gray-700/50 hover:border-gray-600/50"
+                    : "bg-white border border-gray-200/50 hover:border-gray-300/50"
+                } shadow-lg hover:shadow-xl transition-all duration-300`}
+                whileHover={{ y: -5, scale: 1.02 }}
+                layout
+              >
+                {/* Highlight indicator */}
+                {skill.highlight && (
+                  <div className="absolute top-3 right-3">
+                    <div className="w-3 h-3 bg-gradient-to-r from-accent-400 to-accent-600 rounded-full animate-pulse" />
+                  </div>
+                )}
+
+                {/* Background gradient on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Skill icon/name */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`w-10 h-10 rounded-lg ${
+                      skill.highlight
+                        ? "bg-gradient-to-r from-primary-500 to-accent-500"
+                        : darkMode
+                        ? "bg-gray-700"
+                        : "bg-gray-100"
+                    } flex items-center justify-center`}>
+                      <i className={`${getTechIcon(skill.name)} text-lg ${
+                        skill.highlight ? "text-white" : darkMode ? "text-gray-300" : "text-gray-600"
+                      }`}></i>
+                    </div>
+                    <div>
+                      <h3 className={`font-semibold ${
+                        darkMode ? "text-white" : "text-gray-900"
+                      }`}>
+                        {skill.name}
+                      </h3>
+                      {skill.highlight && (
+                        <span className="text-xs text-accent-500 font-medium">Core Skill</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hover effect line */}
+                <div className={`absolute bottom-0 left-0 h-1 ${
+                  skill.highlight
+                    ? "bg-gradient-to-r from-primary-500 to-accent-500"
+                    : "bg-gradient-to-r from-gray-400 to-gray-500"
+                } transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Skills Summary */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className={`inline-flex items-center gap-8 px-8 py-6 rounded-2xl ${
+            darkMode
+              ? "bg-gradient-to-r from-gray-800/50 to-gray-900/50 border border-gray-700/50"
+              : "bg-gradient-to-r from-white to-gray-50 border border-gray-200/50"
+          } shadow-lg`}>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-primary-500">
+                {(() => {
+                  // Calculate years of experience from work history
+                  const workStart = new Date('2019-10-01'); // VERMEG start date
+                  const now = new Date();
+                  const yearsDiff = now.getFullYear() - workStart.getFullYear();
+                  const monthsDiff = now.getMonth() - workStart.getMonth();
+                  const totalYears = yearsDiff + (monthsDiff / 12);
+                  return Math.floor(totalYears) + '+';
+                })()}
               </div>
-            </motion.div>
-          ))}
-        </div>
+              <div className={`text-sm ${
+                darkMode ? "text-gray-400" : "text-gray-600"
+              }`}>
+                Years Experience
+              </div>
+            </div>
+            <div className="w-px h-12 bg-gray-400/30" />
+            <div className="text-center">
+              <div className="text-3xl font-bold text-accent-500">
+                {Object.values(skills).flat().filter(s => s.highlight).length}
+              </div>
+              <div className={`text-sm ${
+                darkMode ? "text-gray-400" : "text-gray-600"
+              }`}>
+                Core Technologies
+              </div>
+            </div>
+            <div className="w-px h-12 bg-gray-400/30" />
+            <div className="text-center">
+              <div className="text-3xl font-bold text-success-500">
+                {Object.keys(skills).length}
+              </div>
+              <div className={`text-sm ${
+                darkMode ? "text-gray-400" : "text-gray-600"
+              }`}>
+                Skill Domains
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

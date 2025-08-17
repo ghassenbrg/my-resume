@@ -4,7 +4,7 @@ import { FaTimes, FaCheckCircle } from 'react-icons/fa';
 import emailjs from 'emailjs-com';
 import toast from 'react-hot-toast';
 
-const ContactModal = ({ onClose }) => {
+const ContactModal = ({ onClose, darkMode }) => {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
 
@@ -59,10 +59,18 @@ const ContactModal = ({ onClose }) => {
             <FaTimes size={18} />
           </button>
 
-          <h3 className="text-xl font-bold text-center mb-4 text-indigo-600">Contact Me</h3>
-          <p className="text-sm text-center mb-6 text-gray-600 dark:text-gray-300">
-            Feel free to reach out directly or drop a message below.
-          </p>
+          <div className="text-center mb-8">
+            <h2 className={`text-3xl font-bold mb-4 ${
+              darkMode ? "text-white" : "text-gray-900"
+            }`}>
+              Let's Connect
+            </h2>
+            <p className={`text-lg ${
+              darkMode ? "text-gray-300" : "text-gray-600"
+            }`}>
+              Have a question about my work or want to discuss a project? Feel free to reach out!
+            </p>
+          </div>
 
           {/* ✅ Success Checkmark */}
           {sent ? (
