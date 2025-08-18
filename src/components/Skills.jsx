@@ -102,36 +102,36 @@ const Skills = ({ darkMode, cvData }) => {
   return (
     <section
       id="skills"
-      className={`py-20 ${
+      className={`py-12 sm:py-16 lg:py-20 ${
         darkMode ? "bg-darkBg text-white" : "bg-lightBg text-gray-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             Technical{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-accent-500">
               Skills
             </span>
           </h2>
-          <p className={`text-xl max-w-3xl mx-auto ${
+          <p className={`text-lg sm:text-xl max-w-3xl mx-auto px-4 ${
             darkMode ? "text-gray-400" : "text-gray-600"
           }`}>
             A comprehensive toolkit of technologies and methodologies I've mastered through years of hands-on experience
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mt-6" />
+          <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full mt-4 sm:mt-6" />
         </motion.div>
 
         {/* Category Navigation */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12 px-2"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -144,7 +144,7 @@ const Skills = ({ darkMode, cvData }) => {
                 key={category}
                 variants={itemVariants}
                 onClick={() => setActiveCategory(category)}
-                className={`flex items-center gap-2 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl font-medium transition-all duration-300 text-xs sm:text-sm ${
                   activeCategory === category
                     ? darkMode
                       ? "bg-primary-600 text-white shadow-lg"
@@ -162,9 +162,9 @@ const Skills = ({ darkMode, cvData }) => {
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Icon size={18} />
-                <span className="hidden sm:inline">{category}</span>
-                <span className="sm:hidden">{category.split(" ")[0]}</span>
+                <Icon size={14} className="sm:w-4 sm:h-4" />
+                <span className="hidden xs:inline sm:inline">{category}</span>
+                <span className="xs:hidden sm:hidden">{category.split(" ")[0]}</span>
               </motion.button>
             );
           })}
@@ -172,7 +172,7 @@ const Skills = ({ darkMode, cvData }) => {
 
         {/* Skills Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -186,18 +186,19 @@ const Skills = ({ darkMode, cvData }) => {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className={`group relative overflow-hidden rounded-xl p-6 ${
+                className={`group relative overflow-hidden rounded-lg sm:rounded-xl p-4 sm:p-6 ${
                   darkMode
                     ? "bg-gray-800/50 border border-gray-700/50 hover:border-gray-600/50"
                     : "bg-white border border-gray-200/50 hover:border-gray-300/50"
                 } shadow-lg hover:shadow-xl transition-all duration-300`}
-                whileHover={{ y: -5, scale: 1.02 }}
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 layout
               >
                 {/* Highlight indicator */}
                 {skill.highlight && (
-                  <div className="absolute top-3 right-3">
-                    <div className="w-3 h-3 bg-gradient-to-r from-accent-400 to-accent-600 rounded-full animate-pulse" />
+                  <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-accent-400 to-accent-600 rounded-full animate-pulse" />
                   </div>
                 )}
 
@@ -207,20 +208,20 @@ const Skills = ({ darkMode, cvData }) => {
                 {/* Content */}
                 <div className="relative z-10">
                   {/* Skill icon/name */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 rounded-lg ${
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${
                       skill.highlight
                         ? "bg-gradient-to-r from-primary-500 to-accent-500"
                         : darkMode
                         ? "bg-gray-700"
                         : "bg-gray-100"
-                    } flex items-center justify-center`}>
-                      <i className={`${getTechIcon(skill.name)} text-lg ${
+                    } flex items-center justify-center flex-shrink-0`}>
+                      <i className={`${getTechIcon(skill.name)} text-sm sm:text-lg ${
                         skill.highlight ? "text-white" : darkMode ? "text-gray-300" : "text-gray-600"
                       }`}></i>
                     </div>
-                    <div>
-                      <h3 className={`font-semibold ${
+                    <div className="min-w-0 flex-1">
+                      <h3 className={`font-semibold text-sm sm:text-base truncate ${
                         darkMode ? "text-white" : "text-gray-900"
                       }`}>
                         {skill.name}
@@ -233,7 +234,7 @@ const Skills = ({ darkMode, cvData }) => {
                 </div>
 
                 {/* Hover effect line */}
-                <div className={`absolute bottom-0 left-0 h-1 ${
+                <div className={`absolute bottom-0 left-0 h-0.5 sm:h-1 ${
                   skill.highlight
                     ? "bg-gradient-to-r from-primary-500 to-accent-500"
                     : "bg-gradient-to-r from-gray-400 to-gray-500"
@@ -245,19 +246,19 @@ const Skills = ({ darkMode, cvData }) => {
 
         {/* Skills Summary */}
         <motion.div
-          className="mt-16 text-center"
+          className="mt-12 sm:mt-16 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <div className={`inline-flex items-center gap-8 px-8 py-6 rounded-2xl ${
+          <div className={`inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 px-6 sm:px-8 py-6 rounded-xl sm:rounded-2xl ${
             darkMode
               ? "bg-gradient-to-r from-gray-800/50 to-gray-900/50 border border-gray-700/50"
               : "bg-gradient-to-r from-white to-gray-50 border border-gray-200/50"
           } shadow-lg`}>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary-500">
+              <div className="text-2xl sm:text-3xl font-bold text-primary-500">
                 {(() => {
                   // Calculate years of experience from work history
                   const workStart = new Date('2019-10-01'); // VERMEG start date
@@ -268,29 +269,31 @@ const Skills = ({ darkMode, cvData }) => {
                   return Math.floor(totalYears) + '+';
                 })()}
               </div>
-              <div className={`text-sm ${
+              <div className={`text-xs sm:text-sm ${
                 darkMode ? "text-gray-400" : "text-gray-600"
               }`}>
                 Years Experience
               </div>
             </div>
-            <div className="w-px h-12 bg-gray-400/30" />
+            <div className="hidden sm:block w-px h-12 bg-gray-400/30" />
+            <div className="block sm:hidden w-12 h-px bg-gray-400/30" />
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent-500">
+              <div className="text-2xl sm:text-3xl font-bold text-accent-500">
                 {Object.values(skills).flat().filter(s => s.highlight).length}
               </div>
-              <div className={`text-sm ${
+              <div className={`text-xs sm:text-sm ${
                 darkMode ? "text-gray-400" : "text-gray-600"
               }`}>
                 Core Technologies
               </div>
             </div>
-            <div className="w-px h-12 bg-gray-400/30" />
+            <div className="hidden sm:block w-px h-12 bg-gray-400/30" />
+            <div className="block sm:hidden w-12 h-px bg-gray-400/30" />
             <div className="text-center">
-              <div className="text-3xl font-bold text-success-500">
+              <div className="text-2xl sm:text-3xl font-bold text-success-500">
                 {Object.keys(skills).length}
               </div>
-              <div className={`text-sm ${
+              <div className={`text-xs sm:text-sm ${
                 darkMode ? "text-gray-400" : "text-gray-600"
               }`}>
                 Skill Domains
