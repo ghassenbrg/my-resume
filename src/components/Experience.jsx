@@ -38,7 +38,7 @@ const Experience = ({ darkMode, cvData }) => {
     <section
       id="experience"
       className={`py-20 ${
-        darkMode ? "bg-darkBg text-white" : "bg-lightBg text-gray-900"
+        darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

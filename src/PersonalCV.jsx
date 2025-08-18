@@ -103,8 +103,8 @@ const PersonalCV = () => {
       <main className="pt-16">
         <Hero darkMode={darkMode} cvData={cvData} />
         <About darkMode={darkMode} cvData={cvData} />
-        <Skills darkMode={darkMode} cvData={cvData} />
         <Experience darkMode={darkMode} cvData={cvData} />
+        <Skills darkMode={darkMode} cvData={cvData} />
         <Projects darkMode={darkMode} cvData={cvData} />
         <Education darkMode={darkMode} cvData={cvData} />
         <Languages darkMode={darkMode} cvData={cvData} />
