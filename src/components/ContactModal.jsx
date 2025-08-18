@@ -46,7 +46,7 @@ const ContactModal = ({ onClose, darkMode }) => {
         exit={{ opacity: 0 }}
       >
         <motion.div
-          className="relative w-full max-w-md mx-4 sm:mx-0 bg-white/90 text-gray-800 rounded-2xl shadow-xl backdrop-blur-xl p-6"
+          className="relative w-full max-w-md mx-4 sm:mx-0 bg-gray-900/95 text-white rounded-2xl shadow-xl backdrop-blur-xl p-6 border border-gray-700/50"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
@@ -54,16 +54,16 @@ const ContactModal = ({ onClose, darkMode }) => {
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-600 hover:text-red-500 transition"
+            className="absolute top-4 right-4 text-gray-400 hover:text-red-400 transition"
           >
             <FaTimes size={18} />
           </button>
 
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">
+            <h2 className="text-3xl font-bold mb-4 text-white">
               Let's Connect
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-300">
               Have a question about my work or want to discuss a project? Feel free to reach out!
             </p>
           </div>
@@ -71,7 +71,7 @@ const ContactModal = ({ onClose, darkMode }) => {
           {/* ✅ Success Checkmark */}
           {sent ? (
             <motion.div
-              className="flex flex-col items-center justify-center text-center text-green-600"
+              className="flex flex-col items-center justify-center text-center text-green-400"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 300, damping: 15 }}
@@ -85,28 +85,28 @@ const ContactModal = ({ onClose, darkMode }) => {
                 type="text"
                 name="name"
                 placeholder="Your name"
-                className="w-full px-4 py-2 rounded-lg bg-white/70 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-200"
+                className="w-full px-4 py-2 rounded-lg bg-gray-800/70 placeholder:text-gray-400 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-600/50"
                 required
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Your email"
-                className="w-full px-4 py-2 rounded-lg bg-white/70 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-200"
+                className="w-full px-4 py-2 rounded-lg bg-gray-800/70 placeholder:text-gray-400 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-600/50"
                 required
               />
               <input
                 type="text"
                 name="title"
                 placeholder="Message title"
-                className="w-full px-4 py-2 rounded-lg bg-white/70 placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-200"
+                className="w-full px-4 py-2 rounded-lg bg-gray-800/70 placeholder:text-gray-400 text-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-600/50"
                 required
               />
               <textarea
                 name="message"
                 rows="4"
                 placeholder="Your message"
-                className="w-full px-4 py-2 rounded-lg bg-white/70 placeholder:text-gray-400 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-200"
+                className="w-full px-4 py-2 rounded-lg bg-gray-800/70 placeholder:text-gray-400 text-white text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-500 border border-gray-600/50"
                 required
               ></textarea>
 
