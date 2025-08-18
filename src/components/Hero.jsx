@@ -37,7 +37,7 @@ const Hero = ({ darkMode, cvData }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
     >
       {/* Enhanced Background with Gradient Overlay */}
       <div className="absolute inset-0">
@@ -51,33 +51,33 @@ const Hero = ({ darkMode, cvData }) => {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-primary-900/40" />
         
-        {/* Animated geometric elements */}
-        <div className="absolute top-20 left-20 w-32 h-32 border border-primary-400/20 rounded-full animate-pulse" />
-        <div className="absolute bottom-32 right-32 w-24 h-24 border border-accent-400/20 rotate-45 animate-pulse" />
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-success-400/20 rounded-full animate-pulse" />
+        {/* Animated geometric elements - Hidden on mobile */}
+        <div className="hidden sm:block absolute top-20 left-20 w-32 h-32 border border-primary-400/20 rounded-full animate-pulse" />
+        <div className="hidden sm:block absolute bottom-32 right-32 w-24 h-24 border border-accent-400/20 rotate-45 animate-pulse" />
+        <div className="hidden sm:block absolute top-1/2 left-1/4 w-16 h-16 border border-success-400/20 rounded-full animate-pulse" />
       </div>
 
       {/* Main Content */}
       <motion.div
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto"
+        className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Name and Title */}
-        <motion.div variants={itemVariants} className="mb-8">
+        <motion.div variants={itemVariants} className="mb-6 sm:mb-8">
           <motion.h1
-            className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 leading-tight tracking-tight"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-white">{name.split(" ")[0]}</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent-400 ml-4">
+            <span className="text-white block sm:inline">{name.split(" ")[0]}</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-accent-400 block sm:inline sm:ml-4">
               {name.split(" ")[1]}
             </span>
           </motion.h1>
           
           <motion.h2
-            className="text-xl md:text-2xl lg:text-3xl font-light text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2"
             whileHover={{ scale: 1.01 }}
           >
             {title}
@@ -87,40 +87,40 @@ const Hero = ({ darkMode, cvData }) => {
         {/* Contact Information Cards */}
         <motion.div
           variants={itemVariants}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 max-w-2xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-12 max-w-2xl mx-auto"
         >
           <motion.div
-            className="p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
+            className="p-3 sm:p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaMapMarkerAlt className="mx-auto mb-2 text-primary-400" size={20} />
-            <p className="text-sm font-medium">{location}</p>
+            <FaMapMarkerAlt className="mx-auto mb-2 text-primary-400" size={18} />
+            <p className="text-xs sm:text-sm font-medium">{location}</p>
           </motion.div>
           
           <motion.div
-            className="p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
+            className="p-3 sm:p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaPhone className="mx-auto mb-2 text-primary-400" size={20} />
-            <p className="text-sm font-medium">{phone}</p>
+            <FaPhone className="mx-auto mb-2 text-primary-400" size={18} />
+            <p className="text-xs sm:text-sm font-medium">{phone}</p>
           </motion.div>
           
           <motion.div
-            className="p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
+            className="p-3 sm:p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaEnvelope className="mx-auto mb-2 text-primary-400" size={20} />
-            <p className="text-sm font-medium">{email}</p>
+            <FaEnvelope className="mx-auto mb-2 text-primary-400" size={18} />
+            <p className="text-xs sm:text-sm font-medium">{email}</p>
           </motion.div>
         </motion.div>
 
         {/* Social Links and CTA */}
-        <motion.div variants={itemVariants} className="space-y-6">
+        <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6">
           {/* Social Links */}
-          <div className="flex justify-center gap-6 mb-8">
+          <div className="flex justify-center gap-4 sm:gap-6 mb-6 sm:mb-8">
             {[
               { icon: FaGithub, href: github, label: "GitHub", color: "hover:text-gray-300" },
               { icon: FaLinkedin, href: linkedin, label: "LinkedIn", color: "hover:text-blue-400" },
@@ -131,14 +131,14 @@ const Hero = ({ darkMode, cvData }) => {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className={`p-3 rounded-full backdrop-blur-sm border transition-all duration-300 bg-white/10 border-white/20 text-white hover:bg-white/20 ${social.color}`}
+                className={`p-2.5 sm:p-3 rounded-full backdrop-blur-sm border transition-all duration-300 bg-white/10 border-white/20 text-white hover:bg-white/20 ${social.color}`}
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.8 + index * 0.1 }}
               >
-                <social.icon size={24} />
+                <social.icon size={20} className="sm:w-6 sm:h-6" />
               </motion.a>
             ))}
           </div>
@@ -147,33 +147,33 @@ const Hero = ({ darkMode, cvData }) => {
           <motion.a
             href={cvLink}
             download
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-2xl bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white hover:shadow-primary-500/25 hover:scale-105"
+            className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-2xl bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white hover:shadow-primary-500/25 hover:scale-105"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
           >
-            <FaDownload size={20} />
+            <FaDownload size={18} className="sm:w-5 sm:h-5" />
             Download CV
           </motion.a>
         </motion.div>
 
         {/* Scroll Indicator */}
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
         >
           <motion.div
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
-            animate={{ y: [0, 10, 0] }}
+            className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white/30 rounded-full flex justify-center"
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             <motion.div
-              className="w-1 h-3 bg-white/60 rounded-full mt-2"
-              animate={{ y: [0, 12, 0] }}
+              className="w-0.5 h-2 sm:w-1 sm:h-3 bg-white/60 rounded-full mt-1.5 sm:mt-2"
+              animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
           </motion.div>

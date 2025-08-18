@@ -16,8 +16,8 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection, cvData 
 
   const navItems = [
     { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
     { id: "experience", label: "Experience" },
+    { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "education", label: "Education" },
     { id: "languages", label: "Languages" },
@@ -32,9 +32,11 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection, cvData 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? darkMode
-            ? "bg-darkBg/95 backdrop-blur-md border-b border-borderDark/20"
+            ? "bg-darkBg/95 backdrop-blur-md border-b border-borderDark/20 shadow-lg"
             : "bg-white/95 backdrop-blur-md border-b border-border/20 shadow-lg"
-          : "bg-transparent"
+          : darkMode
+          ? "bg-darkBg/90 backdrop-blur-md border-b border-borderDark/10"
+          : "bg-white/90 backdrop-blur-md border-b border-border/10"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
