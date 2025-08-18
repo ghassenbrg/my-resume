@@ -209,53 +209,7 @@ const Languages = ({ darkMode, cvData }) => {
           </motion.div>
         </motion.div>
 
-        {/* Languages Summary */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className={`inline-flex items-center gap-8 px-8 py-6 rounded-2xl ${
-            darkMode
-              ? "bg-gradient-to-r from-gray-800/50 to-gray-900/50 border border-gray-700/50"
-              : "bg-gradient-to-r from-white to-gray-50 border border-gray-200/50"
-          } shadow-lg`}>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-500">
-                {languages.length}
-              </div>
-              <div className={`text-sm ${
-                darkMode ? "text-gray-400" : "text-gray-600"
-              }`}>
-                Languages
-              </div>
-            </div>
-            <div className="w-px h-12 bg-gray-400/30" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent-500">
-                {languages.filter(lang => lang.level.includes("Native") || lang.level.includes("Fluent")).length}
-              </div>
-              <div className={`text-sm ${
-                darkMode ? "text-gray-400" : "text-gray-600"
-              }`}>
-                Fluent
-              </div>
-            </div>
-            <div className="w-px h-12 bg-gray-400/30" />
-            <div className="text-center">
-              <div className="text-3xl font-bold text-success-500">
-                {languages.filter(lang => lang.level.includes("Advanced")).length}
-              </div>
-              <div className={`text-sm ${
-                darkMode ? "text-gray-400" : "text-gray-600"
-              }`}>
-                Advanced
-              </div>
-            </div>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
