@@ -33,6 +33,7 @@ const Languages = ({ darkMode, cvData }) => {
   };
 
   const getProficiencyLabel = (percentage) => {
+    if (percentage >= 100) return "Native";
     if (percentage >= 80) return "Fluent";
     if (percentage >= 60) return "Advanced";
     if (percentage >= 40) return "Intermediate";

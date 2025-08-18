@@ -90,11 +90,7 @@ const Hero = ({ darkMode, cvData }) => {
           className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 max-w-2xl mx-auto"
         >
           <motion.div
-            className={`p-4 rounded-xl backdrop-blur-sm border ${
-              darkMode 
-                ? "bg-white/10 border-white/20 text-white" 
-                : "bg-black/10 border-black/20 text-gray-800"
-            }`}
+            className="p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -103,11 +99,7 @@ const Hero = ({ darkMode, cvData }) => {
           </motion.div>
           
           <motion.div
-            className={`p-4 rounded-xl backdrop-blur-sm border ${
-              darkMode 
-                ? "bg-white/10 border-white/20 text-white" 
-                : "bg-black/10 border-black/20 text-gray-800"
-            }`}
+            className="p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -116,11 +108,7 @@ const Hero = ({ darkMode, cvData }) => {
           </motion.div>
           
           <motion.div
-            className={`p-4 rounded-xl backdrop-blur-sm border ${
-              darkMode 
-                ? "bg-white/10 border-white/20 text-white" 
-                : "bg-black/10 border-black/20 text-gray-800"
-            }`}
+            className="p-4 rounded-xl backdrop-blur-sm border bg-white/10 border-white/20 text-white"
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -143,11 +131,7 @@ const Hero = ({ darkMode, cvData }) => {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className={`p-3 rounded-full backdrop-blur-sm border transition-all duration-300 ${
-                  darkMode 
-                    ? "bg-white/10 border-white/20 text-white hover:bg-white/20" 
-                    : "bg-black/10 border-black/20 text-gray-800 hover:bg-black/20"
-                } ${social.color}`}
+                className={`p-3 rounded-full backdrop-blur-sm border transition-all duration-300 bg-white/10 border-white/20 text-white hover:bg-white/20 ${social.color}`}
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ opacity: 0, scale: 0 }}
@@ -163,11 +147,7 @@ const Hero = ({ darkMode, cvData }) => {
           <motion.a
             href={cvLink}
             download
-            className={`inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-2xl ${
-              darkMode
-                ? "bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white"
-                : "bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white"
-            } hover:shadow-primary-500/25 hover:scale-105`}
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-2xl bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white hover:shadow-primary-500/25 hover:scale-105"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
