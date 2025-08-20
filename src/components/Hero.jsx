@@ -131,6 +131,15 @@ const Hero = ({ darkMode, cvData }) => {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => {
+                  if (window.umami?.track) {
+                    window.umami.track('social_link_click', { 
+                      platform: social.label.toLowerCase(),
+                      source: 'hero',
+                      timestamp: new Date().toISOString()
+                    });
+                  }
+                }}
                 className={`p-2.5 sm:p-3 rounded-full backdrop-blur-sm border transition-all duration-300 bg-white/10 border-white/20 text-white hover:bg-white/20 ${social.color}`}
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.9 }}
@@ -147,6 +156,14 @@ const Hero = ({ darkMode, cvData }) => {
           <motion.a
             href={cvLink}
             download
+            onClick={() => {
+              if (window.umami?.track) {
+                window.umami.track('cv_download', { 
+                  source: 'hero',
+                  timestamp: new Date().toISOString()
+                });
+              }
+            }}
             className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 shadow-2xl bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white hover:shadow-primary-500/25 hover:scale-105"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}

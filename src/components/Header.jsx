@@ -6,6 +6,19 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection, cvData 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Wrapper function to track navigation clicks
+  const handleNavigation = (sectionId) => {
+    // Track navigation click
+    if (window.umami?.track) {
+      window.umami.track('navigation_click', { 
+        section: sectionId,
+        source: 'header',
+        timestamp: new Date().toISOString()
+      });
+    }
+    scrollToSection(sectionId);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -24,6 +37,13 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection, cvData 
   ];
 
   const toggleDarkMode = () => {
+    // Track dark mode toggle
+    if (window.umami?.track) {
+      window.umami.track('dark_mode_toggle', { 
+        newMode: !darkMode ? 'light' : 'dark',
+        timestamp: new Date().toISOString()
+      });
+    }
     setDarkMode(!darkMode);
   };
 
@@ -47,7 +67,16 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection, cvData 
           {/* Logo/Name */}
           <motion.div
             className="flex items-center space-x-2 cursor-pointer"
-            onClick={() => scrollToSection("hero")}
+            onClick={() => {
+              if (window.umami?.track) {
+                window.umami.track('logo_click', { 
+                  section: 'hero',
+                  source: 'header',
+                  timestamp: new Date().toISOString()
+                });
+              }
+              scrollToSection("hero");
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -68,7 +97,7 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection, cvData 
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavigation(item.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   activeSection === item.id
                     ? darkMode
@@ -135,7 +164,7 @@ const Header = ({ darkMode, setDarkMode, activeSection, scrollToSection, cvData 
                 <motion.button
                   key={item.id}
                   onClick={() => {
-                    scrollToSection(item.id);
+                    handleNavigation(item.id);
                     setIsMobileMenuOpen(false);
                   }}
                   className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${

@@ -14,12 +14,14 @@ import Languages from "./components/Languages";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ContactModal from "./components/ContactModal";
+import { useUmamiAnalytics } from "./hooks/useUmamiAnalytics";
 
 const PersonalCV = () => {
   const [activeSection, setActiveSection] = useState("hero");
   const [darkMode, setDarkMode] = useState(true);
   const [showContactModal, setShowContactModal] = useState(false);
   const [cvData, setCvData] = useState(null);
+  const { trackSectionView, trackPageView } = useUmamiAnalytics();
 
   // Load CV data
   useEffect(() => {
@@ -29,13 +31,21 @@ const PersonalCV = () => {
       .catch((err) => console.error("Failed to load CV data:", err));
   }, []);
 
+  // Track initial page view
+  useEffect(() => {
+    trackPageView();
+  }, [trackPageView]);
+
   // Intersection Observer for active section tracking
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            const sectionId = entry.target.id;
+            setActiveSection(sectionId);
+            // Track section view for analytics
+            trackSectionView(sectionId);
           }
         });
       },
@@ -48,7 +58,7 @@ const PersonalCV = () => {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, []);
+  }, [trackSectionView]);
 
   // Loading state
   if (!cvData) {

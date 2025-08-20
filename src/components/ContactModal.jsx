@@ -12,6 +12,14 @@ const ContactModal = ({ onClose, darkMode }) => {
     e.preventDefault();
     setLoading(true);
 
+    // Track contact form submission
+    if (window.umami?.track) {
+      window.umami.track('contact_form_submit', { 
+        source: 'contact_modal',
+        timestamp: new Date().toISOString()
+      });
+    }
+
     emailjs
       .sendForm(
         'service_ghassen_io',     // 🔁 Replace with your actual service ID
@@ -21,6 +29,14 @@ const ContactModal = ({ onClose, darkMode }) => {
       )
       .then(
         () => {
+          // Track successful contact form submission
+          if (window.umami?.track) {
+            window.umami.track('contact_form_success', { 
+              source: 'contact_modal',
+              timestamp: new Date().toISOString()
+            });
+          }
+          
           toast.success('Message sent successfully!');
           setLoading(false);
           setSent(true);
@@ -30,6 +46,15 @@ const ContactModal = ({ onClose, darkMode }) => {
           }, 2000);
         },
         (error) => {
+          // Track failed contact form submission
+          if (window.umami?.track) {
+            window.umami.track('contact_form_error', { 
+              source: 'contact_modal',
+              error: error.text || 'Unknown error',
+              timestamp: new Date().toISOString()
+            });
+          }
+          
           toast.error('Failed to send message. Try again later.');
           console.error(error);
           setLoading(false);
