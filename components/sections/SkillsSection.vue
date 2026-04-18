@@ -215,7 +215,7 @@ onMounted(async () => {
     return
   }
 
-  reveal(headerRef, {
+  await reveal(headerRef, {
     trigger: sectionRef.value ?? undefined,
     start: 'top 78%',
     y: 48,
@@ -223,7 +223,7 @@ onMounted(async () => {
 
   const summaryCards = summaryRef.value?.children ? Array.from(summaryRef.value.children) : []
   if (summaryCards.length) {
-    reveal(summaryCards, {
+    await reveal(summaryCards, {
       trigger: summaryRef.value ?? undefined,
       start: 'top 75%',
       y: 28,
@@ -232,7 +232,7 @@ onMounted(async () => {
   }
 
   if (orbitRef.value?.$el instanceof Element) {
-    reveal(orbitRef.value.$el, {
+    await reveal(orbitRef.value.$el, {
       trigger: orbitRef.value.$el,
       start: 'top 70%',
       y: 36,
@@ -241,7 +241,7 @@ onMounted(async () => {
 
   const accordionCards = accordionRef.value?.children ? Array.from(accordionRef.value.children) : []
   if (accordionCards.length) {
-    reveal(accordionCards, {
+    await reveal(accordionCards, {
       trigger: accordionRef.value ?? undefined,
       start: 'top 78%',
       y: 28,

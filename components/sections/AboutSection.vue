@@ -193,8 +193,8 @@ const setStatValueRef = (element: Element | ComponentPublicInstance | null, inde
 onMounted(async () => {
   await nextTick()
 
-  const { $gsap, $prefersReducedMotion } = useNuxtApp()
-  const { reveal, ScrollTrigger } = scrollAnimation
+  const { $loadGsap, $prefersReducedMotion } = useNuxtApp()
+  const { reveal, refresh } = scrollAnimation
 
   if ($prefersReducedMotion) {
     for (const stat of stats) {
@@ -203,11 +203,13 @@ onMounted(async () => {
     return
   }
 
+  const { gsap } = await $loadGsap()
+
   for (const stat of stats) {
     stat.current = 0
   }
 
-  reveal(sectionRef, {
+  await reveal(sectionRef, {
     trigger: sectionRef.value ?? undefined,
     start: 'top 78%',
     y: 50,
@@ -215,7 +217,7 @@ onMounted(async () => {
 
   const paragraphElements = copyRef.value?.querySelectorAll('p')
   if (paragraphElements?.length) {
-    reveal(Array.from(paragraphElements), {
+    await reveal(Array.from(paragraphElements), {
       trigger: copyRef.value ?? undefined,
       start: 'top 70%',
       y: 32,
@@ -226,7 +228,7 @@ onMounted(async () => {
 
   const bentoCards = bentoRef.value?.children ? Array.from(bentoRef.value.children) : []
   if (bentoCards.length) {
-    reveal(bentoCards, {
+    await reveal(bentoCards, {
       trigger: bentoRef.value ?? undefined,
       start: 'top 75%',
       y: 36,
@@ -242,7 +244,7 @@ onMounted(async () => {
       continue
     }
 
-    const counterTween = $gsap.to(stat, {
+    const counterTween = gsap.to(stat, {
       current: stat.target,
       duration: 2,
       ease: 'power1.inOut',
@@ -264,7 +266,7 @@ onMounted(async () => {
     counterTweens.push(counterTween)
   }
 
-  ScrollTrigger.refresh()
+  await refresh()
 })
 
 onBeforeUnmount(() => {

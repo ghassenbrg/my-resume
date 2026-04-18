@@ -19,92 +19,21 @@ const logoRef = ref<HTMLElement | null>(null)
 onMounted(async () => {
   await nextTick()
 
-  const { $gsap, $prefersReducedMotion } = useNuxtApp()
+  const { $prefersReducedMotion } = useNuxtApp()
 
   if ($prefersReducedMotion) {
     isVisible.value = false
     return
   }
 
-  const loader = loaderRef.value
-  const reveal = revealRef.value
-  const logo = logoRef.value
-
-  if (!loader || !reveal || !logo) {
+  if (!loaderRef.value || !revealRef.value || !logoRef.value) {
     isVisible.value = false
     return
   }
 
-  $gsap
-    .timeline({
-      defaults: {
-        ease: 'power3.out',
-      },
-      onComplete: () => {
-        isVisible.value = false
-      },
-    })
-    .set(loader, {
-      autoAlpha: 1,
-    })
-    .set(reveal, {
-      scale: 0,
-    })
-    .fromTo(
-      logo,
-      {
-        autoAlpha: 0,
-        scale: 0.8,
-      },
-      {
-        autoAlpha: 1,
-        scale: 1,
-        duration: 0.4,
-      },
-      0.2,
-    )
-    .to(
-      reveal,
-      {
-        scale: 1,
-        duration: 0.4,
-      },
-      0.6,
-    )
-    .to(
-      loader,
-      {
-        backgroundColor: 'rgba(9, 9, 15, 0)',
-        duration: 0.2,
-      },
-      1,
-    )
-    .to(
-      reveal,
-      {
-        autoAlpha: 0,
-        duration: 0.2,
-      },
-      1,
-    )
-    .to(
-      logo,
-      {
-        scale: 0.56,
-        x: 'calc(-50vw + 3rem)',
-        y: 'calc(-50vh + 3rem)',
-        duration: 0.2,
-      },
-      1.2,
-    )
-    .to(
-      loader,
-      {
-        autoAlpha: 0,
-        duration: 0.2,
-      },
-      1.4,
-    )
+  window.setTimeout(() => {
+    isVisible.value = false
+  }, 1600)
 })
 </script>
 
@@ -117,6 +46,7 @@ onMounted(async () => {
   place-items: center;
   overflow: hidden;
   background: var(--bg-0);
+  animation: loader-fade 1.6s ease both;
 }
 
 .app-loader__reveal {
@@ -127,6 +57,7 @@ onMounted(async () => {
   background: var(--bg-1);
   transform: scale(0);
   transform-origin: center;
+  animation: loader-reveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .app-loader__logo {
@@ -144,6 +75,67 @@ onMounted(async () => {
   font-size: var(--text-h3);
   font-weight: 700;
   box-shadow: var(--shadow-glow);
+  animation: loader-logo 1.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes loader-fade {
+  0%,
+  62.5% {
+    opacity: 1;
+    background: var(--bg-0);
+  }
+
+  75% {
+    background: rgba(9, 9, 15, 0);
+  }
+
+  100% {
+    opacity: 0;
+    background: rgba(9, 9, 15, 0);
+  }
+}
+
+@keyframes loader-reveal {
+  0%,
+  37.5% {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  62.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes loader-logo {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  12.5%,
+  62.5% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translate(calc(-50vw + 3rem), calc(-50vh + 3rem)) scale(0.56);
+  }
+
+  87.5%,
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50vw + 3rem), calc(-50vh + 3rem)) scale(0.56);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

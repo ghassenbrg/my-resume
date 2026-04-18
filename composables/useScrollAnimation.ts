@@ -12,10 +12,10 @@ interface RevealOptions {
 }
 
 export const useScrollAnimation = () => {
-  const { $gsap, $ScrollTrigger, $prefersReducedMotion } = useNuxtApp()
+  const { $loadGsap, $prefersReducedMotion } = useNuxtApp()
   const cleanups: Array<() => void> = []
 
-  const reveal = (target: AnimatedTarget | Ref<Element | null>, options: RevealOptions = {}) => {
+  const reveal = async (target: AnimatedTarget | Ref<Element | null>, options: RevealOptions = {}) => {
     if (!import.meta.client || $prefersReducedMotion) {
       return
     }
@@ -26,7 +26,8 @@ export const useScrollAnimation = () => {
       return
     }
 
-    const animation = $gsap.from(element, {
+    const { gsap } = await $loadGsap()
+    const animation = gsap.from(element, {
       y: options.y ?? 40,
       opacity: 0,
       duration: options.duration ?? 0.8,
@@ -44,9 +45,10 @@ export const useScrollAnimation = () => {
     })
   }
 
-  const refresh = () => {
+  const refresh = async () => {
     if (import.meta.client) {
-      $ScrollTrigger.refresh()
+      const { ScrollTrigger } = await $loadGsap()
+      ScrollTrigger.refresh()
     }
   }
 
@@ -58,8 +60,7 @@ export const useScrollAnimation = () => {
   })
 
   return {
-    gsap: $gsap,
-    ScrollTrigger: $ScrollTrigger,
+    load: $loadGsap,
     reveal,
     refresh,
   }

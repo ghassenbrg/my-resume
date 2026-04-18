@@ -1,6 +1,6 @@
 <template>
   <section id="hero" class="hero-section" aria-labelledby="hero-title">
-    <ParticleCanvas />
+    <ParticleCanvas v-if="showParticles" />
 
     <div class="hero-section__content">
       <p ref="eyebrowRef" class="section-eyebrow">Editorial Engineering</p>
@@ -43,8 +43,9 @@
 
 <script setup lang="ts">
 import MagneticButton from '~/components/ui/MagneticButton.vue'
-import ParticleCanvas from '~/components/ui/ParticleCanvas.vue'
 import { cvData } from '~/data/cv-data'
+
+const ParticleCanvas = defineAsyncComponent(() => import('~/components/ui/ParticleCanvas.vue'))
 
 const nameParts = cvData.hero.name.split(' ')
 const firstName = nameParts[0] ?? cvData.hero.name
@@ -56,6 +57,7 @@ const titleRef = ref<HTMLElement | null>(null)
 const pillsRef = ref<HTMLElement | null>(null)
 const actionsRef = ref<HTMLElement | null>(null)
 const scrollRef = ref<HTMLElement | null>(null)
+const showParticles = ref(false)
 
 const { output: typedTitle, start: startTypewriter } = useTypewriter(cvData.hero.title, {
   delay: 30,
@@ -63,12 +65,27 @@ const { output: typedTitle, start: startTypewriter } = useTypewriter(cvData.hero
 })
 const { scrollTo } = useSmoothScroll()
 
-let splitText: InstanceType<ReturnType<typeof useNuxtApp>['$SplitText']> | null = null
+let splitText: { chars: Element[]; revert: () => void } | null = null
+let particleQuery: MediaQueryList | null = null
+let particleMotionQuery: MediaQueryList | null = null
+
+const updateParticleState = () => {
+  const canRenderParticles = particleQuery?.matches ?? false
+  const allowsMotion = !(particleMotionQuery?.matches ?? false)
+
+  showParticles.value = canRenderParticles && allowsMotion
+}
 
 onMounted(async () => {
   await nextTick()
 
-  const { $gsap, $SplitText, $prefersReducedMotion } = useNuxtApp()
+  const { $loadGsap, $prefersReducedMotion } = useNuxtApp()
+
+  particleQuery = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)')
+  particleMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  updateParticleState()
+  particleQuery.addEventListener('change', updateParticleState)
+  particleMotionQuery.addEventListener('change', updateParticleState)
 
   if ($prefersReducedMotion) {
     startTypewriter()
@@ -84,11 +101,13 @@ onMounted(async () => {
     return
   }
 
-  splitText = new $SplitText(name, {
+  const { gsap, SplitText } = await $loadGsap()
+
+  splitText = new SplitText(name, {
     type: 'chars',
   })
 
-  $gsap
+  gsap
     .timeline()
     .from(eyebrowRef.value, {
       y: 24,
@@ -154,6 +173,8 @@ onMounted(async () => {
 })
 
 onBeforeUnmount(() => {
+  particleQuery?.removeEventListener('change', updateParticleState)
+  particleMotionQuery?.removeEventListener('change', updateParticleState)
   splitText?.revert()
 })
 </script>
@@ -260,6 +281,9 @@ onBeforeUnmount(() => {
 @media (max-width: 767px) {
   .hero-section {
     min-height: 100svh;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(232, 168, 56, 0.16), transparent 34%),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1));
     padding: var(--space-16) var(--space-6);
   }
 

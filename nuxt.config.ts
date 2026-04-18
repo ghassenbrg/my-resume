@@ -9,4 +9,14 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
+  nitro: {
+    compressPublicAssets: true,
+  },
+  runtimeConfig: {
+    public: {
+      emailjsServiceId: 'service_ghassen_io',
+      emailjsTemplateId: 'template_ghassen_io_cont',
+      emailjsPublicKey: 'AQDInfmbzEsuK-x5L',
+    },
+  },
 })

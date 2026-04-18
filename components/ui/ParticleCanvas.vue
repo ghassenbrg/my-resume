@@ -186,11 +186,7 @@ onBeforeUnmount(() => {
 
 @media (max-width: 767px), (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
   .particle-canvas {
-    opacity: 1;
-    animation: none;
-    background:
-      radial-gradient(circle at 50% 30%, rgba(232, 168, 56, 0.16), transparent 34%),
-      linear-gradient(180deg, var(--bg-0), var(--bg-1));
+    display: none;
   }
 }
 </style>

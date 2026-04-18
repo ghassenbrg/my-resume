@@ -7,8 +7,10 @@ export const useSmoothScroll = () => {
   const { $lenis } = useNuxtApp()
 
   const scrollTo = (target: ScrollTarget, options?: ScrollToOptions) => {
-    if ($lenis) {
-      $lenis.scrollTo(target, options)
+    const lenis = unref($lenis)
+
+    if (lenis) {
+      lenis.scrollTo(target, options)
       return
     }
 
@@ -33,11 +35,11 @@ export const useSmoothScroll = () => {
   }
 
   const stop = () => {
-    $lenis?.stop()
+    unref($lenis)?.stop()
   }
 
   const start = () => {
-    $lenis?.start()
+    unref($lenis)?.start()
   }
 
   return {

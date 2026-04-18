@@ -107,28 +107,32 @@ const clearAnimations = () => {
   }
 }
 
-const setupHorizontalScroll = () => {
+const setupHorizontalScroll = async () => {
   const pin = pinRef.value
   const track = trackRef.value
   const progress = progressRef.value
   const cards = cardRefs.value
-  const { gsap, ScrollTrigger } = scrollAnimation
   const { $prefersReducedMotion } = useNuxtApp()
 
   clearAnimations()
 
-  if (!pin || !track || !progress || cards.length === 0 || $prefersReducedMotion) {
+  if (
+    !pin ||
+    !track ||
+    !progress ||
+    cards.length === 0 ||
+    $prefersReducedMotion ||
+    !(desktopQuery.value?.matches ?? false)
+  ) {
     return
   }
+
+  const { gsap, ScrollTrigger } = await scrollAnimation.load()
 
   gsap.set(progress, {
     scaleX: 0,
     transformOrigin: 'left center',
   })
-
-  if (!(desktopQuery.value?.matches ?? false)) {
-    return
-  }
 
   const tween = gsap.to(track, {
     x: () => -(track.scrollWidth - window.innerWidth),
@@ -167,14 +171,14 @@ onMounted(async () => {
   desktopQuery.value = window.matchMedia('(min-width: 1024px)')
 
   if (!$prefersReducedMotion) {
-    reveal(headerRef, {
+    await reveal(headerRef, {
       trigger: sectionRef.value ?? undefined,
       start: 'top 78%',
       y: 48,
     })
 
     if (cardRefs.value.length) {
-      reveal(cardRefs.value, {
+      await reveal(cardRefs.value, {
         trigger: sectionRef.value ?? undefined,
         start: 'top 65%',
         y: 36,
@@ -183,7 +187,7 @@ onMounted(async () => {
     }
   }
 
-  setupHorizontalScroll()
+  await setupHorizontalScroll()
   desktopQuery.value.addEventListener('change', setupHorizontalScroll)
   window.addEventListener('resize', setupHorizontalScroll)
 })

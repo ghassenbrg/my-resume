@@ -1,32 +1,45 @@
-import Lenis from 'lenis'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import type Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
+import { shallowRef } from 'vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  let lenis: Lenis | null = null
+  const lenis = shallowRef<Lenis | null>(null)
 
-  if (!prefersReducedMotion) {
-    lenis = new Lenis({
+  const initializeLenis = async () => {
+    if (prefersReducedMotion || lenis.value) {
+      return
+    }
+
+    const loadGsap = nuxtApp.$loadGsap as () => Promise<{
+      ScrollTrigger: typeof import('gsap/ScrollTrigger')['ScrollTrigger']
+    }>
+    const [{ default: Lenis }, { ScrollTrigger }] = await Promise.all([
+      import('lenis'),
+      loadGsap(),
+    ])
+
+    const instance = new Lenis({
       duration: 1.1,
       easing: (time: number) => Math.min(1, 1.001 - 2 ** (-10 * time)),
       smoothWheel: true,
       syncTouch: false,
     })
+    lenis.value = instance
 
-    lenis.on('scroll', ScrollTrigger.update)
+    instance.on('scroll', ScrollTrigger.update)
 
     let frameId = 0
 
     const raf = (time: number) => {
-      lenis?.raf(time)
+      lenis.value?.raf(time)
       frameId = requestAnimationFrame(raf)
     }
 
     frameId = requestAnimationFrame(raf)
 
     nuxtApp.hook('page:finish', () => {
-      lenis?.resize()
+      lenis.value?.resize()
       ScrollTrigger.refresh()
     })
 
@@ -34,11 +47,16 @@ export default defineNuxtPlugin((nuxtApp) => {
       'pagehide',
       () => {
         cancelAnimationFrame(frameId)
-        lenis?.destroy()
+        lenis.value?.destroy()
+        lenis.value = null
       },
       { once: true },
     )
   }
+
+  window.setTimeout(() => {
+    void initializeLenis()
+  }, 1600)
 
   return {
     provide: {
