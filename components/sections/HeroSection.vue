@@ -3,6 +3,16 @@
     <ParticleCanvas v-if="showParticles" />
 
     <div v-if="cvData" class="hero-section__content">
+      <img
+        ref="markRef"
+        class="hero-section__mark"
+        src="/favicon.svg"
+        width="128"
+        height="128"
+        alt="GB monogram"
+        decoding="async"
+      />
+
       <p ref="eyebrowRef" class="section-eyebrow">Editorial Engineering</p>
 
       <h1 id="hero-title" ref="nameRef" class="hero-section__name">
@@ -52,6 +62,7 @@ const firstName = computed(() => nameParts.value[0] ?? cvData.value?.hero.name ?
 const lastName = computed(() => nameParts.value.slice(1).join(' '))
 const heroTitle = computed(() => cvData.value?.hero.title ?? '')
 
+const markRef = ref<HTMLImageElement | null>(null)
 const eyebrowRef = ref<HTMLElement | null>(null)
 const nameRef = ref<HTMLElement | null>(null)
 const titleRef = ref<HTMLElement | null>(null)
@@ -111,12 +122,18 @@ onMounted(async () => {
 
   gsap
     .timeline()
+    .from(markRef.value, {
+      scale: 0.86,
+      autoAlpha: 0,
+      duration: 0.45,
+      ease: 'power3.out',
+    })
     .from(eyebrowRef.value, {
       y: 24,
       autoAlpha: 0,
       duration: 0.5,
       ease: 'power3.out',
-    })
+    }, 0.15)
     .from(
       splitText.chars,
       {
@@ -198,6 +215,12 @@ onBeforeUnmount(() => {
   justify-items: center;
   gap: var(--space-6);
   text-align: center;
+}
+
+.hero-section__mark {
+  width: clamp(4.5rem, 8vw, 6rem);
+  height: auto;
+  filter: drop-shadow(0 1.25rem 2.5rem rgba(232, 168, 56, 0.24));
 }
 
 .hero-section__name {

@@ -10,7 +10,7 @@
     </linearGradient>
   </defs>
 
-  <rect width="128" height="128" rx="26" fill="#09090f"/>
+  <!-- <rect width="128" height="128" rx="26" fill="#09090f"/> -->
   <rect x="12" y="12" width="104" height="104" rx="22" fill="url(#tile)" stroke="#2a2a44" stroke-width="2"/>
   <path d="M34 94H94" stroke="url(#accent)" stroke-width="6" stroke-linecap="round"/>
 
