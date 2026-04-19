@@ -11,7 +11,7 @@
         <h2 id="about-title" class="about-section__title">Measured engineering, written clearly.</h2>
       </div>
 
-      <div class="about-section__split">
+      <div v-if="cvData" class="about-section__split">
         <aside ref="statsRef" class="about-section__stats surface" aria-label="Professional summary">
           <dl class="about-section__stat-list">
             <div
@@ -43,8 +43,8 @@
         </div>
       </div>
 
-      <div ref="bentoRef" class="about-section__bento" aria-label="Key differentiators">
-        <article class="about-card about-card--cert">
+      <div v-if="cvData" ref="bentoRef" class="about-section__bento" aria-label="Key differentiators">
+        <article v-if="primaryCertification" class="about-card about-card--cert">
           <div>
             <p class="about-card__kicker">Certified</p>
             <h3>{{ primaryCertification.name }}</h3>
@@ -118,7 +118,6 @@
 
 <script setup lang="ts">
 import type { Skill } from '~/types/cv'
-import { cvData } from '~/data/cv-data'
 
 interface StatItem {
   label: string
@@ -134,33 +133,53 @@ const bentoRef = ref<HTMLElement | null>(null)
 const statValueRefs = ref<HTMLElement[]>([])
 const scrollAnimation = useScrollAnimation()
 const counterTweens: Array<{ kill: () => void; scrollTrigger?: { kill: () => void } | null }> = []
+const { cvData, loadCvData } = useCvData()
 
 const stats = reactive<StatItem[]>([
   {
     label: 'Years',
-    target: cvData.about.stats.yearsExperience,
-    current: cvData.about.stats.yearsExperience,
+    target: 0,
+    current: 0,
     suffix: '+',
   },
   {
     label: 'Companies',
-    target: cvData.about.stats.companiesWorked,
-    current: cvData.about.stats.companiesWorked,
+    target: 0,
+    current: 0,
   },
   {
     label: 'Certification',
-    target: cvData.about.stats.certificationsCount,
-    current: cvData.about.stats.certificationsCount,
+    target: 0,
+    current: 0,
   },
 ])
 
-const primaryCertification = cvData.certifications[0]
-const architectureStatement =
-  cvData.about.paragraphs.find((paragraph) => paragraph.includes('clean architecture')) ??
-  cvData.about.paragraphs[cvData.about.paragraphs.length - 1]
+const syncStats = () => {
+  if (!cvData.value) {
+    return
+  }
+
+  stats[0].target = cvData.value.about.stats.yearsExperience
+  stats[0].current = cvData.value.about.stats.yearsExperience
+  stats[1].target = cvData.value.about.stats.companiesWorked
+  stats[1].current = cvData.value.about.stats.companiesWorked
+  stats[2].target = cvData.value.about.stats.certificationsCount
+  stats[2].current = cvData.value.about.stats.certificationsCount
+}
+
+const primaryCertification = computed(() => cvData.value?.certifications[0] ?? null)
+const architectureStatement = computed(() => {
+  const paragraphs = cvData.value?.about.paragraphs ?? []
+
+  return (
+    paragraphs.find((paragraph) => paragraph.toLowerCase().includes('clean architecture')) ??
+    paragraphs[paragraphs.length - 1] ??
+    ''
+  )
+})
 
 const highlightedSkills = computed(() => {
-  const fullStackSkills = cvData.skills['Backend & Full-Stack Development'] ?? []
+  const fullStackSkills = cvData.value?.skills['Backend & Full-Stack Development'] ?? []
   const iconLabels: Record<string, string> = {
     Java: 'J',
     'Spring Boot': 'SB',
@@ -191,6 +210,8 @@ const setStatValueRef = (element: Element | ComponentPublicInstance | null, inde
 }
 
 onMounted(async () => {
+  await loadCvData()
+  syncStats()
   await nextTick()
 
   const { $loadGsap, $prefersReducedMotion } = useNuxtApp()

@@ -11,7 +11,7 @@
         <h2 id="contact-title" class="contact-section__title">Terminal Contact</h2>
       </div>
 
-      <div ref="terminalRef" class="contact-terminal">
+      <div v-if="cvData" ref="terminalRef" class="contact-terminal">
         <header class="contact-terminal__chrome">
           <span>Terminal</span>
           <div aria-hidden="true">
@@ -142,8 +142,6 @@
 </template>
 
 <script setup lang="ts">
-import { cvData } from '~/data/cv-data'
-
 type ContactField = 'name' | 'email' | 'message'
 type ContactStatus = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -152,6 +150,8 @@ const headerRef = ref<HTMLElement | null>(null)
 const terminalRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
 const config = useRuntimeConfig()
+const { trackEvent } = useAnalytics()
+const { cvData, loadCvData } = useCvData()
 
 const form = reactive({
   name: '',
@@ -206,20 +206,6 @@ const handleFieldInput = (field: ContactField) => {
   }
 }
 
-const trackContactEvent = (eventName: string, payload: Record<string, string>) => {
-  if (!import.meta.client) {
-    return
-  }
-
-  const maybeWindow = window as Window & {
-    umami?: {
-      track?: (event: string, payload: Record<string, string>) => void
-    }
-  }
-
-  maybeWindow.umami?.track?.(eventName, payload)
-}
-
 const submitMessage = async () => {
   statusMessage.value = ''
 
@@ -240,7 +226,7 @@ const submitMessage = async () => {
   }
 
   status.value = 'sending'
-  trackContactEvent('contact_form_submit', {
+  trackEvent('contact_form_submit', {
     source: 'contact_terminal',
     timestamp: new Date().toISOString(),
   })
@@ -265,14 +251,14 @@ const submitMessage = async () => {
     form.name = ''
     form.email = ''
     form.message = ''
-    trackContactEvent('contact_form_success', {
+    trackEvent('contact_form_success', {
       source: 'contact_terminal',
       timestamp: new Date().toISOString(),
     })
   } catch (error) {
     status.value = 'error'
     statusMessage.value = 'Message failed to send. Email directly or try again later.'
-    trackContactEvent('contact_form_error', {
+    trackEvent('contact_form_error', {
       source: 'contact_terminal',
       error: error instanceof Error ? error.message : 'Unknown error',
       timestamp: new Date().toISOString(),
@@ -281,6 +267,7 @@ const submitMessage = async () => {
 }
 
 onMounted(async () => {
+  await loadCvData()
   await nextTick()
 
   const { reveal } = scrollAnimation

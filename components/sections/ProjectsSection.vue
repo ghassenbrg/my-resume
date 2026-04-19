@@ -11,9 +11,9 @@
         <h2 id="projects-title" class="projects-section__title">Featured Projects</h2>
       </div>
 
-      <div ref="stackRef" class="projects-section__stack">
+      <div v-if="cvData" ref="stackRef" class="projects-section__stack">
         <article
-          v-for="(project, index) in cvData.projects"
+          v-for="(project, index) in projects"
           :key="project.title"
           ref="cardRefs"
           class="project-card"
@@ -21,7 +21,7 @@
           :style="{
             '--project-accent': projectAccents[index % projectAccents.length],
             '--project-offset': `${index * 0.75}rem`,
-            '--project-index': cvData.projects.length - index,
+            '--project-index': projects.length - index,
           }"
         >
           <div class="project-card__shell">
@@ -67,9 +67,9 @@
         </article>
       </div>
 
-      <ol class="projects-section__dots" aria-label="Project position">
+      <ol v-if="cvData" class="projects-section__dots" aria-label="Project position">
         <li
-          v-for="(project, index) in cvData.projects"
+          v-for="(project, index) in projects"
           :key="`${project.title}-dot`"
           :class="{ 'projects-section__dot--active': activeProjectIndex === index }"
         >
@@ -81,8 +81,6 @@
 </template>
 
 <script setup lang="ts">
-import { cvData } from '~/data/cv-data'
-
 const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
 const stackRef = ref<HTMLElement | null>(null)
@@ -91,8 +89,10 @@ const activeProjectIndex = ref(0)
 const desktopQuery = ref<MediaQueryList | null>(null)
 const animationCleanups: Array<() => void> = []
 const scrollAnimation = useScrollAnimation()
+const { cvData, loadCvData } = useCvData()
 
 const projectAccents = ['#e8a838', '#56c4b8', '#c77dff', '#ff6b8a']
+const projects = computed(() => cvData.value?.projects ?? [])
 
 const clearStackAnimation = () => {
   while (animationCleanups.length) {
@@ -147,6 +147,7 @@ const setupStackAnimation = async () => {
 }
 
 onMounted(async () => {
+  await loadCvData()
   await nextTick()
 
   const { reveal } = scrollAnimation

@@ -163,7 +163,7 @@ Using an 8px base grid:
 │                                                     │
 │   ┌─────────────┐   ┌────────────────────────────┐  │
 │   │             │   │                            │  │
-│   │    5+       │   │  Bio paragraph 1...        │  │
+│   │    6+       │   │  Bio paragraph 1...        │  │
 │   │   YEARS     │   │                            │  │
 │   │             │   │  Bio paragraph 2...        │  │
 │   │    3        │   │                            │  │
@@ -490,7 +490,7 @@ gsap.to(counterElement, {
 // nuxt.config.ts - default meta
 useSeoMeta({
   title: 'Ghassen Bargougui — Software Engineer',
-  description: 'Full-Stack & Backend Software Engineer based in Luxembourg. 5+ years of experience in Java, Spring Boot, Angular, and microservices. Oracle Certified Java SE 11 Developer.',
+  description: 'Full-Stack & Backend Software Engineer based in Luxembourg. 6+ years of experience in Java, Spring Boot, Angular, and microservices. Oracle Certified Java SE 11 Developer.',
   ogTitle: 'Ghassen Bargougui — Software Engineer',
   ogDescription: 'Full-Stack & Backend Specialist | Luxembourg',
   ogImage: '/og-image.png',

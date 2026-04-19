@@ -1,5 +1,5 @@
-# 1️⃣ Build the React app
-FROM node:18-alpine AS builder
+# Build the Nuxt static site
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -7,19 +7,14 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run build
+RUN npm run generate
 
-
-# 2️⃣ Serve with NGINX
+# Serve the generated static files with NGINX
 FROM nginx:alpine
 
-# Copy build to NGINX html directory
-COPY --from=builder /app/build /usr/share/nginx/html
-
-# Replace default nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/.output/public /usr/share/nginx/html
 
-# Expose port
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]

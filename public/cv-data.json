@@ -1,9 +1,8 @@
 {
   "hero": {
     "name": "Ghassen Bargougui",
-    "title": "Software Engineer · Full-Stack & Backend Specialist",
-    "location": "Luxembourg City, Luxembourg",
-    "phone": "+352 661 120 421",
+    "title": "Application Engineer · Full-Stack & Cloud Modernization",
+    "location": "Fukuoka, Japan",
     "email": "ghassen.brg16@gmail.com",
     "github": "https://github.com/ghassenbrg",
     "linkedin": "https://www.linkedin.com/in/ghassenbrg",
@@ -11,9 +10,10 @@
   },
   "about": {
     "paragraphs": [
-      "Experienced Full-Stack Software Engineer with 5+ years of experience in back-end development, microservice architectures, and scalable enterprise applications.",
-      "Specialized in Java (Spring Boot, Java EE, Hibernate) and Angular. Oracle Certified Java SE 11 Developer, with additional hands-on experience in CI/CD pipelines, containerization, and infrastructure automation.",
-      "Passionate about clean architecture, code quality, and performance tuning in complex software systems.",
+      "Application Engineer with 6+ years of experience designing and delivering backend and full-stack solutions for enterprise systems in banking, insurance, and card payment domains.",
+      "Currently part of Rakuten Card's Technology Incubation Team, contributing to architecture modernization, API development, and cloud transformation for platforms serving 25M+ members in Japan.",
+      "Strong expertise in Java (Spring Boot, MicroProfile, Hibernate), Angular, and distributed system design, with hands-on delivery of CI/CD pipelines, containerization, and hybrid-cloud migration initiatives on GCP.",
+      "Focused on clean architecture, code quality, scalability, and cross-team collaboration to deliver secure and reliable software in Agile environments.",
       "Fluent in English and French, with basic proficiency in Japanese."
     ]
   },
@@ -83,10 +83,30 @@
   },
   "experience": [
     {
+      "company": "Rakuten",
+      "position": "Application Engineer",
+      "location": "Fukuoka, Japan",
+      "period": "Dec 2025 – Present",
+      "description": "Member of the Technology Incubation Team, contributing to architecture design, modernization, and cloud transformation of Rakuten Card core systems supporting 25M+ members in Japan.",
+      "achievements": [
+        "Designing, developing, and maintaining backend services for large-scale card payment and credit management systems.",
+        "Developing private and public APIs for secure and efficient integration across internal and customer-facing applications.",
+        "Contributing to architectural improvements and modernization initiatives across legacy and new systems.",
+        "Supporting the transition of Java-based applications toward modern JavaScript/SSR-based architectures.",
+        "Conducting code reviews and promoting engineering best practices.",
+        "Collaborating closely with Product Owners and cross-functional engineering teams.",
+        "Contributing to a hybrid cloud migration project moving on-premise systems to Google Cloud Platform (GCP).",
+        "Refactoring existing applications to align with cloud-native principles.",
+        "Designing and implementing CI/CD pipelines for automated build and deployment.",
+        "Supporting containerization and cloud deployment strategies.",
+        "Enhancing system scalability, reliability, and operational efficiency."
+      ]
+    },
+    {
       "company": "Sogeti (on mission at BGL BNP Paribas)",
       "position": "Software Engineer",
       "location": "Luxembourg",
-      "period": "Feb 2025 – Present",
+      "period": "Feb 2025 – Nov 2025",
       "description": "Maintaining and extending secure internal banking applications within an Agile tribe.",
       "achievements": [
         "Developed and maintained internal apps using Java (Spring Boot, Hibernate), Angular, and PostgreSQL/Oracle.",

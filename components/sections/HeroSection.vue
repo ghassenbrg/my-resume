@@ -2,7 +2,7 @@
   <section id="hero" class="hero-section" aria-labelledby="hero-title">
     <ParticleCanvas v-if="showParticles" />
 
-    <div class="hero-section__content">
+    <div v-if="cvData" class="hero-section__content">
       <p ref="eyebrowRef" class="section-eyebrow">Editorial Engineering</p>
 
       <h1 id="hero-title" ref="nameRef" class="hero-section__name">
@@ -18,7 +18,7 @@
       <ul ref="pillsRef" class="hero-section__pills" aria-label="Contact summary">
         <li>{{ cvData.hero.location }}</li>
         <li>{{ cvData.hero.email }}</li>
-        <li>{{ cvData.hero.availabilityStatus }}</li>
+        <li v-if="cvData.hero.availabilityStatus">{{ cvData.hero.availabilityStatus }}</li>
       </ul>
 
       <div ref="actionsRef" class="hero-section__actions" aria-label="Primary links">
@@ -43,13 +43,14 @@
 
 <script setup lang="ts">
 import MagneticButton from '~/components/ui/MagneticButton.vue'
-import { cvData } from '~/data/cv-data'
 
 const ParticleCanvas = defineAsyncComponent(() => import('~/components/ui/ParticleCanvas.vue'))
+const { cvData, loadCvData } = useCvData()
 
-const nameParts = cvData.hero.name.split(' ')
-const firstName = nameParts[0] ?? cvData.hero.name
-const lastName = nameParts.slice(1).join(' ')
+const nameParts = computed(() => cvData.value?.hero.name.split(' ') ?? [])
+const firstName = computed(() => nameParts.value[0] ?? cvData.value?.hero.name ?? '')
+const lastName = computed(() => nameParts.value.slice(1).join(' '))
+const heroTitle = computed(() => cvData.value?.hero.title ?? '')
 
 const eyebrowRef = ref<HTMLElement | null>(null)
 const nameRef = ref<HTMLElement | null>(null)
@@ -59,7 +60,7 @@ const actionsRef = ref<HTMLElement | null>(null)
 const scrollRef = ref<HTMLElement | null>(null)
 const showParticles = ref(false)
 
-const { output: typedTitle, start: startTypewriter } = useTypewriter(cvData.hero.title, {
+const { output: typedTitle, start: startTypewriter } = useTypewriter(heroTitle, {
   delay: 30,
   startDelay: 1500,
 })
@@ -77,6 +78,7 @@ const updateParticleState = () => {
 }
 
 onMounted(async () => {
+  await loadCvData()
   await nextTick()
 
   const { $loadGsap, $prefersReducedMotion } = useNuxtApp()

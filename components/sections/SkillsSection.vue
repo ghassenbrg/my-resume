@@ -11,7 +11,7 @@
         <h2 id="skills-title" class="skills-section__title">Technical Skills</h2>
       </div>
 
-      <div ref="summaryRef" class="skills-section__summary" aria-label="Skills summary">
+      <div v-if="cvData" ref="summaryRef" class="skills-section__summary" aria-label="Skills summary">
         <article>
           <strong>{{ cvData.about.stats.yearsExperience }}+</strong>
           <span>Years</span>
@@ -27,6 +27,7 @@
       </div>
 
       <SkillOrbit
+        v-if="cvData"
         ref="orbitRef"
         class="skills-section__orbit"
         :categories="skillCategories"
@@ -34,7 +35,7 @@
         @focus-category="setActiveCategory"
       />
 
-      <div ref="accordionRef" class="skills-section__accordion">
+      <div v-if="cvData" ref="accordionRef" class="skills-section__accordion">
         <article
           v-for="category in skillCategories"
           :key="category.key"
@@ -114,7 +115,6 @@ import tomcatIcon from '@iconify-icons/devicon/tomcat'
 import typescriptIcon from '@iconify-icons/devicon/typescript'
 import type { IconifyIcon } from '@iconify/types'
 import SkillOrbit, { type OrbitCategory } from '~/components/ui/SkillOrbit.vue'
-import { cvData } from '~/data/cv-data'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
@@ -122,6 +122,7 @@ const summaryRef = ref<HTMLElement | null>(null)
 const orbitRef = ref<InstanceType<typeof SkillOrbit> | null>(null)
 const accordionRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
+const { cvData, loadCvData } = useCvData()
 
 const iconNames: Record<string, IconifyIcon> = {
   activemq: apacheIcon,
@@ -182,7 +183,7 @@ const shortLabels: Record<string, string> = {
 }
 
 const skillCategories = computed<OrbitCategory[]>(() => {
-  return Object.entries(cvData.skills).map(([label, skills]) => ({
+  return Object.entries(cvData.value?.skills ?? {}).map(([label, skills]) => ({
     key: label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
     label,
     shortLabel: shortLabels[label] ?? label,
@@ -195,6 +196,11 @@ const skillCategories = computed<OrbitCategory[]>(() => {
 })
 
 const activeCategoryKey = ref(skillCategories.value[0]?.key ?? '')
+watch(skillCategories, (categories) => {
+  if (!activeCategoryKey.value && categories[0]) {
+    activeCategoryKey.value = categories[0].key
+  }
+})
 const coreSkillCount = computed(() => {
   return skillCategories.value.reduce((total, category) => {
     return total + category.skills.filter((skill) => skill.highlight).length
@@ -206,6 +212,8 @@ const setActiveCategory = (key: string) => {
 }
 
 onMounted(async () => {
+  await loadCvData()
+  activeCategoryKey.value = skillCategories.value[0]?.key ?? ''
   await nextTick()
 
   const { reveal } = scrollAnimation

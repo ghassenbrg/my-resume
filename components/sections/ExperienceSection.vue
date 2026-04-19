@@ -12,10 +12,10 @@
           <h2 id="experience-title" class="experience-section__title">Professional Experience</h2>
         </div>
 
-        <div class="experience-section__viewport">
+        <div v-if="cvData" class="experience-section__viewport">
           <div ref="trackRef" class="experience-section__track">
             <article
-              v-for="(experience, index) in cvData.experience"
+              v-for="(experience, index) in experiences"
               :key="`${experience.company}-${experience.period}`"
               ref="cardRefs"
               class="experience-card"
@@ -55,13 +55,13 @@
           </div>
         </div>
 
-        <div class="experience-section__progress" aria-hidden="true">
+        <div v-if="cvData" class="experience-section__progress" aria-hidden="true">
           <span class="experience-section__progress-track">
             <span ref="progressRef" class="experience-section__progress-bar"></span>
           </span>
           <ol class="experience-section__progress-labels">
             <li
-              v-for="(experience, index) in cvData.experience"
+              v-for="(experience, index) in experiences"
               :key="experience.company"
             >
               Job {{ index + 1 }}
@@ -75,7 +75,6 @@
 
 <script setup lang="ts">
 import type { Experience } from '~/types/cv'
-import { cvData } from '~/data/cv-data'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const pinRef = ref<HTMLElement | null>(null)
@@ -86,6 +85,8 @@ const cardRefs = ref<HTMLElement[]>([])
 
 const fallbackAccents = ['#56c4b8', '#e8a838', '#c77dff']
 const scrollAnimation = useScrollAnimation()
+const { cvData, loadCvData } = useCvData()
+const experiences = computed(() => cvData.value?.experience ?? [])
 const desktopQuery = ref<MediaQueryList | null>(null)
 const animationCleanups: Array<() => void> = []
 
@@ -163,6 +164,7 @@ const setupHorizontalScroll = async () => {
 }
 
 onMounted(async () => {
+  await loadCvData()
   await nextTick()
 
   const { reveal } = scrollAnimation

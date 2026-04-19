@@ -13,21 +13,35 @@ export const useAnalytics = () => {
 
   const trackEvent = (eventName: string, eventData?: AnalyticsPayload) => {
     if (!isClient) {
-      return
+      return false
     }
 
-    ;(window as AnalyticsWindow).umami?.track(eventName, eventData)
+    const track = (window as AnalyticsWindow).umami?.track
+
+    if (!track) {
+      return false
+    }
+
+    track(eventName, eventData)
+    return true
   }
 
   const trackLinkClick = (label: string, href: string) => {
-    trackEvent('link_click', {
+    return trackEvent('link_click', {
       label,
       href,
+    })
+  }
+
+  const trackSectionView = (section: string) => {
+    return trackEvent('section_view', {
+      section,
     })
   }
 
   return {
     trackEvent,
     trackLinkClick,
+    trackSectionView,
   }
 }

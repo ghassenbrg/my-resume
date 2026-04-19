@@ -92,6 +92,8 @@ type VisibleSection = {
 const activeSection = ref<SectionId>('hero')
 const isMobileMenuOpen = ref(false)
 const { scrollTo } = useSmoothScroll()
+const { trackEvent, trackSectionView } = useAnalytics()
+const trackedSections = new Set<SectionId>()
 
 const activeIndex = computed(() => {
   const index = sections.findIndex((section) => section.id === activeSection.value)
@@ -110,6 +112,19 @@ const navigateTo = (sectionId: SectionId) => {
   activeSection.value = sectionId
   isMobileMenuOpen.value = false
   scrollTo(`#${sectionId}`)
+  trackEvent('navigation_click', {
+    section: sectionId,
+  })
+}
+
+const trackSectionViewOnce = (sectionId: SectionId) => {
+  if (trackedSections.has(sectionId)) {
+    return
+  }
+
+  if (trackSectionView(sectionId)) {
+    trackedSections.add(sectionId)
+  }
 }
 
 const updateActiveSection = () => {
@@ -135,6 +150,7 @@ const updateActiveSection = () => {
 
   if (nearestSection) {
     activeSection.value = nearestSection.id
+    trackSectionViewOnce(nearestSection.id)
   }
 }
 

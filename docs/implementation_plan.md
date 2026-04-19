@@ -186,7 +186,7 @@ my-resume/
 
 ### 2. About Section — "Split Reveal"
 
-**Concept**: Two-panel split screen. Left side: large "5+" years counter with animated number counting up. Right side: flowing paragraphs that reveal line-by-line on scroll.
+**Concept**: Two-panel split screen. Left side: large "6+" years counter with animated number counting up. Right side: flowing paragraphs that reveal line-by-line on scroll.
 
 **Elements**:
 - Left panel: Big stats (years exp, companies, certifications)  with counter animation

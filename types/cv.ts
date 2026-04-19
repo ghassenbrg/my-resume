@@ -1,23 +1,6 @@
 export interface CVData {
-  hero: {
-    name: string
-    title: string
-    location: string
-    phone: string
-    email: string
-    github: string
-    linkedin: string
-    cvLink: string
-    availabilityStatus?: string
-  }
-  about: {
-    paragraphs: string[]
-    stats: {
-      yearsExperience: number
-      companiesWorked: number
-      certificationsCount: number
-    }
-  }
+  hero: Hero
+  about: About
   skills: Record<string, Skill[]>
   experience: Experience[]
   projects: Project[]
@@ -26,11 +9,45 @@ export interface CVData {
   languages: Language[]
 }
 
+export interface RuntimeCVData extends Omit<CVData, 'about' | 'skills'> {
+  about: About & {
+    stats: CVStats
+  }
+  skills: Record<string, RuntimeSkill[]>
+}
+
+export interface Hero {
+  name: string
+  title: string
+  location: string
+  phone?: string
+  email: string
+  github: string
+  linkedin: string
+  cvLink: string
+  availabilityStatus?: string
+}
+
+export interface About {
+  paragraphs: string[]
+  stats?: CVStats
+}
+
+export interface CVStats {
+  yearsExperience: number
+  companiesWorked: number
+  certificationsCount: number
+}
+
 export interface Skill {
   name: string
   icon: string
-  highlight: boolean
+  highlight?: boolean
   proficiency?: number
+}
+
+export interface RuntimeSkill extends Skill {
+  highlight: boolean
 }
 
 export interface Experience {

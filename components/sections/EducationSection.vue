@@ -11,7 +11,7 @@
         <h2 id="education-title" class="education-section__title">Education & Certifications</h2>
       </div>
 
-      <div ref="wallRef" class="education-section__wall">
+      <div v-if="cvData" ref="wallRef" class="education-section__wall">
         <article
           v-if="primaryCertification"
           class="credential-card credential-card--certification"
@@ -67,17 +67,17 @@
 </template>
 
 <script setup lang="ts">
-import { cvData } from '~/data/cv-data'
-
 const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
 const wallRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
+const { cvData, loadCvData } = useCvData()
 
-const primaryCertification = cvData.certifications[0]
+const primaryCertification = computed(() => cvData.value?.certifications[0] ?? null)
 const educationAccents = ['#56c4b8', '#c77dff']
 
 onMounted(async () => {
+  await loadCvData()
   await nextTick()
 
   const { reveal } = scrollAnimation

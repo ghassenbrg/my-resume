@@ -35,6 +35,7 @@ let linesGeometry: THREE.BufferGeometry | null = null
 let context: TresContext | null = null
 let mediaQuery: MediaQueryList | null = null
 let motionQuery: MediaQueryList | null = null
+let supportsWebGL = false
 
 const particleCount = 72
 const fieldRadius = 6
@@ -43,7 +44,14 @@ const updateEnabledState = () => {
   const canHover = mediaQuery?.matches ?? false
   const allowsMotion = !(motionQuery?.matches ?? false)
 
-  isCanvasEnabled.value = canHover && allowsMotion
+  isCanvasEnabled.value = supportsWebGL && canHover && allowsMotion
+}
+
+const detectWebGLSupport = () => {
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext('webgl2') ?? canvas.getContext('webgl')
+
+  return Boolean(context)
 }
 
 const createParticleSystem = () => {
@@ -133,6 +141,7 @@ const handlePointerMove = (event: PointerEvent) => {
 onMounted(() => {
   mediaQuery = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)')
   motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+  supportsWebGL = detectWebGLSupport()
 
   updateEnabledState()
   mediaQuery.addEventListener('change', updateEnabledState)

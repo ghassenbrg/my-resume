@@ -11,7 +11,7 @@
         <h2 id="languages-title" class="languages-section__title">Multilingual Communication</h2>
       </div>
 
-      <div class="languages-section__content languages-section__visual">
+      <div v-if="cvData" class="languages-section__content languages-section__visual">
         <div ref="chartRef" class="language-chart" aria-label="Language proficiency radial chart">
           <svg
             class="language-chart__svg"
@@ -66,7 +66,7 @@
         </div>
       </div>
 
-      <div ref="barsRef" class="languages-section__bars" aria-label="Language proficiency bars">
+      <div v-if="cvData" ref="barsRef" class="languages-section__bars" aria-label="Language proficiency bars">
         <article
           v-for="language in visualLanguages"
           :key="`${language.language}-bar`"
@@ -94,7 +94,6 @@
 
 <script setup lang="ts">
 import type { Language } from '~/types/cv'
-import { cvData } from '~/data/cv-data'
 
 interface VisualLanguage extends Language {
   code: string
@@ -112,6 +111,7 @@ const labelsRef = ref<HTMLElement | null>(null)
 const barsRef = ref<HTMLElement | null>(null)
 const contextRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
+const { cvData, loadCvData } = useCvData()
 const progressTweens: Array<{ kill: () => void; scrollTrigger?: { kill: () => void } | null }> = []
 
 const languageCodes: Record<string, string> = {
@@ -126,8 +126,10 @@ const outerRadius = 176
 const radiusStep = 34
 const strokeWidth = 12
 
-const visualLanguages = reactive<VisualLanguage[]>(
-  cvData.languages.map((language, index) => {
+const visualLanguages = ref<VisualLanguage[]>([])
+
+const syncVisualLanguages = () => {
+  visualLanguages.value = (cvData.value?.languages ?? []).map((language, index) => {
     const radius = outerRadius - index * radiusStep
 
     return {
@@ -139,8 +141,8 @@ const visualLanguages = reactive<VisualLanguage[]>(
       circumference: 2 * Math.PI * radius,
       current: language.percentage,
     }
-  }),
-)
+  })
+}
 
 const getStrokeOffset = (language: VisualLanguage) => {
   return language.circumference * (1 - language.current / 100)
@@ -155,13 +157,15 @@ const clearProgressTweens = () => {
 }
 
 onMounted(async () => {
+  await loadCvData()
+  syncVisualLanguages()
   await nextTick()
 
   const { reveal } = scrollAnimation
   const { $prefersReducedMotion } = useNuxtApp()
 
   if ($prefersReducedMotion) {
-    for (const language of visualLanguages) {
+    for (const language of visualLanguages.value) {
       language.current = language.percentage
     }
     return
@@ -209,7 +213,7 @@ onMounted(async () => {
     y: 24,
   })
 
-  for (const language of visualLanguages) {
+  for (const language of visualLanguages.value) {
     language.current = 0
 
     const tween = gsap.to(language, {
