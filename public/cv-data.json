@@ -1,7 +1,7 @@
 {
   "hero": {
     "name": "Ghassen Bargougui",
-    "title": "Application Engineer · Full-Stack & Cloud Modernization",
+    "title": "Application Engineer",
     "location": "Fukuoka, Japan",
     "email": "ghassen.brg16@gmail.com",
     "github": "https://github.com/ghassenbrg",
@@ -11,9 +11,9 @@
   "about": {
     "paragraphs": [
       "Application Engineer with 6+ years of experience designing and delivering backend and full-stack solutions for enterprise systems in banking, insurance, and card payment domains.",
-      "Currently part of Rakuten Card's Technology Incubation Team, contributing to architecture modernization, API development, and cloud transformation for platforms serving 25M+ members in Japan.",
-      "Strong expertise in Java (Spring Boot, MicroProfile, Hibernate), Angular, and distributed system design, with hands-on delivery of CI/CD pipelines, containerization, and hybrid-cloud migration initiatives on GCP.",
-      "Focused on clean architecture, code quality, scalability, and cross-team collaboration to deliver secure and reliable software in Agile environments.",
+      "Currently part of Rakuten Card's Technology Incubation Team, driving hybrid-cloud migration and API modernization for platforms serving 25M+ members in Japan.",
+      "Hands-on with Java, Helidon, MicroProfile, Kubernetes, and GCP, including GitHub Actions CI/CD, GKE deployments, structured logging, and production troubleshooting across application and infrastructure layers.",
+      "Focused on clean architecture, code quality, scalability, and cross-team execution to deliver secure and reliable systems in Agile environments.",
       "Fluent in English and French, with basic proficiency in Japanese."
     ]
   },
@@ -21,10 +21,15 @@
     "Backend & Full-Stack Development": [
       { "name": "Java", "icon": "java", "highlight": true },
       { "name": "Spring Boot", "icon": "spring", "highlight": true },
+      { "name": "Helidon", "icon": "helidon" },
+      { "name": "MicroProfile", "icon": "java" },
       { "name": "Java EE", "icon": "javaee" },
+      { "name": "CDI", "icon": "java" },
       { "name": "Hibernate", "icon": "hibernate" },
       { "name": "JPA", "icon": "jpa" },
       { "name": "Angular", "icon": "angular", "highlight": true },
+      { "name": "Vue.js", "icon": "vuejs" },
+      { "name": "Nuxt", "icon": "nuxtjs" },
       { "name": "TypeScript", "icon": "typescript", "highlight": true },
       { "name": "JavaScript", "icon": "javascript" },
       { "name": "Node.js", "icon": "node" },
@@ -43,17 +48,25 @@
     ],
     "API Development": [
       { "name": "RESTful API Design", "icon": "api" },
-      { "name": "OpenAPI", "icon": "openapi" }
+      { "name": "OpenAPI", "icon": "openapi" },
+      { "name": "API Modernization", "icon": "api" }
     ],
     "Microservices & Event-Driven Systems": [
+      { "name": "Kafka", "icon": "kafka" },
       { "name": "Spring Cloud", "icon": "springcloud" },
       { "name": "ActiveMQ", "icon": "activemq" }
     ],
     "DevOps & Infrastructure": [
+      { "name": "Kubernetes", "icon": "kubernetes", "highlight": true },
+      { "name": "Google Cloud Platform (GCP)", "icon": "gcp", "highlight": true },
+      { "name": "Google Kubernetes Engine (GKE)", "icon": "gke" },
+      { "name": "GitHub Actions", "icon": "githubactions" },
       { "name": "Docker", "icon": "docker" },
       { "name": "Jenkins", "icon": "jenkins" },
       { "name": "GitLab CI/CD", "icon": "gitlab" },
       { "name": "AWS", "icon": "aws" },
+      { "name": "Cloud Logging", "icon": "gcp" },
+      { "name": "Log4j2", "icon": "log4j" },
       { "name": "Nginx", "icon": "nginx" },
       { "name": "WildFly", "icon": "wildfly" },
       { "name": "Tomcat", "icon": "tomcat" },
@@ -83,23 +96,21 @@
   },
   "experience": [
     {
-      "company": "Rakuten",
+      "company": "Rakuten Card",
       "position": "Application Engineer",
       "location": "Fukuoka, Japan",
       "period": "Dec 2025 – Present",
-      "description": "Member of the Technology Incubation Team, contributing to architecture design, modernization, and cloud transformation of Rakuten Card core systems supporting 25M+ members in Japan.",
+      "description": "Member of the Technology Incubation Team, leading hybrid-cloud migration and API modernization work for Rakuten Card platforms supporting 25M+ members in Japan.",
       "achievements": [
-        "Designing, developing, and maintaining backend services for large-scale card payment and credit management systems.",
-        "Developing private and public APIs for secure and efficient integration across internal and customer-facing applications.",
-        "Contributing to architectural improvements and modernization initiatives across legacy and new systems.",
-        "Supporting the transition of Java-based applications toward modern JavaScript/SSR-based architectures.",
-        "Conducting code reviews and promoting engineering best practices.",
-        "Collaborating closely with Product Owners and cross-functional engineering teams.",
-        "Contributing to a hybrid cloud migration project moving on-premise systems to Google Cloud Platform (GCP).",
-        "Refactoring existing applications to align with cloud-native principles.",
-        "Designing and implementing CI/CD pipelines for automated build and deployment.",
-        "Supporting containerization and cloud deployment strategies.",
-        "Enhancing system scalability, reliability, and operational efficiency."
+        "Prepared early Kubernetes manifests and deployment structure for JSF, API, and Engine modules before CI/CD team onboarding.",
+        "Designed and validated deployments, services, and environment configuration for workloads running on GCP and GKE.",
+        "Built a GitHub Actions pipeline to automate build, Docker image publishing to Artifact Registry, and deployment to GKE.",
+        "Upgraded the e-Navi API to JDK 25 and Helidon 4.3, including dependency updates, CDI fixes, test updates, and handover documentation.",
+        "Investigated and resolved deployment failures, SSL issues, and GCP-to-on-prem connectivity problems with infrastructure and security teams.",
+        "Diagnosed and fixed a Kafka messaging issue by identifying incorrect CDI bean scope as the root cause.",
+        "Redesigned application logging to structured JSON using Log4j2 and a custom formatter for Cloud Logging compatibility.",
+        "Improved deployment flexibility by fixing Filestore mount and configuration issues at the Kubernetes manifest level.",
+        "Acted as the application bridge across CI/CD, infrastructure, security, and development teams to unblock delivery."
       ]
     },
     {

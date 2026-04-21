@@ -113,6 +113,8 @@ import sonarqubeIcon from '@iconify-icons/devicon/sonarqube'
 import springIcon from '@iconify-icons/devicon/spring'
 import tomcatIcon from '@iconify-icons/devicon/tomcat'
 import typescriptIcon from '@iconify-icons/devicon/typescript'
+import nuxtIcon from '@iconify-icons/devicon/nuxtjs'
+import vueIcon from '@iconify-icons/devicon/vuejs'
 import type { IconifyIcon } from '@iconify/types'
 import SkillOrbit, { type OrbitCategory } from '~/components/ui/SkillOrbit.vue'
 
@@ -152,6 +154,7 @@ const iconNames: Record<string, IconifyIcon> = {
   ngrx: angularIcon,
   nginx: nginxIcon,
   node: nodeIcon,
+  nuxtjs: nuxtIcon,
   openapi: openapiIcon,
   oracle: oracleIcon,
   poi: apacheIcon,
@@ -166,6 +169,7 @@ const iconNames: Record<string, IconifyIcon> = {
   threads: javaIcon,
   tomcat: tomcatIcon,
   typescript: typescriptIcon,
+  vuejs: vueIcon,
   wildfly: redhatIcon,
   javascript: javascriptIcon,
 }
