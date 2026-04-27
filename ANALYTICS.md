@@ -1,122 +1,84 @@
 # Umami Analytics Integration
 
-This project has been integrated with Umami analytics to track user interactions and page views.
+This Nuxt 3 application uses Umami to capture privacy-safe interaction data for the resume
+experience.
 
 ## Setup
 
-The Umami script has been added to `public/index.html`:
+The analytics script is injected from [app.vue](/Users/ghassenbrg/git/my-resume/app.vue:1) with
+`useHead()`:
 
-```html
-<script defer src="https://umami.ghassen.io/analytics.js" 
-        data-website-id="50b3cd1c-0757-4aac-bc88-ccbf97d38a19" 
-        data-domains="ghassen.io,www.ghassen.io" 
-        data-auto-track="true">
-</script>
+```ts
+useHead({
+  script: [
+    {
+      key: 'umami-analytics',
+      src: 'https://umami.ghassen.io/analytics.js',
+      defer: true,
+      'data-website-id': '50b3cd1c-0757-4aac-bc88-ccbf97d38a19',
+      'data-domains': 'ghassen.io,www.ghassen.io',
+      'data-auto-track': 'true',
+    },
+  ],
+})
 ```
 
-## Features
-
-### Automatic Tracking
-- **Page Views**: Automatically tracked on initial load
-- **Section Views**: Automatically tracked when users scroll to different sections
-- **Data Attributes**: Support for automatic event tracking using `data-umami-event` attributes
-
-### Manual Event Tracking
-Use the `useUmamiAnalytics` hook to track custom events:
-
-```jsx
-import { useUmamiAnalytics } from './hooks/useUmamiAnalytics';
-
-const MyComponent = () => {
-  const { trackEvent, trackSectionView } = useUmamiAnalytics();
-
-  const handleClick = () => {
-    trackEvent('button_click', {
-      component: 'MyComponent',
-      timestamp: new Date().toISOString()
-    });
-  };
-
-  return <button onClick={handleClick}>Click me</button>;
-};
-```
+Manual event helpers live in [composables/useAnalytics.ts](/Users/ghassenbrg/git/my-resume/composables/useAnalytics.ts:1).
 
 ## Available Tracking Functions
 
-### `trackEvent(eventName, eventData)`
-Track custom events with optional data:
-```jsx
-trackEvent('form_submit', { 
-  formType: 'contact',
-  source: 'hero_section'
-});
+### `trackEvent(eventName, eventData?)`
+
+Sends a custom Umami event when the client-side script is available.
+
+```ts
+const { trackEvent } = useAnalytics()
+
+trackEvent('contact_form_submit', {
+  source: 'contact_terminal',
+})
 ```
 
-### `trackSectionView(sectionName)`
-Track when users view specific sections:
-```jsx
-trackSectionView('about');
+### `trackLinkClick(label, href)`
+
+Convenience wrapper for link interactions.
+
+```ts
+const { trackLinkClick } = useAnalytics()
+
+trackLinkClick('github', 'https://github.com/ghassenbrg')
 ```
 
-### `trackPageView(url)`
-Track page views (useful for SPA navigation):
-```jsx
-trackPageView('/about');
+### `trackSectionView(section)`
+
+Used by the section navigation to emit a section-view event once per section.
+
+```ts
+const { trackSectionView } = useAnalytics()
+
+trackSectionView('about')
 ```
 
-## Data Attributes for Automatic Tracking
+## Events Currently Emitted by the UI
 
-Add these attributes to any element for automatic event tracking:
+- `navigation_click`: Fired from the section navigation when a visitor jumps to a section.
+- `section_view`: Fired once per section when it becomes the active viewport section.
+- `contact_form_submit`: Fired when the contact form is submitted after validation passes.
+- `contact_form_success`: Fired after EmailJS accepts the message submission.
+- `contact_form_error`: Fired when contact submission fails.
 
-```html
-<button data-umami-event="signup_click" data-umami-event-source="hero">
-  Sign Up
-</button>
-```
+## Privacy Rules
 
-## Currently Tracked Events
+- Do not send personally identifying analytics payloads.
+- Do not send raw contact message contents.
+- Keep event payloads limited to interaction context that helps product decisions.
+- Document every new event name, trigger, and purpose in this file when instrumentation changes.
 
-### Navigation
-- `navigation_click` - When users click navigation items
-- `logo_click` - When users click the logo/name
-- `section_view` - When users scroll to different sections
+## Verification
 
-### User Interactions
-- `dark_mode_toggle` - When users toggle dark/light mode
-- `contact_form_submit` - When users submit contact form
-- `contact_form_success` - When contact form is successfully sent
-- `contact_form_error` - When contact form fails
-- `social_link_click` - When users click social media links
-- `cv_download` - When users download the CV
-
-### Custom Events
-- `custom_button_click` - Example custom event
-- `automatic_tracking` - Example of automatic tracking
-
-## Analytics Dashboard
-
-View your analytics data at: https://umami.ghassen.io
-
-## Privacy
-
-This implementation respects user privacy by:
-- Not collecting personal information
-- Only tracking anonymous user interactions
-- Using Umami's privacy-focused analytics platform
-- Complying with GDPR and other privacy regulations
-
-## Troubleshooting
-
-### Check if Umami is loaded
-```jsx
-if (window.umami?.track) {
-  // Umami is available
-  window.umami.track('event_name');
-}
-```
-
-### Debug tracking
-Open browser console and check for any errors related to the analytics script.
-
-### Verify script loading
-Check the Network tab in DevTools to ensure the analytics script loads successfully.
+- Confirm the Umami script loads in the browser network panel.
+- Confirm `window.umami?.track` exists before relying on analytics during QA.
+- Exercise the instrumented interaction and verify the expected event appears in the Umami
+  dashboard.
+- Re-check that analytics changes still respect reduced-motion and accessibility fallbacks when they
+  are tied to navigation or animated sections.
