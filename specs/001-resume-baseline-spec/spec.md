@@ -167,8 +167,10 @@ receive clear feedback about what happened.
   without assistance and summarize the candidate's profile after one pass through the site.
 - **SC-003**: 100% of primary content and navigation paths remain accessible in reduced-motion and
   small-screen review scenarios.
-- **SC-004**: At least 95% of valid contact attempts produce a clear success or failure message
-  during acceptance testing.
+- **SC-004**: During acceptance testing, 20 scripted valid contact attempts across success and
+  forced-failure configurations MUST show either a success or failure message within 5 seconds, with
+  at least 19 of 20 attempts producing visible feedback and no analytics payload containing message
+  text or visitor email.
 
 ## Assumptions
 

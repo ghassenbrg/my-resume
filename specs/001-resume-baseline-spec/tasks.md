@@ -95,6 +95,7 @@ credentials, then summarize the candidate's background and verify the supporting
 - [X] T022 [P] [US2] Implement the skills constellation and mobile accordion fallback in `components/sections/SkillsSection.vue` and `components/ui/SkillOrbit.vue`
 - [X] T023 [P] [US2] Implement featured projects and language proficiency sections in `components/sections/ProjectsSection.vue` and `components/sections/LanguagesSection.vue`
 - [X] T024 [US2] Verify resume-proof assets and social metadata in `app.vue`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
+- [ ] T035 [US2] Verify missing CV, credential image, and social-preview asset fallback behavior using `specs/001-resume-baseline-spec/quickstart.md`, `components/sections/AboutSection.vue`, `components/sections/EducationSection.vue`, and `public/CV_Ghassen_Bargougui.pdf`
 
 **Checkpoint**: User Stories 1 and 2 both work independently, with evidence surfaces ready for
 review.
@@ -112,7 +113,7 @@ or failed attempts, and use outbound follow-up links with clear feedback.
 ### Verification for User Story 3
 
 - [X] T025 [P] [US3] Add contact validation and status-transition coverage in `tests/unit/contactSection.spec.ts`
-- [ ] T026 [US3] Execute the contact and outbound-follow-up QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ContactSection.vue`
+- [ ] T026 [US3] Execute the deterministic contact and outbound-follow-up QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ContactSection.vue`
 
 ### Implementation for User Story 3
 
@@ -133,7 +134,8 @@ for validation.
 - [X] T031 [P] Refresh feature documentation references in `specs/001-resume-baseline-spec/spec.md`, `specs/001-resume-baseline-spec/plan.md`, and `specs/001-resume-baseline-spec/contracts/resume-experience.md`
 - [X] T032 Tune performance and reduced-motion cleanup in `components/ui/ParticleCanvas.vue`, `plugins/lenis.client.ts`, and `components/sections/ProjectsSection.vue`
 - [X] T033 Apply final accessibility audit fixes in `layouts/default.vue`, `components/layout/AppNavigation.vue`, `components/sections/HeroSection.vue`, `components/sections/ContactSection.vue`, and `assets/css/main.css`
-- [ ] T034 Run full build and container smoke validation using `package.json`, `Dockerfile`, `docker-compose.yml`, and `specs/001-resume-baseline-spec/quickstart.md`
+- [X] T034 Run static build validation using `package.json` and `specs/001-resume-baseline-spec/quickstart.md`
+- [ ] T036 Run Docker and NGINX container smoke validation using `Dockerfile`, `docker-compose.yml`, and `specs/001-resume-baseline-spec/quickstart.md`
 
 ---
 
@@ -229,9 +231,9 @@ Task: "T028 Implement outbound profile and CV follow-up tracking in components/s
 
 ## Notes
 
-- Total tasks: 34
+- Total tasks: 36
 - Tasks for US1: 7
-- Tasks for US2: 8
+- Tasks for US2: 9
 - Tasks for US3: 6
 - Suggested MVP scope: complete through Phase 3 (User Story 1)
 - All tasks follow the required checklist format with task IDs, story labels where required, and
