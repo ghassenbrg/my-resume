@@ -111,6 +111,8 @@ const navProgress = computed(() => {
 const navigateTo = (sectionId: SectionId) => {
   activeSection.value = sectionId
   isMobileMenuOpen.value = false
+  window.history.replaceState(null, '', `#${sectionId}`)
+  window.dispatchEvent(new HashChangeEvent('hashchange'))
   scrollTo(`#${sectionId}`)
   trackEvent('navigation_click', {
     section: sectionId,

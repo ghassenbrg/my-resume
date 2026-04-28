@@ -59,21 +59,38 @@
             :aria-label="`Open ${primaryCertification.name} credential`"
           >
             <img
+              v-if="shouldShowCertificationImage(primaryCertification.image)"
               :src="primaryCertification.image"
               :alt="primaryCertification.name"
               width="148"
               height="148"
               loading="lazy"
+              @error="markCertificationImageFailed(primaryCertification.image)"
             >
+            <span
+              v-else
+              class="about-card__badge-fallback"
+              aria-hidden="true"
+            >
+              OCP
+            </span>
           </a>
           <img
-            v-else
+            v-else-if="shouldShowCertificationImage(primaryCertification.image)"
             :src="primaryCertification.image"
             :alt="primaryCertification.name"
             width="148"
             height="148"
             loading="lazy"
+            @error="markCertificationImageFailed(primaryCertification.image)"
           >
+          <span
+            v-else
+            class="about-card__badge-fallback"
+            aria-label="Certification badge unavailable"
+          >
+            OCP
+          </span>
         </article>
 
         <article class="about-card about-card--stack">
@@ -168,6 +185,7 @@ const syncStats = () => {
 }
 
 const primaryCertification = computed(() => cvData.value?.certifications[0] ?? null)
+const failedCertificationImages = ref<Set<string>>(new Set())
 const architectureStatement = computed(() => {
   const paragraphs = cvData.value?.about.paragraphs ?? []
 
@@ -207,6 +225,18 @@ const setStatValueRef = (element: Element | ComponentPublicInstance | null, inde
   if (element instanceof HTMLElement) {
     statValueRefs.value[index] = element
   }
+}
+
+const shouldShowCertificationImage = (image?: string) => {
+  return Boolean(image && !failedCertificationImages.value.has(image))
+}
+
+const markCertificationImageFailed = (image?: string) => {
+  if (!image) {
+    return
+  }
+
+  failedCertificationImages.value = new Set([...failedCertificationImages.value, image])
 }
 
 onMounted(async () => {
@@ -481,6 +511,20 @@ onBeforeUnmount(() => {
   border-radius: 8px;
   background: var(--text-0);
   padding: var(--space-2);
+}
+
+.about-card__badge-fallback {
+  display: grid;
+  width: min(9.25rem, 52vw);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(232, 168, 56, 0.38);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(232, 168, 56, 0.18), rgba(9, 9, 15, 0.94));
+  color: var(--accent-amber);
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  font-weight: 700;
 }
 
 .about-card__skill-icons,

@@ -60,7 +60,7 @@ between sections from navigation, and reach the CV or contact path without assis
 ### Verification for User Story 1
 
 - [X] T010 [P] [US1] Add hero and navigation interaction coverage in `tests/unit/heroSection.spec.ts` and `tests/unit/appNavigation.spec.ts`
-- [ ] T011 [US1] Execute the first-impression QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `pages/index.vue` and `layouts/default.vue`
+- [X] T011 [US1] Execute the first-impression QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `pages/index.vue` and `layouts/default.vue`
 
 ### Implementation for User Story 1
 
@@ -85,7 +85,7 @@ credentials, then summarize the candidate's background and verify the supporting
 ### Verification for User Story 2
 
 - [X] T017 [P] [US2] Add structured-rendering coverage for evidence sections in `tests/unit/aboutSection.spec.ts`, `tests/unit/experienceSection.spec.ts`, and `tests/unit/skillsSection.spec.ts`
-- [ ] T018 [US2] Execute the experience-and-evidence QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ExperienceSection.vue` and `components/sections/ProjectsSection.vue`
+- [X] T018 [US2] Execute the experience-and-evidence QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ExperienceSection.vue` and `components/sections/ProjectsSection.vue`
 
 ### Implementation for User Story 2
 
@@ -95,7 +95,7 @@ credentials, then summarize the candidate's background and verify the supporting
 - [X] T022 [P] [US2] Implement the skills constellation and mobile accordion fallback in `components/sections/SkillsSection.vue` and `components/ui/SkillOrbit.vue`
 - [X] T023 [P] [US2] Implement featured projects and language proficiency sections in `components/sections/ProjectsSection.vue` and `components/sections/LanguagesSection.vue`
 - [X] T024 [US2] Verify resume-proof assets and social metadata in `app.vue`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
-- [ ] T035 [US2] Verify missing CV, credential image, and social-preview asset fallback behavior using `specs/001-resume-baseline-spec/quickstart.md`, `components/sections/AboutSection.vue`, `components/sections/EducationSection.vue`, and `public/CV_Ghassen_Bargougui.pdf`
+- [X] T035 [US2] Verify missing CV, credential image, and social-preview asset fallback behavior using `specs/001-resume-baseline-spec/quickstart.md`, `components/sections/AboutSection.vue`, `components/sections/EducationSection.vue`, and `public/CV_Ghassen_Bargougui.pdf`
 
 **Checkpoint**: User Stories 1 and 2 both work independently, with evidence surfaces ready for
 review.
@@ -113,7 +113,7 @@ or failed attempts, and use outbound follow-up links with clear feedback.
 ### Verification for User Story 3
 
 - [X] T025 [P] [US3] Add contact validation and status-transition coverage in `tests/unit/contactSection.spec.ts`
-- [ ] T026 [US3] Execute the deterministic contact and outbound-follow-up QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ContactSection.vue`
+- [X] T026 [US3] Execute the deterministic contact and outbound-follow-up QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ContactSection.vue`
 
 ### Implementation for User Story 3
 
