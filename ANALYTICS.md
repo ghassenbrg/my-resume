@@ -39,14 +39,14 @@ trackEvent('contact_form_submit', {
 })
 ```
 
-### `trackLinkClick(label, href)`
+### `trackFollowUpClick(label, href)`
 
 Convenience wrapper for link interactions.
 
 ```ts
-const { trackLinkClick } = useAnalytics()
+const { trackFollowUpClick } = useAnalytics()
 
-trackLinkClick('github', 'https://github.com/ghassenbrg')
+trackFollowUpClick('github', 'https://github.com/ghassenbrg')
 ```
 
 ### `trackSectionView(section)`
@@ -66,6 +66,18 @@ trackSectionView('about')
 - `contact_form_submit`: Fired when the contact form is submitted after validation passes.
 - `contact_form_success`: Fired after EmailJS accepts the message submission.
 - `contact_form_error`: Fired when contact submission fails.
+- `follow_up_click`: Fired when a visitor opens a CV, email, GitHub, or LinkedIn follow-up link.
+
+## Event Payloads
+
+| Event | Payload |
+|-------|---------|
+| `navigation_click` | `section` |
+| `section_view` | `section` |
+| `contact_form_submit` | `source` |
+| `contact_form_success` | `source` |
+| `contact_form_error` | `source`, `reason` |
+| `follow_up_click` | `label`, `destination` |
 
 ## Privacy Rules
 

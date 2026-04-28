@@ -106,7 +106,7 @@ receive clear feedback about what happened.
   of truth.
 - Analytics impact: Track only privacy-safe engagement signals for navigation, section discovery,
   outbound actions, and contact outcomes so the owner can understand visitor behavior without
-  collecting personal message content.
+  collecting personal email addresses or message content.
 - Documentation impact: Analytics behavior, verification expectations, and any changes to the
   resume content model must be updated alongside the feature work.
 

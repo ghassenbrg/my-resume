@@ -32,10 +32,10 @@
       </ul>
 
       <div ref="actionsRef" class="hero-section__actions" aria-label="Primary links">
-        <MagneticButton :href="cvData.hero.github" external variant="ghost">GH</MagneticButton>
-        <MagneticButton :href="cvData.hero.linkedin" external variant="ghost">LI</MagneticButton>
-        <MagneticButton :href="`mailto:${cvData.hero.email}`" variant="secondary">Email</MagneticButton>
-        <MagneticButton :href="cvData.hero.cvLink" variant="primary">CV</MagneticButton>
+        <MagneticButton :href="cvData.hero.github" external variant="ghost" analytics-label="github">GH</MagneticButton>
+        <MagneticButton :href="cvData.hero.linkedin" external variant="ghost" analytics-label="linkedin">LI</MagneticButton>
+        <MagneticButton :href="`mailto:${cvData.hero.email}`" variant="secondary" analytics-label="email">Email</MagneticButton>
+        <MagneticButton :href="cvData.hero.cvLink" variant="primary" analytics-label="cv">CV</MagneticButton>
       </div>
     </div>
 

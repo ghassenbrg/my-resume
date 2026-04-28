@@ -71,6 +71,7 @@ Only privacy-safe events are allowed for this feature.
 | `contact_form_submit` | Valid contact submission is attempted | `source` |
 | `contact_form_success` | Contact delivery succeeds | `source` |
 | `contact_form_error` | Contact delivery fails | `source`, `reason` |
+| `follow_up_click` | Visitor opens CV, email, GitHub, or LinkedIn follow-up action | `label`, `destination` |
 
 Rules:
 

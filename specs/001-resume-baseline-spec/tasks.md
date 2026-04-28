@@ -26,9 +26,9 @@ of each story.
 
 **Purpose**: Establish the test and validation scaffolding needed for the feature.
 
-- [ ] T001 Add task-oriented test and validation scripts in `package.json`
-- [ ] T002 Create unit test configuration and Nuxt test bootstrap in `vitest.config.ts` and `tests/setup.ts`
-- [ ] T003 Create shared browser, motion, and fixture helpers in `tests/helpers/browser.ts` and `tests/fixtures/cv-data.json`
+- [X] T001 Add task-oriented test and validation scripts in `package.json`
+- [X] T002 Create unit test configuration and Nuxt test bootstrap in `vitest.config.ts` and `tests/setup.ts`
+- [X] T003 Create shared browser, motion, and fixture helpers in `tests/helpers/browser.ts` and `tests/fixtures/cv-data.json`
 
 ---
 
@@ -38,12 +38,12 @@ of each story.
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T004 Harden the typed resume-content normalization contract in `types/cv.ts` and `composables/useCvData.ts`
-- [ ] T005 [P] Centralize analytics event helpers and documented event taxonomy in `composables/useAnalytics.ts` and `ANALYTICS.md`
-- [ ] T006 [P] Normalize GSAP and smooth-scroll lifecycle fallbacks in `plugins/gsap.client.ts`, `plugins/lenis.client.ts`, `composables/useScrollAnimation.ts`, and `composables/useSmoothScroll.ts`
-- [ ] T007 [P] Strengthen global accessibility and editorial theme tokens in `layouts/default.vue`, `assets/css/main.css`, `assets/css/typography.css`, and `assets/css/animations.css`
-- [ ] T008 Add shared unit coverage for resume-data normalization and analytics helpers in `tests/unit/useCvData.spec.ts` and `tests/unit/useAnalytics.spec.ts`
-- [ ] T009 [P] Reconcile canonical resume content and public artifacts in `public/cv-data.json`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
+- [X] T004 Harden the typed resume-content normalization contract in `types/cv.ts` and `composables/useCvData.ts`
+- [X] T005 [P] Centralize analytics event helpers and documented event taxonomy in `composables/useAnalytics.ts` and `ANALYTICS.md`
+- [X] T006 [P] Normalize GSAP and smooth-scroll lifecycle fallbacks in `plugins/gsap.client.ts`, `plugins/lenis.client.ts`, `composables/useScrollAnimation.ts`, and `composables/useSmoothScroll.ts`
+- [X] T007 [P] Strengthen global accessibility and editorial theme tokens in `layouts/default.vue`, `assets/css/main.css`, `assets/css/typography.css`, and `assets/css/animations.css`
+- [X] T008 Add shared unit coverage for resume-data normalization and analytics helpers in `tests/unit/useCvData.spec.ts` and `tests/unit/useAnalytics.spec.ts`
+- [X] T009 [P] Reconcile canonical resume content and public artifacts in `public/cv-data.json`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
 
 **Checkpoint**: Foundation ready. User story implementation can now begin in parallel.
 
@@ -59,16 +59,16 @@ between sections from navigation, and reach the CV or contact path without assis
 
 ### Verification for User Story 1
 
-- [ ] T010 [P] [US1] Add hero and navigation interaction coverage in `tests/unit/heroSection.spec.ts` and `tests/unit/appNavigation.spec.ts`
+- [X] T010 [P] [US1] Add hero and navigation interaction coverage in `tests/unit/heroSection.spec.ts` and `tests/unit/appNavigation.spec.ts`
 - [ ] T011 [US1] Execute the first-impression QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `pages/index.vue` and `layouts/default.vue`
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Implement hero copy, CTA state, and reduced-motion entry behavior in `components/sections/HeroSection.vue` and `composables/useTypewriter.ts`
-- [ ] T013 [P] [US1] Implement top-level section composition and lazy section loading in `pages/index.vue` and `components/ui/LazySectionMount.vue`
-- [ ] T014 [US1] Implement section navigation, active-state tracking, and mobile menu behavior in `components/layout/AppNavigation.vue` and `components/layout/AppScrollProgress.vue`
-- [ ] T015 [P] [US1] Finalize hero particle and magnetic-interaction fallbacks in `components/ui/ParticleCanvas.vue` and `components/ui/MagneticButton.vue`
-- [ ] T016 [US1] Update landing-page metadata and hero CTA instrumentation in `app.vue` and `ANALYTICS.md`
+- [X] T012 [P] [US1] Implement hero copy, CTA state, and reduced-motion entry behavior in `components/sections/HeroSection.vue` and `composables/useTypewriter.ts`
+- [X] T013 [P] [US1] Implement top-level section composition and lazy section loading in `pages/index.vue` and `components/ui/LazySectionMount.vue`
+- [X] T014 [US1] Implement section navigation, active-state tracking, and mobile menu behavior in `components/layout/AppNavigation.vue` and `components/layout/AppScrollProgress.vue`
+- [X] T015 [P] [US1] Finalize hero particle and magnetic-interaction fallbacks in `components/ui/ParticleCanvas.vue` and `components/ui/MagneticButton.vue`
+- [X] T016 [US1] Update landing-page metadata and hero CTA instrumentation in `app.vue` and `ANALYTICS.md`
 
 **Checkpoint**: User Story 1 is independently functional and ready for MVP review.
 
@@ -84,17 +84,17 @@ credentials, then summarize the candidate's background and verify the supporting
 
 ### Verification for User Story 2
 
-- [ ] T017 [P] [US2] Add structured-rendering coverage for evidence sections in `tests/unit/aboutSection.spec.ts`, `tests/unit/experienceSection.spec.ts`, and `tests/unit/skillsSection.spec.ts`
+- [X] T017 [P] [US2] Add structured-rendering coverage for evidence sections in `tests/unit/aboutSection.spec.ts`, `tests/unit/experienceSection.spec.ts`, and `tests/unit/skillsSection.spec.ts`
 - [ ] T018 [US2] Execute the experience-and-evidence QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ExperienceSection.vue` and `components/sections/ProjectsSection.vue`
 
 ### Implementation for User Story 2
 
-- [ ] T019 [US2] Expand and validate structured resume content for evidence sections in `public/cv-data.json` and `types/cv.ts`
-- [ ] T020 [P] [US2] Implement profile stats and credential storytelling in `components/sections/AboutSection.vue` and `components/sections/EducationSection.vue`
-- [ ] T021 [P] [US2] Implement the horizontal experience journey in `components/sections/ExperienceSection.vue` and `composables/useScrollAnimation.ts`
-- [ ] T022 [P] [US2] Implement the skills constellation and mobile accordion fallback in `components/sections/SkillsSection.vue` and `components/ui/SkillOrbit.vue`
-- [ ] T023 [P] [US2] Implement featured projects and language proficiency sections in `components/sections/ProjectsSection.vue` and `components/sections/LanguagesSection.vue`
-- [ ] T024 [US2] Verify resume-proof assets and social metadata in `app.vue`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
+- [X] T019 [US2] Expand and validate structured resume content for evidence sections in `public/cv-data.json` and `types/cv.ts`
+- [X] T020 [P] [US2] Implement profile stats and credential storytelling in `components/sections/AboutSection.vue` and `components/sections/EducationSection.vue`
+- [X] T021 [P] [US2] Implement the horizontal experience journey in `components/sections/ExperienceSection.vue` and `composables/useScrollAnimation.ts`
+- [X] T022 [P] [US2] Implement the skills constellation and mobile accordion fallback in `components/sections/SkillsSection.vue` and `components/ui/SkillOrbit.vue`
+- [X] T023 [P] [US2] Implement featured projects and language proficiency sections in `components/sections/ProjectsSection.vue` and `components/sections/LanguagesSection.vue`
+- [X] T024 [US2] Verify resume-proof assets and social metadata in `app.vue`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
 
 **Checkpoint**: User Stories 1 and 2 both work independently, with evidence surfaces ready for
 review.
@@ -111,15 +111,15 @@ or failed attempts, and use outbound follow-up links with clear feedback.
 
 ### Verification for User Story 3
 
-- [ ] T025 [P] [US3] Add contact validation and status-transition coverage in `tests/unit/contactSection.spec.ts`
+- [X] T025 [P] [US3] Add contact validation and status-transition coverage in `tests/unit/contactSection.spec.ts`
 - [ ] T026 [US3] Execute the contact and outbound-follow-up QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ContactSection.vue`
 
 ### Implementation for User Story 3
 
-- [ ] T027 [US3] Implement terminal contact validation, submission feedback, and recovery states in `components/sections/ContactSection.vue`
-- [ ] T028 [P] [US3] Implement outbound profile and CV follow-up tracking in `components/sections/HeroSection.vue`, `components/layout/AppNavigation.vue`, and `components/ui/MagneticButton.vue`
-- [ ] T029 [US3] Align contact runtime configuration and privacy-safe instrumentation in `nuxt.config.ts` and `ANALYTICS.md`
-- [ ] T030 [US3] Validate external follow-up paths and CTA behavior in `components/ui/MagneticButton.vue` and `public/CV_Ghassen_Bargougui.pdf`
+- [X] T027 [US3] Implement terminal contact validation, submission feedback, and recovery states in `components/sections/ContactSection.vue`
+- [X] T028 [P] [US3] Implement outbound profile and CV follow-up tracking in `components/sections/HeroSection.vue`, `components/layout/AppNavigation.vue`, and `components/ui/MagneticButton.vue`
+- [X] T029 [US3] Align contact runtime configuration and privacy-safe instrumentation in `nuxt.config.ts` and `ANALYTICS.md`
+- [X] T030 [US3] Validate external follow-up paths and CTA behavior in `components/ui/MagneticButton.vue` and `public/CV_Ghassen_Bargougui.pdf`
 
 **Checkpoint**: All user stories are independently functional, with direct follow-up flows ready
 for validation.
@@ -130,9 +130,9 @@ for validation.
 
 **Purpose**: Finish quality, documentation, and release validation work that spans multiple stories.
 
-- [ ] T031 [P] Refresh feature documentation references in `specs/001-resume-baseline-spec/spec.md`, `specs/001-resume-baseline-spec/plan.md`, and `specs/001-resume-baseline-spec/contracts/resume-experience.md`
-- [ ] T032 Tune performance and reduced-motion cleanup in `components/ui/ParticleCanvas.vue`, `plugins/lenis.client.ts`, and `components/sections/ProjectsSection.vue`
-- [ ] T033 Apply final accessibility audit fixes in `layouts/default.vue`, `components/layout/AppNavigation.vue`, `components/sections/HeroSection.vue`, `components/sections/ContactSection.vue`, and `assets/css/main.css`
+- [X] T031 [P] Refresh feature documentation references in `specs/001-resume-baseline-spec/spec.md`, `specs/001-resume-baseline-spec/plan.md`, and `specs/001-resume-baseline-spec/contracts/resume-experience.md`
+- [X] T032 Tune performance and reduced-motion cleanup in `components/ui/ParticleCanvas.vue`, `plugins/lenis.client.ts`, and `components/sections/ProjectsSection.vue`
+- [X] T033 Apply final accessibility audit fixes in `layouts/default.vue`, `components/layout/AppNavigation.vue`, `components/sections/HeroSection.vue`, `components/sections/ContactSection.vue`, and `assets/css/main.css`
 - [ ] T034 Run full build and container smoke validation using `package.json`, `Dockerfile`, `docker-compose.yml`, and `specs/001-resume-baseline-spec/quickstart.md`
 
 ---

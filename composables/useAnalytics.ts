@@ -1,4 +1,12 @@
-type AnalyticsPayload = Record<string, string | number | boolean | null | undefined>
+export type AnalyticsEventName =
+  | 'navigation_click'
+  | 'section_view'
+  | 'contact_form_submit'
+  | 'contact_form_success'
+  | 'contact_form_error'
+  | 'follow_up_click'
+
+export type AnalyticsPayload = Record<string, string | number | boolean | null | undefined>
 
 interface UmamiClient {
   track: (eventName: string, eventData?: AnalyticsPayload) => void
@@ -9,9 +17,21 @@ type AnalyticsWindow = Window & {
 }
 
 export const useAnalytics = () => {
-  const isClient = import.meta.client
+  const isClient = typeof window !== 'undefined'
 
-  const trackEvent = (eventName: string, eventData?: AnalyticsPayload) => {
+  const sanitizePayload = (eventData?: AnalyticsPayload) => {
+    if (!eventData) {
+      return undefined
+    }
+
+    return Object.fromEntries(
+      Object.entries(eventData).filter(([key, value]) => {
+        return key !== 'message' && key !== 'email' && value !== undefined
+      }),
+    )
+  }
+
+  const trackEvent = (eventName: AnalyticsEventName, eventData?: AnalyticsPayload) => {
     if (!isClient) {
       return false
     }
@@ -22,14 +42,14 @@ export const useAnalytics = () => {
       return false
     }
 
-    track(eventName, eventData)
+    track(eventName, sanitizePayload(eventData))
     return true
   }
 
-  const trackLinkClick = (label: string, href: string) => {
-    return trackEvent('link_click', {
+  const trackFollowUpClick = (label: string, href: string) => {
+    return trackEvent('follow_up_click', {
       label,
-      href,
+      destination: href.startsWith('mailto:') ? 'email' : href,
     })
   }
 
@@ -41,7 +61,7 @@ export const useAnalytics = () => {
 
   return {
     trackEvent,
-    trackLinkClick,
+    trackFollowUpClick,
     trackSectionView,
   }
 }

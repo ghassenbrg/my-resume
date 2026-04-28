@@ -17,7 +17,7 @@ clear contact conversion paths.
 **Language/Version**: TypeScript 5.x with Vue 3 single-file components on Nuxt 3  
 **Primary Dependencies**: Nuxt 3, Vue 3, GSAP, Three.js via `@tresjs/core`, Lenis, `@iconify/vue`, EmailJS  
 **Storage**: Structured static content in `public/cv-data.json`; static assets in `public/` and `assets/`  
-**Testing**: `npm run generate`, manual responsive/keyboard/reduced-motion QA, analytics smoke checks, and targeted automated coverage for new non-trivial composable logic when introduced  
+**Testing**: `npm run test:unit`, `npm run generate`, manual responsive/keyboard/reduced-motion QA, analytics smoke checks, and targeted automated coverage for non-trivial composable logic  
 **Target Platform**: Modern desktop and mobile browsers, with static hosting through Docker + NGINX  
 **Project Type**: Static-generated single-page portfolio/resume web application  
 **Performance Goals**: Fast first-read access to hero content and navigation, smooth motion on capable desktop hardware, and graceful fallback on touch or reduced-motion contexts  

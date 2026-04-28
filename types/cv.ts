@@ -9,6 +9,8 @@ export interface CVData {
   languages: Language[]
 }
 
+export type CVDataInput = Partial<CVData>
+
 export interface RuntimeCVData extends Omit<CVData, 'about' | 'skills'> {
   about: About & {
     stats: CVStats
@@ -90,4 +92,9 @@ export interface Language {
   level: string
   percentage: number
   flag?: string
+}
+
+export interface NormalizationIssue {
+  path: string
+  message: string
 }
