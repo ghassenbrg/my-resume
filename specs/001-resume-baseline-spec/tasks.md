@@ -135,7 +135,7 @@ for validation.
 - [X] T032 Tune performance and reduced-motion cleanup in `components/ui/ParticleCanvas.vue`, `plugins/lenis.client.ts`, and `components/sections/ProjectsSection.vue`
 - [X] T033 Apply final accessibility audit fixes in `layouts/default.vue`, `components/layout/AppNavigation.vue`, `components/sections/HeroSection.vue`, `components/sections/ContactSection.vue`, and `assets/css/main.css`
 - [X] T034 Run static build validation using `package.json` and `specs/001-resume-baseline-spec/quickstart.md`
-- [ ] T036 Run Docker and NGINX container smoke validation using `Dockerfile`, `docker-compose.yml`, and `specs/001-resume-baseline-spec/quickstart.md`
+- [X] T036 Run Docker and NGINX container smoke validation using `Dockerfile`, `docker-compose.yml`, and `specs/001-resume-baseline-spec/quickstart.md`
 
 ---
 

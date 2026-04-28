@@ -73,7 +73,7 @@
           :key="`${project.title}-dot`"
           :class="{ 'projects-section__dot--active': activeProjectIndex === index }"
         >
-          <span class="sr-only">{{ project.title }}</span>
+          <span class="visually-hidden">{{ project.title }}</span>
         </li>
       </ol>
     </div>
