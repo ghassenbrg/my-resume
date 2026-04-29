@@ -87,6 +87,7 @@ credentials, then summarize the candidate's background and verify the supporting
 - [X] T017 [P] [US2] Add structured-rendering coverage for evidence sections in `tests/unit/aboutSection.spec.ts`, `tests/unit/experienceSection.spec.ts`, and `tests/unit/skillsSection.spec.ts`
 - [X] T018 [US2] Execute the experience-and-evidence QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ExperienceSection.vue` and `components/sections/ProjectsSection.vue`
 - [X] T037 [US2] Verify adaptive desktop overflow fallback for tall Professional Experience entries in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ExperienceSection.vue`
+- [X] T039 [P] [US2] Add Featured Projects motion-trigger regression coverage in `tests/unit/projectsSection.spec.ts` and `components/sections/ProjectsSection.vue`
 
 ### Implementation for User Story 2
 
@@ -98,6 +99,7 @@ credentials, then summarize the candidate's background and verify the supporting
 - [X] T024 [US2] Verify resume-proof assets and social metadata in `app.vue`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
 - [X] T035 [US2] Verify missing CV, credential image, and social-preview asset fallback behavior using `specs/001-resume-baseline-spec/quickstart.md`, `components/sections/AboutSection.vue`, `components/sections/EducationSection.vue`, and `public/CV_Ghassen_Bargougui.pdf`
 - [X] T038 [US2] Implement adaptive pinned-versus-readable overflow behavior for long Professional Experience entries in `components/sections/ExperienceSection.vue` and `specs/001-resume-baseline-spec/contracts/resume-experience.md`
+- [X] T040 [US2] Implement section-scoped Featured Projects reveal/fade timing safeguards in `components/sections/ProjectsSection.vue`, `composables/useScrollAnimation.ts`, and `specs/001-resume-baseline-spec/quickstart.md`
 
 **Checkpoint**: User Stories 1 and 2 both work independently, with evidence surfaces ready for
 review.
@@ -170,6 +172,7 @@ for validation.
 
 - After T004, T005, T006, T007, and T009 can run in parallel.
 - After T019, T020, T021, T022, and T023 can be split across separate contributors.
+- T039 can run before T040 to lock the Projects section reveal/fade regression against `components/sections/ProjectsSection.vue`.
 - T027 and T028 can run in parallel after the shared foundational analytics helpers are complete.
 - T031 can run in parallel with T032 once all three user stories are complete.
 
@@ -196,6 +199,10 @@ Task: "T020 Implement profile stats and credential storytelling in components/se
 Task: "T021 Implement the horizontal experience journey in components/sections/ExperienceSection.vue and composables/useScrollAnimation.ts"
 Task: "T022 Implement the skills constellation and mobile accordion fallback in components/sections/SkillsSection.vue and components/ui/SkillOrbit.vue"
 Task: "T023 Implement featured projects and language proficiency sections in components/sections/ProjectsSection.vue and components/sections/LanguagesSection.vue"
+
+# Projects motion regression work after baseline US2 rendering:
+Task: "T039 Add Featured Projects motion-trigger regression coverage in tests/unit/projectsSection.spec.ts and components/sections/ProjectsSection.vue"
+Task: "T040 Implement section-scoped Featured Projects reveal/fade timing safeguards in components/sections/ProjectsSection.vue, composables/useScrollAnimation.ts, and specs/001-resume-baseline-spec/quickstart.md"
 ```
 
 ## Parallel Example: User Story 3
@@ -233,9 +240,9 @@ Task: "T028 Implement outbound profile and CV follow-up tracking in components/s
 
 ## Notes
 
-- Total tasks: 38
+- Total tasks: 40
 - Tasks for US1: 7
-- Tasks for US2: 11
+- Tasks for US2: 13
 - Tasks for US3: 6
 - Suggested MVP scope: complete through Phase 3 (User Story 1)
 - All tasks follow the required checklist format with task IDs, story labels where required, and

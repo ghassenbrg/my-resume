@@ -10,6 +10,8 @@
 ### Session 2026-04-29
 
 - Q: How should the Professional Experience section handle items whose content exceeds the visible desktop viewport height? → A: Use adaptive behavior: keep pinned horizontal presentation only when the active experience item fits the viewport; otherwise fall back to a non-pinned readable layout.
+- Q: When should Featured Projects card reveal animations begin? → A: Trigger reveal only after the `#projects` section enters the viewport.
+- Q: How should Featured Projects fade-out behavior align with section visibility? → A: Fade-out starts only after `#projects` enters the viewport, and reverses when scrolling back above the section.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -81,6 +83,10 @@ receive clear feedback about what happened.
   cannot support rich transitions comfortably?
 - What happens when a Professional Experience item becomes taller than the visible desktop viewport
   during the horizontal storytelling sequence?
+- What happens when lazy mounting, scroll speed, or layout shifts would otherwise trigger Featured
+  Projects card reveals before the `#projects` section enters the viewport?
+- What happens when Featured Projects cards would remain faded or start fading before the
+  `#projects` section is reached, or fail to restore when scrolling back above the section?
 - How does the site behave when a downloadable asset, credential proof, or image is unavailable?
 - How does the contact path respond when required fields are missing or message delivery fails?
 - What happens when a visitor navigates entirely by keyboard or screen reader through animated
@@ -109,6 +115,10 @@ receive clear feedback about what happened.
 - Long-content fallback: Motion-led sections such as Professional Experience must switch to a fully
   readable non-pinned layout whenever the active content would otherwise exceed the safe visible
   desktop area.
+- Section-triggered motion: Featured Projects card reveal animations must remain tied to the
+  `#projects` section entering the viewport, and both reveal and fade-out behavior must reverse
+  cleanly when scrolling back above the section. These transitions must not start early because of
+  lazy mounting, scroll velocity, or upstream layout changes.
 
 ### Content & Instrumentation
 
@@ -144,6 +154,10 @@ receive clear feedback about what happened.
 - **FR-008a**: The system MUST keep the Professional Experience section fully readable on desktop by
   using pinned horizontal presentation only when the active experience item fits the visible
   viewport; otherwise it MUST fall back to a non-pinned readable layout without clipping content.
+- **FR-008b**: The system MUST trigger Featured Projects card reveal animations only after the
+  `#projects` section enters the viewport, MUST keep fade-out behavior scoped to the same section
+  visibility rule, MUST reverse both transitions when scrolling back above the section, and MUST
+  prevent early reveal or fade-out caused by lazy mounting, scroll timing, or layout shifts.
 - **FR-009**: The system MUST keep resume content consistent across sections so profile details,
   experience facts, and supporting assets do not conflict with each other.
 - **FR-010**: The system MUST capture privacy-safe engagement events for key visitor interactions
