@@ -10,8 +10,16 @@ spec:
           image: ghassen-resume:latest
           volumeMounts:
             - name: cv-data
-              mountPath: /usr/share/nginx/html/cv-data.json
-              subPath: cv-data.json
+              mountPath: /usr/share/nginx/html/cv-data-en.json
+              subPath: cv-data-en.json
+              readOnly: true
+            - name: cv-data
+              mountPath: /usr/share/nginx/html/cv-data-fr.json
+              subPath: cv-data-fr.json
+              readOnly: true
+            - name: cv-data
+              mountPath: /usr/share/nginx/html/cv-data-jp.json
+              subPath: cv-data-jp.json
               readOnly: true
             - name: cv-pdf
               mountPath: /usr/share/nginx/html/CV_Ghassen_Bargougui.pdf

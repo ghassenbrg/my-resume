@@ -7,12 +7,12 @@
   >
     <div class="section-container">
       <div class="about-section__header">
-        <p class="section-eyebrow">Profile</p>
-        <h2 id="about-title" class="about-section__title">Measured engineering, written clearly.</h2>
+        <p class="section-eyebrow">{{ uiCopy.about.eyebrow }}</p>
+        <h2 id="about-title" class="about-section__title">{{ uiCopy.about.title }}</h2>
       </div>
 
       <div v-if="cvData" class="about-section__split">
-        <aside ref="statsRef" class="about-section__stats surface" aria-label="Professional summary">
+        <aside ref="statsRef" class="about-section__stats surface" :aria-label="uiCopy.about.professionalSummary">
           <dl class="about-section__stat-list">
             <div
               v-for="(stat, index) in stats"
@@ -43,10 +43,10 @@
         </div>
       </div>
 
-      <div v-if="cvData" ref="bentoRef" class="about-section__bento" aria-label="Key differentiators">
+      <div v-if="cvData" ref="bentoRef" class="about-section__bento" :aria-label="uiCopy.about.keyDifferentiators">
         <article v-if="primaryCertification" class="about-card about-card--cert">
           <div>
-            <p class="about-card__kicker">Certified</p>
+            <p class="about-card__kicker">{{ uiCopy.about.cards.certified }}</p>
             <h3>{{ primaryCertification.name }}</h3>
             <p>{{ primaryCertification.issuer }} · {{ primaryCertification.date }}</p>
           </div>
@@ -56,7 +56,7 @@
             :href="primaryCertification.link"
             target="_blank"
             rel="noopener noreferrer"
-            :aria-label="`Open ${primaryCertification.name} credential`"
+            :aria-label="`${uiCopy.about.cards.openCredential} ${primaryCertification.name}`"
           >
             <img
               v-if="shouldShowCertificationImage(primaryCertification.image)"
@@ -87,16 +87,16 @@
           <span
             v-else
             class="about-card__badge-fallback"
-            aria-label="Certification badge unavailable"
+            :aria-label="uiCopy.about.cards.certificationUnavailable"
           >
             OCP
           </span>
         </article>
 
         <article class="about-card about-card--stack">
-          <p class="about-card__kicker">Full-Stack</p>
-          <h3>Backend depth with frontend fluency.</h3>
-          <ul class="about-card__skill-icons" aria-label="Highlighted full-stack technologies">
+          <p class="about-card__kicker">{{ uiCopy.about.cards.fullStack }}</p>
+          <h3>{{ uiCopy.about.cards.fullStackTitle }}</h3>
+          <ul class="about-card__skill-icons" :aria-label="uiCopy.about.cards.highlightedTech">
             <li
               v-for="skill in highlightedSkills"
               :key="skill.name"
@@ -109,14 +109,14 @@
         </article>
 
         <article class="about-card about-card--languages">
-          <p class="about-card__kicker">Multilingual</p>
-          <h3>Clear collaboration across languages.</h3>
+          <p class="about-card__kicker">{{ uiCopy.about.cards.multilingual }}</p>
+          <h3>{{ uiCopy.about.cards.multilingualTitle }}</h3>
           <ul class="about-card__language-list">
             <li
               v-for="language in cvData.languages"
               :key="language.language"
             >
-              <span>{{ languageCodes[language.language] ?? language.language.slice(0, 2).toUpperCase() }}</span>
+              <span>{{ language.code ?? language.flag ?? language.language.slice(0, 2).toUpperCase() }}</span>
               <strong>{{ language.language }}</strong>
               <small>{{ language.level }}</small>
             </li>
@@ -124,8 +124,8 @@
         </article>
 
         <article class="about-card about-card--architecture">
-          <p class="about-card__kicker">Clean Architecture</p>
-          <h3>Code quality as delivery discipline.</h3>
+          <p class="about-card__kicker">{{ uiCopy.about.cards.cleanArchitecture }}</p>
+          <h3>{{ uiCopy.about.cards.architectureTitle }}</h3>
           <p>{{ architectureStatement }}</p>
         </article>
       </div>
@@ -150,28 +150,32 @@ const bentoRef = ref<HTMLElement | null>(null)
 const statValueRefs = ref<HTMLElement[]>([])
 const scrollAnimation = useScrollAnimation()
 const counterTweens: Array<{ kill: () => void; scrollTrigger?: { kill: () => void } | null }> = []
-const { cvData, loadCvData } = useCvData()
+const { cvData, loadCvData, uiCopy } = useCvData()
 
 const stats = reactive<StatItem[]>([
   {
-    label: 'Years',
+    label: '',
     target: 0,
     current: 0,
     suffix: '+',
   },
   {
-    label: 'Companies',
+    label: '',
     target: 0,
     current: 0,
   },
   {
-    label: 'Certification',
+    label: '',
     target: 0,
     current: 0,
   },
 ])
 
 const syncStats = () => {
+  stats[0].label = uiCopy.value.about.stats.years
+  stats[1].label = uiCopy.value.about.stats.companies
+  stats[2].label = uiCopy.value.about.stats.certification
+
   if (!cvData.value) {
     return
   }
@@ -197,7 +201,9 @@ const architectureStatement = computed(() => {
 })
 
 const highlightedSkills = computed(() => {
-  const fullStackSkills = cvData.value?.skills['Backend & Full-Stack Development'] ?? []
+  const fullStackSkills = Object.values(cvData.value?.skills ?? {})
+    .flat()
+    .filter((skill) => skill.highlight)
   const iconLabels: Record<string, string> = {
     Java: 'J',
     'Spring Boot': 'SB',
@@ -206,20 +212,12 @@ const highlightedSkills = computed(() => {
   }
 
   return fullStackSkills
-    .filter((skill) => skill.highlight)
     .slice(0, 4)
     .map((skill): Skill => ({
       ...skill,
       icon: iconLabels[skill.name] ?? skill.name.slice(0, 2).toUpperCase(),
     }))
 })
-
-const languageCodes: Record<string, string> = {
-  Arabic: 'AR',
-  English: 'EN',
-  French: 'FR',
-  Japanese: 'JP',
-}
 
 const setStatValueRef = (element: Element | ComponentPublicInstance | null, index: number) => {
   if (element instanceof HTMLElement) {
@@ -327,6 +325,10 @@ onBeforeUnmount(() => {
   }
 
   counterTweens.length = 0
+})
+
+watch([cvData, uiCopy], () => {
+  syncStats()
 })
 </script>
 

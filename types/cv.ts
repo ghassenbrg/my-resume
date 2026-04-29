@@ -18,6 +18,22 @@ export interface RuntimeCVData extends Omit<CVData, 'about' | 'skills'> {
   skills: Record<string, RuntimeSkill[]>
 }
 
+export interface AvailableLanguage {
+  code: string
+  label: string
+  path: string
+  isDefault: boolean
+}
+
+export type LanguageSelectionSource = 'auto' | 'fallback' | 'manual'
+
+export interface LanguageSelectionMeta {
+  code: string
+  source: LanguageSelectionSource
+  requestedLanguage: string | null
+  fallbackReason: string | null
+}
+
 export interface Hero {
   name: string
   title: string
@@ -56,7 +72,8 @@ export interface Experience {
   company: string
   position: string
   location: string
-  period: string
+  startDate: string
+  endDate?: string
   logo?: string
   description: string
   achievements: string[]
@@ -90,6 +107,7 @@ export interface Certification {
 
 export interface Language {
   language: string
+  code?: string
   level: string
   percentage: number
   flag?: string

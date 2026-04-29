@@ -1,23 +1,74 @@
 <template>
-  <header class="site-chrome" aria-label="Site chrome">
-    <button class="site-logo" type="button" aria-label="Go to hero section" @click="navigateTo('hero')">
+  <header class="site-chrome" :aria-label="uiCopy.navigation.siteChrome">
+    <button class="site-logo" type="button" :aria-label="uiCopy.navigation.goToHero" @click="navigateTo('hero')">
       GB
     </button>
 
-    <button
-      class="mobile-menu-button"
-      type="button"
-      aria-label="Open section navigation"
-      aria-controls="mobile-section-navigation"
-      :aria-expanded="isMobileMenuOpen"
-      @click="isMobileMenuOpen = true"
-    >
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </button>
+    <div class="site-chrome__controls">
+      <div class="language-switcher" ref="languageSwitcherRef">
+        <button
+          class="language-switcher__trigger"
+          type="button"
+          :aria-label="uiCopy.languageLabel"
+          :aria-expanded="isLanguageMenuOpen"
+          aria-haspopup="true"
+          @click="toggleLanguageMenu"
+        >
+          <span class="language-switcher__token" aria-hidden="true">
+            {{ activeLanguageVisual.flag }}
+          </span>
+          <span class="language-switcher__copy">
+            <small>{{ uiCopy.languageLabel }}</small>
+            <strong>{{ activeLanguageEntry?.label ?? activeLanguage }}</strong>
+          </span>
+          <span class="language-switcher__chevron" aria-hidden="true">▾</span>
+        </button>
+
+        <Transition name="language-menu">
+          <div
+            v-if="isLanguageMenuOpen"
+            class="language-switcher__menu"
+            role="menu"
+            :aria-label="uiCopy.languageLabel"
+          >
+            <button
+              v-for="language in availableLanguages"
+              :key="language.code"
+              class="language-switcher__option"
+              :class="{ 'language-switcher__option--active': language.code === activeLanguage }"
+              type="button"
+              role="menuitemradio"
+              :aria-checked="language.code === activeLanguage"
+              @click="selectLanguage(language.code)"
+            >
+              <span class="language-switcher__token" aria-hidden="true">
+                {{ getLanguageVisual(language.code).flag }}
+              </span>
+              <span class="language-switcher__option-copy">
+                <strong>{{ language.label }}</strong>
+                <small>{{ getLanguageVisual(language.code).shortLabel }}</small>
+              </span>
+              <span v-if="language.code === activeLanguage" class="language-switcher__active-mark" aria-hidden="true">•</span>
+            </button>
+          </div>
+        </Transition>
+      </div>
+
+      <button
+        class="mobile-menu-button"
+        type="button"
+        :aria-label="uiCopy.navigation.openSectionNavigation"
+        aria-controls="mobile-section-navigation"
+        :aria-expanded="isMobileMenuOpen"
+        @click="isMobileMenuOpen = true"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
   </header>
 
-  <nav class="side-nav" aria-label="Section navigation">
+  <nav class="side-nav" :aria-label="uiCopy.navigation.sectionNavigation">
     <div class="side-nav__track" aria-hidden="true">
       <span class="side-nav__progress" :style="{ height: `${navProgress}%` }"></span>
     </div>
@@ -27,7 +78,7 @@
           class="side-nav__dot"
           type="button"
           :class="{ 'side-nav__dot--active': activeSection === section.id }"
-          :aria-label="`Go to ${section.label}`"
+          :aria-label="buildSectionAriaLabel(section.label)"
           :aria-current="activeSection === section.id ? 'true' : undefined"
           @click="navigateTo(section.id)"
         >
@@ -46,12 +97,35 @@
       aria-labelledby="mobile-section-navigation-title"
       @click.self="isMobileMenuOpen = false"
     >
-      <nav id="mobile-section-navigation" class="mobile-nav__sheet" aria-label="Section navigation">
+      <nav id="mobile-section-navigation" class="mobile-nav__sheet" :aria-label="uiCopy.navigation.sectionNavigation">
         <div class="mobile-nav__header">
-          <p id="mobile-section-navigation-title">Sections</p>
-          <button type="button" aria-label="Close section navigation" @click="isMobileMenuOpen = false">
-            Close
+          <p id="mobile-section-navigation-title">{{ uiCopy.navigation.sectionsTitle }}</p>
+          <button type="button" :aria-label="uiCopy.navigation.closeSectionNavigation" @click="isMobileMenuOpen = false">
+            {{ uiCopy.navigation.closeSectionNavigation }}
           </button>
+        </div>
+
+        <div class="language-switcher language-switcher--mobile" :aria-label="uiCopy.languageLabel">
+          <p class="language-switcher__mobile-label">{{ uiCopy.languageLabel }}</p>
+          <div class="language-switcher__mobile-list">
+            <button
+              v-for="language in availableLanguages"
+              :key="`${language.code}-mobile`"
+              class="language-switcher__option"
+              :class="{ 'language-switcher__option--active': language.code === activeLanguage }"
+              type="button"
+              :aria-pressed="language.code === activeLanguage"
+              @click="selectLanguage(language.code)"
+            >
+              <span class="language-switcher__token" aria-hidden="true">
+                {{ getLanguageVisual(language.code).flag }}
+              </span>
+              <span class="language-switcher__option-copy">
+                <strong>{{ language.label }}</strong>
+                <small>{{ getLanguageVisual(language.code).shortLabel }}</small>
+              </span>
+            </button>
+          </div>
         </div>
 
         <ol class="mobile-nav__list">
@@ -62,7 +136,7 @@
               @click="navigateTo(section.id)"
             >
               <span>{{ section.label }}</span>
-              <span aria-hidden="true">{{ activeSection === section.id ? 'Current' : 'Open' }}</span>
+              <span aria-hidden="true">{{ activeSection === section.id ? uiCopy.navigation.current : uiCopy.navigation.open }}</span>
             </button>
           </li>
         </ol>
@@ -72,18 +146,9 @@
 </template>
 
 <script setup lang="ts">
-const sections = [
-  { id: 'hero', label: 'Hero' },
-  { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'education', label: 'Education' },
-  { id: 'languages', label: 'Languages' },
-  { id: 'contact', label: 'Contact' },
-] as const
+import { SECTION_IDS, languageVisuals, type ResumeSectionId } from '~/data/resume-ui'
 
-type SectionId = (typeof sections)[number]['id']
+type SectionId = ResumeSectionId
 type VisibleSection = {
   id: SectionId
   viewportOffset: number
@@ -91,21 +156,36 @@ type VisibleSection = {
 
 const activeSection = ref<SectionId>('hero')
 const isMobileMenuOpen = ref(false)
+const isLanguageMenuOpen = ref(false)
+const languageSwitcherRef = ref<HTMLElement | null>(null)
 const { scrollTo } = useSmoothScroll()
 const { trackEvent, trackSectionView } = useAnalytics()
+const { activeLanguage, availableLanguages, loadAvailableLanguages, loadCvData, setActiveLanguage, uiCopy } = useCvData()
 const trackedSections = new Set<SectionId>()
+const sections = computed(() => {
+  return SECTION_IDS.map((id) => ({
+    id,
+    label: uiCopy.value.navigation.sections[id],
+  }))
+})
 
 const activeIndex = computed(() => {
-  const index = sections.findIndex((section) => section.id === activeSection.value)
+  const index = sections.value.findIndex((section) => section.id === activeSection.value)
   return Math.max(index, 0)
 })
 
+const activeLanguageEntry = computed(() => {
+  return availableLanguages.value.find((language) => language.code === activeLanguage.value) ?? null
+})
+
+const activeLanguageVisual = computed(() => getLanguageVisual(activeLanguage.value))
+
 const navProgress = computed(() => {
-  if (sections.length <= 1) {
+  if (sections.value.length <= 1) {
     return 0
   }
 
-  return (activeIndex.value / (sections.length - 1)) * 100
+  return (activeIndex.value / (sections.value.length - 1)) * 100
 })
 
 const navigateTo = (sectionId: SectionId) => {
@@ -130,7 +210,7 @@ const trackSectionViewOnce = (sectionId: SectionId) => {
 }
 
 const updateActiveSection = () => {
-  const visibleSections = sections
+  const visibleSections = sections.value
     .map((section) => {
       const element = document.getElementById(section.id)
 
@@ -159,20 +239,55 @@ const updateActiveSection = () => {
 const handleKeydown = (event: KeyboardEvent) => {
   if (event.key === 'Escape') {
     isMobileMenuOpen.value = false
+    isLanguageMenuOpen.value = false
+  }
+}
+
+const buildSectionAriaLabel = (sectionLabel: string) => `${uiCopy.value.navigation.open} ${sectionLabel}`
+
+const getLanguageVisual = (languageCode: string) => {
+  return languageVisuals[languageCode] ?? {
+    flag: '◌',
+    shortLabel: languageCode.toUpperCase(),
+  }
+}
+
+const toggleLanguageMenu = () => {
+  isLanguageMenuOpen.value = !isLanguageMenuOpen.value
+}
+
+const selectLanguage = async (languageCode: string) => {
+  isLanguageMenuOpen.value = false
+  await setActiveLanguage(languageCode)
+}
+
+const handleClickOutside = (event: MouseEvent) => {
+  const target = event.target
+
+  if (!(target instanceof Node)) {
+    return
+  }
+
+  if (!languageSwitcherRef.value?.contains(target)) {
+    isLanguageMenuOpen.value = false
   }
 }
 
 onMounted(() => {
+  void loadAvailableLanguages()
+  void loadCvData()
   updateActiveSection()
   window.addEventListener('scroll', updateActiveSection, { passive: true })
   window.addEventListener('resize', updateActiveSection)
   window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('pointerdown', handleClickOutside)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', updateActiveSection)
   window.removeEventListener('resize', updateActiveSection)
   window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('pointerdown', handleClickOutside)
 })
 </script>
 
@@ -187,9 +302,148 @@ onBeforeUnmount(() => {
   pointer-events: none;
 }
 
+.site-chrome__controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  pointer-events: auto;
+}
+
 .site-logo,
 .mobile-menu-button {
   pointer-events: auto;
+}
+
+.language-switcher {
+  position: relative;
+  pointer-events: auto;
+}
+
+.language-switcher__trigger,
+.language-switcher__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-0);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+}
+
+.language-switcher__trigger {
+  min-width: 12.5rem;
+  justify-content: space-between;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(232, 168, 56, 0.26), transparent 38%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(13, 13, 18, 0.9));
+  padding: 0.38rem 0.45rem 0.38rem 0.38rem;
+}
+
+.language-switcher__token {
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.language-switcher__copy,
+.language-switcher__option-copy {
+  display: grid;
+  min-width: 0;
+  justify-items: start;
+}
+
+.language-switcher__copy {
+  flex: 1;
+}
+
+.language-switcher__copy small,
+.language-switcher__mobile-label,
+.language-switcher__option-copy small {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.language-switcher__copy strong,
+.language-switcher__option-copy strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.language-switcher__chevron {
+  color: var(--accent-amber);
+  font-size: 0.9rem;
+}
+
+.language-switcher__menu {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  display: grid;
+  gap: 0.45rem;
+  width: min(15rem, calc(100vw - 2rem));
+  border: 1px solid color-mix(in srgb, var(--accent-amber) 30%, var(--border-subtle));
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(180deg, rgba(18, 18, 28, 0.96), rgba(9, 9, 15, 0.98)),
+    rgba(13, 13, 18, 0.96);
+  padding: 0.6rem;
+  box-shadow:
+    var(--shadow-card),
+    0 1rem 2.5rem rgba(0, 0, 0, 0.35);
+}
+
+.language-switcher__option {
+  width: 100%;
+  justify-content: flex-start;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem 0.6rem;
+}
+
+.language-switcher__option--active {
+  border-color: color-mix(in srgb, var(--accent-amber) 54%, var(--border-subtle));
+  background:
+    linear-gradient(135deg, rgba(232, 168, 56, 0.14), rgba(86, 196, 184, 0.08)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.language-switcher__active-mark {
+  margin-left: auto;
+  color: var(--accent-amber);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.language-switcher--mobile {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.language-switcher__mobile-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.language-menu-enter-active,
+.language-menu-leave-active {
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.language-menu-enter-from,
+.language-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-0.35rem) scale(0.98);
 }
 
 .site-logo {

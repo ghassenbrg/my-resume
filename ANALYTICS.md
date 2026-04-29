@@ -67,6 +67,9 @@ trackSectionView('about')
 - `contact_form_success`: Fired after EmailJS accepts the message submission.
 - `contact_form_error`: Fired when contact submission fails.
 - `follow_up_click`: Fired when a visitor opens a CV, email, GitHub, or LinkedIn follow-up link.
+- `language_auto_resolved`: Fired when the resume resolves its initial language from browser
+  preferences or falls back to English.
+- `language_switched`: Fired when a visitor explicitly changes the active resume language.
 
 ## Event Payloads
 
@@ -78,6 +81,8 @@ trackSectionView('about')
 | `contact_form_success` | `source` |
 | `contact_form_error` | `source`, `reason` |
 | `follow_up_click` | `label`, `destination` |
+| `language_auto_resolved` | `resolved_language`, `requested_language`, `selection_source`, `fallback_reason` |
+| `language_switched` | `resolved_language`, `requested_language`, `selection_source`, `fallback_reason` |
 
 ## Privacy Rules
 

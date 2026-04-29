@@ -13,7 +13,7 @@
         decoding="async"
       />
 
-      <p ref="eyebrowRef" class="section-eyebrow">Editorial Engineering</p>
+      <p ref="eyebrowRef" class="section-eyebrow">{{ uiCopy.hero.eyebrow }}</p>
 
       <h1 id="hero-title" ref="nameRef" class="hero-section__name">
         <span>{{ firstName }}</span>
@@ -25,7 +25,7 @@
         <span class="hero-section__cursor animate-cursor-blink" aria-hidden="true"></span>
       </p>
 
-      <ul ref="pillsRef" class="hero-section__pills" aria-label="Contact summary">
+      <ul ref="pillsRef" class="hero-section__pills" :aria-label="uiCopy.hero.contactSummary">
         <li v-for="pill in heroPills" :key="pill.key">
           <span class="hero-section__pill-icon" aria-hidden="true">
             <svg v-if="pill.icon === 'location'" viewBox="0 0 24 24" fill="none">
@@ -45,14 +45,14 @@
         </li>
       </ul>
 
-      <div ref="actionsRef" class="hero-section__actions" aria-label="Primary links">
+      <div ref="actionsRef" class="hero-section__actions" :aria-label="uiCopy.hero.primaryLinks">
         <MagneticButton :href="cvData.hero.github" external variant="ghost" analytics-label="github">
           <Icon class="hero-section__action-icon hero-section__action-icon--white" :icon="githubIcon" aria-hidden="true" />
-          <span>GitHub</span>
+          <span>{{ uiCopy.hero.actions.github }}</span>
         </MagneticButton>
         <MagneticButton :href="cvData.hero.linkedin" external variant="ghost" analytics-label="linkedin">
           <Icon :icon="linkedinIcon" aria-hidden="true" />
-          <span>LinkedIn</span>
+          <span>{{ uiCopy.hero.actions.linkedin }}</span>
         </MagneticButton>
         <MagneticButton :href="`mailto:${cvData.hero.email}`" variant="secondary" analytics-label="email">
           <span class="hero-section__action-icon" aria-hidden="true">
@@ -61,7 +61,7 @@
               <path d="m5.5 8 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </span>
-          <span>Email</span>
+          <span>{{ uiCopy.hero.actions.email }}</span>
         </MagneticButton>
         <MagneticButton :href="cvData.hero.cvLink" variant="primary" analytics-label="cv">
           <span class="hero-section__action-icon" aria-hidden="true">
@@ -71,7 +71,7 @@
               <path d="M5 19.5h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
             </svg>
           </span>
-          <span>CV</span>
+          <span>{{ uiCopy.hero.actions.cv }}</span>
         </MagneticButton>
       </div>
     </div>
@@ -80,7 +80,7 @@
       ref="scrollRef"
       class="hero-section__scroll"
       type="button"
-      aria-label="Scroll to about section"
+      :aria-label="uiCopy.hero.scrollToAbout"
       @click="scrollTo('#about')"
     >
       <span aria-hidden="true"></span>
@@ -95,7 +95,7 @@ import linkedinIcon from '@iconify-icons/devicon/linkedin'
 import MagneticButton from '~/components/ui/MagneticButton.vue'
 
 const ParticleCanvas = defineAsyncComponent(() => import('~/components/ui/ParticleCanvas.vue'))
-const { cvData, loadCvData } = useCvData()
+const { cvData, loadCvData, uiCopy } = useCvData()
 
 const heroPills = computed(() => {
   if (!cvData.value) {
@@ -242,6 +242,10 @@ onMounted(async () => {
       4,
     )
 
+  startTypewriter()
+})
+
+watch(heroTitle, () => {
   startTypewriter()
 })
 

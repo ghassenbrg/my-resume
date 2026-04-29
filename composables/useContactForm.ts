@@ -9,6 +9,13 @@ export interface ContactFormState {
 
 export type ContactFormErrors = Record<ContactField, string>
 
+export interface ContactValidationMessages {
+  nameRequired: string
+  emailRequired: string
+  emailInvalid: string
+  messageRequired: string
+}
+
 export const createContactFormState = (): ContactFormState => ({
   name: '',
   email: '',
@@ -21,27 +28,35 @@ export const createContactFormErrors = (): ContactFormErrors => ({
   message: '',
 })
 
+export const defaultContactValidationMessages: ContactValidationMessages = {
+  nameRequired: 'Name is required.',
+  emailRequired: 'Email is required.',
+  emailInvalid: 'Enter a valid email address.',
+  messageRequired: 'Message is required.',
+}
+
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export const validateContactField = (
   field: ContactField,
   form: ContactFormState,
   errors: ContactFormErrors = createContactFormErrors(),
+  messages: ContactValidationMessages = defaultContactValidationMessages,
 ) => {
   if (field === 'name') {
-    errors.name = form.name.trim() ? '' : 'Name is required.'
+    errors.name = form.name.trim() ? '' : messages.nameRequired
   }
 
   if (field === 'email') {
     errors.email = form.email.trim()
       ? emailPattern.test(form.email.trim())
         ? ''
-        : 'Enter a valid email address.'
-      : 'Email is required.'
+        : messages.emailInvalid
+      : messages.emailRequired
   }
 
   if (field === 'message') {
-    errors.message = form.message.trim() ? '' : 'Message is required.'
+    errors.message = form.message.trim() ? '' : messages.messageRequired
   }
 
   return !errors[field]
@@ -50,8 +65,9 @@ export const validateContactField = (
 export const validateContactForm = (
   form: ContactFormState,
   errors: ContactFormErrors = createContactFormErrors(),
+  messages: ContactValidationMessages = defaultContactValidationMessages,
 ) => {
   const fields: ContactField[] = ['name', 'email', 'message']
 
-  return fields.map((field) => validateContactField(field, form, errors)).every(Boolean)
+  return fields.map((field) => validateContactField(field, form, errors, messages)).every(Boolean)
 }

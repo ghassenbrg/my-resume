@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
+import { SECTION_IDS } from '~/data/resume-ui'
 
-const sectionRegistry = ['hero', 'about', 'experience', 'skills', 'projects', 'education', 'languages', 'contact']
+const sectionRegistry = [...SECTION_IDS]
 
 describe('app navigation section registry', () => {
   it('keeps the public resume sections in contract order', () => {
