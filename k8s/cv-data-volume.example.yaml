@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume
+spec:
+  template:
+    spec:
+      containers:
+        - name: resume
+          image: ghassen-resume:latest
+          volumeMounts:
+            - name: cv-data
+              mountPath: /usr/share/nginx/html/cv-data.json
+              subPath: cv-data.json
+              readOnly: true
+            - name: cv-pdf
+              mountPath: /usr/share/nginx/html/CV_Ghassen_Bargougui.pdf
+              subPath: CV_Ghassen_Bargougui.pdf
+              readOnly: true
+      volumes:
+        - name: cv-data
+          configMap:
+            name: resume-cv-data
+        - name: cv-pdf
+          configMap:
+            name: resume-cv-pdf

@@ -1,23 +1,29 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#7F2DF3"/>
-      <stop offset="100%" stop-color="#00C8B5"/>
+    <linearGradient id="tile" x1="22" y1="18" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1a1a2e"/>
+      <stop offset="1" stop-color="#09090f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="34" y1="94" x2="94" y2="94" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e8a838"/>
+      <stop offset="1" stop-color="#56c4b8"/>
     </linearGradient>
   </defs>
 
-  <!-- Gradient Background -->
-  <rect width="128" height="128" rx="24" fill="url(#bgGradient)"/>
+  <!-- <rect width="128" height="128" rx="26" fill="#09090f"/> -->
+  <rect x="12" y="12" width="104" height="104" rx="22" fill="url(#tile)" stroke="#2a2a44" stroke-width="2"/>
+  <path d="M34 94H94" stroke="url(#accent)" stroke-width="6" stroke-linecap="round"/>
 
-  <!-- GB Text -->
-  <text x="50%" y="72" text-anchor="middle" fill="white"
-        font-family="'Poppins', 'Segoe UI', sans-serif" font-size="80" font-weight="700">
-    GB
-  </text>
+  <text
+    x="64"
+    y="78"
+    text-anchor="middle"
+    fill="#f5f0e8"
+    font-family="Space Grotesk, Inter, system-ui, sans-serif"
+    font-size="54"
+    font-weight="700"
+    letter-spacing="-1"
+  >GB</text>
 
-  <!-- Bigger but properly positioned </> -->
-  <text x="50%" y="110" text-anchor="middle" fill="white"
-        font-family="'Fira Code', monospace" font-size="40" font-weight="600">
-    &lt;/&gt;
-  </text>
+  <circle cx="96" cy="32" r="5" fill="#e8a838"/>
 </svg>
