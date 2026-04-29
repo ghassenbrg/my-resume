@@ -7,8 +7,8 @@
   >
     <div class="section-container education-section__container">
       <div ref="headerRef" class="education-section__header">
-        <p class="section-eyebrow">Credentials</p>
-        <h2 id="education-title" class="education-section__title">Education & Certifications</h2>
+        <p class="section-eyebrow">{{ uiCopy.education.eyebrow }}</p>
+        <h2 id="education-title" class="education-section__title">{{ uiCopy.education.title }}</h2>
       </div>
 
       <div v-if="cvData" ref="wallRef" class="education-section__wall">
@@ -30,7 +30,7 @@
             <span
               v-else
               class="credential-card__badge-fallback"
-              aria-label="Certification badge unavailable"
+              :aria-label="uiCopy.education.certificationUnavailable"
             >
               OCP
             </span>
@@ -50,10 +50,10 @@
               :href="primaryCertification.link"
               target="_blank"
               rel="noreferrer"
-              :aria-label="`Verify ${primaryCertification.name}`"
+              :aria-label="`${uiCopy.education.verifyCredential} ${primaryCertification.name}`"
             >
               <span aria-hidden="true"></span>
-              Verify credential
+              {{ uiCopy.education.verifyCredential }}
             </a>
           </div>
         </article>
@@ -79,7 +79,7 @@ const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
 const wallRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
-const { cvData, loadCvData } = useCvData()
+const { cvData, loadCvData, uiCopy } = useCvData()
 
 const primaryCertification = computed(() => cvData.value?.certifications[0] ?? null)
 const failedCertificationImages = ref<Set<string>>(new Set())

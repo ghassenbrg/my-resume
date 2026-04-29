@@ -99,7 +99,7 @@
       "company": "Rakuten Card",
       "position": "Application Engineer",
       "location": "Fukuoka, Japan",
-      "period": "Dec 2025 – Present",
+      "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
       "description": "Member of the Technology Incubation Team, leading hybrid-cloud migration and API modernization work for Rakuten Card platforms supporting 25M+ members in Japan.",
       "achievements": [
@@ -118,7 +118,8 @@
       "company": "Sogeti (on mission at BGL BNP Paribas)",
       "position": "Software Engineer",
       "location": "Luxembourg",
-      "period": "Feb 2025 – Nov 2025",
+      "startDate": "2025-02-01",
+      "endDate": "2025-11-30",
       "logo": "sogeti_logo.png",
       "description": "Maintaining and extending secure internal banking applications within an Agile tribe.",
       "achievements": [
@@ -132,7 +133,8 @@
       "company": "CBTW",
       "position": "Java Full-Stack Developer",
       "location": "Luxembourg",
-      "period": "Sept 2024 – Jan 2025",
+      "startDate": "2024-09-01",
+      "endDate": "2025-01-31",
       "logo": "cbtw_logo.png",
       "description": "Enterprise web application development using Java and Angular technologies.",
       "achievements": [
@@ -145,7 +147,8 @@
       "company": "VERMEG for Banking and Insurance",
       "position": "Software Engineer",
       "location": "Tunis, Tunisia",
-      "period": "Oct 2019 – Aug 2024",
+      "startDate": "2019-10-01",
+      "endDate": "2024-08-31",
       "logo": "vermeg_logo.png",
       "description": "Led backend engineering for high-traffic insurance & financial applications.",
       "achievements": [
@@ -283,9 +286,9 @@
     }
   ],
   "languages": [
-    { "language": "Arabic", "level": "Native", "percentage": 100 },
-    { "language": "English", "level": "Advanced, Fluent", "percentage": 85 },
-    { "language": "French", "level": "Advanced, Fluent", "percentage": 85 },
-    { "language": "Japanese", "level": "Beginner, Basic Proficiency", "percentage": 10 }
+    { "language": "Arabic", "code": "AR", "level": "Native", "percentage": 100 },
+    { "language": "English", "code": "EN", "level": "Advanced, Fluent", "percentage": 85 },
+    { "language": "French", "code": "FR", "level": "Advanced, Fluent", "percentage": 85 },
+    { "language": "Japanese", "code": "JA", "level": "Beginner, Basic Proficiency", "percentage": 10 }
   ]
 }

@@ -7,13 +7,13 @@
   >
     <div class="section-container contact-section__container">
       <div ref="headerRef" class="contact-section__header">
-        <p class="section-eyebrow">Contact</p>
-        <h2 id="contact-title" class="contact-section__title">Terminal Contact</h2>
+        <p class="section-eyebrow">{{ uiCopy.contact.eyebrow }}</p>
+        <h2 id="contact-title" class="contact-section__title">{{ uiCopy.contact.title }}</h2>
       </div>
 
       <div v-if="cvData" ref="terminalRef" class="contact-terminal">
         <header class="contact-terminal__chrome">
-          <span>Terminal</span>
+          <span>{{ uiCopy.contact.terminal }}</span>
           <div aria-hidden="true">
             <i></i>
             <i></i>
@@ -24,7 +24,7 @@
         <div class="contact-terminal__body">
           <div class="terminal-command">
             <p class="terminal-command__line">$ whoami</p>
-            <p>{{ cvData.hero.name }} &mdash; Software Engineer</p>
+            <p>{{ cvData.hero.name }} &mdash; {{ cvData.hero.title }}</p>
           </div>
 
           <div class="terminal-command">
@@ -50,7 +50,7 @@
             <p class="terminal-command__line">$ send-message --interactive</p>
 
             <div class="terminal-field">
-              <label for="contact-name">name:</label>
+              <label for="contact-name">{{ uiCopy.contact.nameLabel }}</label>
               <input
                 id="contact-name"
                 v-model.trim="form.name"
@@ -72,7 +72,7 @@
             </div>
 
             <div class="terminal-field">
-              <label for="contact-email">email:</label>
+              <label for="contact-email">{{ uiCopy.contact.emailLabel }}</label>
               <input
                 id="contact-email"
                 v-model.trim="form.email"
@@ -94,7 +94,7 @@
             </div>
 
             <div class="terminal-field terminal-field--message">
-              <label for="contact-message">message:</label>
+              <label for="contact-message">{{ uiCopy.contact.messageLabel }}</label>
               <textarea
                 id="contact-message"
                 v-model.trim="form.message"
@@ -119,7 +119,7 @@
               type="submit"
               :disabled="status === 'sending'"
             >
-              &gt; {{ status === 'sending' ? 'sending_' : 'submit_' }} <span aria-hidden="true"></span>
+              &gt; {{ status === 'sending' ? uiCopy.contact.submitSending : uiCopy.contact.submitIdle }} <span aria-hidden="true"></span>
             </button>
 
             <p
@@ -157,7 +157,7 @@ const terminalRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
 const config = useRuntimeConfig()
 const { trackEvent } = useAnalytics()
-const { cvData, loadCvData } = useCvData()
+const { cvData, loadCvData, uiCopy } = useCvData()
 
 const form = reactive(createContactFormState())
 const errors = reactive(createContactFormErrors())
@@ -176,7 +176,7 @@ const getEmailJsConfig = () => {
 }
 
 const validateField = (field: ContactField) => {
-  return validateContactField(field, form, errors)
+  return validateContactField(field, form, errors, uiCopy.value.contact.validation)
 }
 
 const handleFieldInput = (field: ContactField) => {
@@ -192,9 +192,9 @@ const handleFieldInput = (field: ContactField) => {
 const submitMessage = async () => {
   statusMessage.value = ''
 
-  if (!validateContactForm(form, errors)) {
+  if (!validateContactForm(form, errors, uiCopy.value.contact.validation)) {
     status.value = 'error'
-    statusMessage.value = 'Fix the highlighted fields and run submit again.'
+    statusMessage.value = uiCopy.value.contact.fixFields
     return
   }
 
@@ -202,7 +202,7 @@ const submitMessage = async () => {
 
   if (!serviceId || !templateId || !publicKey) {
     status.value = 'error'
-    statusMessage.value = 'EmailJS configuration is missing.'
+    statusMessage.value = uiCopy.value.contact.missingConfig
     trackEvent('contact_form_error', {
       source: 'contact_terminal',
       reason: 'missing_configuration',
@@ -231,7 +231,7 @@ const submitMessage = async () => {
     )
 
     status.value = 'sent'
-    statusMessage.value = '✓ Message sent successfully. Expect a reply within 24h.'
+    statusMessage.value = uiCopy.value.contact.sent
     form.name = ''
     form.email = ''
     form.message = ''
@@ -240,7 +240,7 @@ const submitMessage = async () => {
     })
   } catch (error) {
     status.value = 'error'
-    statusMessage.value = 'Message failed to send. Email directly or try again later.'
+    statusMessage.value = uiCopy.value.contact.failed
     trackEvent('contact_form_error', {
       source: 'contact_terminal',
       reason: error instanceof Error ? error.name : 'unknown_error',

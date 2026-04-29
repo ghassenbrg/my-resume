@@ -1,12 +1,12 @@
 <template>
   <HeroSection />
-  <LazySectionMount section-id="about" label="About" :component="AboutSection" />
-  <LazySectionMount section-id="experience" label="Experience" :component="ExperienceSection" />
-  <LazySectionMount section-id="skills" label="Skills" :component="SkillsSection" />
-  <LazySectionMount section-id="projects" label="Projects" :component="ProjectsSection" />
-  <LazySectionMount section-id="education" label="Education" :component="EducationSection" />
-  <LazySectionMount section-id="languages" label="Languages" :component="LanguagesSection" />
-  <LazySectionMount section-id="contact" label="Contact" :component="ContactSection" />
+  <LazySectionMount section-id="about" :label="sectionLabels.about" :component="AboutSection" />
+  <LazySectionMount section-id="experience" :label="sectionLabels.experience" :component="ExperienceSection" />
+  <LazySectionMount section-id="skills" :label="sectionLabels.skills" :component="SkillsSection" />
+  <LazySectionMount section-id="projects" :label="sectionLabels.projects" :component="ProjectsSection" />
+  <LazySectionMount section-id="education" :label="sectionLabels.education" :component="EducationSection" />
+  <LazySectionMount section-id="languages" :label="sectionLabels.languages" :component="LanguagesSection" />
+  <LazySectionMount section-id="contact" :label="sectionLabels.contact" :component="ContactSection" />
 </template>
 
 <script setup lang="ts">
@@ -20,4 +20,11 @@ const ProjectsSection = defineAsyncComponent(() => import('~/components/sections
 const EducationSection = defineAsyncComponent(() => import('~/components/sections/EducationSection.vue'))
 const LanguagesSection = defineAsyncComponent(() => import('~/components/sections/LanguagesSection.vue'))
 const ContactSection = defineAsyncComponent(() => import('~/components/sections/ContactSection.vue'))
+const { loadCvData, uiCopy } = useCvData()
+
+const sectionLabels = computed(() => uiCopy.value.navigation.sections)
+
+onMounted(() => {
+  void loadCvData()
+})
 </script>

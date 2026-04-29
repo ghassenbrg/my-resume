@@ -7,7 +7,7 @@ describe('experience section structured content', () => {
     const data = fixture as CVData
 
     expect(data.experience.length).toBeGreaterThan(0)
-    expect(data.experience.every((entry) => entry.company && entry.position && entry.period)).toBe(true)
+    expect(data.experience.every((entry) => entry.company && entry.position && entry.startDate)).toBe(true)
     expect(data.experience.every((entry) => Boolean(entry.logo))).toBe(true)
     expect(data.experience.every((entry) => entry.achievements.length > 0)).toBe(true)
   })

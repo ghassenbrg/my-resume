@@ -25,7 +25,8 @@
       "company": "Rakuten Card",
       "position": "Application Engineer",
       "location": "Fukuoka, Japan",
-      "period": "Dec 2025 - Present",
+      "startDate": "2019-10-01",
+      "endDate": "2025-10-01",
       "logo": "rakuten_logo.png",
       "description": "Hybrid-cloud migration and API modernization.",
       "achievements": ["Built CI/CD and GKE delivery foundations."]
@@ -55,6 +56,6 @@
     }
   ],
   "languages": [
-    { "language": "English", "level": "Fluent", "percentage": 90 }
+    { "language": "English", "code": "EN", "level": "Fluent", "percentage": 90 }
   ]
 }

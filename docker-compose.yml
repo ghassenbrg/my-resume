@@ -9,5 +9,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./public/cv-data.json:/usr/share/nginx/html/cv-data.json:ro
+      - ./public/cv-data-en.json:/usr/share/nginx/html/cv-data-en.json:ro
+      - ./public/cv-data-fr.json:/usr/share/nginx/html/cv-data-fr.json:ro
+      - ./public/cv-data-jp.json:/usr/share/nginx/html/cv-data-jp.json:ro
       - ./public/CV_Ghassen_Bargougui.pdf:/usr/share/nginx/html/CV_Ghassen_Bargougui.pdf:ro

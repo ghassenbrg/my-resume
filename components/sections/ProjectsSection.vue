@@ -7,8 +7,8 @@
   >
     <div class="section-container projects-section__container">
       <div ref="headerRef" class="projects-section__header">
-        <p class="section-eyebrow">Projects</p>
-        <h2 id="projects-title" class="projects-section__title">Featured Projects</h2>
+        <p class="section-eyebrow">{{ uiCopy.projects.eyebrow }}</p>
+        <h2 id="projects-title" class="projects-section__title">{{ uiCopy.projects.title }}</h2>
       </div>
 
       <div v-if="cvData" ref="stackRef" class="projects-section__stack">
@@ -26,7 +26,7 @@
         >
           <div class="project-card__shell">
             <header class="project-card__header">
-              <p class="project-card__number">Project {{ index + 1 }}</p>
+              <p class="project-card__number">{{ uiCopy.projects.projectLabel }} {{ index + 1 }}</p>
               <span class="project-card__role">{{ project.role }}</span>
             </header>
 
@@ -41,7 +41,7 @@
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {{ project.linkLabel ?? 'View' }}
+                  {{ project.linkLabel ?? uiCopy.projects.view }}
                 </a>
               </div>
 
@@ -54,7 +54,7 @@
                 </li>
               </ul>
 
-              <ul class="project-card__technologies" aria-label="Technology stack">
+              <ul class="project-card__technologies" :aria-label="uiCopy.projects.technologyStack">
                 <li
                   v-for="technology in project.technologies"
                   :key="technology"
@@ -67,7 +67,7 @@
         </article>
       </div>
 
-      <ol v-if="cvData" class="projects-section__dots" aria-label="Project position">
+      <ol v-if="cvData" class="projects-section__dots" :aria-label="uiCopy.projects.projectPosition">
         <li
           v-for="(project, index) in projects"
           :key="`${project.title}-dot`"
@@ -90,7 +90,7 @@ const desktopQuery = ref<MediaQueryList | null>(null)
 const sectionMotionCleanups: Array<() => void> = []
 const stackAnimationCleanups: Array<() => void> = []
 const scrollAnimation = useScrollAnimation()
-const { cvData, loadCvData } = useCvData()
+const { cvData, loadCvData, uiCopy } = useCvData()
 
 const projectAccents = ['#e8a838', '#56c4b8', '#c77dff', '#ff6b8a']
 const projects = computed(() => cvData.value?.projects ?? [])

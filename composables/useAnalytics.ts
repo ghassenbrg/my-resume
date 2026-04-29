@@ -5,6 +5,8 @@ export type AnalyticsEventName =
   | 'contact_form_success'
   | 'contact_form_error'
   | 'follow_up_click'
+  | 'language_auto_resolved'
+  | 'language_switched'
 
 export type AnalyticsPayload = Record<string, string | number | boolean | null | undefined>
 

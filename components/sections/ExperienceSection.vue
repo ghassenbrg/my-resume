@@ -11,15 +11,15 @@
     <div ref="pinRef" class="experience-section__pin">
       <div class="section-container experience-section__container">
         <div ref="headerRef" class="experience-section__header">
-          <p class="section-eyebrow">Experience</p>
-          <h2 id="experience-title" class="experience-section__title">Professional Experience</h2>
+          <p class="section-eyebrow">{{ uiCopy.experience.eyebrow }}</p>
+          <h2 id="experience-title" class="experience-section__title">{{ uiCopy.experience.title }}</h2>
         </div>
 
         <div v-if="cvData" class="experience-section__viewport">
           <div ref="trackRef" class="experience-section__track">
             <article
               v-for="(experience, index) in experiences"
-              :key="`${experience.company}-${experience.period}`"
+              :key="`${experience.company}-${experience.startDate}`"
               ref="cardRefs"
               class="experience-card"
               :style="{ '--experience-accent': experience.accentColor ?? fallbackAccents[index % fallbackAccents.length] }"
@@ -41,15 +41,15 @@
                 <div class="experience-card__identity">
                   <p class="experience-card__company">{{ experience.company }}</p>
                   <h3>{{ experience.position }}</h3>
-                  <p>{{ experience.location }} · {{ experience.period }}</p>
+                  <p>{{ experience.location }} · {{ formatExperienceRange(experience) }}</p>
                 </div>
 
                 <span
-                  v-if="isCurrentExperience(experience.period)"
+                  v-if="isCurrentExperience(experience)"
                   class="experience-card__current"
                 >
                   <span aria-hidden="true"></span>
-                  Current
+                  {{ uiCopy.experience.current }}
                 </span>
               </header>
 
@@ -76,7 +76,7 @@
               v-for="(experience, index) in experiences"
               :key="experience.company"
             >
-              Job {{ index + 1 }}
+              {{ uiCopy.experience.jobLabel }} {{ index + 1 }}
             </li>
           </ol>
         </div>
@@ -97,14 +97,46 @@ const cardRefs = ref<HTMLElement[]>([])
 
 const fallbackAccents = ['#56c4b8', '#e8a838', '#c77dff']
 const scrollAnimation = useScrollAnimation()
-const { cvData, loadCvData } = useCvData()
+const { activeLanguage, cvData, loadCvData, uiCopy } = useCvData()
 const experiences = computed(() => cvData.value?.experience ?? [])
 const desktopQuery = ref<MediaQueryList | null>(null)
 const isPinnedDesktop = ref(false)
 const animationCleanups: Array<() => void> = []
 const logoErrors = ref<Record<string, boolean>>({})
 
-const isCurrentExperience = (period: string) => period.toLowerCase().includes('present')
+const experienceDateLocale = computed(() => {
+  if (activeLanguage.value === 'jp') {
+    return 'ja-JP'
+  }
+
+  if (activeLanguage.value === 'fr') {
+    return 'fr-FR'
+  }
+
+  return 'en-US'
+})
+
+const formatMonthYear = (dateValue: string) => {
+  const date = new Date(`${dateValue}T00:00:00Z`)
+
+  return new Intl.DateTimeFormat(experienceDateLocale.value, {
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(date)
+}
+
+const formatExperienceRange = (experience: Experience) => {
+  const start = formatMonthYear(experience.startDate)
+
+  if (!experience.endDate) {
+    return `${start} - ${uiCopy.value.experience.current}`
+  }
+
+  return `${start} - ${formatMonthYear(experience.endDate)}`
+}
+
+const isCurrentExperience = (experience: Experience) => !experience.endDate
 
 const getCompanyMark = (company: string) => {
   const normalizedName = company.replace(/\(.+\)/, '').trim()

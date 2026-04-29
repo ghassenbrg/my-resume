@@ -7,19 +7,19 @@
   >
     <div class="section-container languages-section__container">
       <div ref="headerRef" class="languages-section__header">
-        <p class="section-eyebrow">Languages</p>
-        <h2 id="languages-title" class="languages-section__title">Multilingual Communication</h2>
+        <p class="section-eyebrow">{{ uiCopy.languages.eyebrow }}</p>
+        <h2 id="languages-title" class="languages-section__title">{{ uiCopy.languages.title }}</h2>
       </div>
 
       <div v-if="cvData" class="languages-section__content languages-section__visual">
-        <div ref="chartRef" class="language-chart" aria-label="Language proficiency radial chart">
+        <div ref="chartRef" class="language-chart" :aria-label="uiCopy.languages.radialChart">
           <svg
             class="language-chart__svg"
             viewBox="0 0 420 420"
             role="img"
             aria-labelledby="language-chart-title"
           >
-            <title id="language-chart-title">Language proficiency chart</title>
+            <title id="language-chart-title">{{ uiCopy.languages.radialChartTitle }}</title>
             <circle
               v-for="language in visualLanguages"
               :key="`${language.language}-track`"
@@ -45,7 +45,7 @@
 
           <div class="language-chart__core">
             <strong>{{ visualLanguages.length }}</strong>
-            <span>Languages</span>
+            <span>{{ uiCopy.languages.countLabel }}</span>
           </div>
         </div>
 
@@ -66,7 +66,7 @@
         </div>
       </div>
 
-      <div v-if="cvData" ref="barsRef" class="languages-section__bars" aria-label="Language proficiency bars">
+      <div v-if="cvData" ref="barsRef" class="languages-section__bars" :aria-label="uiCopy.languages.barsLabel">
         <article
           v-for="language in visualLanguages"
           :key="`${language.language}-bar`"
@@ -86,7 +86,7 @@
       </div>
 
       <p ref="contextRef" class="languages-section__context">
-        Collaboration across Arabic, English, French, and Japanese contexts keeps technical decisions clear across teams and regions.
+        {{ uiCopy.languages.context }}
       </p>
     </div>
   </section>
@@ -111,15 +111,8 @@ const labelsRef = ref<HTMLElement | null>(null)
 const barsRef = ref<HTMLElement | null>(null)
 const contextRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
-const { cvData, loadCvData } = useCvData()
+const { cvData, loadCvData, uiCopy } = useCvData()
 const progressTweens: Array<{ kill: () => void; scrollTrigger?: { kill: () => void } | null }> = []
-
-const languageCodes: Record<string, string> = {
-  Arabic: 'AR',
-  English: 'EN',
-  French: 'FR',
-  Japanese: 'JP',
-}
 
 const languageAccents = ['#e8a838', '#56c4b8', '#c77dff', '#ff6b8a']
 const outerRadius = 176
@@ -134,7 +127,7 @@ const syncVisualLanguages = () => {
 
     return {
       ...language,
-      code: languageCodes[language.language] ?? language.language.slice(0, 2).toUpperCase(),
+      code: language.code ?? language.flag ?? language.language.slice(0, 2).toUpperCase(),
       accent: languageAccents[index % languageAccents.length],
       radius,
       strokeWidth,
@@ -232,6 +225,10 @@ onMounted(async () => {
 
 onBeforeUnmount(() => {
   clearProgressTweens()
+})
+
+watch(cvData, () => {
+  syncVisualLanguages()
 })
 </script>
 

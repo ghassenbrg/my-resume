@@ -1,0 +1,20 @@
+{
+  "hero": {
+    "name": "Invalid Resume",
+    "title": "",
+    "location": "Nowhere",
+    "email": "",
+    "github": "not-a-url",
+    "linkedin": "",
+    "cvLink": ""
+  },
+  "about": {
+    "paragraphs": []
+  },
+  "skills": {},
+  "experience": [],
+  "projects": [],
+  "education": [],
+  "certifications": [],
+  "languages": []
+}

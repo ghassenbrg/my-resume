@@ -7,22 +7,22 @@
   >
     <div class="section-container">
       <div ref="headerRef" class="skills-section__header">
-        <p class="section-eyebrow">Constellation</p>
-        <h2 id="skills-title" class="skills-section__title">Technical Skills</h2>
+        <p class="section-eyebrow">{{ uiCopy.skills.eyebrow }}</p>
+        <h2 id="skills-title" class="skills-section__title">{{ uiCopy.skills.title }}</h2>
       </div>
 
-      <div v-if="cvData" ref="summaryRef" class="skills-section__summary" aria-label="Skills summary">
+      <div v-if="cvData" ref="summaryRef" class="skills-section__summary" :aria-label="uiCopy.skills.summary">
         <article>
           <strong>{{ cvData.about.stats.yearsExperience }}+</strong>
-          <span>Years</span>
+          <span>{{ uiCopy.skills.stats.years }}</span>
         </article>
         <article>
           <strong>{{ coreSkillCount }}</strong>
-          <span>Core Skills</span>
+          <span>{{ uiCopy.skills.stats.coreSkills }}</span>
         </article>
         <article>
           <strong>{{ skillCategories.length }}</strong>
-          <span>Categories</span>
+          <span>{{ uiCopy.skills.stats.categories }}</span>
         </article>
       </div>
 
@@ -70,7 +70,7 @@
                   aria-hidden="true"
                 />
                 <span>{{ skill.name }}</span>
-                <strong v-if="skill.highlight">Core</strong>
+                <strong v-if="skill.highlight">{{ uiCopy.skills.core }}</strong>
               </li>
             </ul>
           </div>
@@ -124,7 +124,7 @@ const summaryRef = ref<HTMLElement | null>(null)
 const orbitRef = ref<InstanceType<typeof SkillOrbit> | null>(null)
 const accordionRef = ref<HTMLElement | null>(null)
 const scrollAnimation = useScrollAnimation()
-const { cvData, loadCvData } = useCvData()
+const { cvData, loadCvData, uiCopy } = useCvData()
 
 const iconNames: Record<string, IconifyIcon> = {
   activemq: apacheIcon,
