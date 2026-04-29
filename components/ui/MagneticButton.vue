@@ -99,7 +99,16 @@ useMagneticEffect(buttonRef, {
 }
 
 .magnetic-button__content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
   pointer-events: none;
+}
+
+.magnetic-button__content :deep(svg) {
+  width: 1rem;
+  height: 1rem;
 }
 
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {

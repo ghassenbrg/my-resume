@@ -26,16 +26,53 @@
       </p>
 
       <ul ref="pillsRef" class="hero-section__pills" aria-label="Contact summary">
-        <li>{{ cvData.hero.location }}</li>
-        <li>{{ cvData.hero.email }}</li>
-        <li v-if="cvData.hero.availabilityStatus">{{ cvData.hero.availabilityStatus }}</li>
+        <li v-for="pill in heroPills" :key="pill.key">
+          <span class="hero-section__pill-icon" aria-hidden="true">
+            <svg v-if="pill.icon === 'location'" viewBox="0 0 24 24" fill="none">
+              <path d="M12 21c4-4.35 6-7.52 6-10a6 6 0 1 0-12 0c0 2.48 2 5.65 6 10Z" stroke="currentColor" stroke-width="1.7" />
+              <circle cx="12" cy="11" r="2.3" fill="currentColor" />
+            </svg>
+            <svg v-else-if="pill.icon === 'email'" viewBox="0 0 24 24" fill="none">
+              <rect x="3.5" y="6" width="17" height="12" rx="2.2" stroke="currentColor" stroke-width="1.7" />
+              <path d="m5.5 8 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <svg v-else viewBox="0 0 24 24" fill="none">
+              <path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+              <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.7" />
+            </svg>
+          </span>
+          <span>{{ pill.label }}</span>
+        </li>
       </ul>
 
       <div ref="actionsRef" class="hero-section__actions" aria-label="Primary links">
-        <MagneticButton :href="cvData.hero.github" external variant="ghost" analytics-label="github">GH</MagneticButton>
-        <MagneticButton :href="cvData.hero.linkedin" external variant="ghost" analytics-label="linkedin">LI</MagneticButton>
-        <MagneticButton :href="`mailto:${cvData.hero.email}`" variant="secondary" analytics-label="email">Email</MagneticButton>
-        <MagneticButton :href="cvData.hero.cvLink" variant="primary" analytics-label="cv">CV</MagneticButton>
+        <MagneticButton :href="cvData.hero.github" external variant="ghost" analytics-label="github">
+          <Icon class="hero-section__action-icon hero-section__action-icon--white" :icon="githubIcon" aria-hidden="true" />
+          <span>GitHub</span>
+        </MagneticButton>
+        <MagneticButton :href="cvData.hero.linkedin" external variant="ghost" analytics-label="linkedin">
+          <Icon :icon="linkedinIcon" aria-hidden="true" />
+          <span>LinkedIn</span>
+        </MagneticButton>
+        <MagneticButton :href="`mailto:${cvData.hero.email}`" variant="secondary" analytics-label="email">
+          <span class="hero-section__action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3.5" y="6" width="17" height="12" rx="2.2" stroke="currentColor" stroke-width="1.7" />
+              <path d="m5.5 8 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span>Email</span>
+        </MagneticButton>
+        <MagneticButton :href="cvData.hero.cvLink" variant="primary" analytics-label="cv">
+          <span class="hero-section__action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v11" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+              <path d="m7.5 10.5 4.5 4.5 4.5-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M5 19.5h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
+            </svg>
+          </span>
+          <span>CV</span>
+        </MagneticButton>
       </div>
     </div>
 
@@ -52,10 +89,27 @@
 </template>
 
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
+import githubIcon from '@iconify-icons/devicon/github'
+import linkedinIcon from '@iconify-icons/devicon/linkedin'
 import MagneticButton from '~/components/ui/MagneticButton.vue'
 
 const ParticleCanvas = defineAsyncComponent(() => import('~/components/ui/ParticleCanvas.vue'))
 const { cvData, loadCvData } = useCvData()
+
+const heroPills = computed(() => {
+  if (!cvData.value) {
+    return []
+  }
+
+  return [
+    { key: 'location', label: cvData.value.hero.location, icon: 'location' },
+    { key: 'email', label: cvData.value.hero.email, icon: 'email' },
+    ...(cvData.value.hero.availabilityStatus
+      ? [{ key: 'availability', label: cvData.value.hero.availabilityStatus, icon: 'availability' }]
+      : []),
+  ]
+})
 
 const nameParts = computed(() => cvData.value?.hero.name.split(' ') ?? [])
 const firstName = computed(() => nameParts.value[0] ?? cvData.value?.hero.name ?? '')
@@ -264,6 +318,9 @@ onBeforeUnmount(() => {
 }
 
 .hero-section__pills li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
   background: rgba(13, 13, 18, 0.72);
@@ -272,6 +329,30 @@ onBeforeUnmount(() => {
   font-size: var(--text-small);
   box-shadow: var(--shadow-card);
   backdrop-filter: blur(14px);
+}
+
+.hero-section__pill-icon,
+.hero-section__action-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent-amber);
+}
+
+.hero-section__pill-icon svg,
+.hero-section__action-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-section__action-icon--white {
+  color: var(--text-0);
+}
+
+.hero-section__action-icon--white :deep(svg),
+.hero-section__action-icon--white :deep(path) {
+  fill: currentColor;
 }
 
 .hero-section__actions {
