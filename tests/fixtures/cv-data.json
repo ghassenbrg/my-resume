@@ -26,6 +26,7 @@
       "position": "Application Engineer",
       "location": "Fukuoka, Japan",
       "period": "Dec 2025 - Present",
+      "logo": "rakuten_logo.png",
       "description": "Hybrid-cloud migration and API modernization.",
       "achievements": ["Built CI/CD and GKE delivery foundations."]
     }

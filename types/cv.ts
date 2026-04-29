@@ -57,6 +57,7 @@ export interface Experience {
   position: string
   location: string
   period: string
+  logo?: string
   description: string
   achievements: string[]
   accentColor?: string
