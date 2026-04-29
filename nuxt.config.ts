@@ -14,9 +14,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      emailjsServiceId: 'service_ghassen_io',
-      emailjsTemplateId: 'template_ghassen_io_cont',
-      emailjsPublicKey: 'AQDInfmbzEsuK-x5L',
+      emailjsServiceId: process.env.NUXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+      emailjsTemplateId: process.env.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+      emailjsPublicKey: process.env.NUXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
     },
   },
 })
