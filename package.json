@@ -4,16 +4,26 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "clean": "rm -rf .nuxt .output node_modules/.vite",
     "dev": "nuxt dev",
+    "dev:clean": "npm run clean && nuxt dev",
     "build": "nuxt build",
     "generate": "nuxt generate",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:watch": "vitest",
+    "validate": "npm run test:unit && npm run generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
     "@types/three": "^0.184.0",
+    "@vue/test-utils": "^2.4.9",
+    "jsdom": "^29.1.0",
     "nuxt": "^3.0.0",
-    "typescript": "^5.0.0"
+    "playwright": "^1.59.1",
+    "typescript": "^5.0.0",
+    "vitest": "^4.1.5"
   },
   "dependencies": {
     "@iconify-icons/devicon": "^1.2.17",

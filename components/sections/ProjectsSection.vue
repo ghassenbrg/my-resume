@@ -73,7 +73,7 @@
           :key="`${project.title}-dot`"
           :class="{ 'projects-section__dot--active': activeProjectIndex === index }"
         >
-          <span class="sr-only">{{ project.title }}</span>
+          <span class="visually-hidden">{{ project.title }}</span>
         </li>
       </ol>
     </div>
@@ -87,27 +87,46 @@ const stackRef = ref<HTMLElement | null>(null)
 const cardRefs = ref<HTMLElement[]>([])
 const activeProjectIndex = ref(0)
 const desktopQuery = ref<MediaQueryList | null>(null)
-const animationCleanups: Array<() => void> = []
+const sectionMotionCleanups: Array<() => void> = []
+const stackAnimationCleanups: Array<() => void> = []
 const scrollAnimation = useScrollAnimation()
 const { cvData, loadCvData } = useCvData()
 
 const projectAccents = ['#e8a838', '#56c4b8', '#c77dff', '#ff6b8a']
 const projects = computed(() => cvData.value?.projects ?? [])
+const projectCardReadableDwellOffset = 96
+const projectCardTransitionDistance = '+=42%'
 
-const clearStackAnimation = () => {
-  while (animationCleanups.length) {
-    animationCleanups.pop()?.()
+const clearCleanupGroup = (cleanups: Array<() => void>) => {
+  while (cleanups.length) {
+    cleanups.pop()?.()
   }
 }
 
-const setupStackAnimation = async () => {
-  const cards = cardRefs.value
-  const { $prefersReducedMotion } = useNuxtApp()
+const clearStackAnimations = () => {
+  clearCleanupGroup(stackAnimationCleanups)
+}
 
-  clearStackAnimation()
+const clearSectionAnimations = () => {
+  clearCleanupGroup(sectionMotionCleanups)
+}
+
+const resetProjectCardState = (cards: HTMLElement[]) => {
   activeProjectIndex.value = 0
 
-  if (!cards.length || $prefersReducedMotion || !(desktopQuery.value?.matches ?? false)) {
+  if (!cards.length) {
+    return
+  }
+
+  scrollAnimation.load().then(({ gsap }) => {
+    gsap.set(cards, { clearProps: 'transform,opacity' })
+  })
+}
+
+const initializeStackAnimations = async (cards: HTMLElement[]) => {
+  const section = sectionRef.value
+
+  if (!section || stackAnimationCleanups.length > 0) {
     return
   }
 
@@ -116,17 +135,15 @@ const setupStackAnimation = async () => {
   gsap.set(cards, { clearProps: 'transform,opacity' })
 
   cards.forEach((card, index) => {
-    const tween = gsap.to(card, {
-      scale: 0.9 - index * 0.02,
-      y: index * -20,
-      opacity: 0.6,
-      ease: 'none',
+    const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: card,
-        start: 'top top',
-        scrub: true,
+        start: `top+=${projectCardReadableDwellOffset} top`,
+        end: projectCardTransitionDistance,
+        scrub: 0.45,
         pin: true,
         pinSpacing: false,
+        invalidateOnRefresh: true,
         onEnter: () => {
           activeProjectIndex.value = index
         },
@@ -136,11 +153,66 @@ const setupStackAnimation = async () => {
       },
     })
 
-    animationCleanups.push(() => {
-      tween.scrollTrigger?.kill()
-      tween.kill()
+    timeline
+      .to(card, {
+        scale: 1,
+        y: 0,
+        opacity: 1,
+        duration: 0.42,
+        ease: 'none',
+      })
+      .to(card, {
+        scale: 0.9 - index * 0.02,
+        y: index * -20,
+        opacity: 0.6,
+        duration: 0.58,
+        ease: 'power2.out',
+      })
+
+    stackAnimationCleanups.push(() => {
+      timeline.scrollTrigger?.kill()
+      timeline.kill()
       gsap.set(card, { clearProps: 'transform,opacity' })
     })
+  })
+
+  ScrollTrigger.refresh()
+}
+
+const setupStackAnimation = async () => {
+  const cards = cardRefs.value
+  const section = sectionRef.value
+  const { $prefersReducedMotion } = useNuxtApp()
+
+  clearStackAnimations()
+  clearSectionAnimations()
+
+  if (!cards.length || !section || $prefersReducedMotion || !(desktopQuery.value?.matches ?? false)) {
+    resetProjectCardState(cards)
+    return
+  }
+
+  const { ScrollTrigger } = await scrollAnimation.load()
+
+  const activateStackAnimations = () => {
+    void initializeStackAnimations(cards)
+  }
+
+  const guard = ScrollTrigger.create({
+    trigger: section,
+    start: 'top bottom',
+    end: 'bottom top',
+    invalidateOnRefresh: true,
+    onEnter: activateStackAnimations,
+    onEnterBack: activateStackAnimations,
+    onLeaveBack: () => {
+      clearStackAnimations()
+      resetProjectCardState(cards)
+    },
+  })
+
+  sectionMotionCleanups.push(() => {
+    guard.kill()
   })
 
   ScrollTrigger.refresh()
@@ -160,14 +232,16 @@ onMounted(async () => {
       trigger: sectionRef.value ?? undefined,
       start: 'top 78%',
       y: 48,
+      invalidateOnRefresh: true,
     })
 
     if (cardRefs.value.length) {
       await reveal(cardRefs.value, {
-        trigger: stackRef.value ?? undefined,
+        trigger: sectionRef.value ?? undefined,
         start: 'top 72%',
         y: 36,
         stagger: 0.1,
+        invalidateOnRefresh: true,
       })
     }
   }
@@ -180,7 +254,8 @@ onMounted(async () => {
 onBeforeUnmount(() => {
   desktopQuery.value?.removeEventListener('change', setupStackAnimation)
   window.removeEventListener('resize', setupStackAnimation)
-  clearStackAnimation()
+  clearStackAnimations()
+  clearSectionAnimations()
 })
 </script>
 

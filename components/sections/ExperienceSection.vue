@@ -2,7 +2,10 @@
   <section
     id="experience"
     ref="sectionRef"
-    class="experience-section section"
+    :class="[
+      'experience-section section',
+      { 'experience-section--desktop-scrollable': cvData && !isPinnedDesktop },
+    ]"
     aria-labelledby="experience-title"
   >
     <div ref="pinRef" class="experience-section__pin">
@@ -23,7 +26,16 @@
             >
               <header class="experience-card__header">
                 <div class="experience-card__mark" aria-hidden="true">
-                  {{ getCompanyMark(experience.company) }}
+                  <img
+                    v-if="experience.logo && !hasLogoError(experience.logo)"
+                    :src="toPublicAssetPath(experience.logo)"
+                    alt=""
+                    class="experience-card__logo"
+                    loading="lazy"
+                    decoding="async"
+                    @error="markLogoError(experience.logo)"
+                  >
+                  <span v-else>{{ getCompanyMark(experience.company) }}</span>
                 </div>
 
                 <div class="experience-card__identity">
@@ -88,7 +100,9 @@ const scrollAnimation = useScrollAnimation()
 const { cvData, loadCvData } = useCvData()
 const experiences = computed(() => cvData.value?.experience ?? [])
 const desktopQuery = ref<MediaQueryList | null>(null)
+const isPinnedDesktop = ref(false)
 const animationCleanups: Array<() => void> = []
+const logoErrors = ref<Record<string, boolean>>({})
 
 const isCurrentExperience = (period: string) => period.toLowerCase().includes('present')
 
@@ -102,11 +116,24 @@ const getCompanyMark = (company: string) => {
     .join('')
 }
 
+const toPublicAssetPath = (logo: string) => (logo.startsWith('/') ? logo : `/${logo}`)
+
+const hasLogoError = (logo: string) => Boolean(logoErrors.value[logo])
+
+const markLogoError = (logo: string) => {
+  logoErrors.value = {
+    ...logoErrors.value,
+    [logo]: true,
+  }
+}
+
 const clearAnimations = () => {
   while (animationCleanups.length) {
     animationCleanups.pop()?.()
   }
 }
+
+const canPinExperienceSection = (pin: HTMLElement) => pin.scrollHeight <= window.innerHeight
 
 const setupHorizontalScroll = async () => {
   const pin = pinRef.value
@@ -116,6 +143,7 @@ const setupHorizontalScroll = async () => {
   const { $prefersReducedMotion } = useNuxtApp()
 
   clearAnimations()
+  isPinnedDesktop.value = false
 
   if (
     !pin ||
@@ -128,7 +156,12 @@ const setupHorizontalScroll = async () => {
     return
   }
 
+  if (!canPinExperienceSection(pin)) {
+    return
+  }
+
   const { gsap, ScrollTrigger } = await scrollAnimation.load()
+  isPinnedDesktop.value = true
 
   gsap.set(progress, {
     scaleX: 0,
@@ -282,6 +315,13 @@ onBeforeUnmount(() => {
   font-family: var(--font-heading);
   font-size: var(--text-h3);
   font-weight: 700;
+  overflow: hidden;
+}
+
+.experience-card__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .experience-card__identity {
@@ -390,6 +430,20 @@ onBeforeUnmount(() => {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   list-style: none;
+}
+
+.experience-section--desktop-scrollable .experience-section__viewport {
+  overflow-x: auto;
+  padding-bottom: var(--space-4);
+  scroll-snap-type: x proximity;
+}
+
+.experience-section--desktop-scrollable .experience-card {
+  scroll-snap-align: start;
+}
+
+.experience-section--desktop-scrollable .experience-section__progress-bar {
+  transform: scaleX(1);
 }
 
 @media (max-width: 1023px) {

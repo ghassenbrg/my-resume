@@ -18,14 +18,22 @@
         >
           <div class="credential-card__badge-wrap">
             <img
-              v-if="primaryCertification.image"
+              v-if="shouldShowCertificationImage(primaryCertification.image)"
               class="credential-card__badge"
               :src="primaryCertification.image"
               :alt="`${primaryCertification.name} badge`"
               width="240"
               height="240"
               loading="lazy"
+              @error="markCertificationImageFailed(primaryCertification.image)"
             >
+            <span
+              v-else
+              class="credential-card__badge-fallback"
+              aria-label="Certification badge unavailable"
+            >
+              OCP
+            </span>
           </div>
 
           <div class="credential-card__content">
@@ -74,7 +82,20 @@ const scrollAnimation = useScrollAnimation()
 const { cvData, loadCvData } = useCvData()
 
 const primaryCertification = computed(() => cvData.value?.certifications[0] ?? null)
+const failedCertificationImages = ref<Set<string>>(new Set())
 const educationAccents = ['#56c4b8', '#c77dff']
+
+const shouldShowCertificationImage = (image?: string) => {
+  return Boolean(image && !failedCertificationImages.value.has(image))
+}
+
+const markCertificationImageFailed = (image?: string) => {
+  if (!image) {
+    return
+  }
+
+  failedCertificationImages.value = new Set([...failedCertificationImages.value, image])
+}
 
 onMounted(async () => {
   await loadCvData()
@@ -179,6 +200,21 @@ onMounted(async () => {
   width: min(100%, 15rem);
   height: auto;
   filter: drop-shadow(0 24px 42px rgba(0, 0, 0, 0.38));
+}
+
+.credential-card__badge-fallback {
+  display: grid;
+  width: min(100%, 15rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(232, 168, 56, 0.4);
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(232, 168, 56, 0.2), rgba(9, 9, 15, 0.94));
+  color: var(--accent-amber);
+  font-family: var(--font-heading);
+  font-size: var(--text-h2);
+  font-weight: 700;
+  box-shadow: var(--shadow-card);
 }
 
 .credential-card__content {

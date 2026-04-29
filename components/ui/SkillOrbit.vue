@@ -26,24 +26,46 @@
       </button>
     </div>
 
-    <article class="skill-orbit__panel">
-      <p class="skill-orbit__panel-kicker">{{ activeCategory.skills.length }} skills</p>
-      <h3>{{ activeCategory.label }}</h3>
-      <ul class="skill-orbit__skills">
-        <li
-          v-for="skill in activeCategory.skills"
-          :key="skill.name"
-          :class="{ 'skill-orbit__skill--core': skill.highlight }"
-        >
-          <Icon
-            class="skill-orbit__icon"
-            :icon="skill.icon"
-            aria-hidden="true"
-          />
-          <span>{{ skill.name }}</span>
-          <strong v-if="skill.highlight">Core</strong>
-        </li>
-      </ul>
+    <article
+      class="skill-orbit__panel"
+      :class="{ 'skill-orbit__panel--can-scroll-down': canScrollDown }"
+      data-lenis-prevent
+      aria-label="Active skill category"
+    >
+      <div
+        ref="panelRef"
+        class="skill-orbit__panel-scroll"
+        data-lenis-prevent
+        aria-label="Scrollable active skill category"
+        @scroll="updateScrollState"
+      >
+        <p class="skill-orbit__panel-kicker">{{ activeCategory.skills.length }} skills</p>
+        <h3>{{ activeCategory.label }}</h3>
+        <ul class="skill-orbit__skills">
+          <li
+            v-for="skill in activeCategory.skills"
+            :key="skill.name"
+            :class="{ 'skill-orbit__skill--core': skill.highlight }"
+          >
+            <Icon
+              class="skill-orbit__icon"
+              :icon="skill.icon"
+              aria-hidden="true"
+            />
+            <span>{{ skill.name }}</span>
+            <strong v-if="skill.highlight">Core</strong>
+          </li>
+        </ul>
+      </div>
+      <div
+        v-if="canScrollDown"
+        class="skill-orbit__scroll-cue"
+        aria-hidden="true"
+      >
+        <span class="skill-orbit__scroll-cue-line"></span>
+        <span class="skill-orbit__scroll-cue-arrow">↓</span>
+        <span class="skill-orbit__scroll-cue-text">Scroll</span>
+      </div>
     </article>
   </div>
 </template>
@@ -74,9 +96,28 @@ const emit = defineEmits<{
   'focus-category': [key: string]
 }>()
 
+const panelRef = ref<HTMLElement | null>(null)
+const canScrollUp = ref(false)
+const canScrollDown = ref(false)
+let panelResizeObserver: ResizeObserver | null = null
+
 const activeCategory = computed(() => {
   return props.categories.find((category) => category.key === props.activeKey) ?? props.categories[0]
 })
+
+const updateScrollState = () => {
+  const panel = panelRef.value
+
+  if (!panel) {
+    canScrollUp.value = false
+    canScrollDown.value = false
+    return
+  }
+
+  const scrollThreshold = 4
+  canScrollUp.value = panel.scrollTop > scrollThreshold
+  canScrollDown.value = panel.scrollTop + panel.clientHeight < panel.scrollHeight - scrollThreshold
+}
 
 const getNodeStyle = (index: number) => {
   const angle = -Math.PI / 2 + ((Math.PI * 2) / props.categories.length) * index
@@ -89,6 +130,39 @@ const getNodeStyle = (index: number) => {
     '--node-y': `${y}%`,
   }
 }
+
+watch(
+  () => props.activeKey,
+  async () => {
+    await nextTick()
+
+    const panel = panelRef.value
+
+    if (panel) {
+      panel.scrollTop = 0
+    }
+
+    updateScrollState()
+  },
+)
+
+onMounted(async () => {
+  await nextTick()
+  updateScrollState()
+
+  panelResizeObserver = new ResizeObserver(() => {
+    updateScrollState()
+  })
+
+  if (panelRef.value) {
+    panelResizeObserver.observe(panelRef.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  panelResizeObserver?.disconnect()
+  panelResizeObserver = null
+})
 </script>
 
 <style scoped>
@@ -195,14 +269,26 @@ const getNodeStyle = (index: number) => {
 }
 
 .skill-orbit__panel {
-  display: grid;
-  gap: var(--space-5);
+  position: relative;
   min-width: 0;
+  max-height: 40rem;
+  overflow: hidden;
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(26, 26, 46, 0.9), rgba(9, 9, 15, 0.94));
-  padding: var(--space-6);
   box-shadow: var(--shadow-card);
+}
+
+.skill-orbit__panel-scroll {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: var(--space-5);
+  height: 100%;
+  max-height: 40rem;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-6);
+  scrollbar-gutter: stable;
 }
 
 .skill-orbit__panel-kicker {
@@ -223,10 +309,8 @@ const getNodeStyle = (index: number) => {
 .skill-orbit__skills {
   display: grid;
   gap: var(--space-3);
-  max-height: 30rem;
   margin: 0;
-  overflow: auto;
-  padding: 0;
+  padding: 0 0 var(--space-10);
   list-style: none;
 }
 
@@ -268,6 +352,39 @@ const getNodeStyle = (index: number) => {
   text-transform: uppercase;
 }
 
+.skill-orbit__scroll-cue {
+  position: absolute;
+  right: var(--space-6);
+  bottom: var(--space-4);
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0.2rem;
+  padding: var(--space-6) 0 0;
+  background: linear-gradient(0deg, rgba(9, 9, 15, 0.96) 35%, rgba(9, 9, 15, 0));
+  color: var(--accent-amber);
+  pointer-events: none;
+}
+
+.skill-orbit__scroll-cue-line {
+  width: 1px;
+  height: 1.75rem;
+  background: color-mix(in srgb, var(--accent-amber) 72%, transparent);
+}
+
+.skill-orbit__scroll-cue-arrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  line-height: 1;
+}
+
+.skill-orbit__scroll-cue-text {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 1279px) {
   .skill-orbit {
     grid-template-columns: 1fr;
@@ -275,6 +392,14 @@ const getNodeStyle = (index: number) => {
 
   .skill-orbit__map {
     min-height: 34rem;
+  }
+
+  .skill-orbit__panel {
+    max-height: 34rem;
+  }
+
+  .skill-orbit__panel-scroll {
+    max-height: 34rem;
   }
 }
 
@@ -318,6 +443,19 @@ const getNodeStyle = (index: number) => {
     min-width: 0;
     justify-items: center;
     text-align: center;
+  }
+
+  .skill-orbit__panel {
+    max-height: none;
+  }
+
+  .skill-orbit__panel-scroll {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .skill-orbit__scroll-cue {
+    display: none;
   }
 }
 

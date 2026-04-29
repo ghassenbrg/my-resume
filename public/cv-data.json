@@ -100,6 +100,7 @@
       "position": "Application Engineer",
       "location": "Fukuoka, Japan",
       "period": "Dec 2025 – Present",
+      "logo": "rakuten_logo.png",
       "description": "Member of the Technology Incubation Team, leading hybrid-cloud migration and API modernization work for Rakuten Card platforms supporting 25M+ members in Japan.",
       "achievements": [
         "Prepared early Kubernetes manifests and deployment structure for JSF, API, and Engine modules before CI/CD team onboarding.",
@@ -118,6 +119,7 @@
       "position": "Software Engineer",
       "location": "Luxembourg",
       "period": "Feb 2025 – Nov 2025",
+      "logo": "sogeti_logo.png",
       "description": "Maintaining and extending secure internal banking applications within an Agile tribe.",
       "achievements": [
         "Developed and maintained internal apps using Java (Spring Boot, Hibernate), Angular, and PostgreSQL/Oracle.",
@@ -131,6 +133,7 @@
       "position": "Java Full-Stack Developer",
       "location": "Luxembourg",
       "period": "Sept 2024 – Jan 2025",
+      "logo": "cbtw_logo.png",
       "description": "Enterprise web application development using Java and Angular technologies.",
       "achievements": [
         "Developed enterprise web applications using Spring Boot, Angular, and PostgreSQL.",
@@ -143,6 +146,7 @@
       "position": "Software Engineer",
       "location": "Tunis, Tunisia",
       "period": "Oct 2019 – Aug 2024",
+      "logo": "vermeg_logo.png",
       "description": "Led backend engineering for high-traffic insurance & financial applications.",
       "achievements": [
         "Designed and optimized high-volume transactional APIs, ensuring high availability and performance.",

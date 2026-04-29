@@ -1,0 +1,60 @@
+{
+  "hero": {
+    "name": "Ghassen Bargougui",
+    "title": "Application Engineer",
+    "location": "Fukuoka, Japan",
+    "email": "ghassen.brg16@gmail.com",
+    "github": "https://github.com/ghassenbrg",
+    "linkedin": "https://www.linkedin.com/in/ghassenbrg",
+    "cvLink": "/CV_Ghassen_Bargougui.pdf",
+    "availabilityStatus": "Open to relevant roles"
+  },
+  "about": {
+    "paragraphs": [
+      "Application Engineer with 6+ years of experience delivering backend and full-stack solutions."
+    ]
+  },
+  "skills": {
+    "Backend & Full-Stack Development": [
+      { "name": "Java", "icon": "java", "highlight": true },
+      { "name": "TypeScript", "icon": "typescript" }
+    ]
+  },
+  "experience": [
+    {
+      "company": "Rakuten Card",
+      "position": "Application Engineer",
+      "location": "Fukuoka, Japan",
+      "period": "Dec 2025 - Present",
+      "logo": "rakuten_logo.png",
+      "description": "Hybrid-cloud migration and API modernization.",
+      "achievements": ["Built CI/CD and GKE delivery foundations."]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Orbit Ways",
+      "role": "Full Stack Game Developer",
+      "outcomes": ["Built a real-time multiplayer board game."],
+      "technologies": ["Java", "Angular"]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Engineer's Degree in Software Engineering",
+      "institution": "ESPRIT",
+      "location": "Tunis, Tunisia",
+      "period": "2016 - 2019"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Oracle Certified Professional: Java SE 11 Developer",
+      "issuer": "Oracle",
+      "date": "2024"
+    }
+  ],
+  "languages": [
+    { "language": "English", "level": "Fluent", "percentage": 90 }
+  ]
+}

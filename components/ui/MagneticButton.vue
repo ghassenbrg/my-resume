@@ -9,6 +9,7 @@
     :rel="isLink && external ? 'noopener noreferrer' : undefined"
     :type="isLink ? undefined : type"
     data-cursor-label="Click"
+    @click="handleClick"
   >
     <span class="magnetic-button__content">
       <slot />
@@ -23,6 +24,7 @@ const props = withDefaults(
     external?: boolean
     type?: 'button' | 'submit' | 'reset'
     variant?: 'primary' | 'secondary' | 'ghost'
+    analyticsLabel?: string
   }>(),
   {
     external: false,
@@ -34,6 +36,15 @@ const props = withDefaults(
 const buttonRef = ref<HTMLElement | null>(null)
 const isLink = computed(() => Boolean(props.href))
 const componentTag = computed(() => (isLink.value ? 'a' : 'button'))
+const { trackFollowUpClick } = useAnalytics()
+
+const handleClick = () => {
+  if (!props.href || !props.analyticsLabel) {
+    return
+  }
+
+  trackFollowUpClick(props.analyticsLabel, props.href)
+}
 
 useMagneticEffect(buttonRef, {
   strength: 0.18,
@@ -88,7 +99,16 @@ useMagneticEffect(buttonRef, {
 }
 
 .magnetic-button__content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
   pointer-events: none;
+}
+
+.magnetic-button__content :deep(svg) {
+  width: 1rem;
+  height: 1rem;
 }
 
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {

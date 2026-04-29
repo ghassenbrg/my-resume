@@ -6,10 +6,21 @@ type AnimatedTarget = Element | Element[] | string
 interface RevealOptions {
   trigger?: ScrollTarget
   start?: string
+  end?: string
   y?: number
   duration?: number
   stagger?: number
+  once?: boolean
+  invalidateOnRefresh?: boolean
 }
+
+export const buildRevealScrollTriggerOptions = (target: ScrollTarget, options: RevealOptions = {}) => ({
+  trigger: options.trigger ?? target,
+  start: options.start ?? 'top 80%',
+  end: options.end,
+  once: options.once ?? false,
+  invalidateOnRefresh: options.invalidateOnRefresh ?? false,
+})
 
 export const useScrollAnimation = () => {
   const { $loadGsap, $prefersReducedMotion } = useNuxtApp()
@@ -33,10 +44,7 @@ export const useScrollAnimation = () => {
       duration: options.duration ?? 0.8,
       stagger: options.stagger,
       ease: 'power3.out',
-      scrollTrigger: {
-        trigger: options.trigger ?? element,
-        start: options.start ?? 'top 80%',
-      },
+      scrollTrigger: buildRevealScrollTriggerOptions(element, options),
     })
 
     cleanups.push(() => {

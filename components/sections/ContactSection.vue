@@ -142,8 +142,14 @@
 </template>
 
 <script setup lang="ts">
-type ContactField = 'name' | 'email' | 'message'
-type ContactStatus = 'idle' | 'sending' | 'sent' | 'error'
+import {
+  createContactFormErrors,
+  createContactFormState,
+  validateContactField,
+  validateContactForm,
+  type ContactField,
+  type ContactStatus,
+} from '~/composables/useContactForm'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const headerRef = ref<HTMLElement | null>(null)
@@ -153,47 +159,14 @@ const config = useRuntimeConfig()
 const { trackEvent } = useAnalytics()
 const { cvData, loadCvData } = useCvData()
 
-const form = reactive({
-  name: '',
-  email: '',
-  message: '',
-})
-
-const errors = reactive<Record<ContactField, string>>({
-  name: '',
-  email: '',
-  message: '',
-})
+const form = reactive(createContactFormState())
+const errors = reactive(createContactFormErrors())
 
 const status = ref<ContactStatus>('idle')
 const statusMessage = ref('')
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
 const validateField = (field: ContactField) => {
-  if (field === 'name') {
-    errors.name = form.name ? '' : 'Name is required.'
-  }
-
-  if (field === 'email') {
-    errors.email = form.email
-      ? emailPattern.test(form.email)
-        ? ''
-        : 'Enter a valid email address.'
-      : 'Email is required.'
-  }
-
-  if (field === 'message') {
-    errors.message = form.message ? '' : 'Message is required.'
-  }
-
-  return !errors[field]
-}
-
-const validateForm = () => {
-  const results = (['name', 'email', 'message'] as ContactField[]).map((field) => validateField(field))
-
-  return results.every(Boolean)
+  return validateContactField(field, form, errors)
 }
 
 const handleFieldInput = (field: ContactField) => {
@@ -209,7 +182,7 @@ const handleFieldInput = (field: ContactField) => {
 const submitMessage = async () => {
   statusMessage.value = ''
 
-  if (!validateForm()) {
+  if (!validateContactForm(form, errors)) {
     status.value = 'error'
     statusMessage.value = 'Fix the highlighted fields and run submit again.'
     return
@@ -222,13 +195,16 @@ const submitMessage = async () => {
   if (!serviceId || !templateId || !publicKey) {
     status.value = 'error'
     statusMessage.value = 'EmailJS configuration is missing.'
+    trackEvent('contact_form_error', {
+      source: 'contact_terminal',
+      reason: 'missing_configuration',
+    })
     return
   }
 
   status.value = 'sending'
   trackEvent('contact_form_submit', {
     source: 'contact_terminal',
-    timestamp: new Date().toISOString(),
   })
 
   try {
@@ -253,15 +229,13 @@ const submitMessage = async () => {
     form.message = ''
     trackEvent('contact_form_success', {
       source: 'contact_terminal',
-      timestamp: new Date().toISOString(),
     })
   } catch (error) {
     status.value = 'error'
     statusMessage.value = 'Message failed to send. Email directly or try again later.'
     trackEvent('contact_form_error', {
       source: 'contact_terminal',
-      error: error instanceof Error ? error.message : 'Unknown error',
-      timestamp: new Date().toISOString(),
+      reason: error instanceof Error ? error.name : 'unknown_error',
     })
   }
 }
