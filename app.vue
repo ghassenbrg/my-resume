@@ -42,6 +42,11 @@ useHead({
   ],
   script: [
     {
+      key: 'runtime-config',
+      src: '/runtime-config.js',
+      defer: true,
+    },
+    {
       key: 'umami-analytics',
       src: 'https://umami.ghassen.io/analytics.js',
       defer: true,

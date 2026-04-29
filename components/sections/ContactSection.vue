@@ -165,6 +165,16 @@ const errors = reactive(createContactFormErrors())
 const status = ref<ContactStatus>('idle')
 const statusMessage = ref('')
 
+const getEmailJsConfig = () => {
+  const runtimeConfig = import.meta.client ? window.__RUNTIME_CONFIG__ : undefined
+
+  return {
+    serviceId: runtimeConfig?.emailjsServiceId || config.public.emailjsServiceId,
+    templateId: runtimeConfig?.emailjsTemplateId || config.public.emailjsTemplateId,
+    publicKey: runtimeConfig?.emailjsPublicKey || config.public.emailjsPublicKey,
+  }
+}
+
 const validateField = (field: ContactField) => {
   return validateContactField(field, form, errors)
 }
@@ -188,9 +198,7 @@ const submitMessage = async () => {
     return
   }
 
-  const serviceId = config.public.emailjsServiceId
-  const templateId = config.public.emailjsTemplateId
-  const publicKey = config.public.emailjsPublicKey
+  const { serviceId, templateId, publicKey } = getEmailJsConfig()
 
   if (!serviceId || !templateId || !publicKey) {
     status.value = 'error'
