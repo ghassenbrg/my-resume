@@ -84,4 +84,7 @@ Rules:
 - Every primary action and navigation control MUST have visible focus treatment.
 - Desktop-enhanced motion patterns MUST have reduced-motion and touch-friendly fallbacks.
 - Content hierarchy MUST remain understandable when animations are disabled.
+- The Professional Experience section MUST use pinned horizontal presentation only when the active
+  experience entry fits the visible desktop area; otherwise it MUST fall back to a non-pinned
+  readable layout with no clipped content.
 - Failure to load a decorative asset MUST NOT block access to core resume information.

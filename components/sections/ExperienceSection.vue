@@ -2,7 +2,10 @@
   <section
     id="experience"
     ref="sectionRef"
-    class="experience-section section"
+    :class="[
+      'experience-section section',
+      { 'experience-section--desktop-scrollable': cvData && !isPinnedDesktop },
+    ]"
     aria-labelledby="experience-title"
   >
     <div ref="pinRef" class="experience-section__pin">
@@ -88,6 +91,7 @@ const scrollAnimation = useScrollAnimation()
 const { cvData, loadCvData } = useCvData()
 const experiences = computed(() => cvData.value?.experience ?? [])
 const desktopQuery = ref<MediaQueryList | null>(null)
+const isPinnedDesktop = ref(false)
 const animationCleanups: Array<() => void> = []
 
 const isCurrentExperience = (period: string) => period.toLowerCase().includes('present')
@@ -108,6 +112,8 @@ const clearAnimations = () => {
   }
 }
 
+const canPinExperienceSection = (pin: HTMLElement) => pin.scrollHeight <= window.innerHeight
+
 const setupHorizontalScroll = async () => {
   const pin = pinRef.value
   const track = trackRef.value
@@ -116,6 +122,7 @@ const setupHorizontalScroll = async () => {
   const { $prefersReducedMotion } = useNuxtApp()
 
   clearAnimations()
+  isPinnedDesktop.value = false
 
   if (
     !pin ||
@@ -128,7 +135,12 @@ const setupHorizontalScroll = async () => {
     return
   }
 
+  if (!canPinExperienceSection(pin)) {
+    return
+  }
+
   const { gsap, ScrollTrigger } = await scrollAnimation.load()
+  isPinnedDesktop.value = true
 
   gsap.set(progress, {
     scaleX: 0,
@@ -390,6 +402,20 @@ onBeforeUnmount(() => {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   list-style: none;
+}
+
+.experience-section--desktop-scrollable .experience-section__viewport {
+  overflow-x: auto;
+  padding-bottom: var(--space-4);
+  scroll-snap-type: x proximity;
+}
+
+.experience-section--desktop-scrollable .experience-card {
+  scroll-snap-align: start;
+}
+
+.experience-section--desktop-scrollable .experience-section__progress-bar {
+  transform: scaleX(1);
 }
 
 @media (max-width: 1023px) {

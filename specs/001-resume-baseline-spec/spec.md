@@ -5,6 +5,12 @@
 **Status**: Draft  
 **Input**: User description: "Create baseline specification"
 
+## Clarifications
+
+### Session 2026-04-29
+
+- Q: How should the Professional Experience section handle items whose content exceeds the visible desktop viewport height? → A: Use adaptive behavior: keep pinned horizontal presentation only when the active experience item fits the viewport; otherwise fall back to a non-pinned readable layout.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Present a clear first impression (Priority: P1)
@@ -73,6 +79,8 @@ receive clear feedback about what happened.
 
 - What happens when a visitor uses reduced-motion settings or a low-capability mobile device that
   cannot support rich transitions comfortably?
+- What happens when a Professional Experience item becomes taller than the visible desktop viewport
+  during the horizontal storytelling sequence?
 - How does the site behave when a downloadable asset, credential proof, or image is unavailable?
 - How does the contact path respond when required fields are missing or message delivery fails?
 - What happens when a visitor navigates entirely by keyboard or screen reader through animated
@@ -98,6 +106,9 @@ receive clear feedback about what happened.
   cues.
 - Mobile/responsive fallback: The full experience must remain readable and operable on small screens
   and touch devices, even when desktop-oriented presentation patterns need a simpler alternative.
+- Long-content fallback: Motion-led sections such as Professional Experience must switch to a fully
+  readable non-pinned layout whenever the active content would otherwise exceed the safe visible
+  desktop area.
 
 ### Content & Instrumentation
 
@@ -130,6 +141,9 @@ receive clear feedback about what happened.
 - **FR-007**: The system MUST remain usable for keyboard-only visitors and users who disable motion.
 - **FR-008**: The system MUST adapt the experience to mobile and desktop contexts without removing
   essential content or primary actions.
+- **FR-008a**: The system MUST keep the Professional Experience section fully readable on desktop by
+  using pinned horizontal presentation only when the active experience item fits the visible
+  viewport; otherwise it MUST fall back to a non-pinned readable layout without clipping content.
 - **FR-009**: The system MUST keep resume content consistent across sections so profile details,
   experience facts, and supporting assets do not conflict with each other.
 - **FR-010**: The system MUST capture privacy-safe engagement events for key visitor interactions
@@ -167,6 +181,9 @@ receive clear feedback about what happened.
   without assistance and summarize the candidate's profile after one pass through the site.
 - **SC-003**: 100% of primary content and navigation paths remain accessible in reduced-motion and
   small-screen review scenarios.
+- **SC-003a**: During desktop review, 100% of Professional Experience entries remain fully readable
+  without clipped content, including entries whose content exceeds the visible height of the pinned
+  presentation.
 - **SC-004**: During acceptance testing, 20 scripted valid contact attempts across success and
   forced-failure configurations MUST show either a success or failure message within 5 seconds, with
   at least 19 of 20 attempts producing visible feedback and no analytics payload containing message

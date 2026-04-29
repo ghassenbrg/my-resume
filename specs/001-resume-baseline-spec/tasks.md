@@ -86,6 +86,7 @@ credentials, then summarize the candidate's background and verify the supporting
 
 - [X] T017 [P] [US2] Add structured-rendering coverage for evidence sections in `tests/unit/aboutSection.spec.ts`, `tests/unit/experienceSection.spec.ts`, and `tests/unit/skillsSection.spec.ts`
 - [X] T018 [US2] Execute the experience-and-evidence QA scenarios in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ExperienceSection.vue` and `components/sections/ProjectsSection.vue`
+- [X] T037 [US2] Verify adaptive desktop overflow fallback for tall Professional Experience entries in `specs/001-resume-baseline-spec/quickstart.md` against `components/sections/ExperienceSection.vue`
 
 ### Implementation for User Story 2
 
@@ -96,6 +97,7 @@ credentials, then summarize the candidate's background and verify the supporting
 - [X] T023 [P] [US2] Implement featured projects and language proficiency sections in `components/sections/ProjectsSection.vue` and `components/sections/LanguagesSection.vue`
 - [X] T024 [US2] Verify resume-proof assets and social metadata in `app.vue`, `public/CV_Ghassen_Bargougui.pdf`, `public/og-image.png`, and `public/ocp11.png`
 - [X] T035 [US2] Verify missing CV, credential image, and social-preview asset fallback behavior using `specs/001-resume-baseline-spec/quickstart.md`, `components/sections/AboutSection.vue`, `components/sections/EducationSection.vue`, and `public/CV_Ghassen_Bargougui.pdf`
+- [X] T038 [US2] Implement adaptive pinned-versus-readable overflow behavior for long Professional Experience entries in `components/sections/ExperienceSection.vue` and `specs/001-resume-baseline-spec/contracts/resume-experience.md`
 
 **Checkpoint**: User Stories 1 and 2 both work independently, with evidence surfaces ready for
 review.
@@ -231,9 +233,9 @@ Task: "T028 Implement outbound profile and CV follow-up tracking in components/s
 
 ## Notes
 
-- Total tasks: 36
+- Total tasks: 38
 - Tasks for US1: 7
-- Tasks for US2: 9
+- Tasks for US2: 11
 - Tasks for US3: 6
 - Suggested MVP scope: complete through Phase 3 (User Story 1)
 - All tasks follow the required checklist format with task IDs, story labels where required, and

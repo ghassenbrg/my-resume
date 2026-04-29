@@ -50,9 +50,12 @@ Success criteria for this step:
 
 1. Review experience, skills, projects, education, certifications, and language sections.
 2. Confirm each section has distinct hierarchy and remains readable without relying on motion.
-3. Open any available credential proof and the CV artifact.
-4. Confirm links work and the resume content remains consistent across sections.
-5. Temporarily simulate missing CV, credential, and social-preview assets in a generated preview and
+3. In a desktop viewport, verify that Professional Experience keeps pinned horizontal storytelling
+   for entries that fit, and falls back to a fully readable non-pinned layout when an entry exceeds
+   the safe visible height.
+4. Open any available credential proof and the CV artifact.
+5. Confirm links work and the resume content remains consistent across sections.
+6. Temporarily simulate missing CV, credential, and social-preview assets in a generated preview and
    confirm the page keeps core resume content accessible with no broken layout or blocked navigation.
 
 ### User Story 3: Follow-up Contact
@@ -70,6 +73,8 @@ Success criteria for this step:
    navigable and understandable.
 4. Repeat a short walkthrough in a mobile viewport and confirm motion-heavy sections fall back to a
    usable layout.
+5. Confirm long Professional Experience content remains fully readable without clipped lower content
+   in both motion-enabled and reduced-motion desktop review.
 
 ## Analytics Validation
 

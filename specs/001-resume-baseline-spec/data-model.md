@@ -53,6 +53,8 @@ the contact and analytics flows introduce light state transitions that must stil
 - Entries must remain chronologically understandable.
 - Achievements must be concise and evidence-oriented.
 - Current-role labeling must be derivable from the displayed period without creating ambiguity.
+- Long entries must remain fully readable even when the preferred pinned desktop presentation cannot
+  accommodate the rendered card height.
 
 ### SkillCategory
 
@@ -209,3 +211,6 @@ the contact and analytics flows introduce light state transitions that must stil
 - `RuntimeCVData` enriches the base resume dataset with computed stats and normalized skill flags.
 - Section summaries and SEO metadata derive from the same profile content rather than separate copy.
 - Active navigation state derives from viewport position, not a separate persisted model.
+- The Professional Experience section may derive a view-mode decision from viewport size and
+  rendered card height to choose between pinned horizontal storytelling and non-pinned readable
+  fallback.

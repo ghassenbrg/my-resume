@@ -50,6 +50,26 @@ allows the experience to stay expressive without excluding keyboard, touch, or r
 - Force the same motion on every device: rejected because it creates accessibility and performance
   risk.
 
+## Decision 3a: Make Professional Experience overflow adaptive
+
+**Decision**: Keep the pinned horizontal Professional Experience presentation only when the active
+experience card fits within the safe visible desktop area; when an item grows taller than that
+space, fall back to a fully readable non-pinned layout.
+
+**Rationale**: The experience section is part of the editorial storytelling system, but the
+constitution requires content to remain readable without clipping or relying on animation
+assumptions. Adaptive fallback preserves the intended motion treatment for normal-length entries
+without sacrificing readability for longer roles.
+
+**Alternatives considered**:
+
+- Always truncate long entries behind a "show more" affordance: rejected because it hides core
+  resume evidence behind extra interaction.
+- Keep pinning and add an internal scroll region inside the card: rejected because nested scroll is
+  harder to discover, weaker for accessibility, and visually messier.
+- Remove horizontal storytelling from the section entirely: rejected because it abandons a meaningful
+  part of the editorial presentation even when the content comfortably fits.
+
 ## Decision 4: Keep contact lightweight and explicit
 
 **Decision**: Preserve the client-side contact workflow, validate inputs before submission, and show

@@ -1,6 +1,6 @@
 # Implementation Plan: Editorial Resume Experience
 
-**Branch**: `001-resume-baseline-spec` | **Date**: 2026-04-27 | **Spec**: [spec.md](./spec.md)
+**Branch**: `001-resume-baseline-spec` | **Date**: 2026-04-29 | **Spec**: [spec.md](./spec.md)
 **Input**: Feature specification from `/specs/001-resume-baseline-spec/spec.md`
 
 **Note**: This template is filled in by the `/speckit-plan` command. See `.specify/templates/plan-template.md` for the execution workflow.
@@ -9,8 +9,9 @@
 
 Deliver the baseline public resume experience as a static-first Nuxt single-page application that
 communicates Ghassen's profile through a distinct editorial interface, preserves structured content
-and privacy-safe instrumentation, and supports accessible navigation, reduced-motion fallbacks, and
-clear contact conversion paths.
+and privacy-safe instrumentation, and supports accessible navigation, reduced-motion fallbacks,
+adaptive overflow handling for long Professional Experience entries, and clear contact conversion
+paths.
 
 ## Technical Context
 
@@ -21,7 +22,7 @@ clear contact conversion paths.
 **Target Platform**: Modern desktop and mobile browsers, with static hosting through Docker + NGINX  
 **Project Type**: Static-generated single-page portfolio/resume web application  
 **Performance Goals**: Fast first-read access to hero content and navigation, smooth motion on capable desktop hardware, and graceful fallback on touch or reduced-motion contexts  
-**Constraints**: Preserve the editorial redesign direction, single curated theme, privacy-safe analytics, keyboard accessibility, downloadable CV integrity, and static-generation deployment compatibility  
+**Constraints**: Preserve the editorial redesign direction, single curated theme, privacy-safe analytics, keyboard accessibility, downloadable CV integrity, static-generation deployment compatibility, and avoid clipping long Professional Experience content in desktop storytelling mode  
 **Scale/Scope**: One primary landing page with eight major sections, one structured resume dataset, one contact workflow, and a small set of documented analytics events
 
 ## Constitution Check
@@ -33,12 +34,14 @@ clear contact conversion paths.
   patterns the constitution forbids.
 - PASS: The solution fits the static-first Nuxt 3 + Vue 3 + strict TypeScript architecture already
   used in the repository and keeps deployment compatible with `npm run generate` and Docker + NGINX.
-- PASS: Accessibility, keyboard flow, reduced-motion behavior, and mobile fallback are part of the
-  feature spec and are captured again in design artifacts and quickstart validation steps.
+- PASS: Accessibility, keyboard flow, reduced-motion behavior, mobile fallback, and long-content
+  overflow fallback are part of the feature spec and are captured again in design artifacts and
+  quickstart validation steps.
 - PASS: Content-source consistency and privacy-safe analytics are scoped as first-class planning
   concerns, with their runtime documentation already centralized in `ANALYTICS.md`.
 - PASS: Verification scope includes static generation, responsive QA, focus/accessibility review,
-  reduced-motion checks, and analytics/contact smoke validation.
+  reduced-motion checks, overflow fallback checks for Professional Experience, and analytics/contact
+  smoke validation.
 
 ## Project Structure
 
@@ -95,7 +98,8 @@ composition remains in `pages/`, reusable presentation in `components/`, behavio
 
 - Research output: [research.md](./research.md)
 - Key decisions cover static-first deployment, structured content sourcing, motion progressive
-  enhancement, contact workflow behavior, analytics scope, and verification strategy.
+  enhancement, adaptive overflow fallback for long Professional Experience entries, contact
+  workflow behavior, analytics scope, and verification strategy.
 
 ## Phase 1 Design Artifacts
 
@@ -109,9 +113,11 @@ composition remains in `pages/`, reusable presentation in `components/`, behavio
   interaction contracts rather than generic card-grid fallback.
 - PASS: The data model preserves one structured content source of truth and derived runtime view
   models instead of duplicating facts across components.
-- PASS: Contracts require keyboard access, visible focus, reduced-motion behavior, and touch/mobile
-  alternatives for motion-heavy sections.
+- PASS: Contracts require keyboard access, visible focus, reduced-motion behavior, touch/mobile
+  alternatives for motion-heavy sections, and adaptive fallback when experience cards exceed the
+  safe desktop viewport.
 - PASS: Contact and analytics design keep privacy boundaries explicit and document the permitted
   event taxonomy.
 - PASS: Quickstart validation includes build/generate, responsive walkthroughs, accessibility
-  checks, and contact/analytics smoke tests, satisfying the constitution's verification rule.
+  checks, overflow fallback verification, and contact/analytics smoke tests, satisfying the
+  constitution's verification rule.
