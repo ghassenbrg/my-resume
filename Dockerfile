@@ -12,7 +12,9 @@ ENV NUXT_PUBLIC_EMAILJS_TEMPLATE_ID=$NUXT_PUBLIC_EMAILJS_TEMPLATE_ID
 ENV NUXT_PUBLIC_EMAILJS_PUBLIC_KEY=$NUXT_PUBLIC_EMAILJS_PUBLIC_KEY
 
 COPY package*.json ./
-RUN npm ci
+# Match the npm version that generated package-lock.json (lockfileVersion 3, npm 11).
+# node:22-alpine ships npm 10, which misreads nested optional wasm deps as missing.
+RUN npm install -g npm@11 && npm ci
 
 COPY . .
 RUN npm run generate
