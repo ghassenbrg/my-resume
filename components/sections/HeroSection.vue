@@ -1,418 +1,240 @@
 <template>
-  <section id="hero" class="hero-section" aria-labelledby="hero-title">
-    <ParticleCanvas v-if="showParticles" />
+  <header id="hero" class="hero" data-screen-label="hero">
+    <canvas ref="canvasRef" class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-fade"></div>
 
-    <div v-if="cvData" class="hero-section__content">
-      <img
-        ref="markRef"
-        class="hero-section__mark"
-        src="/favicon.svg"
-        width="128"
-        height="128"
-        alt="GB monogram"
-        decoding="async"
-      />
+    <div v-if="hero" class="container hero-inner">
+      <div class="hero-copy">
+        <div v-if="openToOpportunities" class="status-pill">
+          <span class="status-dot"></span>
+          {{ uiCopy.actions.available }}
+        </div>
 
-      <p ref="eyebrowRef" class="section-eyebrow">{{ uiCopy.hero.eyebrow }}</p>
+        <h1 class="hero-name">{{ hero.name }}</h1>
 
-      <h1 id="hero-title" ref="nameRef" class="hero-section__name">
-        <span>{{ firstName }}</span>
-        <span>{{ lastName }}</span>
-      </h1>
-
-      <p ref="titleRef" class="hero-section__title" aria-live="polite">
-        <span>{{ typedTitle }}</span>
-        <span class="hero-section__cursor animate-cursor-blink" aria-hidden="true"></span>
-      </p>
-
-      <ul ref="pillsRef" class="hero-section__pills" :aria-label="uiCopy.hero.contactSummary">
-        <li v-for="pill in heroPills" :key="pill.key">
-          <span class="hero-section__pill-icon" aria-hidden="true">
-            <svg v-if="pill.icon === 'location'" viewBox="0 0 24 24" fill="none">
-              <path d="M12 21c4-4.35 6-7.52 6-10a6 6 0 1 0-12 0c0 2.48 2 5.65 6 10Z" stroke="currentColor" stroke-width="1.7" />
-              <circle cx="12" cy="11" r="2.3" fill="currentColor" />
-            </svg>
-            <svg v-else-if="pill.icon === 'email'" viewBox="0 0 24 24" fill="none">
-              <rect x="3.5" y="6" width="17" height="12" rx="2.2" stroke="currentColor" stroke-width="1.7" />
-              <path d="m5.5 8 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <svg v-else viewBox="0 0 24 24" fill="none">
-              <path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-              <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.7" />
-            </svg>
+        <div class="hero-title">
+          <span class="grad-text">{{ hero.title }}</span>
+          <span class="hero-loc">
+            <AppIcon name="pin" :size="16" />
+            {{ hero.location }}
           </span>
-          <span>{{ pill.label }}</span>
-        </li>
-      </ul>
+        </div>
 
-      <div ref="actionsRef" class="hero-section__actions" :aria-label="uiCopy.hero.primaryLinks">
-        <MagneticButton :href="cvData.hero.github" external variant="ghost" analytics-label="github">
-          <Icon class="hero-section__action-icon hero-section__action-icon--white" :icon="githubIcon" aria-hidden="true" />
-          <span>{{ uiCopy.hero.actions.github }}</span>
-        </MagneticButton>
-        <MagneticButton :href="cvData.hero.linkedin" external variant="ghost" analytics-label="linkedin">
-          <Icon :icon="linkedinIcon" aria-hidden="true" />
-          <span>{{ uiCopy.hero.actions.linkedin }}</span>
-        </MagneticButton>
-        <MagneticButton :href="`mailto:${cvData.hero.email}`" variant="secondary" analytics-label="email">
-          <span class="hero-section__action-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <rect x="3.5" y="6" width="17" height="12" rx="2.2" stroke="currentColor" stroke-width="1.7" />
-              <path d="m5.5 8 6.5 5 6.5-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </span>
-          <span>{{ uiCopy.hero.actions.email }}</span>
-        </MagneticButton>
-        <MagneticButton :href="cvData.hero.cvLink" variant="primary" analytics-label="cv">
-          <span class="hero-section__action-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M12 3v11" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
-              <path d="m7.5 10.5 4.5 4.5 4.5-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M5 19.5h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" />
-            </svg>
-          </span>
-          <span>{{ uiCopy.hero.actions.cv }}</span>
-        </MagneticButton>
+        <p class="hero-tag">{{ tagline }}</p>
+
+        <div class="hero-cta">
+          <a
+            v-if="cvLink"
+            class="btn btn-primary"
+            :href="cvLink"
+            download
+            @click="trackFollowUpClick(uiCopy.actions.downloadCV, cvLink)"
+          >
+            <AppIcon name="download" :size="17" />
+            {{ uiCopy.actions.downloadCV }}
+          </a>
+          <a class="btn btn-ghost" href="#contact">
+            {{ uiCopy.actions.contactMe }}
+            <AppIcon name="arrow" :size="16" />
+          </a>
+
+          <div class="hero-social">
+            <a
+              v-if="social.github"
+              class="icon-btn"
+              :href="social.github"
+              target="_blank"
+              rel="noopener"
+              :aria-label="uiCopy.actions.github"
+            >
+              <AppIcon name="github" :size="18" />
+            </a>
+            <a
+              v-if="social.linkedin"
+              class="icon-btn"
+              :href="social.linkedin"
+              target="_blank"
+              rel="noopener"
+              :aria-label="uiCopy.actions.linkedin"
+            >
+              <AppIcon name="linkedin" :size="18" />
+            </a>
+            <a
+              v-if="email"
+              class="icon-btn"
+              :href="`mailto:${email}`"
+              :aria-label="uiCopy.actions.email"
+            >
+              <AppIcon name="mail" :size="18" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <BrandMonogram :size="92" />
+            <div class="hc-meta">
+              <span class="hc-name">{{ hero.name }}</span>
+              <span class="hc-role">{{ hero.title }}</span>
+            </div>
+          </div>
+          <div class="hero-card-terminal">
+            <div class="term-line">
+              <span class="tk-key">role</span>: <span class="tk-str">"Application Engineer"</span>
+            </div>
+            <div class="term-line">
+              <span class="tk-key">stack</span>: [<span class="tk-str">Java, K8s, GCP</span>]
+            </div>
+            <div class="term-line">
+              <span class="tk-key">scale</span>: <span class="tk-num">25_000_000</span> members
+            </div>
+            <div class="term-line">
+              <span class="tk-key">base</span>: <span class="tk-str">"Fukuoka, JP 🇯🇵"</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <button
-      ref="scrollRef"
-      class="hero-section__scroll"
-      type="button"
-      :aria-label="uiCopy.hero.scrollToAbout"
-      @click="scrollTo('#about')"
-    >
-      <span aria-hidden="true"></span>
-    </button>
-  </section>
+    <div class="scroll-hint no-print">
+      <span>Scroll</span>
+      <span class="scroll-track"><span class="scroll-thumb"></span></span>
+    </div>
+  </header>
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import githubIcon from '@iconify-icons/devicon/github'
-import linkedinIcon from '@iconify-icons/devicon/linkedin'
-import MagneticButton from '~/components/ui/MagneticButton.vue'
+import AppIcon from '~/components/ui/AppIcon.vue'
+import BrandMonogram from '~/components/ui/BrandMonogram.vue'
 
-const ParticleCanvas = defineAsyncComponent(() => import('~/components/ui/ParticleCanvas.vue'))
-const { cvData, loadCvData, uiCopy } = useCvData()
+const { cvData, cvConfig, uiCopy } = useCvData()
+const { trackFollowUpClick } = useAnalytics()
 
-const heroPills = computed(() => {
-  if (!cvData.value) {
-    return []
-  }
+const hero = computed(() => cvData.value?.hero ?? null)
+const tagline = computed(
+  () => hero.value?.tagline ?? cvData.value?.about.paragraphs[0] ?? '',
+)
 
-  return [
-    { key: 'location', label: cvData.value.hero.location, icon: 'location' },
-    { key: 'email', label: cvData.value.hero.email, icon: 'email' },
-    ...(cvData.value.hero.availabilityStatus
-      ? [{ key: 'availability', label: cvData.value.hero.availabilityStatus, icon: 'availability' }]
-      : []),
-  ]
-})
+// Shared, non-translatable values come from cv-config.json.
+const openToOpportunities = computed(() => cvConfig.value?.openToOpportunities ?? false)
+const cvLink = computed(() => cvConfig.value?.cvLink ?? '')
+const email = computed(() => cvConfig.value?.contact.email ?? '')
+const social = computed(() => cvConfig.value?.social ?? { github: '', linkedin: '' })
 
-const nameParts = computed(() => cvData.value?.hero.name.split(' ') ?? [])
-const firstName = computed(() => nameParts.value[0] ?? cvData.value?.hero.name ?? '')
-const lastName = computed(() => nameParts.value.slice(1).join(' '))
-const heroTitle = computed(() => cvData.value?.hero.title ?? '')
+const canvasRef = ref<HTMLCanvasElement | null>(null)
 
-const markRef = ref<HTMLImageElement | null>(null)
-const eyebrowRef = ref<HTMLElement | null>(null)
-const nameRef = ref<HTMLElement | null>(null)
-const titleRef = ref<HTMLElement | null>(null)
-const pillsRef = ref<HTMLElement | null>(null)
-const actionsRef = ref<HTMLElement | null>(null)
-const scrollRef = ref<HTMLElement | null>(null)
-const showParticles = ref(false)
-
-const { output: typedTitle, start: startTypewriter } = useTypewriter(heroTitle, {
-  delay: 30,
-  startDelay: 1500,
-})
-const { scrollTo } = useSmoothScroll()
-
-let splitText: { chars: Element[]; revert: () => void } | null = null
-let particleQuery: MediaQueryList | null = null
-let particleMotionQuery: MediaQueryList | null = null
-
-const updateParticleState = () => {
-  const canRenderParticles = particleQuery?.matches ?? false
-  const allowsMotion = !(particleMotionQuery?.matches ?? false)
-
-  showParticles.value = canRenderParticles && allowsMotion
+interface Node {
+  x: number
+  y: number
+  vx: number
+  vy: number
+  r: number
+  c: string
 }
 
-onMounted(async () => {
-  await loadCvData()
-  await nextTick()
-
-  const { $loadGsap, $prefersReducedMotion } = useNuxtApp()
-
-  particleQuery = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)')
-  particleMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-  updateParticleState()
-  particleQuery.addEventListener('change', updateParticleState)
-  particleMotionQuery.addEventListener('change', updateParticleState)
-
-  if ($prefersReducedMotion) {
-    startTypewriter()
+onMounted(() => {
+  const canvas = canvasRef.value
+  if (!canvas) {
     return
   }
 
-  const name = nameRef.value
-  const pills = pillsRef.value?.children ? Array.from(pillsRef.value.children) : []
-  const actions = actionsRef.value?.children ? Array.from(actionsRef.value.children) : []
-
-  if (!name) {
-    startTypewriter()
+  const ctx = canvas.getContext('2d')
+  if (!ctx) {
     return
   }
 
-  const { gsap, SplitText } = await $loadGsap()
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const css = getComputedStyle(document.documentElement)
+  const gold = (css.getPropertyValue('--gold') || '#e8a838').trim()
+  const teal = (css.getPropertyValue('--teal') || '#56c4b8').trim()
 
-  splitText = new SplitText(name, {
-    type: 'chars',
+  let raf = 0
+  let width = 0
+  let height = 0
+  let nodes: Node[] = []
+  let running = true
+
+  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light'
+
+  const resize = () => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    width = canvas.clientWidth
+    height = canvas.clientHeight
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+
+    const count = Math.round(Math.min(64, Math.max(26, (width * height) / 22000)))
+    nodes = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.22,
+      vy: (Math.random() - 0.5) * 0.22,
+      r: Math.random() * 1.6 + 0.6,
+      c: Math.random() > 0.5 ? gold : teal,
+    }))
+  }
+
+  const draw = () => {
+    if (!running) {
+      return
+    }
+
+    ctx.clearRect(0, 0, width, height)
+    const lineBase = isLight() ? '20,20,31' : '245,240,232'
+
+    for (let i = 0; i < nodes.length; i += 1) {
+      const a = nodes[i]
+      a.x += a.vx
+      a.y += a.vy
+      if (a.x < 0 || a.x > width) a.vx *= -1
+      if (a.y < 0 || a.y > height) a.vy *= -1
+
+      for (let j = i + 1; j < nodes.length; j += 1) {
+        const b = nodes[j]
+        const dx = a.x - b.x
+        const dy = a.y - b.y
+        const d = Math.hypot(dx, dy)
+        if (d < 122) {
+          ctx.strokeStyle = `rgba(${lineBase},${(1 - d / 122) * (isLight() ? 0.1 : 0.13)})`
+          ctx.lineWidth = 1
+          ctx.beginPath()
+          ctx.moveTo(a.x, a.y)
+          ctx.lineTo(b.x, b.y)
+          ctx.stroke()
+        }
+      }
+
+      ctx.fillStyle = a.c
+      ctx.globalAlpha = isLight() ? 0.55 : 0.7
+      ctx.beginPath()
+      ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2)
+      ctx.fill()
+      ctx.globalAlpha = 1
+    }
+
+    raf = requestAnimationFrame(draw)
+  }
+
+  resize()
+
+  if (!prefersReduced) {
+    draw()
+  } else {
+    // Render a single static frame.
+    running = true
+    draw()
+    running = false
+  }
+
+  window.addEventListener('resize', resize)
+
+  onBeforeUnmount(() => {
+    running = false
+    cancelAnimationFrame(raf)
+    window.removeEventListener('resize', resize)
   })
-
-  gsap
-    .timeline()
-    .from(markRef.value, {
-      scale: 0.86,
-      autoAlpha: 0,
-      duration: 0.45,
-      ease: 'power3.out',
-    })
-    .from(eyebrowRef.value, {
-      y: 24,
-      autoAlpha: 0,
-      duration: 0.5,
-      ease: 'power3.out',
-    }, 0.15)
-    .from(
-      splitText.chars,
-      {
-        y: 40,
-        autoAlpha: 0,
-        duration: 0.7,
-        stagger: 0.04,
-        ease: 'power3.out',
-      },
-      0.3,
-    )
-    .from(
-      titleRef.value,
-      {
-        y: 20,
-        autoAlpha: 0,
-        duration: 0.4,
-        ease: 'power3.out',
-      },
-      1.3,
-    )
-    .from(
-      pills,
-      {
-        y: 22,
-        autoAlpha: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: 'power2.out',
-      },
-      3,
-    )
-    .from(
-      actions,
-      {
-        scale: 0,
-        autoAlpha: 0,
-        duration: 0.4,
-        stagger: 0.08,
-        ease: 'back.out(1.7)',
-      },
-      3.5,
-    )
-    .from(
-      scrollRef.value,
-      {
-        autoAlpha: 0,
-        y: -8,
-        duration: 0.4,
-        ease: 'power2.out',
-      },
-      4,
-    )
-
-  startTypewriter()
-})
-
-watch(heroTitle, () => {
-  startTypewriter()
-})
-
-onBeforeUnmount(() => {
-  particleQuery?.removeEventListener('change', updateParticleState)
-  particleMotionQuery?.removeEventListener('change', updateParticleState)
-  splitText?.revert()
 })
 </script>
-
-<style scoped>
-.hero-section {
-  position: relative;
-  display: grid;
-  min-height: 100svh;
-  place-items: center;
-  overflow: hidden;
-  padding: var(--space-20) var(--space-8);
-}
-
-.hero-section__content {
-  position: relative;
-  z-index: var(--z-card);
-  display: grid;
-  justify-items: center;
-  gap: var(--space-6);
-  text-align: center;
-}
-
-.hero-section__mark {
-  width: clamp(4.5rem, 8vw, 6rem);
-  height: auto;
-  filter: drop-shadow(0 1.25rem 2.5rem rgba(232, 168, 56, 0.24));
-}
-
-.hero-section__name {
-  display: grid;
-  gap: var(--space-1);
-  max-width: 11ch;
-  color: var(--text-0);
-  font-size: var(--text-display);
-  letter-spacing: 0;
-  line-height: var(--leading-tight);
-  text-transform: uppercase;
-}
-
-.hero-section__title {
-  min-height: calc(var(--text-body) * var(--leading-normal) * 2);
-  max-width: 34rem;
-  color: var(--text-1);
-}
-
-.hero-section__cursor {
-  display: inline-block;
-  width: 0.08em;
-  height: 1.1em;
-  margin-left: var(--space-1);
-  translate: 0 0.16em;
-  background: var(--accent-amber);
-}
-
-.hero-section__pills,
-.hero-section__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.hero-section__pills {
-  gap: var(--space-3);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.hero-section__pills li {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  background: rgba(13, 13, 18, 0.72);
-  color: var(--text-1);
-  padding: var(--space-2) var(--space-4);
-  font-size: var(--text-small);
-  box-shadow: var(--shadow-card);
-  backdrop-filter: blur(14px);
-}
-
-.hero-section__pill-icon,
-.hero-section__action-icon {
-  display: inline-flex;
-  flex: 0 0 auto;
-  width: 1rem;
-  height: 1rem;
-  color: var(--accent-amber);
-}
-
-.hero-section__pill-icon svg,
-.hero-section__action-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.hero-section__action-icon--white {
-  color: var(--text-0);
-}
-
-.hero-section__action-icon--white :deep(svg),
-.hero-section__action-icon--white :deep(path) {
-  fill: currentColor;
-}
-
-.hero-section__actions {
-  gap: var(--space-3);
-}
-
-.hero-section__scroll {
-  position: absolute;
-  bottom: var(--space-8);
-  left: 50%;
-  z-index: var(--z-card);
-  width: 2.75rem;
-  aspect-ratio: 1;
-  translate: -50% 0;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  background: rgba(13, 13, 18, 0.72);
-  box-shadow: var(--shadow-card);
-}
-
-.hero-section__scroll span {
-  display: block;
-  width: 0.65rem;
-  height: 0.65rem;
-  margin: auto;
-  border-right: 2px solid var(--accent-amber);
-  border-bottom: 2px solid var(--accent-amber);
-  rotate: 45deg;
-  animation: scroll-bounce 1.5s ease-in-out infinite;
-}
-
-@media (max-width: 767px) {
-  .hero-section {
-    min-height: 100svh;
-    background:
-      radial-gradient(circle at 50% 30%, rgba(232, 168, 56, 0.16), transparent 34%),
-      linear-gradient(180deg, var(--bg-0), var(--bg-1));
-    padding: var(--space-16) var(--space-6);
-  }
-
-  .hero-section__content {
-    gap: var(--space-5);
-  }
-
-  .hero-section__title {
-    min-height: calc(var(--text-body) * var(--leading-normal) * 3);
-  }
-
-  .hero-section__pills {
-    gap: var(--space-2);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-section__scroll span {
-    animation: none;
-  }
-}
-</style>

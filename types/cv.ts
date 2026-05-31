@@ -38,16 +38,49 @@ export interface Hero {
   name: string
   title: string
   location: string
+  tagline?: string
   phone?: string
-  email: string
-  github: string
-  linkedin: string
-  cvLink: string
   availabilityStatus?: string
+}
+
+/**
+ * Shared, non-translatable configuration. Lives in a single `cv-config.json`
+ * (mountable/overridable like the per-language `cv-data-*.json` files) so these
+ * values are defined once instead of duplicated across every language file.
+ */
+export interface CVConfig {
+  /** Drives the hero availability pill. */
+  openToOpportunities: boolean
+  contact: {
+    email: string
+  }
+  social: {
+    github: string
+    linkedin: string
+  }
+  /** Path/URL to the downloadable CV. */
+  cvLink: string
+  meta: {
+    siteUrl: string
+    ogImage: string
+  }
+  theme: {
+    default: 'dark' | 'light'
+  }
+  display: {
+    /** Show the numeric proficiency value (e.g. "85%") in the Languages section. */
+    languagePercentage: boolean
+  }
+}
+
+export interface AboutHighlight {
+  value: string
+  label: string
 }
 
 export interface About {
   paragraphs: string[]
+  highlights?: AboutHighlight[]
   stats?: CVStats
 }
 

@@ -3,10 +3,7 @@
     "name": "Ghassen Bargougui",
     "title": "Ingénieur d'application",
     "location": "Fukuoka, Japon",
-    "email": "ghassen.brg16@gmail.com",
-    "github": "https://github.com/ghassenbrg",
-    "linkedin": "https://www.linkedin.com/in/ghassenbrg",
-    "cvLink": "/CV_Ghassen_Bargougui.pdf"
+    "tagline": "Je conçois et déploie des systèmes backend et full-stack pour les banques, les assureurs et les plateformes de paiement par carte — actuellement en charge de la modernisation des API et de l'infrastructure cloud hybride chez Rakuten Card."
   },
   "about": {
     "paragraphs": [
@@ -15,83 +12,278 @@
       "Expérience pratique avec Java, Helidon, MicroProfile, Kubernetes et GCP, y compris les pipelines CI/CD GitHub Actions, les déploiements GKE, la journalisation structurée et la résolution d'incidents en production sur les couches applicatives et infrastructure.",
       "Orienté architecture propre, qualité du code, scalabilité et exécution transverse afin de livrer des systèmes sûrs et fiables dans des environnements Agile.",
       "Parle couramment anglais et français, avec un niveau de base en japonais."
+    ],
+    "highlights": [
+      {
+        "value": "6+",
+        "label": "Années d'expérience"
+      },
+      {
+        "value": "25M+",
+        "label": "Membres servis chez Rakuten Card"
+      },
+      {
+        "value": "50%",
+        "label": "Temps de réponse des API réduit"
+      },
+      {
+        "value": "4",
+        "label": "Pays où j'ai travaillé"
+      }
     ]
   },
   "skills": {
     "Développement Backend & Full-Stack": [
-      { "name": "Java", "icon": "java", "highlight": true },
-      { "name": "Spring Boot", "icon": "spring", "highlight": true },
-      { "name": "Helidon", "icon": "helidon" },
-      { "name": "MicroProfile", "icon": "java" },
-      { "name": "Java EE", "icon": "javaee" },
-      { "name": "CDI", "icon": "java" },
-      { "name": "Hibernate", "icon": "hibernate" },
-      { "name": "JPA", "icon": "jpa" },
-      { "name": "Angular", "icon": "angular", "highlight": true },
-      { "name": "Vue.js", "icon": "vuejs" },
-      { "name": "Nuxt", "icon": "nuxtjs" },
-      { "name": "TypeScript", "icon": "typescript", "highlight": true },
-      { "name": "JavaScript", "icon": "javascript" },
-      { "name": "Node.js", "icon": "node" },
-      { "name": "HTML5", "icon": "html" },
-      { "name": "CSS3", "icon": "css" },
-      { "name": "PrimeNG", "icon": "primeng" },
-      { "name": "RxJS", "icon": "rxjs" },
-      { "name": "NgRx (Notions de base)", "icon": "ngrx" }
+      {
+        "name": "Java",
+        "icon": "java",
+        "highlight": true
+      },
+      {
+        "name": "Spring Boot",
+        "icon": "spring",
+        "highlight": true
+      },
+      {
+        "name": "Helidon",
+        "icon": "helidon"
+      },
+      {
+        "name": "MicroProfile",
+        "icon": "java"
+      },
+      {
+        "name": "Java EE",
+        "icon": "javaee"
+      },
+      {
+        "name": "CDI",
+        "icon": "java"
+      },
+      {
+        "name": "Hibernate",
+        "icon": "hibernate"
+      },
+      {
+        "name": "JPA",
+        "icon": "jpa"
+      },
+      {
+        "name": "Angular",
+        "icon": "angular",
+        "highlight": true
+      },
+      {
+        "name": "Vue.js",
+        "icon": "vuejs"
+      },
+      {
+        "name": "Nuxt",
+        "icon": "nuxtjs"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "typescript",
+        "highlight": true
+      },
+      {
+        "name": "JavaScript",
+        "icon": "javascript"
+      },
+      {
+        "name": "Node.js",
+        "icon": "node"
+      },
+      {
+        "name": "HTML5",
+        "icon": "html"
+      },
+      {
+        "name": "CSS3",
+        "icon": "css"
+      },
+      {
+        "name": "PrimeNG",
+        "icon": "primeng"
+      },
+      {
+        "name": "RxJS",
+        "icon": "rxjs"
+      },
+      {
+        "name": "NgRx (Notions de base)",
+        "icon": "ngrx"
+      }
     ],
     "Base de données & Traitement des données": [
-      { "name": "PostgreSQL", "icon": "postgres" },
-      { "name": "MySQL", "icon": "mysql" },
-      { "name": "Oracle (PL/SQL)", "icon": "oracle" },
-      { "name": "MongoDB", "icon": "mongodb" },
-      { "name": "Apache POI (Traitement Excel)", "icon": "poi" }
+      {
+        "name": "PostgreSQL",
+        "icon": "postgres"
+      },
+      {
+        "name": "MySQL",
+        "icon": "mysql"
+      },
+      {
+        "name": "Oracle (PL/SQL)",
+        "icon": "oracle"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "mongodb"
+      },
+      {
+        "name": "Apache POI (Traitement Excel)",
+        "icon": "poi"
+      }
     ],
     "Développement d'API": [
-      { "name": "Conception d'API RESTful", "icon": "api" },
-      { "name": "OpenAPI", "icon": "openapi" },
-      { "name": "Modernisation d'API", "icon": "api" }
+      {
+        "name": "Conception d'API RESTful",
+        "icon": "api"
+      },
+      {
+        "name": "OpenAPI",
+        "icon": "openapi"
+      },
+      {
+        "name": "Modernisation d'API",
+        "icon": "api"
+      }
     ],
     "Microservices & Systèmes événementiels": [
-      { "name": "Kafka", "icon": "kafka" },
-      { "name": "Spring Cloud", "icon": "springcloud" },
-      { "name": "ActiveMQ", "icon": "activemq" }
+      {
+        "name": "Kafka",
+        "icon": "kafka"
+      },
+      {
+        "name": "Spring Cloud",
+        "icon": "springcloud"
+      },
+      {
+        "name": "ActiveMQ",
+        "icon": "activemq"
+      }
     ],
     "DevOps & Infrastructure": [
-      { "name": "Kubernetes", "icon": "kubernetes", "highlight": true },
-      { "name": "Google Cloud Platform (GCP)", "icon": "gcp", "highlight": true },
-      { "name": "Google Kubernetes Engine (GKE)", "icon": "gke" },
-      { "name": "GitHub Actions", "icon": "githubactions" },
-      { "name": "Docker", "icon": "docker" },
-      { "name": "Jenkins", "icon": "jenkins" },
-      { "name": "GitLab CI/CD", "icon": "gitlab" },
-      { "name": "AWS", "icon": "aws" },
-      { "name": "Cloud Logging", "icon": "gcp" },
-      { "name": "Log4j2", "icon": "log4j" },
-      { "name": "Nginx", "icon": "nginx" },
-      { "name": "WildFly", "icon": "wildfly" },
-      { "name": "Tomcat", "icon": "tomcat" },
-      { "name": "Administration de serveurs Linux", "icon": "linux" }
+      {
+        "name": "Kubernetes",
+        "icon": "kubernetes",
+        "highlight": true
+      },
+      {
+        "name": "Google Cloud Platform (GCP)",
+        "icon": "gcp",
+        "highlight": true
+      },
+      {
+        "name": "Google Kubernetes Engine (GKE)",
+        "icon": "gke"
+      },
+      {
+        "name": "GitHub Actions",
+        "icon": "githubactions"
+      },
+      {
+        "name": "Docker",
+        "icon": "docker"
+      },
+      {
+        "name": "Jenkins",
+        "icon": "jenkins"
+      },
+      {
+        "name": "GitLab CI/CD",
+        "icon": "gitlab"
+      },
+      {
+        "name": "AWS",
+        "icon": "aws"
+      },
+      {
+        "name": "Cloud Logging",
+        "icon": "gcp"
+      },
+      {
+        "name": "Log4j2",
+        "icon": "log4j"
+      },
+      {
+        "name": "Nginx",
+        "icon": "nginx"
+      },
+      {
+        "name": "WildFly",
+        "icon": "wildfly"
+      },
+      {
+        "name": "Tomcat",
+        "icon": "tomcat"
+      },
+      {
+        "name": "Administration de serveurs Linux",
+        "icon": "linux"
+      }
     ],
     "Tests & Qualité du code": [
-      { "name": "JUnit", "icon": "junit" },
-      { "name": "Mockito", "icon": "mockito" },
-      { "name": "Tests d'intégration", "icon": "test" },
-      { "name": "SonarQube", "icon": "sonarqube" },
-      { "name": "Bonnes pratiques de revue de code", "icon": "coding" }
+      {
+        "name": "JUnit",
+        "icon": "junit"
+      },
+      {
+        "name": "Mockito",
+        "icon": "mockito"
+      },
+      {
+        "name": "Tests d'intégration",
+        "icon": "test"
+      },
+      {
+        "name": "SonarQube",
+        "icon": "sonarqube"
+      },
+      {
+        "name": "Bonnes pratiques de revue de code",
+        "icon": "coding"
+      }
     ],
     "Sécurité": [
-      { "name": "Keycloak (OAuth2, OIDC, JWT)", "icon": "keycloak" }
+      {
+        "name": "Keycloak (OAuth2, OIDC, JWT)",
+        "icon": "keycloak"
+      }
     ],
     "Calcul haute performance": [
-      { "name": "Traitement asynchrone", "icon": "async" },
-      { "name": "Multithreading", "icon": "threads" },
-      { "name": "JProfiler", "icon": "jprofiler" }
+      {
+        "name": "Traitement asynchrone",
+        "icon": "async"
+      },
+      {
+        "name": "Multithreading",
+        "icon": "threads"
+      },
+      {
+        "name": "JProfiler",
+        "icon": "jprofiler"
+      }
     ],
     "Agile & Collaboration": [
-      { "name": "Scrum", "icon": "scrum" },
-      { "name": "Jira", "icon": "jira" },
-      { "name": "Git", "icon": "git" },
-      { "name": "Confluence", "icon": "confluence" }
+      {
+        "name": "Scrum",
+        "icon": "scrum"
+      },
+      {
+        "name": "Jira",
+        "icon": "jira"
+      },
+      {
+        "name": "Git",
+        "icon": "git"
+      },
+      {
+        "name": "Confluence",
+        "icon": "confluence"
+      }
     ]
   },
   "experience": [
@@ -286,9 +478,29 @@
     }
   ],
   "languages": [
-    { "language": "Arabe", "code": "AR", "level": "Langue maternelle", "percentage": 100 },
-    { "language": "Anglais", "code": "EN", "level": "Avancé, courant", "percentage": 85 },
-    { "language": "Français", "code": "FR", "level": "Avancé, courant", "percentage": 85 },
-    { "language": "Japonais", "code": "JA", "level": "Débutant, niveau de base", "percentage": 10 }
+    {
+      "language": "Arabe",
+      "code": "AR",
+      "level": "Langue maternelle",
+      "percentage": 100
+    },
+    {
+      "language": "Anglais",
+      "code": "EN",
+      "level": "Avancé, courant",
+      "percentage": 85
+    },
+    {
+      "language": "Français",
+      "code": "FR",
+      "level": "Avancé, courant",
+      "percentage": 85
+    },
+    {
+      "language": "Japonais",
+      "code": "JA",
+      "level": "Débutant, niveau de base",
+      "percentage": 10
+    }
   ]
 }

@@ -3,10 +3,7 @@
     "name": "Ghassen Bargougui",
     "title": "アプリケーションエンジニア",
     "location": "日本、福岡",
-    "email": "ghassen.brg16@gmail.com",
-    "github": "https://github.com/ghassenbrg",
-    "linkedin": "https://www.linkedin.com/in/ghassenbrg",
-    "cvLink": "/CV_Ghassen_Bargougui.pdf"
+    "tagline": "銀行・保険・カード決済プラットフォーム向けのバックエンドおよびフルスタックシステムを設計・構築しています。現在は楽天カードで API とハイブリッドクラウド基盤のモダナイゼーションに取り組んでいます。"
   },
   "about": {
     "paragraphs": [
@@ -15,83 +12,278 @@
       "Java、Helidon、MicroProfile、Kubernetes、GCPを実務で活用し、GitHub ActionsによるCI/CD、GKEデプロイ、構造化ログ、アプリケーション層とインフラ層の両面での本番障害対応に従事。",
       "クリーンアーキテクチャ、コード品質、スケーラビリティ、チーム横断での実行力を重視し、アジャイル環境で安全かつ信頼性の高いシステムを提供。",
       "英語とフランス語に堪能で、日本語は初級レベル。"
+    ],
+    "highlights": [
+      {
+        "value": "6+",
+        "label": "年以上の経験"
+      },
+      {
+        "value": "25M+",
+        "label": "楽天カードで対応する会員数"
+      },
+      {
+        "value": "50%",
+        "label": "API レスポンス時間を短縮"
+      },
+      {
+        "value": "4",
+        "label": "勤務した国の数"
+      }
     ]
   },
   "skills": {
     "バックエンド・フルスタック開発": [
-      { "name": "Java", "icon": "java", "highlight": true },
-      { "name": "Spring Boot", "icon": "spring", "highlight": true },
-      { "name": "Helidon", "icon": "helidon" },
-      { "name": "MicroProfile", "icon": "java" },
-      { "name": "Java EE", "icon": "javaee" },
-      { "name": "CDI", "icon": "java" },
-      { "name": "Hibernate", "icon": "hibernate" },
-      { "name": "JPA", "icon": "jpa" },
-      { "name": "Angular", "icon": "angular", "highlight": true },
-      { "name": "Vue.js", "icon": "vuejs" },
-      { "name": "Nuxt", "icon": "nuxtjs" },
-      { "name": "TypeScript", "icon": "typescript", "highlight": true },
-      { "name": "JavaScript", "icon": "javascript" },
-      { "name": "Node.js", "icon": "node" },
-      { "name": "HTML5", "icon": "html" },
-      { "name": "CSS3", "icon": "css" },
-      { "name": "PrimeNG", "icon": "primeng" },
-      { "name": "RxJS", "icon": "rxjs" },
-      { "name": "NgRx（基礎）", "icon": "ngrx" }
+      {
+        "name": "Java",
+        "icon": "java",
+        "highlight": true
+      },
+      {
+        "name": "Spring Boot",
+        "icon": "spring",
+        "highlight": true
+      },
+      {
+        "name": "Helidon",
+        "icon": "helidon"
+      },
+      {
+        "name": "MicroProfile",
+        "icon": "java"
+      },
+      {
+        "name": "Java EE",
+        "icon": "javaee"
+      },
+      {
+        "name": "CDI",
+        "icon": "java"
+      },
+      {
+        "name": "Hibernate",
+        "icon": "hibernate"
+      },
+      {
+        "name": "JPA",
+        "icon": "jpa"
+      },
+      {
+        "name": "Angular",
+        "icon": "angular",
+        "highlight": true
+      },
+      {
+        "name": "Vue.js",
+        "icon": "vuejs"
+      },
+      {
+        "name": "Nuxt",
+        "icon": "nuxtjs"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "typescript",
+        "highlight": true
+      },
+      {
+        "name": "JavaScript",
+        "icon": "javascript"
+      },
+      {
+        "name": "Node.js",
+        "icon": "node"
+      },
+      {
+        "name": "HTML5",
+        "icon": "html"
+      },
+      {
+        "name": "CSS3",
+        "icon": "css"
+      },
+      {
+        "name": "PrimeNG",
+        "icon": "primeng"
+      },
+      {
+        "name": "RxJS",
+        "icon": "rxjs"
+      },
+      {
+        "name": "NgRx（基礎）",
+        "icon": "ngrx"
+      }
     ],
     "データベース・データ処理": [
-      { "name": "PostgreSQL", "icon": "postgres" },
-      { "name": "MySQL", "icon": "mysql" },
-      { "name": "Oracle (PL/SQL)", "icon": "oracle" },
-      { "name": "MongoDB", "icon": "mongodb" },
-      { "name": "Apache POI（Excel処理）", "icon": "poi" }
+      {
+        "name": "PostgreSQL",
+        "icon": "postgres"
+      },
+      {
+        "name": "MySQL",
+        "icon": "mysql"
+      },
+      {
+        "name": "Oracle (PL/SQL)",
+        "icon": "oracle"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "mongodb"
+      },
+      {
+        "name": "Apache POI（Excel処理）",
+        "icon": "poi"
+      }
     ],
     "API開発": [
-      { "name": "RESTful API設計", "icon": "api" },
-      { "name": "OpenAPI", "icon": "openapi" },
-      { "name": "APIモダナイゼーション", "icon": "api" }
+      {
+        "name": "RESTful API設計",
+        "icon": "api"
+      },
+      {
+        "name": "OpenAPI",
+        "icon": "openapi"
+      },
+      {
+        "name": "APIモダナイゼーション",
+        "icon": "api"
+      }
     ],
     "マイクロサービス・イベント駆動システム": [
-      { "name": "Kafka", "icon": "kafka" },
-      { "name": "Spring Cloud", "icon": "springcloud" },
-      { "name": "ActiveMQ", "icon": "activemq" }
+      {
+        "name": "Kafka",
+        "icon": "kafka"
+      },
+      {
+        "name": "Spring Cloud",
+        "icon": "springcloud"
+      },
+      {
+        "name": "ActiveMQ",
+        "icon": "activemq"
+      }
     ],
     "DevOps・インフラ": [
-      { "name": "Kubernetes", "icon": "kubernetes", "highlight": true },
-      { "name": "Google Cloud Platform (GCP)", "icon": "gcp", "highlight": true },
-      { "name": "Google Kubernetes Engine (GKE)", "icon": "gke" },
-      { "name": "GitHub Actions", "icon": "githubactions" },
-      { "name": "Docker", "icon": "docker" },
-      { "name": "Jenkins", "icon": "jenkins" },
-      { "name": "GitLab CI/CD", "icon": "gitlab" },
-      { "name": "AWS", "icon": "aws" },
-      { "name": "Cloud Logging", "icon": "gcp" },
-      { "name": "Log4j2", "icon": "log4j" },
-      { "name": "Nginx", "icon": "nginx" },
-      { "name": "WildFly", "icon": "wildfly" },
-      { "name": "Tomcat", "icon": "tomcat" },
-      { "name": "Linuxサーバー運用", "icon": "linux" }
+      {
+        "name": "Kubernetes",
+        "icon": "kubernetes",
+        "highlight": true
+      },
+      {
+        "name": "Google Cloud Platform (GCP)",
+        "icon": "gcp",
+        "highlight": true
+      },
+      {
+        "name": "Google Kubernetes Engine (GKE)",
+        "icon": "gke"
+      },
+      {
+        "name": "GitHub Actions",
+        "icon": "githubactions"
+      },
+      {
+        "name": "Docker",
+        "icon": "docker"
+      },
+      {
+        "name": "Jenkins",
+        "icon": "jenkins"
+      },
+      {
+        "name": "GitLab CI/CD",
+        "icon": "gitlab"
+      },
+      {
+        "name": "AWS",
+        "icon": "aws"
+      },
+      {
+        "name": "Cloud Logging",
+        "icon": "gcp"
+      },
+      {
+        "name": "Log4j2",
+        "icon": "log4j"
+      },
+      {
+        "name": "Nginx",
+        "icon": "nginx"
+      },
+      {
+        "name": "WildFly",
+        "icon": "wildfly"
+      },
+      {
+        "name": "Tomcat",
+        "icon": "tomcat"
+      },
+      {
+        "name": "Linuxサーバー運用",
+        "icon": "linux"
+      }
     ],
     "テスト・コード品質": [
-      { "name": "JUnit", "icon": "junit" },
-      { "name": "Mockito", "icon": "mockito" },
-      { "name": "結合テスト", "icon": "test" },
-      { "name": "SonarQube", "icon": "sonarqube" },
-      { "name": "コードレビューのベストプラクティス", "icon": "coding" }
+      {
+        "name": "JUnit",
+        "icon": "junit"
+      },
+      {
+        "name": "Mockito",
+        "icon": "mockito"
+      },
+      {
+        "name": "結合テスト",
+        "icon": "test"
+      },
+      {
+        "name": "SonarQube",
+        "icon": "sonarqube"
+      },
+      {
+        "name": "コードレビューのベストプラクティス",
+        "icon": "coding"
+      }
     ],
     "セキュリティ": [
-      { "name": "Keycloak (OAuth2, OIDC, JWT)", "icon": "keycloak" }
+      {
+        "name": "Keycloak (OAuth2, OIDC, JWT)",
+        "icon": "keycloak"
+      }
     ],
     "高性能コンピューティング": [
-      { "name": "非同期処理", "icon": "async" },
-      { "name": "マルチスレッド", "icon": "threads" },
-      { "name": "JProfiler", "icon": "jprofiler" }
+      {
+        "name": "非同期処理",
+        "icon": "async"
+      },
+      {
+        "name": "マルチスレッド",
+        "icon": "threads"
+      },
+      {
+        "name": "JProfiler",
+        "icon": "jprofiler"
+      }
     ],
     "アジャイル・コラボレーション": [
-      { "name": "Scrum", "icon": "scrum" },
-      { "name": "Jira", "icon": "jira" },
-      { "name": "Git", "icon": "git" },
-      { "name": "Confluence", "icon": "confluence" }
+      {
+        "name": "Scrum",
+        "icon": "scrum"
+      },
+      {
+        "name": "Jira",
+        "icon": "jira"
+      },
+      {
+        "name": "Git",
+        "icon": "git"
+      },
+      {
+        "name": "Confluence",
+        "icon": "confluence"
+      }
     ]
   },
   "experience": [
@@ -286,9 +478,29 @@
     }
   ],
   "languages": [
-    { "language": "アラビア語", "code": "AR", "level": "母語", "percentage": 100 },
-    { "language": "英語", "code": "EN", "level": "上級・流暢", "percentage": 85 },
-    { "language": "フランス語", "code": "FR", "level": "上級・流暢", "percentage": 85 },
-    { "language": "日本語", "code": "JA", "level": "初級・基礎レベル", "percentage": 10 }
+    {
+      "language": "アラビア語",
+      "code": "AR",
+      "level": "母語",
+      "percentage": 100
+    },
+    {
+      "language": "英語",
+      "code": "EN",
+      "level": "上級・流暢",
+      "percentage": 85
+    },
+    {
+      "language": "フランス語",
+      "code": "FR",
+      "level": "上級・流暢",
+      "percentage": 85
+    },
+    {
+      "language": "日本語",
+      "code": "JA",
+      "level": "初級・基礎レベル",
+      "percentage": 10
+    }
   ]
 }

@@ -9,6 +9,7 @@ spec:
         - name: resume
           image: ghassen-resume:latest
           volumeMounts:
+            # Per-language translatable CV content.
             - name: cv-data
               mountPath: /usr/share/nginx/html/cv-data-en.json
               subPath: cv-data-en.json
@@ -21,6 +22,12 @@ spec:
               mountPath: /usr/share/nginx/html/cv-data-jp.json
               subPath: cv-data-jp.json
               readOnly: true
+            # Shared, non-translatable config (mounted from its own ConfigMap so
+            # it can be updated globally, independent of the language content).
+            - name: cv-config
+              mountPath: /usr/share/nginx/html/cv-config.json
+              subPath: cv-config.json
+              readOnly: true
             - name: cv-pdf
               mountPath: /usr/share/nginx/html/CV_Ghassen_Bargougui.pdf
               subPath: CV_Ghassen_Bargougui.pdf
@@ -29,6 +36,9 @@ spec:
         - name: cv-data
           configMap:
             name: resume-cv-data
+        - name: cv-config
+          configMap:
+            name: resume-cv-config
         - name: cv-pdf
           configMap:
             name: resume-cv-pdf

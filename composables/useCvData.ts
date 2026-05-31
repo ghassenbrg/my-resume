@@ -1,6 +1,7 @@
 import { getResumeUiCopy, languageNativeLabels, type ResumeUiCopy } from '~/data/resume-ui'
 import type {
   AvailableLanguage,
+  CVConfig,
   CVData,
   CVStats,
   Experience,
@@ -13,8 +14,56 @@ import type {
 
 const DEFAULT_LANGUAGE_CODE = 'en'
 const JAPANESE_LANGUAGE_ALIAS = 'jp'
+const CONFIG_PATH = '/cv-config.json'
 const languageFileRequests = new Map<string, Promise<RuntimeCVData>>()
 let availableLanguageRequest: Promise<AvailableLanguage[]> | null = null
+let configRequest: Promise<CVConfig> | null = null
+
+/* Safe defaults so a missing/broken cv-config.json never blanks the whole site. */
+export const DEFAULT_CV_CONFIG: CVConfig = {
+  openToOpportunities: false,
+  contact: { email: '' },
+  social: { github: '', linkedin: '' },
+  cvLink: '',
+  meta: { siteUrl: '', ogImage: '/og-image.png' },
+  theme: { default: 'dark' },
+  display: { languagePercentage: true },
+}
+
+/* Merge a (possibly partial) config over the defaults so individual missing keys
+ * fall back gracefully — the file can be edited/mounted without listing everything. */
+export const normalizeCvConfig = (data: unknown): CVConfig => {
+  const source = isRecord(data) ? data : {}
+  const contact = isRecord(source.contact) ? source.contact : {}
+  const social = isRecord(source.social) ? source.social : {}
+  const meta = isRecord(source.meta) ? source.meta : {}
+  const theme = isRecord(source.theme) ? source.theme : {}
+  const display = isRecord(source.display) ? source.display : {}
+
+  return {
+    openToOpportunities: source.openToOpportunities === true,
+    contact: {
+      email: typeof contact.email === 'string' ? contact.email : DEFAULT_CV_CONFIG.contact.email,
+    },
+    social: {
+      github: typeof social.github === 'string' ? social.github : DEFAULT_CV_CONFIG.social.github,
+      linkedin:
+        typeof social.linkedin === 'string' ? social.linkedin : DEFAULT_CV_CONFIG.social.linkedin,
+    },
+    cvLink: typeof source.cvLink === 'string' ? source.cvLink : DEFAULT_CV_CONFIG.cvLink,
+    meta: {
+      siteUrl: typeof meta.siteUrl === 'string' ? meta.siteUrl : DEFAULT_CV_CONFIG.meta.siteUrl,
+      ogImage: typeof meta.ogImage === 'string' ? meta.ogImage : DEFAULT_CV_CONFIG.meta.ogImage,
+    },
+    theme: {
+      default: theme.default === 'light' ? 'light' : 'dark',
+    },
+    display: {
+      // Shown by default; only an explicit `false` hides the value.
+      languagePercentage: display.languagePercentage !== false,
+    },
+  }
+}
 
 export const extractYearsExperience = (paragraphs: string[]) => {
   const yearsMatch = paragraphs.join(' ').match(/(\d+)\+?\s+years/i)
@@ -150,16 +199,10 @@ export const validateCvData = (data: unknown): NormalizationIssue[] => {
   if (!isRecord(data.hero)) {
     issues.push({ path: 'hero', message: 'Hero profile is required.' })
   } else {
-    for (const field of ['name', 'title', 'location', 'email', 'github', 'linkedin', 'cvLink']) {
+    // Contact/social links and cvLink moved to the shared cv-config.json, so the
+    // per-language hero now only carries translatable identity fields.
+    for (const field of ['name', 'title', 'location']) {
       assertRequiredString(data.hero, 'hero', field, issues)
-    }
-
-    for (const field of ['github', 'linkedin', 'cvLink']) {
-      const value = data.hero[field]
-
-      if (typeof value === 'string' && !isUrlLike(value)) {
-        issues.push({ path: `hero.${field}`, message: 'Expected a URL or public asset path.' })
-      }
     }
   }
 
@@ -379,8 +422,25 @@ const loadLanguageDataset = async (languageCode: string) => {
   }
 }
 
+/* Loads the shared, language-independent config once (cached). */
+const loadCvConfig = async () => {
+  if (!configRequest) {
+    configRequest = $fetch(CONFIG_PATH, {
+      query: import.meta.client ? { v: Date.now() } : undefined,
+    })
+      .then(normalizeCvConfig)
+      .catch((error) => {
+        configRequest = null
+        throw error
+      })
+  }
+
+  return configRequest
+}
+
 export const useCvData = () => {
   const cvData = useState<RuntimeCVData | null>('cv-data', () => null)
+  const cvConfig = useState<CVConfig | null>('cv-config', () => null)
   const cvDataError = useState<string | null>('cv-data-error', () => null)
   const isCvDataLoading = useState('cv-data-loading', () => false)
   const availableLanguages = useState<AvailableLanguage[]>('cv-available-languages', () => [])
@@ -466,8 +526,23 @@ export const useCvData = () => {
     }
   }
 
+  const loadConfig = async () => {
+    if (cvConfig.value) {
+      return cvConfig.value
+    }
+
+    try {
+      cvConfig.value = await loadCvConfig()
+    } catch {
+      // Resilient: a missing/broken config must not blank the site.
+      cvConfig.value = DEFAULT_CV_CONFIG
+    }
+
+    return cvConfig.value
+  }
+
   const loadCvData = async () => {
-    await loadAvailableLanguages()
+    await Promise.all([loadAvailableLanguages(), loadConfig()])
 
     if (cvData.value && availableLanguages.value.some((language) => language.code === activeLanguage.value)) {
       return cvData.value
@@ -536,7 +611,11 @@ export const useCvData = () => {
   }
 
   return {
-    cvData: readonly(cvData),
+    // Exposed as a plain ref so components can pass typed slices (Experience,
+    // Project, …) straight into child props; the composable's methods remain
+    // the single writer of this state.
+    cvData,
+    cvConfig: readonly(cvConfig),
     cvDataError: readonly(cvDataError),
     isCvDataLoading: readonly(isCvDataLoading),
     availableLanguages: readonly(availableLanguages),
@@ -544,6 +623,7 @@ export const useCvData = () => {
     languageSelection: readonly(languageSelection),
     uiCopy: readonly(uiCopy),
     loadAvailableLanguages,
+    loadConfig,
     loadCvData,
     setActiveLanguage,
   }

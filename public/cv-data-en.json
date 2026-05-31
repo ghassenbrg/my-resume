@@ -3,10 +3,7 @@
     "name": "Ghassen Bargougui",
     "title": "Application Engineer",
     "location": "Fukuoka, Japan",
-    "email": "ghassen.brg16@gmail.com",
-    "github": "https://github.com/ghassenbrg",
-    "linkedin": "https://www.linkedin.com/in/ghassenbrg",
-    "cvLink": "/CV_Ghassen_Bargougui.pdf"
+    "tagline": "I design and ship backend & full-stack systems for banks, insurers and card-payment platforms — currently modernizing APIs and hybrid-cloud infrastructure at Rakuten Card."
   },
   "about": {
     "paragraphs": [
@@ -15,83 +12,278 @@
       "Hands-on with Java, Helidon, MicroProfile, Kubernetes, and GCP, including GitHub Actions CI/CD, GKE deployments, structured logging, and production troubleshooting across application and infrastructure layers.",
       "Focused on clean architecture, code quality, scalability, and cross-team execution to deliver secure and reliable systems in Agile environments.",
       "Fluent in English and French, with basic proficiency in Japanese."
+    ],
+    "highlights": [
+      {
+        "value": "6+",
+        "label": "Years of experience"
+      },
+      {
+        "value": "25M+",
+        "label": "Members served at Rakuten Card"
+      },
+      {
+        "value": "50%",
+        "label": "API response time reduced"
+      },
+      {
+        "value": "4",
+        "label": "Countries worked across"
+      }
     ]
   },
   "skills": {
     "Backend & Full-Stack Development": [
-      { "name": "Java", "icon": "java", "highlight": true },
-      { "name": "Spring Boot", "icon": "spring", "highlight": true },
-      { "name": "Helidon", "icon": "helidon" },
-      { "name": "MicroProfile", "icon": "java" },
-      { "name": "Java EE", "icon": "javaee" },
-      { "name": "CDI", "icon": "java" },
-      { "name": "Hibernate", "icon": "hibernate" },
-      { "name": "JPA", "icon": "jpa" },
-      { "name": "Angular", "icon": "angular", "highlight": true },
-      { "name": "Vue.js", "icon": "vuejs" },
-      { "name": "Nuxt", "icon": "nuxtjs" },
-      { "name": "TypeScript", "icon": "typescript", "highlight": true },
-      { "name": "JavaScript", "icon": "javascript" },
-      { "name": "Node.js", "icon": "node" },
-      { "name": "HTML5", "icon": "html" },
-      { "name": "CSS3", "icon": "css" },
-      { "name": "PrimeNG", "icon": "primeng" },
-      { "name": "RxJS", "icon": "rxjs" },
-      { "name": "NgRx (Basic)", "icon": "ngrx" }
+      {
+        "name": "Java",
+        "icon": "java",
+        "highlight": true
+      },
+      {
+        "name": "Spring Boot",
+        "icon": "spring",
+        "highlight": true
+      },
+      {
+        "name": "Helidon",
+        "icon": "helidon"
+      },
+      {
+        "name": "MicroProfile",
+        "icon": "java"
+      },
+      {
+        "name": "Java EE",
+        "icon": "javaee"
+      },
+      {
+        "name": "CDI",
+        "icon": "java"
+      },
+      {
+        "name": "Hibernate",
+        "icon": "hibernate"
+      },
+      {
+        "name": "JPA",
+        "icon": "jpa"
+      },
+      {
+        "name": "Angular",
+        "icon": "angular",
+        "highlight": true
+      },
+      {
+        "name": "Vue.js",
+        "icon": "vuejs"
+      },
+      {
+        "name": "Nuxt",
+        "icon": "nuxtjs"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "typescript",
+        "highlight": true
+      },
+      {
+        "name": "JavaScript",
+        "icon": "javascript"
+      },
+      {
+        "name": "Node.js",
+        "icon": "node"
+      },
+      {
+        "name": "HTML5",
+        "icon": "html"
+      },
+      {
+        "name": "CSS3",
+        "icon": "css"
+      },
+      {
+        "name": "PrimeNG",
+        "icon": "primeng"
+      },
+      {
+        "name": "RxJS",
+        "icon": "rxjs"
+      },
+      {
+        "name": "NgRx (Basic)",
+        "icon": "ngrx"
+      }
     ],
     "Database & Data Processing": [
-      { "name": "PostgreSQL", "icon": "postgres" },
-      { "name": "MySQL", "icon": "mysql" },
-      { "name": "Oracle (PL/SQL)", "icon": "oracle" },
-      { "name": "MongoDB", "icon": "mongodb" },
-      { "name": "Apache POI (Excel Processing)", "icon": "poi" }
+      {
+        "name": "PostgreSQL",
+        "icon": "postgres"
+      },
+      {
+        "name": "MySQL",
+        "icon": "mysql"
+      },
+      {
+        "name": "Oracle (PL/SQL)",
+        "icon": "oracle"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "mongodb"
+      },
+      {
+        "name": "Apache POI (Excel Processing)",
+        "icon": "poi"
+      }
     ],
     "API Development": [
-      { "name": "RESTful API Design", "icon": "api" },
-      { "name": "OpenAPI", "icon": "openapi" },
-      { "name": "API Modernization", "icon": "api" }
+      {
+        "name": "RESTful API Design",
+        "icon": "api"
+      },
+      {
+        "name": "OpenAPI",
+        "icon": "openapi"
+      },
+      {
+        "name": "API Modernization",
+        "icon": "api"
+      }
     ],
     "Microservices & Event-Driven Systems": [
-      { "name": "Kafka", "icon": "kafka" },
-      { "name": "Spring Cloud", "icon": "springcloud" },
-      { "name": "ActiveMQ", "icon": "activemq" }
+      {
+        "name": "Kafka",
+        "icon": "kafka"
+      },
+      {
+        "name": "Spring Cloud",
+        "icon": "springcloud"
+      },
+      {
+        "name": "ActiveMQ",
+        "icon": "activemq"
+      }
     ],
     "DevOps & Infrastructure": [
-      { "name": "Kubernetes", "icon": "kubernetes", "highlight": true },
-      { "name": "Google Cloud Platform (GCP)", "icon": "gcp", "highlight": true },
-      { "name": "Google Kubernetes Engine (GKE)", "icon": "gke" },
-      { "name": "GitHub Actions", "icon": "githubactions" },
-      { "name": "Docker", "icon": "docker" },
-      { "name": "Jenkins", "icon": "jenkins" },
-      { "name": "GitLab CI/CD", "icon": "gitlab" },
-      { "name": "AWS", "icon": "aws" },
-      { "name": "Cloud Logging", "icon": "gcp" },
-      { "name": "Log4j2", "icon": "log4j" },
-      { "name": "Nginx", "icon": "nginx" },
-      { "name": "WildFly", "icon": "wildfly" },
-      { "name": "Tomcat", "icon": "tomcat" },
-      { "name": "Linux Server Management", "icon": "linux" }
+      {
+        "name": "Kubernetes",
+        "icon": "kubernetes",
+        "highlight": true
+      },
+      {
+        "name": "Google Cloud Platform (GCP)",
+        "icon": "gcp",
+        "highlight": true
+      },
+      {
+        "name": "Google Kubernetes Engine (GKE)",
+        "icon": "gke"
+      },
+      {
+        "name": "GitHub Actions",
+        "icon": "githubactions"
+      },
+      {
+        "name": "Docker",
+        "icon": "docker"
+      },
+      {
+        "name": "Jenkins",
+        "icon": "jenkins"
+      },
+      {
+        "name": "GitLab CI/CD",
+        "icon": "gitlab"
+      },
+      {
+        "name": "AWS",
+        "icon": "aws"
+      },
+      {
+        "name": "Cloud Logging",
+        "icon": "gcp"
+      },
+      {
+        "name": "Log4j2",
+        "icon": "log4j"
+      },
+      {
+        "name": "Nginx",
+        "icon": "nginx"
+      },
+      {
+        "name": "WildFly",
+        "icon": "wildfly"
+      },
+      {
+        "name": "Tomcat",
+        "icon": "tomcat"
+      },
+      {
+        "name": "Linux Server Management",
+        "icon": "linux"
+      }
     ],
     "Testing & Code Quality": [
-      { "name": "JUnit", "icon": "junit" },
-      { "name": "Mockito", "icon": "mockito" },
-      { "name": "Integration Tests", "icon": "test" },
-      { "name": "SonarQube", "icon": "sonarqube" },
-      { "name": "Code Review Best Practices", "icon": "coding" }
+      {
+        "name": "JUnit",
+        "icon": "junit"
+      },
+      {
+        "name": "Mockito",
+        "icon": "mockito"
+      },
+      {
+        "name": "Integration Tests",
+        "icon": "test"
+      },
+      {
+        "name": "SonarQube",
+        "icon": "sonarqube"
+      },
+      {
+        "name": "Code Review Best Practices",
+        "icon": "coding"
+      }
     ],
     "Security": [
-      { "name": "Keycloak (OAuth2, OIDC, JWT)", "icon": "keycloak" }
+      {
+        "name": "Keycloak (OAuth2, OIDC, JWT)",
+        "icon": "keycloak"
+      }
     ],
     "High-Performance Computing": [
-      { "name": "Asynchronous Processing", "icon": "async" },
-      { "name": "Multi-threading", "icon": "threads" },
-      { "name": "JProfiler", "icon": "jprofiler" }
+      {
+        "name": "Asynchronous Processing",
+        "icon": "async"
+      },
+      {
+        "name": "Multi-threading",
+        "icon": "threads"
+      },
+      {
+        "name": "JProfiler",
+        "icon": "jprofiler"
+      }
     ],
     "Agile & Collaboration": [
-      { "name": "Scrum", "icon": "scrum" },
-      { "name": "Jira", "icon": "jira" },
-      { "name": "Git", "icon": "git" },
-      { "name": "Confluence", "icon": "confluence" }
+      {
+        "name": "Scrum",
+        "icon": "scrum"
+      },
+      {
+        "name": "Jira",
+        "icon": "jira"
+      },
+      {
+        "name": "Git",
+        "icon": "git"
+      },
+      {
+        "name": "Confluence",
+        "icon": "confluence"
+      }
     ]
   },
   "experience": [
@@ -286,9 +478,29 @@
     }
   ],
   "languages": [
-    { "language": "Arabic", "code": "AR", "level": "Native", "percentage": 100 },
-    { "language": "English", "code": "EN", "level": "Advanced, Fluent", "percentage": 85 },
-    { "language": "French", "code": "FR", "level": "Advanced, Fluent", "percentage": 85 },
-    { "language": "Japanese", "code": "JA", "level": "Beginner, Basic Proficiency", "percentage": 10 }
+    {
+      "language": "Arabic",
+      "code": "AR",
+      "level": "Native",
+      "percentage": 100
+    },
+    {
+      "language": "English",
+      "code": "EN",
+      "level": "Advanced, Fluent",
+      "percentage": 85
+    },
+    {
+      "language": "French",
+      "code": "FR",
+      "level": "Advanced, Fluent",
+      "percentage": 85
+    },
+    {
+      "language": "Japanese",
+      "code": "JA",
+      "level": "Beginner, Basic Proficiency",
+      "percentage": 10
+    }
   ]
 }

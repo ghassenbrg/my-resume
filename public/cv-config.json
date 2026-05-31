@@ -1,0 +1,21 @@
+{
+  "openToOpportunities": true,
+  "contact": {
+    "email": "ghassen.brg16@gmail.com"
+  },
+  "social": {
+    "github": "https://github.com/ghassenbrg",
+    "linkedin": "https://www.linkedin.com/in/ghassenbrg"
+  },
+  "cvLink": "/CV_Ghassen_Bargougui.pdf",
+  "meta": {
+    "siteUrl": "https://ghassen.io",
+    "ogImage": "/og-image.png"
+  },
+  "theme": {
+    "default": "dark"
+  },
+  "display": {
+    "languagePercentage": false
+  }
+}

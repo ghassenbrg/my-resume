@@ -1,56 +1,44 @@
 <template>
   <div class="app-shell">
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-    <AppLoader />
-    <AppScrollProgress />
-    <AppNavigation />
-    <AppCursor />
+    <a class="skip-link" href="#main-content">{{ uiCopy.a11y.skipToContent }}</a>
+    <AppNav />
     <main id="main-content" tabindex="-1">
       <slot />
     </main>
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <p>&copy; 2026 Ghassen Bargougui</p>
-        <p>Made with Vue 3 + Nuxt 3</p>
-      </div>
-    </footer>
+    <AppFooter />
+    <AppBackToTop />
   </div>
 </template>
 
 <script setup lang="ts">
-import AppCursor from '~/components/layout/AppCursor.vue'
-import AppLoader from '~/components/layout/AppLoader.vue'
-import AppNavigation from '~/components/layout/AppNavigation.vue'
-import AppScrollProgress from '~/components/layout/AppScrollProgress.vue'
-</script>
+import AppNav from '~/components/layout/AppNav.vue'
+import AppFooter from '~/components/layout/AppFooter.vue'
+import AppBackToTop from '~/components/layout/AppBackToTop.vue'
 
-<style scoped>
-.site-footer {
-  border-top: 1px solid var(--border-subtle);
-  background: var(--bg-0);
-}
+const { uiCopy, activeLanguage, cvData, cvConfig, loadConfig } = useCvData()
+const { theme, setTheme, hasStoredPreference } = useTheme()
+const { revealVersion } = useRevealController()
 
-.site-footer__inner {
-  display: flex;
-  width: min(100% - var(--space-8), 72rem);
-  margin-inline: auto;
-  justify-content: space-between;
-  gap: var(--space-4);
-  padding-block: var(--space-8);
-  color: var(--text-2);
-  font-family: var(--font-mono);
-  font-size: var(--text-sm);
-}
+// Re-scan reveal targets when the rendered content changes (data arrives,
+// language or theme switches re-render sections, or a feature swaps content).
+useRevealObserver(
+  () =>
+    `${activeLanguage.value}-${theme.value}-${cvData.value ? '1' : '0'}-${revealVersion.value}`,
+)
 
-.site-footer p {
-  margin: 0;
-}
+// Load shared config and, for first-time visitors with no saved preference,
+// honor the config's default theme.
+//
+// Note: the pre-paint script (app.vue) reads only localStorage, and the config
+// is fetched client-side, so a *non-dark* config default would apply one frame
+// after first paint (a brief dark→light flash on a visitor's very first load
+// only). The shipped default is "dark", which matches the pre-paint default, so
+// there is no flash in practice.
+onMounted(async () => {
+  await loadConfig()
 
-@media (max-width: 767px) {
-  .site-footer__inner {
-    width: min(100% - var(--space-6), 72rem);
-    flex-direction: column;
-    padding-block: var(--space-6) var(--space-8);
+  if (!hasStoredPreference.value && cvConfig.value) {
+    setTheme(cvConfig.value.theme.default)
   }
-}
-</style>
+})
+</script>
