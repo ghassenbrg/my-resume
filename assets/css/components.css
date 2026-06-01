@@ -752,7 +752,7 @@
 }
 .tl-spine {
   position: absolute;
-  left: 19px;
+  left: 27px;
   top: 8px;
   bottom: 8px;
   width: 2px;
@@ -1486,7 +1486,7 @@
     gap: 12px;
   }
   .tl-spine {
-    left: 14px;
+    left: 22px;
   }
   .tl-card {
     padding: 20px;
