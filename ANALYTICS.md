@@ -5,23 +5,34 @@ experience.
 
 ## Setup
 
-The analytics script is injected from [app.vue](/Users/ghassenbrg/git/my-resume/app.vue:1) with
-`useHead()`:
+The analytics script is declared once in [nuxt.config.ts](nuxt.config.ts) under `app.head`, so
+`nuxt generate` bakes it into the `<head>` of every generated page — `index.html`, the
+`200.html` SPA fallback and `404.html` — ahead of the Nuxt entry module:
 
 ```ts
-useHead({
-  script: [
-    {
-      key: 'umami-analytics',
-      src: 'https://umami.ghassen.io/analytics.js',
-      defer: true,
-      'data-website-id': '50b3cd1c-0757-4aac-bc88-ccbf97d38a19',
-      'data-domains': 'ghassen.io,www.ghassen.io',
-      'data-auto-track': 'true',
-    },
-  ],
-})
+app: {
+  head: {
+    script: [
+      {
+        key: 'umami-analytics',
+        src: 'https://umami.ghassen.io/analytics.js',
+        defer: true,
+        'data-website-id': '50b3cd1c-0757-4aac-bc88-ccbf97d38a19',
+        'data-domains': 'ghassen.io,www.ghassen.io',
+        'data-auto-track': 'true',
+      },
+    ],
+  },
+},
 ```
+
+- Both the tracker and the Nuxt entry are deferred, so they execute in document order and
+  `window.umami` is ready before the app hydrates. Events fired on mount (such as
+  `language_auto_resolved`) are therefore not dropped.
+- `data-domains` restricts collection to the production hostnames; `npm run dev`, `nuxt preview`
+  and the local Docker image do not send page views.
+- Do not re-add the tag through `useHead()` in a component — it would only be injected after
+  hydration on pages served from the SPA fallback.
 
 Manual event helpers live in [composables/useAnalytics.ts](/Users/ghassenbrg/git/my-resume/composables/useAnalytics.ts:1).
 

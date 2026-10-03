@@ -56,14 +56,6 @@ useHead({
         "(function(){try{var t=localStorage.getItem('cv-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();",
       tagPosition: 'head',
     },
-    {
-      key: 'umami-analytics',
-      src: 'https://umami.ghassen.io/analytics.js',
-      defer: true,
-      'data-website-id': '50b3cd1c-0757-4aac-bc88-ccbf97d38a19',
-      'data-domains': 'ghassen.io,www.ghassen.io',
-      'data-auto-track': 'true',
-    },
   ],
 })
 </script>
