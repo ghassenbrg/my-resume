@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Ghassen Bargougui | Application Engineer — Javaアプリケーション・クラウド基盤",
-    "description": "福岡の楽天カードでApplication Engineerとして勤務。Java、API、金融システムの開発経験は7年。Kubernetesによるデプロイ、性能テスト、可観測性の改善に携わり、AIを活用した個人開発にも取り組んでいます。"
+    "description": "福岡の楽天でApplication Engineerとして、楽天カードのシステムに携わっています。Java、API、金融システムの開発経験は7年。Kubernetesによるデプロイ、性能テスト、可観測性の改善に携わり、AIを活用した個人開発にも取り組んでいます。"
   },
   "hero": {
     "name": "Ghassen Bargougui",
     "title": "Application Engineer",
     "headline": "Javaアプリケーション・クラウド基盤開発",
     "location": "福岡（日本）",
-    "tagline": "Javaアプリケーションと、それを動かすクラウド基盤の開発・刷新に取り組んでいます。楽天カードのTechnology Incubation Teamでは、ハイブリッドクラウド移行、Kubernetesによるデプロイ、API開発、性能テスト、アプリケーションの可観測性向上に携わっています。",
+    "tagline": "Javaアプリケーションと、それを動かすクラウド基盤の開発・刷新に取り組んでいます。楽天のTechnology Incubation Teamでは楽天カードのシステムを担当し、ハイブリッドクラウド移行、Kubernetesによるデプロイ、API開発、性能テスト、アプリケーションの可観測性向上に携わっています。",
     "phone": "+81 70 8502 9039"
   },
   "about": {
     "paragraphs": [
       "アプリケーションエンジニア（Application Engineer）として、チュニジア、ルクセンブルク、日本で通算7年間、銀行・保険・カード決済分野のJavaおよびフルスタック開発に携わってきました。アプリケーションのコードと、それを動かす基盤の両方にまたがる領域、つまりAPI設計、デプロイ、性能問題の調査、安定したリリースに取り組んでいます。",
-      "楽天カードでは、上司およびプロジェクトマネージャーとともにハイブリッドクラウド移行の推進に携わり、開発、インフラ、CI/CD、セキュリティの各チームと実装面の調整を行っています。実務では、アプリケーションとインフラの設計変更、Kubernetesのデプロイ構成とパイプラインの構築、k6・JMeterによる性能テスト、Cloud LoggingやKafka/Confluentに向けたログ出力の改修を担当しています。",
+      "楽天では、上司およびプロジェクトマネージャーとともにハイブリッドクラウド移行の推進に携わり、開発、インフラ、CI/CD、セキュリティの各チームと実装面の調整を行っています。実務では、アプリケーションとインフラの設計変更、Kubernetesのデプロイ構成とパイプラインの構築、k6・JMeterによる性能テスト、Cloud LoggingやKafka/Confluentに向けたログ出力の改修を担当しています。",
       "個人開発では、設計からリリースまで一貫して手がけています。編集可能なPowerPoint資料を生成するオープンソースのエンジンSlide Agent、個人のお金や共同の支出を管理するアプリPockito、字幕を翻訳するChrome拡張機能SubMateを開発しています。"
     ],
-    "profile": "銀行・保険・カード決済分野で、Javaおよびフルスタック開発の経験が通算7年あります（チュニジア、ルクセンブルク、日本）。楽天カードのTechnology Incubation TeamでApplication Engineerとして、ハイブリッドクラウド移行、アプリケーション・インフラ設計、Kubernetesによるデプロイ、CI/CD、性能テスト、可観測性の改善に携わっています。個人開発ではSlide Agent、Pockito、SubMateを開発しています。",
+    "profile": "銀行・保険・カード決済分野で、Javaおよびフルスタック開発の経験が通算7年あります（チュニジア、ルクセンブルク、日本）。楽天のTechnology Incubation TeamでApplication Engineerとして楽天カードのシステムを担当し、ハイブリッドクラウド移行、アプリケーション・インフラ設計、Kubernetesによるデプロイ、CI/CD、性能テスト、可観測性の改善に携わっています。個人開発ではSlide Agent、Pockito、SubMateを開発しています。",
     "highlights": [
       {
         "value": "7",
@@ -29,7 +29,7 @@
       },
       {
         "value": "JDK 25",
-        "label": "楽天カードでのe-Navi API更新"
+        "label": "楽天カード e-Navi APIの更新"
       },
       {
         "value": "OCP",
@@ -216,17 +216,18 @@
   },
   "experience": [
     {
-      "company": "Rakuten Card",
+      "company": "Rakuten",
       "position": "Application Engineer",
       "location": "福岡（日本）",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "Technology Incubation Teamで、Javaアプリケーション開発とクラウド・プラットフォーム関連の業務の両方を担当しています。上司およびプロジェクトマネージャーとともにハイブリッドクラウド移行の推進に携わり、開発、インフラ、CI/CD、セキュリティの各チームと実装面の調整を行っています。",
+      "description": "Technology Incubation Teamで楽天カードのシステムに携わり、Javaアプリケーション開発とクラウド・プラットフォーム関連の業務の両方を担当しています。上司およびプロジェクトマネージャーとともにハイブリッドクラウド移行の推進に携わり、開発、インフラ、CI/CD、セキュリティの各チームと実装面の調整を行っています。",
       "achievements": [
         "e-Navi APIをJDK 25とHelidon 4.3へ更新しました。依存関係とCDIの問題を解消し、テストの更新と引き継ぎ資料の作成まで担当しました。",
         "ハイブリッドクラウド移行の一環として、JSF、API、Engineモジュール向けのKubernetesデプロイ構成を設計・検証し、サービス、環境設定、Filestoreのマウントに対応しました。",
         "k6とJMeterで性能テストを実施し、ボトルネックを調査したうえで、アプリケーション設計の変更やリソース調整によって対処しています。",
         "Log4j2と独自のフォーマッターを用いて、アプリケーションログをCloud Logging向けの構造化JSON形式に刷新しました。また、ファイルに出力していたアプリケーションログとトレースログのKafka/Confluentへの移行に取り組んでいます。",
+        "Redisによるセッション管理、サービス間連携、LLM APIの呼び出しを含むJava APIを、Kubernetes基盤上で開発しています。",
         "インフラ・セキュリティチームと連携し、デプロイ、SSL、GCPとオンプレミス間の接続の問題を解消しました。また、Kafkaのメッセージング不具合の原因がCDI Beanのスコープ設定の誤りであることを特定しました。",
         "ビルド、Artifact RegistryへのDockerイメージ公開、GKEへのデプロイを行うGitHub Actionsパイプラインを構築しました。"
       ],
@@ -237,7 +238,8 @@
           2,
           3,
           4,
-          5
+          5,
+          6
         ]
       }
     },

@@ -52,9 +52,9 @@ This report covers extraction preflight and editorial accuracy. It is not an ATS
 | 1 | Professional identity is hard to recognize | Official title kept in all languages, with a separate functional headline: "Java Applications, Cloud & Platform Engineering" (FR "Ingénierie applicative Java et plateformes cloud", JP "Javaアプリケーション・クラウド基盤開発"). The new opening sentence is not a technology list. FR and JP previously glossed the title ("Ingénieur d'application", "アプリケーションエンジニア"); the hero now shows the official "Application Engineer", and JP keeps the katakana in its summary. | Test: hero title and all four positions equal the official titles in every language. |
 | 2 | Performance/observability work missing | Added k6/JMeter testing with bottleneck remedies, the Cloud Logging rework, and "currently helping move file-based application and trace logs to Kafka/Confluent". No pipeline architecture, distributed tracing or numbers are claimed. k6, JMeter, Cloud Logging, Log4j2, Kafka/Confluent and Maven added to skills. | Keyword presence checked in all PDFs with 6 extractors; test asserts this evidence is selected for the PDF. |
 | 3 | Shared leadership | "help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams". FR "je contribue au pilotage … aux côtés de"; JP "とともに…推進に携わり". The redundant coordination bullet was merged into this sentence. | Repeat audit: resolved and consistent across languages. |
-| 4 | Internal agent application | **Not published.** Disclosure and delivery stage are unresolved. No Redis-session, LLM-call or agent-application wording appears in Rakuten text. | Repeat audit: correctly excluded. |
+| 4 | Internal agent application | **Application not mentioned** (your decision, 3 October 2026). The work is described anonymously as a Rakuten bullet: "Develop Java APIs with Redis-backed session management, service-to-service calls, and LLM API integration on Kubernetes infrastructure." It is in present tense and makes no deployment or adoption claim. | Test: no "agent"/"エージェント" in any Rakuten text; the bullet is selected for every PDF. |
 | 5 | Automatic PDF truncation | Each entry's `pdf` selection names the printed bullets and company projects, in order. Unselected entries print in full. | Tests on selection order, the projects named, and the absence of `.slice(0, 2/3)`. Contents: all 6 Rakuten bullets; Keycloak/CI/CD/rollback; SalesFlow (Camunda, ActiveMQ); PackManager (JProfiler); Slide Agent distribution (npm, CLI, MCP server); Pockito Kubernetes deploy/rollback; SubMate optional cloud and RTL. |
-| 6 | Undefined percentages | All four claims (50%, 40%, 35%, 30%) replaced with the audit's qualitative fallbacks in every language, the highlights and the PDFs. The "50%" highlight is now "JDK 25 — e-Navi API upgrade at Rakuten Card". The duplicate ActiveMQ claim now appears only under SalesFlow. | Test: no `\d %` in any language's content. HTML and PDF text checked. |
+| 6 | Undefined percentages | All four claims (50%, 40%, 35%, 30%) replaced with the audit's qualitative fallbacks in every language, the highlights and the PDFs. The "50%" highlight is now "JDK 25 — Rakuten Card e-Navi API upgrade". The duplicate ActiveMQ claim now appears only under SalesFlow. | Test: no `\d %` in any language's content. HTML and PDF text checked. |
 | 7 | VERMEG promotion dates | `roles`: Analyst Developer Jan 2023–Aug 2024 and Software Developer Oct 2019–Dec 2022. PDF prints one line per title with employer and dates. The website card is headed by the employer, lists each title with its own range, and keeps the overall tenure. | Test on role dates. All 6 extractors keep "Analyst Developer - VERMEG … \| Jan 2023 - Aug 2024" intact. Generated HTML checked. |
 | 8 | Generic and duplicate wording | Applied every row of the audit table:<br>• Sogeti is now the employer, with "Client assignment at BGL BNP Paribas" as a separate field.<br>• Removed "Agile tribe and squad".<br>• Removed the duplicate CBTW bullet.<br>• Removed "with attention to".<br>• Qualified ownership.<br>• Degree reads "Engineering Degree (Diplôme d'ingénieur) in Software Architecture".<br>• Language levels are "Fluent" and "Basic". | Repeat audit: resolved; residual phrasing fixed afterwards. |
 | 9 | Personal projects | Heading "Selected personal projects". Projects are labelled "Open source" individually; Slide Agent and SubMate have MIT LICENSE files, Pockito is "Personal project", and Traffic Forward has no licence, so no label. "From idea to production" removed. Summaries follow the audit. PDF entries show dates. Traffic Forward stays compact and Orbit Ways proportional. TermLoom stays excluded. | Licences checked in the local repositories. Repeat audit confirmed the public repositories and the `@slide-agent/core` npm package. |
@@ -115,7 +115,7 @@ A separate subagent repeated the audit read-only. It checked:
 
 It found no constraint violations: no new titles, percentages, agent-application content or JLPT claim. The phone number, the three countries and the absence of any study schedule were all preserved.
 
-Its follow-up items:
+Its follow-up items (the audit predates the later Rakuten wording changes):
 
 | Item | Action |
 | --- | --- |
@@ -125,7 +125,7 @@ Its follow-up items:
 | Mixed tense; "Took responsibility for…" | Fixed. |
 | French wording: pipeline, ownership, Keycloak/rollback, category name, SalesFlow role | Fixed. |
 | French typography | Fixed (see [ATS findings](#ats-findings-from-the-actual-files)). |
-| Japanese wording | Partly applied:<br>• Applied: location order "福岡（日本）", degree wording, "社内向け銀行業務アプリケーション".<br>• Not applied: "楽天カード（Rakuten Card）" headings, because employer names are shared across languages and that depends on [Limitations](#remaining-limitations) item 2. |
+| Japanese wording | Partly applied:<br>• Applied: location order "福岡（日本）", degree wording, "社内向け銀行業務アプリケーション".<br>• Superseded: "楽天カード（Rakuten Card）" headings. You confirmed the employer as "Rakuten", and the Japanese text says the work is on 楽天カード systems. |
 | JP line breaks inside product names | Fixed with no-wrap spans; the extracted text is unchanged (no NBSP substitution). |
 | Inconsistent English month abbreviations | Fixed: "Sep 2019 – Jul 2023". |
 | Open-source label copy | Fixed: "Open-source projects are labelled." |
@@ -153,6 +153,14 @@ Its follow-up items:
 - On 3 October 2026, `https://ghassen.io/` served the old page title, and `/fr` and `/ja` returned **301 to `http://ghassen.io/fr/` and `/ja/`**: an HTTPS-to-HTTP downgrade plus a trailing slash, contrary to the canonical URLs.
 - The repository's Nginx config serves `/fr` directly. Check the deployed config or ingress after release.
 
+**Why the earlier deploy did not show the changes (diagnosed 3 October 2026):** the image deployed correctly; the new HTML and PDFs were live. But `ghassen-io-infra/k8s/70-ghassen-io.yaml` mounted May 2026 copies of `cv-data-{en,fr,jp}.json`, `cv-config.json` and `CV_Ghassen_Bargougui.pdf` from `/opt/ghassen-io-infra/ghassen-io/` over the image's files.
+
+- After loading, the site re-reads those JSON files, so the browser swapped the page back to the old text, title and "50%" highlight.
+- The old `cv-config.json` pointed every Download CV button at the April PDF.
+- The mounted `ghassen-io/nginx.conf` replaces the image's Nginx config. Its `try_files $uri $uri/ /index.html` caused the `/fr` and `/ja` 301s to `http://`, and its `error_page 404 /index.html` returned 200 for unknown paths.
+
+The infra working tree now removes the content mounts and fixes that Nginx config. Neither change is committed or applied. The resume deploy workflow only runs `kubectl set image`, so the manifest change must be applied once by hand on the server.
+
 **After deploying:**
 
 1. Confirm that `/fr` and `/ja` return 200 over HTTPS.
@@ -164,12 +172,9 @@ Updating the mounted JSON alone does not change the crawler-visible HTML; rebuil
 
 ## Remaining limitations
 
-1. **Internal agent application:** omitted until disclosure and delivery stage are confirmed. Draft wording for when they are: *"Contribute to an internal agent application across Kubernetes infrastructure and Java API development, including Redis-backed session management, service-to-service integration, and LLM API calls."* Use "developing" until deployment is confirmed.
-2. **Employer naming:** headings and `worksFor` say "Rakuten Card", while LinkedIn uses the Rakuten company page. Confirm the contracting entity if it matters for background checks.
-3. **Unconfirmed details:**
-   - project dates for Orbit Ways, Solife Digital & Generali Portal, and Magikforms;
-   - the banking meaning of "mandate" in Japanese;
-   - the Pockito idempotency and authorization bullets.
+1. **Internal application:** you confirmed it cannot be named. Its work is described anonymously; keep it that way.
+2. **Employer naming:** resolved on 3 October 2026. You confirmed the employer is "Rakuten": headings, the PDFs and `worksFor` now say Rakuten, and the text says the work is on Rakuten Card systems.
+3. **Unconfirmed details:** project dates for Orbit Ways, Solife and Magikforms are intentionally omitted (your decision). The Japanese "マンデート（委任）管理" wording stays because the banking meaning is unknown. The Pockito bullets were not added.
 4. **No measured impact:** none is stated. Add a number only with a defined measurement (component, metric, workload, before/after).
 5. **Translation review:** French and Japanese have had no native-speaker or recruiter review.
 6. **Generation-dependent output:** the Japanese PDF's as-of date is the generation date, so each regeneration changes the file. English and French rely on Arial (Liberation Sans on Linux); the generator's page check catches overflow caused by metric differences.

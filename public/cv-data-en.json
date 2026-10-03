@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Ghassen Bargougui | Application Engineer — Java & Cloud Platforms",
-    "description": "Application Engineer at Rakuten Card in Fukuoka, Japan. Seven years of Java, API, and financial-systems work, with Kubernetes delivery, performance testing, observability, and AI-enabled personal products."
+    "description": "Application Engineer at Rakuten in Fukuoka, Japan, working on Rakuten Card systems. Seven years of Java, API, and financial-systems work, with Kubernetes delivery, performance testing, observability, and AI-enabled personal products."
   },
   "hero": {
     "name": "Ghassen Bargougui",
     "title": "Application Engineer",
     "headline": "Java Applications, Cloud & Platform Engineering",
     "location": "Fukuoka, Japan",
-    "tagline": "I build and modernize Java applications and the cloud platforms they run on. At Rakuten Card's Technology Incubation Team, my work spans hybrid-cloud migration, Kubernetes deployments, API development, performance testing, and application observability.",
+    "tagline": "I build and modernize Java applications and the cloud platforms they run on. At Rakuten, in the Technology Incubation Team working on Rakuten Card systems, my work spans hybrid-cloud migration, Kubernetes deployments, API development, performance testing, and application observability.",
     "phone": "+81 70 8502 9039"
   },
   "about": {
     "paragraphs": [
       "I am an Application Engineer with seven years of Java and full-stack experience in banking, insurance, and card payments, across Tunisia, Luxembourg, and Japan. My work sits where application code meets the platform it runs on: API design, deployment, performance diagnosis, and reliable delivery.",
-      "At Rakuten Card, I help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams. Hands-on, I design application and infrastructure changes, build Kubernetes deployments and pipelines, run performance tests with k6 and JMeter, and adapt application logging for Cloud Logging and Kafka/Confluent.",
+      "At Rakuten, I help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams. Hands-on, I design application and infrastructure changes, build Kubernetes deployments and pipelines, run performance tests with k6 and JMeter, and adapt application logging for Cloud Logging and Kafka/Confluent.",
       "Outside work, I build products end to end: Slide Agent, an open-source engine for generating editable PowerPoint presentations; Pockito, an app for personal and shared finances; and SubMate, a Chrome extension for subtitle translation."
     ],
-    "profile": "Application Engineer with seven years of Java and full-stack experience across banking, insurance, and card payments in Tunisia, Luxembourg, and Japan. At Rakuten Card's Technology Incubation Team, my work spans hybrid-cloud migration, application and infrastructure design, Kubernetes delivery, CI/CD, performance testing, and observability. Creator of the Slide Agent, Pockito, and SubMate personal projects.",
+    "profile": "Application Engineer with seven years of Java and full-stack experience across banking, insurance, and card payments in Tunisia, Luxembourg, and Japan. At Rakuten (Technology Incubation Team, Rakuten Card systems), my work spans hybrid-cloud migration, application and infrastructure design, Kubernetes delivery, CI/CD, performance testing, and observability. Creator of the Slide Agent, Pockito, and SubMate personal projects.",
     "highlights": [
       {
         "value": "7",
@@ -29,7 +29,7 @@
       },
       {
         "value": "JDK 25",
-        "label": "e-Navi API upgrade at Rakuten Card"
+        "label": "Rakuten Card e-Navi API upgrade"
       },
       {
         "value": "OCP",
@@ -216,17 +216,18 @@
   },
   "experience": [
     {
-      "company": "Rakuten Card",
+      "company": "Rakuten",
       "position": "Application Engineer",
       "location": "Fukuoka, Japan",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "In the Technology Incubation Team, I work across Java application development and cloud/platform engineering, and help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams.",
+      "description": "In the Technology Incubation Team, I work on Rakuten Card systems across Java application development and cloud/platform engineering, and help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams.",
       "achievements": [
         "Upgraded the e-Navi API to JDK 25 and Helidon 4.3, resolving dependency and CDI issues, updating tests, and documenting the handover.",
         "Designed and validated Kubernetes deployments for the JSF, API, and Engine modules as part of the hybrid-cloud migration, including services, environment configuration, and Filestore mounts.",
         "Run performance tests with k6 and JMeter, diagnose bottlenecks, and address them through application-design changes or resource adjustments.",
         "Reworked application logging as structured JSON for Cloud Logging (Log4j2 with a custom formatter); currently helping move file-based application and trace logs to Kafka/Confluent.",
+        "Develop Java APIs with Redis-backed session management, service-to-service calls, and LLM API integration on Kubernetes infrastructure.",
         "Resolved deployment, SSL, and GCP-to-on-premises connectivity issues with infrastructure and security teams, and traced a Kafka messaging issue to an incorrect CDI bean scope.",
         "Built a GitHub Actions pipeline for builds, Docker image publishing to Artifact Registry, and GKE deployments."
       ],
@@ -237,7 +238,8 @@
           2,
           3,
           4,
-          5
+          5,
+          6
         ]
       }
     },
@@ -457,7 +459,7 @@
       "role": "Creator & Maintainer",
       "period": "2026",
       "status": "Open source · npm package",
-      "summary": "Open-source engine and MCP tooling for generating editable PowerPoint presentations with native charts and layout validation.",
+      "summary": "Open-source engine and MCP tooling for generating editable PowerPoint decks with native charts and layout validation.",
       "link": "https://slide-agent.ghassen.io",
       "linkLabel": "Visit site",
       "repo": "https://github.com/ghassenbrg/slide-agent",
@@ -489,7 +491,7 @@
       "role": "Creator & Full-Stack Engineer",
       "period": "2025 – 2026",
       "status": "Personal project",
-      "summary": "Personal and shared finance app with Flutter and Nuxt clients, backed by a Spring Boot service with REST and MCP interfaces.",
+      "summary": "Personal and shared finance app: Flutter and Nuxt clients, Spring Boot service with REST and MCP interfaces.",
       "link": "https://pockito.ghassen.io",
       "linkLabel": "Open app",
       "featured": true,

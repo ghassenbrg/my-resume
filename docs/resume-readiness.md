@@ -5,7 +5,7 @@ Reviewed against the user's current LinkedIn profile in their signed-in Chrome s
 ## Content decisions
 
 - Seven years of professional experience, beginning October 2019, across **three** countries: Tunisia, Luxembourg, and Japan.
-- Rakuten: official title **Application Engineer**. The resume names Rakuten Card to identify the business whose systems the user works on; LinkedIn uses the Rakuten company page and explicitly describes Rakuten Card responsibilities.
+- Rakuten: official title **Application Engineer**; the employer is shown as **Rakuten** (confirmed 3 October 2026), and the text says the work is on Rakuten Card systems, as on LinkedIn.
 - Migration leadership is shared with the user's manager and project manager and requires coordination across teams. The resume does not imply sole leadership or use company-wide card/member totals as personal impact.
 - Sogeti: **Software Engineer**, on assignment at BGL BNP Paribas, February-November 2025.
 - CBTW: **Java Full-Stack Engineer**, September 2024-January 2025, matching LinkedIn.

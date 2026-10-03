@@ -1,23 +1,23 @@
 {
   "meta": {
     "title": "Ghassen Bargougui | Application Engineer — Java et plateformes cloud",
-    "description": "Application Engineer chez Rakuten Card à Fukuoka, au Japon. Sept ans d’expérience en Java, API et systèmes financiers, avec déploiements Kubernetes, tests de performance, observabilité et projets personnels intégrant l’IA."
+    "description": "Application Engineer chez Rakuten à Fukuoka, au Japon, sur les systèmes de Rakuten Card. Sept ans d’expérience en Java, API et systèmes financiers, avec déploiements Kubernetes, tests de performance, observabilité et projets personnels intégrant l’IA."
   },
   "hero": {
     "name": "Ghassen Bargougui",
     "title": "Application Engineer",
     "headline": "Ingénierie applicative Java et plateformes cloud",
     "location": "Fukuoka, Japon",
-    "tagline": "Je développe et modernise des applications Java et les plateformes cloud sur lesquelles elles s’exécutent. Au sein de la Technology Incubation Team de Rakuten Card, j’interviens sur la migration vers le cloud hybride, les déploiements Kubernetes, le développement d’API, les tests de performance et l’observabilité applicative.",
+    "tagline": "Je développe et modernise des applications Java et les plateformes cloud sur lesquelles elles s’exécutent. Chez Rakuten, au sein de la Technology Incubation Team, je travaille sur les systèmes de Rakuten Card et j’interviens sur la migration vers le cloud hybride, les déploiements Kubernetes, le développement d’API, les tests de performance et l’observabilité applicative.",
     "phone": "+81 70 8502 9039"
   },
   "about": {
     "paragraphs": [
       "Je suis Application Engineer, avec sept ans d’expérience en développement Java et full-stack dans la banque, l’assurance et les paiements par carte, en Tunisie, au Luxembourg et au Japon. Mon travail se situe à la jonction entre le code applicatif et la plateforme qui l’exécute : conception d’API, déploiement, diagnostic de performances et fiabilité des livraisons.",
-      "Chez Rakuten Card, je contribue au pilotage de la migration vers le cloud hybride aux côtés de mon responsable et du chef de projet, et je coordonne la mise en œuvre avec les équipes de développement, d’infrastructure, CI/CD et sécurité. Concrètement, je conçois des évolutions applicatives et d’infrastructure, je mets en place des déploiements Kubernetes et des pipelines, je réalise des tests de performance avec k6 et JMeter, et j’adapte la journalisation applicative pour Cloud Logging et Kafka/Confluent.",
+      "Chez Rakuten, je contribue au pilotage de la migration vers le cloud hybride aux côtés de mon responsable et du chef de projet, et je coordonne la mise en œuvre avec les équipes de développement, d’infrastructure, CI/CD et sécurité. Concrètement, je conçois des évolutions applicatives et d’infrastructure, je mets en place des déploiements Kubernetes et des pipelines, je réalise des tests de performance avec k6 et JMeter, et j’adapte la journalisation applicative pour Cloud Logging et Kafka/Confluent.",
       "En dehors du travail, je développe des produits de bout en bout : Slide Agent, un moteur open source de génération de présentations PowerPoint éditables ; Pockito, une application de gestion des finances personnelles et partagées ; et SubMate, une extension Chrome de traduction de sous-titres."
     ],
-    "profile": "Application Engineer avec sept ans d’expérience en développement Java et full-stack dans la banque, l’assurance et les paiements par carte, en Tunisie, au Luxembourg et au Japon. Chez Rakuten Card (Technology Incubation Team) : migration vers le cloud hybride, conception applicative et d’infrastructure, déploiements Kubernetes, CI/CD, tests de performance et observabilité. Créateur des projets personnels Slide Agent, Pockito et SubMate.",
+    "profile": "Application Engineer avec sept ans d’expérience en développement Java et full-stack dans la banque, l’assurance et les paiements par carte, en Tunisie, au Luxembourg et au Japon. Chez Rakuten (Technology Incubation Team, systèmes Rakuten Card) : migration vers le cloud hybride, conception applicative et d’infrastructure, déploiements Kubernetes, CI/CD, tests de performance et observabilité. Créateur des projets personnels Slide Agent, Pockito et SubMate.",
     "highlights": [
       {
         "value": "7",
@@ -29,7 +29,7 @@
       },
       {
         "value": "JDK 25",
-        "label": "Mise à niveau de l’API e-Navi chez Rakuten Card"
+        "label": "Mise à niveau de l’API e-Navi de Rakuten Card"
       },
       {
         "value": "OCP",
@@ -216,17 +216,18 @@
   },
   "experience": [
     {
-      "company": "Rakuten Card",
+      "company": "Rakuten",
       "position": "Application Engineer",
       "location": "Fukuoka, Japon",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "Au sein de la Technology Incubation Team, j’interviens à la fois sur le développement applicatif Java et sur l’ingénierie cloud et plateforme. Je contribue au pilotage de la migration vers le cloud hybride aux côtés de mon responsable et du chef de projet, en coordonnant la mise en œuvre avec les équipes de développement, d’infrastructure, CI/CD et sécurité.",
+      "description": "Au sein de la Technology Incubation Team, je travaille sur les systèmes de Rakuten Card et j’interviens à la fois sur le développement applicatif Java et sur l’ingénierie cloud et plateforme. Je contribue au pilotage de la migration vers le cloud hybride aux côtés de mon responsable et du chef de projet, en coordonnant la mise en œuvre avec les équipes de développement, d’infrastructure, CI/CD et sécurité.",
       "achievements": [
         "Mise à niveau de l’API e-Navi vers JDK 25 et Helidon 4.3 : résolution des problèmes de dépendances et de CDI, mise à jour des tests et documentation de la passation.",
         "Conception et validation des déploiements Kubernetes des modules JSF, API et Engine dans le cadre de la migration vers le cloud hybride : services, configuration des environnements et montages Filestore.",
         "Tests de performance avec k6 et JMeter, diagnostic des goulots d’étranglement et correction par des évolutions de conception applicative ou des ajustements de ressources.",
         "Refonte de la journalisation applicative en JSON structuré pour Cloud Logging, avec Log4j2 et un composant de formatage personnalisé ; contribution à la migration des logs applicatifs et de trace, des fichiers vers Kafka/Confluent.",
+        "Développement d’API Java : gestion de sessions avec Redis, appels entre services et intégration d’API LLM, sur une infrastructure Kubernetes.",
         "Résolution de problèmes de déploiement, de SSL et de connectivité entre GCP et les systèmes sur site avec les équipes infrastructure et sécurité ; identification d’un scope de bean CDI incorrect à l’origine d’un problème de messagerie Kafka.",
         "Mise en place d’un pipeline GitHub Actions : build, publication des images Docker dans Artifact Registry et déploiement sur GKE."
       ],
@@ -237,7 +238,8 @@
           2,
           3,
           4,
-          5
+          5,
+          6
         ]
       }
     },

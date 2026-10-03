@@ -71,6 +71,14 @@ describe('published resume content', () => {
     }
   })
 
+  it('describes the internal Rakuten work generically, without naming an agent application', () => {
+    for (const lang of LANGUAGES) {
+      const rakuten = datasets[lang].experience[0]
+      expect(rakuten.company).toBe('Rakuten')
+      expect(JSON.stringify(rakuten), lang).not.toMatch(/agent|エージェント/i)
+    }
+  })
+
   it('reports invalid PDF selections and role dates', () => {
     const data = structuredClone(datasets.en)
     data.experience[0].pdf = { achievements: [0, 0, 99] }
@@ -103,7 +111,7 @@ describe('PDF evidence selection', () => {
     const content = selectPdfContent(datasets.en)
     const text = JSON.stringify(content)
 
-    for (const evidence of ['k6', 'JMeter', 'Cloud Logging', 'Kafka/Confluent', 'CDI bean scope', 'Keycloak', 'rollback', 'JProfiler', 'Camunda', 'GKE', '@slide-agent/core', 'MCP server', 'right-to-left', 'Kubernetes deployment and rollback']) {
+    for (const evidence of ['k6', 'JMeter', 'Cloud Logging', 'Kafka/Confluent', 'CDI bean scope', 'Keycloak', 'rollback', 'JProfiler', 'Camunda', 'GKE', 'Redis-backed session management', 'LLM API integration', '@slide-agent/core', 'MCP server', 'right-to-left', 'Kubernetes deployment and rollback']) {
       expect(text, evidence).toContain(evidence)
     }
     expect(content.featuredProjects.map((project) => project.title)).toEqual(['Slide Agent', 'Pockito', 'SubMate'])
