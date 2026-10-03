@@ -25,13 +25,12 @@ watch(() => route.path, () => {
 })
 
 const seoTitle = computed(() =>
-  cvData.value ? `${cvData.value.hero.name} — ${cvData.value.hero.title}` : 'Ghassen Bargougui — Application Engineer',
+  cvData.value?.meta?.title
+    ?? (cvData.value ? `${cvData.value.hero.name} — ${cvData.value.hero.title}` : 'Ghassen Bargougui — Application Engineer'),
 )
-const seoDescription = computed(() => {
-  const firstParagraph = cvData.value?.about.paragraphs[0]
-
-  return firstParagraph ?? 'Application Engineer portfolio and resume.'
-})
+const seoDescription = computed(() =>
+  cvData.value?.meta?.description ?? cvData.value?.about.paragraphs[0] ?? 'Application Engineer portfolio and resume.',
+)
 
 // Document language for SEO / accessibility (jp dataset maps to the ja tag).
 const htmlLang = computed(() => (activeLanguage.value === 'jp' ? 'ja' : activeLanguage.value))
@@ -52,6 +51,41 @@ const ogImage = computed(() => {
     return new URL(cvConfig.value?.meta.ogImage || '/og-image.png', siteUrl.value).href
   } catch {
     return new URL('/og-image.png', siteUrl.value).href
+  }
+})
+
+// ProfilePage + Person markup restates only facts visible on the page: the
+// official title, current employer, education, certification and the same
+// verified profile links. No ratings, awards or inferred seniority.
+const structuredData = computed(() => {
+  const data = cvData.value
+  if (!data) return null
+  const current = data.experience.find((entry) => !entry.endDate)
+  const sameAs = [cvConfig.value?.social.linkedin, cvConfig.value?.social.github].filter(Boolean)
+  const knowsAbout = Object.values(data.skills).flat().filter((skill) => skill.highlight).map((skill) => skill.name)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${canonicalUrl.value}#profile`,
+    url: canonicalUrl.value,
+    name: seoTitle.value,
+    inLanguage: htmlLang.value,
+    mainEntity: {
+      '@type': 'Person',
+      '@id': `${siteUrl.value}/#person`,
+      name: data.hero.name,
+      url: `${siteUrl.value}/`,
+      jobTitle: data.hero.title,
+      ...(current ? { worksFor: { '@type': 'Organization', name: current.company } } : {}),
+      ...(sameAs.length ? { sameAs } : {}),
+      ...(knowsAbout.length ? { knowsAbout } : {}),
+      alumniOf: data.education.map((entry) => ({ '@type': 'EducationalOrganization', name: entry.institution })),
+      hasCredential: data.certifications.map((cert) => ({
+        '@type': 'EducationalOccupationalCredential',
+        name: cert.name,
+        recognizedBy: { '@type': 'Organization', name: cert.issuer },
+      })),
+    },
   }
 })
 
@@ -92,6 +126,14 @@ useHead(() => ({
     },
   ],
   script: [
+    ...(structuredData.value
+      ? [{
+          key: 'profile-jsonld',
+          type: 'application/ld+json',
+          // Escape "<" so resume text can never close the script element.
+          innerHTML: JSON.stringify(structuredData.value).replace(/</g, '\\u003c'),
+        }]
+      : []),
     {
       // Apply the saved theme before paint to avoid a flash of the wrong theme.
       key: 'theme-init',

@@ -9,18 +9,19 @@ Reviewed against the user's current LinkedIn profile in their signed-in Chrome s
 - Migration leadership is shared with the user's manager and project manager and requires coordination across teams. The resume does not imply sole leadership or use company-wide card/member totals as personal impact.
 - Sogeti: **Software Engineer**, on assignment at BGL BNP Paribas, February-November 2025.
 - CBTW: **Java Full-Stack Engineer**, September 2024-January 2025, matching LinkedIn.
-- VERMEG: **Analyst Developer**, January 2023-August 2024, following **Software Developer**, October 2019-December 2022. The combined entry preserves both stages and matches LinkedIn rather than the older PDF title.
+- VERMEG: **Analyst Developer**, January 2023-August 2024, following **Software Developer**, October 2019-December 2022. Both titles are shown with their own date ranges on the website and in the PDFs (`roles` in the data).
 - ESPRIT: software architecture engineering, September 2019-July 2023; ISIMM: computer science, September 2015-June 2019. No study schedule is disclosed.
 - Oracle Java SE 11 certification: September 2022. Japanese is described as basic; no JLPT qualification is claimed.
 - The public PDFs include the phone number with the user's approval.
 - The early Proxym internship and older student project are intentionally omitted from this focused seven-year resume. LinkedIn may retain the longer history.
-- Existing employer metrics are retained as user-provided claims rather than independently verified measurements. ActiveMQ consistently describes processing **efficiency**; PackManager describes **execution time**. Removed unsupported personal-project benchmarks and counts.
+- Employer percentage claims (API response time, ActiveMQ efficiency, PackManager execution time, manual processes) were replaced with qualitative outcomes on 3 October 2026 because their measurement basis was not established. Reintroduce a number only with a defined measurement. Removed unsupported personal-project benchmarks and counts.
+- Rakuten work now includes the confirmed performance testing (k6/JMeter), Cloud Logging and Kafka/Confluent logging, and application/infrastructure design. The internal agent application is intentionally omitted until its disclosure and delivery stage are confirmed.
 
 ## Presentation
 
-Experience precedes Skills. There are 34 skills in seven groups. Slide Agent, Pockito, and SubMate are featured; Orbit Ways and Traffic Forward are compact personal entries. TermLoom and the Rust skill are removed. Client projects remain attached to the appropriate employment entries, with expandable details.
+Experience precedes Skills. There are 39 skills in seven groups ordered by emphasis (Java application engineering, cloud delivery, performance/observability first). Slide Agent, Pockito, and SubMate are featured; Orbit Ways and Traffic Forward are compact personal entries. TermLoom and the Rust skill are removed. Client projects remain attached to the appropriate employment entries, with expandable details; additional achievements use a native disclosure so they are present in the initial HTML.
 
-The English, French, and Japanese PDFs use the same structured data and contain two pages each. The old PDF URL remains an English compatibility alias. Generated text is selectable and links are clickable. The generator also updates the share image without stale location or availability claims.
+The English, French, and Japanese PDFs use the same structured data and contain two pages each. Each entry's `pdf` selection names the bullets and company projects the PDF prints (no positional truncation). Skills are printed one category per line, and each title shares one line with its employer and dates. The old PDF URL remains an English compatibility alias. Generated text is selectable, links print their destinations, and the PDFs are tagged. The generator also updates the share image without stale location or availability claims.
 
 ## Reproduce
 
@@ -31,7 +32,7 @@ npm run resume:pdf
 npm run validate
 ```
 
-`resume:pdf` uses Chromium for font shaping and PDF export. Japanese requires a Japanese font on the authoring machine (macOS includes Hiragino; Linux can use Noto Sans CJK JP). Inspect `output/pdf/rendered` with Poppler when updating the content. Author the PDFs before `generate` so the published output includes their latest versions.
+`resume:pdf` uses Chromium for font shaping and PDF export. The Japanese PDF uses the bundled Noto Sans JP subsets in `scripts/fonts/` (see its README): system Japanese fonts were embedded as Type 3 fonts and produced Kangxi-radical text such as `⽇` for `日`. The generator fails if a CV exceeds two pages or the Japanese CV contains a Type 3 font. Inspect the PDFs with Poppler and render them with `pdftoppm` when updating the content. Author the PDFs before `generate` so the published output includes their latest versions.
 
 Use `npm run dev` for editing. Run the generated site through the provided Nginx configuration for final header, caching, CSP, and 404 checks. Do not rebuild `.nuxt` while relying on a running Nuxt development server.
 
@@ -50,6 +51,9 @@ Use `npm run dev` for editing. Run the generated site through the provided Nginx
 The website has been compared with LinkedIn. The LinkedIn headline still contains the spelling **MicroProfie**; correct it to **MicroProfile** when editing that profile. The resume deliberately adds personal projects beyond LinkedIn's shorter list. No external LinkedIn edits were made.
 
 ## Verification record
+
+The 3 October 2026 content, ATS and discovery follow-up is recorded in [content-search-ats-audit-closure.md](content-search-ats-audit-closure.md). The record below predates it.
+
 
 On 3 October 2026, `npm run validate` passed: **49 tests in seven files**, strict TypeScript checking, and static generation. An independent subagent reviewed the completed implementation and all six PDF pages. Its Japanese-route alias finding was fixed and covered by a regression test; its final review reported no outstanding findings.
 

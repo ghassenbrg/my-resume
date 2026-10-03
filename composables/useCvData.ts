@@ -249,7 +249,76 @@ export const validateCvData = (data: unknown): NormalizationIssue[] => {
       if (!Array.isArray(entry.achievements) || entry.achievements.length === 0) {
         issues.push({ path: `experience.${index}.achievements`, message: 'At least one achievement is required.' })
       }
+
+      if (entry.roles !== undefined) {
+        if (!Array.isArray(entry.roles) || entry.roles.length === 0) {
+          issues.push({ path: `experience.${index}.roles`, message: 'Roles must be a non-empty array when present.' })
+        } else {
+          entry.roles.forEach((role, roleIndex) => {
+            const rolePath = `experience.${index}.roles.${roleIndex}`
+            if (!isRecord(role)) {
+              issues.push({ path: rolePath, message: 'Role entry must be an object.' })
+              return
+            }
+            assertRequiredString(role, rolePath, 'position', issues)
+            assertValidIsoDate(role, rolePath, 'startDate', issues, { required: true })
+            assertValidIsoDate(role, rolePath, 'endDate', issues)
+          })
+        }
+      }
+
+      issues.push(...validatePdfSelection(entry, `experience.${index}`))
     })
+  }
+
+  if (Array.isArray(data.projects)) {
+    data.projects.forEach((project, index) => {
+      if (isRecord(project) && isRecord(project.pdf)) {
+        issues.push(...validateIndexes(project.pdf.outcomes, project.outcomes, `projects.${index}.pdf.outcomes`))
+      }
+    })
+  }
+
+  return issues
+}
+
+/* PDF evidence selection: every index must point at an existing, distinct entry. */
+const validateIndexes = (indexes: unknown, list: unknown, path: string): NormalizationIssue[] => {
+  const size = Array.isArray(list) ? list.length : 0
+  const valid = Array.isArray(indexes)
+    && indexes.length > 0
+    && indexes.every((value) => Number.isInteger(value) && value >= 0 && value < size)
+    && new Set(indexes).size === indexes.length
+
+  return valid ? [] : [{ path, message: 'Expected distinct indexes of existing entries.' }]
+}
+
+const validatePdfSelection = (entry: Record<string, unknown>, path: string): NormalizationIssue[] => {
+  if (entry.pdf === undefined) {
+    return []
+  }
+
+  if (!isRecord(entry.pdf)) {
+    return [{ path: `${path}.pdf`, message: 'PDF selection must be an object.' }]
+  }
+
+  const issues = validateIndexes(entry.pdf.achievements, entry.achievements, `${path}.pdf.achievements`)
+  const projects = Array.isArray(entry.projects) ? entry.projects : []
+
+  if (entry.pdf.projects !== undefined) {
+    if (!Array.isArray(entry.pdf.projects)) {
+      issues.push({ path: `${path}.pdf.projects`, message: 'Expected an array.' })
+    } else {
+      entry.pdf.projects.forEach((selection, selectionIndex) => {
+        const selectionPath = `${path}.pdf.projects.${selectionIndex}`
+        const project = isRecord(selection) && Number.isInteger(selection.index) ? projects[selection.index as number] : undefined
+        if (!isRecord(selection) || !isRecord(project)) {
+          issues.push({ path: selectionPath, message: 'Expected the index of an existing company project.' })
+          return
+        }
+        issues.push(...validateIndexes(selection.outcomes, project.outcomes, `${selectionPath}.outcomes`))
+      })
+    }
   }
 
   return issues

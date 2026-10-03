@@ -1611,3 +1611,25 @@
   /* The hero grows beyond the first screen on phones; avoid a floating hint over its card. */
   .scroll-hint { display: none; }
 }
+
+/* Official titles held at one employer, each with its own dates. */
+.tl-assignment { color: var(--text-mute); font-weight: 400; }
+.tl-roles { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+.tl-role { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font-size: 14px; }
+.tl-role-title { font-weight: 600; color: var(--text); }
+.tl-role-dates { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-mute); }
+/* Additional achievements: native disclosure, content present without JS. */
+.ach-more > summary { list-style: none; cursor: pointer; }
+.ach-more > summary::-webkit-details-marker { display: none; }
+.ach-more > summary:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+.ach-more .ach-when-open, .ach-more[open] .ach-when-closed { display: none; }
+.ach-more[open] .ach-when-open { display: inline; }
+.ach-more .ach-chevron { transition: transform .3s; }
+.ach-more[open] .ach-chevron { transform: rotate(180deg); }
+.ach-more > .ach-list { margin-top: 12px; }
+/* Plain links to each translated resume (work without JavaScript). */
+.footer-langs { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--text-mute); }
+.footer-langs a { color: var(--text-soft); text-decoration: underline; text-underline-offset: 3px; }
+.footer-langs a[aria-current="page"] { color: var(--teal); text-decoration: none; }
+.hero-headline { margin-top: 10px; font-family: var(--font-display); font-size: clamp(16px, 1.7vw, 19px); font-weight: 500; color: var(--text-soft); }
+@media (prefers-reduced-motion: reduce) { .ach-more .ach-chevron { transition: none; } }

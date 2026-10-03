@@ -1,17 +1,23 @@
 {
+  "meta": {
+    "title": "Ghassen Bargougui | Application Engineer — Java & Cloud Platforms",
+    "description": "Application Engineer at Rakuten Card in Fukuoka, Japan. Seven years of Java, API, and financial-systems work, with Kubernetes delivery, performance testing, observability, and AI-enabled personal products."
+  },
   "hero": {
     "name": "Ghassen Bargougui",
     "title": "Application Engineer",
+    "headline": "Java Applications, Cloud & Platform Engineering",
     "location": "Fukuoka, Japan",
-    "tagline": "I build and modernize Java backend systems for banking, insurance, and card payments. At Rakuten Card, I work on API modernization, hybrid-cloud migration, and deployment automation.",
+    "tagline": "I build and modernize Java applications and the cloud platforms they run on. At Rakuten Card's Technology Incubation Team, my work spans hybrid-cloud migration, Kubernetes deployments, API development, performance testing, and application observability.",
     "phone": "+81 70 8502 9039"
   },
   "about": {
     "paragraphs": [
-      "I am an Application Engineer with seven years of backend and full-stack experience across Tunisia, Luxembourg, and Japan. My work spans banking, insurance, and card payments, with a focus on Java, API design, and reliable delivery.",
-      "At Rakuten Card, I help lead hybrid-cloud migration with my manager and project manager, coordinating across application, CI/CD, infrastructure, and security teams. I work hands-on with Helidon, MicroProfile, Kubernetes, GCP, and production troubleshooting.",
-      "Outside work, I build products from architecture to delivery: Slide Agent for editable AI-generated presentations, Pockito for personal and shared money management, and SubMate for subtitle translation. I speak Arabic natively, English and French fluently, and Japanese at a basic level."
+      "I am an Application Engineer with seven years of Java and full-stack experience in banking, insurance, and card payments, across Tunisia, Luxembourg, and Japan. My work sits where application code meets the platform it runs on: API design, deployment, performance diagnosis, and reliable delivery.",
+      "At Rakuten Card, I help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams. Hands-on, I design application and infrastructure changes, build Kubernetes deployments and pipelines, run performance tests with k6 and JMeter, and adapt application logging for Cloud Logging and Kafka/Confluent.",
+      "Outside work, I build products end to end: Slide Agent, an open-source engine for generating editable PowerPoint presentations; Pockito, an app for personal and shared finances; and SubMate, a Chrome extension for subtitle translation."
     ],
+    "profile": "Application Engineer with seven years of Java and full-stack experience across banking, insurance, and card payments in Tunisia, Luxembourg, and Japan. At Rakuten Card's Technology Incubation Team, my work spans hybrid-cloud migration, application and infrastructure design, Kubernetes delivery, CI/CD, performance testing, and observability. Creator of the Slide Agent, Pockito, and SubMate personal projects.",
     "highlights": [
       {
         "value": "7",
@@ -22,8 +28,8 @@
         "label": "Countries worked across"
       },
       {
-        "value": "50%",
-        "label": "API response time reduced at VERMEG"
+        "value": "JDK 25",
+        "label": "e-Navi API upgrade at Rakuten Card"
       },
       {
         "value": "OCP",
@@ -32,7 +38,7 @@
     ]
   },
   "skills": {
-    "Backend & Full-Stack Development": [
+    "Java Application Engineering": [
       {
         "name": "Java",
         "icon": "java",
@@ -56,9 +62,99 @@
         "icon": "hibernate"
       },
       {
+        "name": "RESTful API Design",
+        "icon": "api"
+      },
+      {
+        "name": "OpenAPI",
+        "icon": "openapi"
+      },
+      {
+        "name": "Maven",
+        "icon": "maven"
+      }
+    ],
+    "Cloud Delivery & CI/CD": [
+      {
+        "name": "Kubernetes",
+        "icon": "kubernetes",
+        "highlight": true
+      },
+      {
+        "name": "Google Cloud Platform (GCP)",
+        "icon": "gcp",
+        "highlight": true
+      },
+      {
+        "name": "Google Kubernetes Engine (GKE)",
+        "icon": "gke"
+      },
+      {
+        "name": "Docker",
+        "icon": "docker"
+      },
+      {
+        "name": "GitHub Actions",
+        "icon": "githubactions"
+      },
+      {
+        "name": "Jenkins",
+        "icon": "jenkins"
+      }
+    ],
+    "Performance & Observability": [
+      {
+        "name": "k6",
+        "icon": "k6"
+      },
+      {
+        "name": "JMeter",
+        "icon": "jmeter"
+      },
+      {
+        "name": "JProfiler",
+        "icon": "jprofiler"
+      },
+      {
+        "name": "Cloud Logging",
+        "icon": "gcp"
+      },
+      {
+        "name": "Log4j2",
+        "icon": "log4j"
+      }
+    ],
+    "Data & Messaging": [
+      {
+        "name": "PostgreSQL",
+        "icon": "postgres"
+      },
+      {
+        "name": "Oracle (PL/SQL)",
+        "icon": "oracle"
+      },
+      {
+        "name": "Redis",
+        "icon": "redis"
+      },
+      {
+        "name": "Kafka / Confluent",
+        "icon": "kafka"
+      },
+      {
+        "name": "ActiveMQ",
+        "icon": "activemq"
+      }
+    ],
+    "Frontend, Mobile & Browser": [
+      {
         "name": "Angular",
         "icon": "angular",
         "highlight": true
+      },
+      {
+        "name": "TypeScript",
+        "icon": "typescript"
       },
       {
         "name": "Vue.js",
@@ -69,16 +165,9 @@
         "icon": "nuxtjs"
       },
       {
-        "name": "TypeScript",
-        "icon": "typescript",
-        "highlight": true
-      },
-      {
         "name": "Node.js",
         "icon": "node"
-      }
-    ],
-    "Mobile & Browser": [
+      },
       {
         "name": "Flutter",
         "icon": "flutter"
@@ -95,75 +184,14 @@
     "AI & Agent Tooling": [
       {
         "name": "Model Context Protocol (MCP)",
-        "icon": "mcp",
-        "highlight": true
+        "icon": "mcp"
       },
       {
         "name": "LLM API Integration",
         "icon": "ai"
       }
     ],
-    "Database & Data Processing": [
-      {
-        "name": "PostgreSQL",
-        "icon": "postgres"
-      },
-      {
-        "name": "Oracle (PL/SQL)",
-        "icon": "oracle"
-      },
-      {
-        "name": "Redis",
-        "icon": "redis"
-      }
-    ],
-    "APIs & Messaging": [
-      {
-        "name": "RESTful API Design",
-        "icon": "api"
-      },
-      {
-        "name": "OpenAPI",
-        "icon": "openapi"
-      },
-      {
-        "name": "Kafka",
-        "icon": "kafka"
-      },
-      {
-        "name": "ActiveMQ",
-        "icon": "activemq"
-      }
-    ],
-    "DevOps & Infrastructure": [
-      {
-        "name": "Kubernetes",
-        "icon": "kubernetes",
-        "highlight": true
-      },
-      {
-        "name": "Google Cloud Platform (GCP)",
-        "icon": "gcp",
-        "highlight": true
-      },
-      {
-        "name": "Google Kubernetes Engine (GKE)",
-        "icon": "gke"
-      },
-      {
-        "name": "GitHub Actions",
-        "icon": "githubactions"
-      },
-      {
-        "name": "Docker",
-        "icon": "docker"
-      },
-      {
-        "name": "Jenkins",
-        "icon": "jenkins"
-      }
-    ],
-    "Quality, Security & Tools": [
+    "Quality & Security": [
       {
         "name": "JUnit",
         "icon": "junit"
@@ -181,10 +209,6 @@
         "icon": "keycloak"
       },
       {
-        "name": "JProfiler",
-        "icon": "jprofiler"
-      },
-      {
         "name": "Git",
         "icon": "git"
       }
@@ -197,28 +221,39 @@
       "location": "Fukuoka, Japan",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "I work in Rakuten Card's Technology Incubation Team, helping lead hybrid-cloud migration with my manager and project manager across multiple teams while modernizing APIs.",
+      "description": "In the Technology Incubation Team, I work across Java application development and cloud/platform engineering, and help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams.",
       "achievements": [
-        "I upgraded the e-Navi API to JDK 25 and Helidon 4.3, resolving dependency and CDI issues, updating tests, and documenting the handover.",
-        "I built a GitHub Actions pipeline for builds, Docker image publishing to Artifact Registry, and GKE deployments.",
-        "I designed and validated Kubernetes deployments for JSF, API, and Engine modules, including services, environment configuration, and Filestore mounts.",
-        "I redesigned application logging as structured JSON with Log4j2 and a custom formatter compatible with Cloud Logging.",
-        "I resolved deployment, SSL, and GCP-to-on-premises connectivity issues with infrastructure and security teams, and traced a Kafka messaging issue to an incorrect CDI bean scope.",
-        "I coordinated application requirements across CI/CD, infrastructure, security, and development teams to unblock delivery."
-      ]
+        "Upgraded the e-Navi API to JDK 25 and Helidon 4.3, resolving dependency and CDI issues, updating tests, and documenting the handover.",
+        "Designed and validated Kubernetes deployments for the JSF, API, and Engine modules as part of the hybrid-cloud migration, including services, environment configuration, and Filestore mounts.",
+        "Run performance tests with k6 and JMeter, diagnose bottlenecks, and address them through application-design changes or resource adjustments.",
+        "Reworked application logging as structured JSON for Cloud Logging (Log4j2 with a custom formatter); currently helping move file-based application and trace logs to Kafka/Confluent.",
+        "Resolved deployment, SSL, and GCP-to-on-premises connectivity issues with infrastructure and security teams, and traced a Kafka messaging issue to an incorrect CDI bean scope.",
+        "Built a GitHub Actions pipeline for builds, Docker image publishing to Artifact Registry, and GKE deployments."
+      ],
+      "pdf": {
+        "achievements": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
     },
     {
-      "company": "Sogeti (on mission at BGL BNP Paribas)",
+      "company": "Sogeti",
+      "assignment": "Client assignment at BGL BNP Paribas",
       "position": "Software Engineer",
       "location": "Luxembourg",
       "startDate": "2025-02-01",
       "endDate": "2025-11-30",
       "logo": "sogeti_logo.png",
-      "description": "I developed and maintained internal banking applications for BGL BNP Paribas within an Agile tribe and squad.",
+      "description": "Developed and maintained internal banking applications for BGL BNP Paribas, including customer mandate management for retail banking.",
       "achievements": [
-        "I delivered customer mandate management features with Spring Boot, batch processing, and Angular with Angular Material.",
-        "I developed REST APIs and internal applications with Hibernate and PostgreSQL/Oracle, focusing on security and performance.",
-        "I automated builds and deployments with Maven and Jenkins, and maintained code quality through unit tests, SonarQube, and peer reviews."
+        "Delivered customer mandate management features with Spring Boot, Spring Batch, and Angular Material.",
+        "Developed REST APIs and Hibernate data access for internal applications on PostgreSQL and Oracle.",
+        "Automated builds and deployments with Maven and Jenkins, and maintained code quality through unit tests, SonarQube analysis, and peer reviews."
       ],
       "projects": [
         {
@@ -229,8 +264,8 @@
           "period": "2025",
           "summary": "Customer mandate management for retail banking.",
           "outcomes": [
-            "I developed mandate workflows with Spring Boot batch processing and Angular Material.",
-            "I added unit tests and SonarQube checks and automated build and deployment pipelines with Maven and Jenkins."
+            "Developed mandate workflows with Spring Batch processing and Angular Material screens.",
+            "Added unit tests and SonarQube checks, and automated build and deployment pipelines with Maven and Jenkins."
           ],
           "technologies": [
             "Java",
@@ -242,7 +277,14 @@
             "Jenkins"
           ]
         }
-      ]
+      ],
+      "pdf": {
+        "achievements": [
+          0,
+          1,
+          2
+        ]
+      }
     },
     {
       "company": "CBTW",
@@ -251,27 +293,45 @@
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "logo": "cbtw_logo.png",
-      "description": "I developed enterprise web applications and modernized Java services with Spring Boot, Angular, and PostgreSQL.",
+      "description": "Modernized Java services and developed web applications with Spring Boot, Angular, and PostgreSQL.",
       "achievements": [
-        "I developed enterprise applications with Spring Boot, Angular, and PostgreSQL, refactoring monolithic components into microservices.",
-        "I built REST APIs for service integration with attention to versioning, security, and documentation.",
-        "I automated deployments with Jenkins and Docker, reducing manual release work."
-      ]
+        "Refactored monolithic application components into microservices as part of the Java service modernization.",
+        "Built and documented REST APIs for service integration, covering versioning and security requirements.",
+        "Automated deployments with Jenkins and Docker, reducing manual release steps."
+      ],
+      "pdf": {
+        "achievements": [
+          0,
+          1,
+          2
+        ]
+      }
     },
     {
       "company": "VERMEG for Banking and Insurance",
       "position": "Analyst Developer",
+      "roles": [
+        {
+          "position": "Analyst Developer",
+          "startDate": "2023-01-01",
+          "endDate": "2024-08-31"
+        },
+        {
+          "position": "Software Developer",
+          "startDate": "2019-10-01",
+          "endDate": "2022-12-31"
+        }
+      ],
       "location": "Tunis, Tunisia",
       "startDate": "2019-10-01",
       "endDate": "2024-08-31",
       "logo": "vermeg_logo.png",
-      "description": "I progressed from Software Developer (Oct 2019 – Dec 2022) to Analyst Developer (Jan 2023 – Aug 2024), taking ownership of backend components and cross-team solution design for insurance and financial applications.",
+      "description": "Built and maintained backend services for insurance and financial applications, then took on functional analysis and cross-team solution design as Analyst Developer.",
       "achievements": [
-        "I reduced API response time by 50% through query optimization and caching strategies.",
-        "I built automated workflows using ActiveMQ for bulk processing, increasing efficiency by 40%.",
-        "I owned core backend components and worked with business, architecture, and framework teams on requirements, microservices, and API contracts.",
-        "I documented designs with UML and sequence diagrams and served as a primary contact for cross-team design clarifications.",
-        "I implemented Keycloak-based authentication and role-based access control, and managed CI/CD pipelines and rollback strategies."
+        "Improved API response times through query optimization and caching.",
+        "Responsible for assigned backend components; worked with business, architecture, and framework teams on requirements, microservices, and API contracts.",
+        "Documented designs in UML and sequence diagrams, and acted as a primary contact for cross-team design questions.",
+        "Implemented Keycloak authentication and role-based access control, and managed CI/CD pipelines and rollback strategies."
       ],
       "projects": [
         {
@@ -282,14 +342,15 @@
           "period": "2023 – 2024",
           "summary": "Insurance workflow modernization with Camunda BPM.",
           "outcomes": [
-            "I led migration to a Camunda BPM-based architecture, reducing manual processes by 30%.",
-            "I conducted functional analysis and client workshops and implemented multithreaded batch processing.",
-            "I integrated ActiveMQ for bulk processing, increasing efficiency by 40%."
+            "Led the migration of insurance workflows to a Camunda BPM-based architecture to reduce manual processing.",
+            "Conducted functional analysis and client workshops, and implemented multithreaded batch processing.",
+            "Integrated ActiveMQ to automate bulk-processing workflows."
           ],
           "technologies": [
             "Java",
             "Spring Boot",
             "Camunda",
+            "ActiveMQ",
             "REST API",
             "Batch Processing"
           ]
@@ -302,8 +363,8 @@
           "period": "2022 – 2023",
           "summary": "Configuration platform for insurance products.",
           "outcomes": [
-            "I built insurance product configuration APIs and refactored legacy code for maintainability.",
-            "I profiled the application with JProfiler, reducing execution time by 35% and lowering runtime memory usage."
+            "Built insurance product configuration APIs and refactored legacy code for maintainability.",
+            "Profiled Java execution and memory usage with JProfiler and optimized the identified bottlenecks."
           ],
           "technologies": [
             "Java",
@@ -316,34 +377,34 @@
           "kind": "professional",
           "role": "Full-Stack Developer",
           "company": "VERMEG",
+          "summary": "Web applications for insurance brokers.",
           "outcomes": [
-            "I developed Angular interfaces and Java backend services for insurance brokers.",
-            "I integrated Keycloak single sign-on and BPMN-driven user flows."
+            "Developed Angular interfaces and Java backend services for insurance brokers.",
+            "Integrated Keycloak single sign-on and BPMN-driven user flows."
           ],
           "technologies": [
             "Angular",
             "Java",
             "Keycloak",
             "BPMN"
-          ],
-          "summary": "Web applications for insurance brokers."
+          ]
         },
         {
           "title": "Magikforms",
           "kind": "professional",
           "role": "Backend Developer",
           "company": "VERMEG",
+          "summary": "Document and digital form processing for insurance workflows.",
           "outcomes": [
-            "I built Java services for document processing and used ActiveMQ for bulk event flows.",
-            "I integrated Keycloak authorization and profiled Java heap usage with JProfiler."
+            "Built Java services for document processing, using ActiveMQ for bulk event flows.",
+            "Integrated Keycloak authorization and analyzed Java heap usage with JProfiler."
           ],
           "technologies": [
             "Java",
             "ActiveMQ",
             "Keycloak",
             "JProfiler"
-          ],
-          "summary": "Document and digital form processing for insurance workflows."
+          ]
         },
         {
           "title": "Insurance Pricing Module",
@@ -353,8 +414,8 @@
           "period": "2020 – 2021",
           "summary": "Insurance product pricing and premium calculation.",
           "outcomes": [
-            "I developed product configuration and premium calculation features with client-side validation.",
-            "I used Apache POI to process Excel pricing templates and improve data integration."
+            "Developed product configuration and premium calculation features with client-side validation.",
+            "Processed Excel pricing templates with Apache POI to improve data integration."
           ],
           "technologies": [
             "Java",
@@ -363,7 +424,30 @@
             "Spring Boot"
           ]
         }
-      ]
+      ],
+      "pdf": {
+        "achievements": [
+          0,
+          3,
+          1,
+          2
+        ],
+        "projects": [
+          {
+            "index": 0,
+            "outcomes": [
+              0,
+              2
+            ]
+          },
+          {
+            "index": 1,
+            "outcomes": [
+              1
+            ]
+          }
+        ]
+      }
     }
   ],
   "projects": [
@@ -372,16 +456,16 @@
       "kind": "personal",
       "role": "Creator & Maintainer",
       "period": "2026",
-      "status": "npm package",
-      "summary": "Open-source presentation engine that turns AI-directed designs into editable PowerPoint decks.",
+      "status": "Open source · npm package",
+      "summary": "Open-source engine and MCP tooling for generating editable PowerPoint presentations with native charts and layout validation.",
       "link": "https://slide-agent.ghassen.io",
       "linkLabel": "Visit site",
       "repo": "https://github.com/ghassenbrg/slide-agent",
       "featured": true,
       "outcomes": [
-        "I built a TypeScript engine that compiles a grid-based composition language into native PowerPoint with editable charts, tables, theme colors, and embedded fonts.",
-        "I implemented text measurement from font files, layout and contrast checks, and offline OOXML schema validation.",
-        "I distributed the engine as @slide-agent/core with a CLI, library API, and MCP server; template filling generates decks from CSV without model calls."
+        "Built a TypeScript engine that compiles a grid-based composition language into native PowerPoint with editable charts and tables, theme colors, and embedded fonts.",
+        "Implemented text measurement from font files, layout and contrast checks, and offline OOXML schema validation.",
+        "Published the engine on npm as @slide-agent/core, with a CLI, library API, and MCP server; template filling generates decks from CSV data without model calls."
       ],
       "technologies": [
         "TypeScript",
@@ -391,7 +475,13 @@
         "LLM APIs",
         "Vitest",
         "GitHub Actions"
-      ]
+      ],
+      "pdf": {
+        "outcomes": [
+          0,
+          2
+        ]
+      }
     },
     {
       "title": "Pockito",
@@ -399,14 +489,14 @@
       "role": "Creator & Full-Stack Engineer",
       "period": "2025 – 2026",
       "status": "Personal project",
-      "summary": "Personal and shared money management through mobile, web, and AI-agent interfaces backed by a shared domain service.",
+      "summary": "Personal and shared finance app with Flutter and Nuxt clients, backed by a Spring Boot service with REST and MCP interfaces.",
       "link": "https://pockito.ghassen.io",
       "linkLabel": "Open app",
       "featured": true,
       "outcomes": [
-        "I designed a Spring Boot backend with REST and MCP adapters over a shared domain service, alongside Flutter and Nuxt clients.",
-        "I integrated Keycloak authentication, OAuth discovery for MCP clients, and event-driven notifications using Redis Streams.",
-        "I built Kubernetes deployment and rollback scripts with Traefik routing, plus automated tests and end-to-end release checks."
+        "Designed a Spring Boot backend in which REST and MCP adapters share one domain service, and built the Flutter and Nuxt clients.",
+        "Integrated Keycloak authentication, OAuth discovery for MCP clients, and event-driven notifications with Redis Streams.",
+        "Built Kubernetes deployment and rollback scripts with Traefik routing, plus automated tests and end-to-end release checks."
       ],
       "technologies": [
         "Java 25",
@@ -418,23 +508,29 @@
         "Keycloak",
         "Kubernetes",
         "MCP"
-      ]
+      ],
+      "pdf": {
+        "outcomes": [
+          0,
+          2
+        ]
+      }
     },
     {
       "title": "SubMate",
       "kind": "personal",
       "role": "Creator & Maintainer",
       "period": "2026",
-      "status": "Chrome extension",
-      "summary": "Chrome extension for synchronized subtitle translation on Netflix, TVer, and Prime Video, with on-device translation by default.",
+      "status": "Open source · Chrome extension",
+      "summary": "Chrome extension for synchronized subtitle translation on Netflix, TVer, and Prime Video, translating on-device by default with optional cloud providers.",
       "link": "https://submate.ghassen.io",
       "linkLabel": "Visit site",
       "repo": "https://github.com/ghassenbrg/SubMate",
       "featured": true,
       "outcomes": [
-        "I built a Manifest V3 extension using Chrome's on-device Translator API, with local caching and no SubMate backend, account, or telemetry.",
-        "I designed platform adapters over a shared core for TTML/WebVTT parsing, TVer HLS segment assembly, and synchronized fullscreen overlays.",
-        "I added optional cloud translation using the user’s API key and localized the interface in English, Japanese, French, and Arabic, including right-to-left support."
+        "Built a Manifest V3 extension on Chrome's on-device Translator API, with local caching and no SubMate backend, account, or telemetry.",
+        "Designed platform adapters over a shared core for TTML/WebVTT parsing, TVer HLS segment assembly, and synchronized fullscreen overlays.",
+        "Added optional cloud translation using the user's own API key, and localized the interface in English, Japanese, French, and Arabic with right-to-left support."
       ],
       "technologies": [
         "TypeScript",
@@ -443,19 +539,26 @@
         "LLM APIs",
         "IndexedDB",
         "Vitest"
-      ]
+      ],
+      "pdf": {
+        "outcomes": [
+          0,
+          2
+        ]
+      }
     },
     {
       "title": "Orbit Ways",
       "kind": "personal",
       "role": "Full-Stack Game Developer",
       "status": "Playable",
-      "summary": "Browser-based multiplayer strategy board game with real-time game state.",
+      "summary": "Browser-based multiplayer strategy board game with real-time game state over WebSockets.",
       "link": "https://ghassen.io/orbitways",
       "linkLabel": "Play",
+      "featured": false,
       "outcomes": [
-        "I built Spring Boot session, state, and matchmaking services with WebSocket updates and an Angular/Ionic interface.",
-        "I containerized the application with Docker and an Nginx reverse proxy."
+        "Built Spring Boot session, game-state, and matchmaking services with WebSocket updates and an Angular/Ionic interface.",
+        "Containerized the application with Docker behind an Nginx reverse proxy."
       ],
       "technologies": [
         "Spring Boot",
@@ -464,8 +567,7 @@
         "Ionic",
         "Docker",
         "Nginx"
-      ],
-      "featured": false
+      ]
     },
     {
       "title": "Traffic Forward",
@@ -473,40 +575,40 @@
       "role": "Creator",
       "period": "2026",
       "status": "Side project",
-      "summary": "Spring Boot service for temporary API routing, HTTP debugging, and request/response auditing.",
+      "summary": "Spring Boot HTTP forwarding tool with configurable routing and request/response diagnostics.",
       "repo": "https://github.com/ghassenbrg/traffic-forward",
+      "featured": false,
       "outcomes": [
-        "I implemented HTTP forwarding with YAML routes supporting exact paths, variables, and wildcards while preserving request data.",
-        "I added request/response logging with timing and body previews, and packaged the service for Docker Compose."
+        "Implemented HTTP forwarding with YAML routes supporting exact paths, variables, and wildcards while preserving request data.",
+        "Added request/response logging with timing and body previews, and packaged the service for Docker Compose."
       ],
       "technologies": [
         "Java 25",
         "Spring Boot",
         "YAML",
         "Docker"
-      ],
-      "featured": false
+      ]
     }
   ],
   "education": [
     {
-      "degree": "Engineer's Degree in Software Architecture Engineering",
+      "degree": "Engineering Degree (Diplôme d'ingénieur) in Software Architecture",
       "institution": "ESPRIT (Private Higher School of Engineering and Technology)",
       "location": "Tunis, Tunisia",
-      "period": "Sept 2019 – July 2023"
+      "period": "Sep 2019 – Jul 2023"
     },
     {
       "degree": "Bachelor's Degree in Computer Science",
       "institution": "ISIMM (Higher Institute of Computer Science and Mathematics)",
       "location": "Monastir, Tunisia",
-      "period": "Sept 2015 – June 2019"
+      "period": "Sep 2015 – Jun 2019"
     }
   ],
   "certifications": [
     {
       "name": "Oracle Certified Professional, Java SE 11 Developer",
+      "date": "Sep 2022",
       "issuer": "Oracle",
-      "date": "Sept 2022",
       "link": "https://bit.ly/ocp11gb",
       "image": "/ocp11.png"
     }
@@ -521,19 +623,19 @@
     {
       "language": "English",
       "code": "EN",
-      "level": "Advanced, Fluent",
+      "level": "Fluent",
       "percentage": 85
     },
     {
       "language": "French",
       "code": "FR",
-      "level": "Advanced, Fluent",
+      "level": "Fluent",
       "percentage": 85
     },
     {
       "language": "Japanese",
       "code": "JA",
-      "level": "Beginner, Basic Proficiency",
+      "level": "Basic",
       "percentage": 10
     }
   ]

@@ -1,4 +1,6 @@
 export interface CVData {
+  /** Localized page metadata (search/social title and description). */
+  meta?: PageMeta
   hero: Hero
   about: About
   skills: Record<string, Skill[]>
@@ -34,9 +36,17 @@ export interface LanguageSelectionMeta {
   fallbackReason: string | null
 }
 
+export interface PageMeta {
+  title: string
+  description: string
+}
+
 export interface Hero {
   name: string
+  /** Official employment title; never replaced by the functional headline. */
   title: string
+  /** Functional descriptor of the work, shown next to the official title. */
+  headline?: string
   location: string
   tagline?: string
   phone?: string
@@ -82,6 +92,8 @@ export interface AboutHighlight {
 
 export interface About {
   paragraphs: string[]
+  /** Short, third-person-free profile used by the downloadable CV. */
+  profile?: string
   highlights?: AboutHighlight[]
   stats?: CVStats
 }
@@ -103,9 +115,32 @@ export interface RuntimeSkill extends Skill {
   highlight: boolean
 }
 
+/** One official title held at an employer, with its own date range. */
+export interface ExperienceRole {
+  position: string
+  startDate: string
+  endDate?: string
+}
+
+/**
+ * Deliberate evidence selection for the downloadable CV: zero-based indexes
+ * into the entry's own lists, printed in the order given. Kept identical
+ * across languages (tests enforce this) so every PDF carries the same facts.
+ */
+export interface ExperiencePdfSelection {
+  achievements: number[]
+  /** Company projects printed with their selected outcomes. */
+  projects?: { index: number; outcomes: number[] }[]
+}
+
 export interface Experience {
   company: string
+  /** Localized client/assignment phrase, e.g. "Client assignment at BGL BNP Paribas". */
+  assignment?: string
+  /** Most recent official title at this employer. */
   position: string
+  /** Official titles held at this employer, newest first, when there was more than one. */
+  roles?: ExperienceRole[]
   location: string
   startDate: string
   endDate?: string
@@ -114,6 +149,7 @@ export interface Experience {
   achievements: string[]
   accentColor?: string
   projects?: Project[]
+  pdf?: ExperiencePdfSelection
 }
 
 /**
@@ -142,6 +178,8 @@ export interface Project {
   outcomes: string[]
   technologies: string[]
   featured?: boolean
+  /** Zero-based outcome indexes printed in the downloadable CV. */
+  pdf?: { outcomes: number[] }
 }
 
 export interface Education {

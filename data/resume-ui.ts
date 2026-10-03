@@ -94,6 +94,8 @@ export interface ResumeUiCopy {
   footer: {
     builtWith: string
     rights: string
+    /** Accessible name and visible lead for the plain language links. */
+    languages: string
   }
 }
 
@@ -102,7 +104,7 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
     languageLabel: 'Language',
     hero: {
       scroll: 'Scroll',
-      terminal: { role: 'role', stack: 'stack', focus: 'focus', focusValue: 'API modernization', base: 'base' },
+      terminal: { role: 'role', stack: 'stack', focus: 'focus', focusValue: 'Java apps & cloud delivery', base: 'base' },
     },
     a11y: {
       skipToContent: 'Skip to main content',
@@ -143,9 +145,9 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
       experienceTitle: 'Experience',
       projectsKicker: 'Selected work',
       projectsTitle: 'Projects',
-      projectsPersonalTitle: 'Personal & open-source',
+      projectsPersonalTitle: 'Selected personal projects',
       projectsPersonalLead:
-        'Products I design, build and ship on my own time — from idea to production.',
+        'Products I design and build end to end on my own time. Open-source projects are labelled.',
       projectsProfessionalTitle: 'Client & company projects',
       projectsProfessionalLead:
         'Delivered for banks and insurers as part of my professional roles.',
@@ -169,13 +171,14 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
     footer: {
       builtWith: 'Built with Nuxt 3 & Vue 3.',
       rights: 'All rights reserved.',
+      languages: 'Read this resume in',
     },
   },
   fr: {
     languageLabel: 'Langue',
     hero: {
       scroll: 'Défiler',
-      terminal: { role: 'poste', stack: 'technologies', focus: 'priorité', focusValue: 'Modernisation des API', base: 'lieu' },
+      terminal: { role: 'poste', stack: 'technologies', focus: 'priorité', focusValue: 'Applications Java & cloud', base: 'lieu' },
     },
     a11y: {
       skipToContent: 'Aller au contenu principal',
@@ -216,9 +219,9 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
       experienceTitle: 'Expérience',
       projectsKicker: 'Travaux sélectionnés',
       projectsTitle: 'Projets',
-      projectsPersonalTitle: 'Projets personnels & open source',
+      projectsPersonalTitle: 'Projets personnels sélectionnés',
       projectsPersonalLead:
-        'Je conçois, développe et mets en production ces produits sur mon temps libre — de l\'idée à la production.',
+        'Des produits que je conçois et développe de bout en bout sur mon temps libre. Les projets open source sont signalés.',
       projectsProfessionalTitle: 'Projets clients & entreprise',
       projectsProfessionalLead:
         'Je contribue à ces projets pour des banques et des assureurs dans le cadre de mes fonctions.',
@@ -231,7 +234,7 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
       contactTitleAccent: 'fiable',
       contactTitlePost: '.',
       contactLead:
-        "Un poste, un projet, ou simplement envie d'échanger sur l'architecture ? Je suis toujours ravi d'échanger.",
+        "Un poste, un projet, ou simplement envie de parler d'architecture ? Je suis toujours ravi d'échanger.",
     },
     meta: {
       present: 'À ce jour',
@@ -240,15 +243,16 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
       durationUnits: { year: 'an', years: 'ans', month: 'mois', months: 'mois' },
     },
     footer: {
-      builtWith: 'Je développe ce site avec Nuxt 3 et Vue 3.',
+      builtWith: 'Site réalisé avec Nuxt 3 et Vue 3.',
       rights: 'Tous droits réservés.',
+      languages: 'Lire ce CV en',
     },
   },
   jp: {
     languageLabel: '言語',
     hero: {
       scroll: 'スクロール',
-      terminal: { role: '職種', stack: '技術', focus: '注力分野', focusValue: 'APIの刷新', base: '拠点' },
+      terminal: { role: '職種', stack: '技術', focus: '注力分野', focusValue: 'Javaアプリ・クラウド基盤', base: '拠点' },
     },
     a11y: {
       skipToContent: '本文へスキップ',
@@ -289,9 +293,9 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
       experienceTitle: '経験',
       projectsKicker: '代表的な実績',
       projectsTitle: 'プロジェクト',
-      projectsPersonalTitle: '個人・オープンソース',
+      projectsPersonalTitle: '主な個人プロジェクト',
       projectsPersonalLead:
-        '業務外の時間に、企画から本番リリースまで自ら設計・開発しているプロダクト。',
+        '業務外の時間に、設計から開発まで一貫して手がけているプロダクトです。オープンソースのものはその旨を記載しています。',
       projectsProfessionalTitle: '顧客・業務プロジェクト',
       projectsProfessionalLead:
         '銀行・保険会社向けに、業務の一環として担当したプロジェクト。',
@@ -315,6 +319,7 @@ const resumeUiByLanguage: Record<string, ResumeUiCopy> = {
     footer: {
       builtWith: 'Nuxt 3 と Vue 3 で構築。',
       rights: '無断転載を禁じます。',
+      languages: '表示言語',
     },
   },
 }

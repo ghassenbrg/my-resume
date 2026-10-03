@@ -34,6 +34,8 @@ import flutter from '@iconify-icons/devicon/flutter'
 import dart from '@iconify-icons/devicon/dart'
 import redis from '@iconify-icons/devicon/redis'
 import chrome from '@iconify-icons/devicon/chrome'
+import maven from '@iconify-icons/devicon/maven'
+import k6 from '@iconify-icons/devicon/k6'
 // Brand logos not in the devicon set (still offline objects → SSR-rendered).
 import kubernetes from '@iconify-icons/logos/kubernetes'
 import aws from '@iconify-icons/logos/aws'
@@ -85,6 +87,8 @@ const SKILL_ICONS: Record<string, IconifyIcon> = {
   dart,
   redis,
   chrome,
+  maven,
+  k6,
   // Not in the devicon set — sourced from the offline "logos" package.
   kubernetes,
   rust,

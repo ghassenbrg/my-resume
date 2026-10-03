@@ -18,8 +18,13 @@
         </div>
 
         <div class="tl-headtext">
-          <h3 class="tl-position">{{ exp.position }}</h3>
-          <div class="tl-company">{{ exp.company }}</div>
+          <!-- With several official titles, the employer heads the card and each
+               title is listed below with its own dates (the range under it is the tenure). -->
+          <h3 v-if="roles.length" class="tl-position">{{ exp.company }}</h3>
+          <h3 v-else class="tl-position">{{ exp.position }}</h3>
+          <div v-if="!roles.length || exp.assignment" class="tl-company">
+            {{ exp.company }}<span v-if="exp.assignment" class="tl-assignment">{{ ` · ${exp.assignment}` }}</span>
+          </div>
         </div>
 
         <span v-if="isPresent" class="now-badge">
@@ -37,23 +42,38 @@
         </template>
       </div>
 
+      <!-- Each official title keeps its own date range (e.g. a promotion). -->
+      <ul v-if="roles.length" class="tl-roles">
+        <li v-for="role in roles" :key="role.position + role.startDate" class="tl-role">
+          <span class="tl-role-title">{{ role.position }}</span>
+          <span class="tl-role-dates">{{ role.range }}</span>
+        </li>
+      </ul>
+
       <p v-if="exp.description" class="tl-desc">{{ exp.description }}</p>
 
-      <ul v-if="achievements.length" :id="`achievements-${index}`" class="ach-list">
-        <li v-for="(achievement, i) in visibleAchievements" :key="i" class="ach-item">
+      <ul v-if="achievements.length" class="ach-list">
+        <li v-for="(achievement, i) in leadAchievements" :key="i" class="ach-item">
           <span class="ach-tick"></span>
           <span>{{ achievement }}</span>
         </li>
       </ul>
 
-      <button v-if="needsToggle" class="ach-toggle" type="button" :aria-expanded="open" :aria-controls="`achievements-${index}`" @click="open = !open">
-        {{ open ? uiCopy.actions.showLess : `${uiCopy.actions.showMore} (${achievements.length})` }}
-        <AppIcon
-          name="chevron"
-          :size="15"
-          :style="{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .3s' }"
-        />
-      </button>
+      <!-- Remaining achievements stay in the initial HTML for readers without
+           JavaScript and for crawlers; native details keeps the card short. -->
+      <details v-if="moreAchievements.length" class="ach-more">
+        <summary class="ach-toggle">
+          <span class="ach-when-closed">{{ uiCopy.actions.showMore }} ({{ achievements.length }})</span>
+          <span class="ach-when-open">{{ uiCopy.actions.showLess }}</span>
+          <AppIcon name="chevron" :size="15" class="ach-chevron" />
+        </summary>
+        <ul class="ach-list">
+          <li v-for="(achievement, i) in moreAchievements" :key="i" class="ach-item">
+            <span class="ach-tick"></span>
+            <span>{{ achievement }}</span>
+          </li>
+        </ul>
+      </details>
 
       <details v-if="exp.projects?.length" class="experience-projects">
         <summary>{{ projectLabel }} ({{ exp.projects.length }})</summary>
@@ -82,14 +102,17 @@ const props = defineProps<{ exp: Experience; index: number }>()
 const { uiCopy, activeLanguage, referenceDate } = useCvData()
 
 const projectLabel = computed(() => ({ en: 'Selected company projects', fr: "Projets d’entreprise sélectionnés", jp: '主な業務プロジェクト' } as Record<string, string>)[activeLanguage.value] ?? 'Selected company projects')
-const COLLAPSED = 3
-const open = ref(false)
+const COLLAPSED = 4
 
 const isPresent = computed(() => !props.exp.endDate)
 const achievements = computed(() => props.exp.achievements ?? [])
-const needsToggle = computed(() => achievements.value.length > COLLAPSED)
-const visibleAchievements = computed(() =>
-  open.value || !needsToggle.value ? achievements.value : achievements.value.slice(0, COLLAPSED),
+const leadAchievements = computed(() => achievements.value.slice(0, COLLAPSED))
+const moreAchievements = computed(() => achievements.value.slice(COLLAPSED))
+const roles = computed(() =>
+  (props.exp.roles ?? []).map((role) => ({
+    ...role,
+    range: formatDateRange(role.startDate, role.endDate, uiCopy.value.meta.present, activeLanguage.value),
+  })),
 )
 
 const dateRange = computed(() =>

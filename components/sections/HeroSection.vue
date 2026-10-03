@@ -20,6 +20,9 @@
           </span>
         </div>
 
+        <!-- Functional descriptor; the official title above stays unchanged. -->
+        <p v-if="hero.headline" class="hero-headline">{{ hero.headline }}</p>
+
         <p class="hero-tag">{{ tagline }}</p>
 
         <div class="hero-cta">
