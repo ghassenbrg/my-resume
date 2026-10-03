@@ -33,6 +33,11 @@ describe('cvFormat helpers', () => {
     expect(formatDateRange('2024-09-01', '2025-01-31', 'Present')).toBe('Sep 2024 — Jan 2025')
   })
 
+  it('formats French and Japanese dates with their own month names', () => {
+    expect(formatDateRange('2025-12-01', undefined, 'À ce jour', 'fr')).toBe('déc. 2025 — À ce jour')
+    expect(formatDateRange('2025-12-01', undefined, '現在', 'jp')).toBe('2025年12月 — 現在')
+  })
+
   it('computes a human-readable duration', () => {
     expect(formatDuration('2024-01-01', '2025-03-01')).toBe('1 yr 2 mos')
     expect(formatDuration('2024-01-01', '2024-02-01')).toBe('1 mo')

@@ -6,10 +6,14 @@
  * ==========================================================================*/
 
 :root {
-  /* Brand accents (shared across themes) */
-  --gold: #e8a838;
-  --teal: #56c4b8;
+  /* Keep bright brand colors for filled controls and dark decorative surfaces. */
+  --brand-gold: #e8a838;
+  --brand-teal: #56c4b8;
+  --gold: var(--brand-gold);
+  --teal: var(--brand-teal);
   --accent-grad: linear-gradient(100deg, var(--gold) 0%, var(--teal) 100%);
+  --cta-grad: linear-gradient(100deg, var(--brand-gold) 0%, var(--brand-teal) 100%);
+  --cta-text: #0a0a12;
 
   /* Type */
   --font-display: "Space Grotesk", system-ui, sans-serif;
@@ -53,6 +57,9 @@
 
 /* ---------- LIGHT ---------- */
 [data-theme="light"] {
+  /* AA text contrast on the light surfaces, including tinted badges. */
+  --gold: #805300;
+  --teal: #146b62;
   --bg: #f4f1ea;
   --bg-2: #efeae0;
   --panel: #ffffff;
@@ -64,8 +71,8 @@
   --text-soft: #3c3a47;
   --text-mute: #6f6c7d;
   --shadow: 0 22px 50px -26px rgba(40, 36, 28, 0.35);
-  --glow-gold: rgba(232, 168, 56, 0.22);
-  --glow-teal: rgba(86, 196, 184, 0.22);
+  --glow-gold: rgba(128, 83, 0, 0.08);
+  --glow-teal: rgba(20, 107, 98, 0.08);
   --chip-bg: rgba(20, 20, 31, 0.035);
   --grid-line: rgba(20, 20, 31, 0.05);
   color-scheme: light;
@@ -122,8 +129,8 @@ button {
   color: inherit;
 }
 ::selection {
-  background: var(--gold);
-  color: #09090f;
+  background: var(--brand-gold);
+  color: var(--cta-text);
 }
 
 :focus-visible {
@@ -151,8 +158,8 @@ button {
   z-index: 1000;
   transform: translateY(calc(-100% - 16px));
   border-radius: var(--r-sm);
-  background: var(--gold);
-  color: #09090f;
+  background: var(--brand-gold);
+  color: var(--cta-text);
   padding: 10px 16px;
   font-family: var(--font-display);
   font-weight: 700;
@@ -224,9 +231,20 @@ button {
   height: 17px;
 }
 .btn-primary {
-  background: var(--accent-grad);
-  color: #0a0a12;
+  background: var(--cta-grad);
+  color: var(--cta-text);
   box-shadow: 0 10px 30px -10px var(--glow-gold);
+}
+
+/* The terminal keeps its dark surface in both themes. */
+.hero-card-terminal {
+  --gold: var(--brand-gold);
+  --teal: var(--brand-teal);
+}
+
+.back-top.no-print:hover {
+  background: var(--cta-grad);
+  color: var(--cta-text);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
@@ -263,6 +281,12 @@ button {
   transform: none;
 }
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
   .reveal {
     opacity: 1;
     transform: none;

@@ -1,3 +1,4 @@
+import { computed, readonly } from 'vue'
 import { getResumeUiCopy, languageNativeLabels, type ResumeUiCopy } from '~/data/resume-ui'
 import type {
   AvailableLanguage,
@@ -39,11 +40,17 @@ export const normalizeCvConfig = (data: unknown): CVConfig => {
   const meta = isRecord(source.meta) ? source.meta : {}
   const theme = isRecord(source.theme) ? source.theme : {}
   const display = isRecord(source.display) ? source.display : {}
+  const cvLinks = isRecord(source.cvLinks)
+    ? Object.fromEntries(Object.entries(source.cvLinks)
+      .filter((entry): entry is [string, string] => /^[a-z0-9-]+$/i.test(entry[0]) && typeof entry[1] === 'string')
+      .map(([code, link]) => [normalizeLanguageCode(code), link]))
+    : undefined
 
   return {
     openToOpportunities: source.openToOpportunities === true,
     contact: {
       email: typeof contact.email === 'string' ? contact.email : DEFAULT_CV_CONFIG.contact.email,
+      ...(typeof contact.phone === 'string' ? { phone: contact.phone } : {}),
     },
     social: {
       github: typeof social.github === 'string' ? social.github : DEFAULT_CV_CONFIG.social.github,
@@ -51,6 +58,7 @@ export const normalizeCvConfig = (data: unknown): CVConfig => {
         typeof social.linkedin === 'string' ? social.linkedin : DEFAULT_CV_CONFIG.social.linkedin,
     },
     cvLink: typeof source.cvLink === 'string' ? source.cvLink : DEFAULT_CV_CONFIG.cvLink,
+    ...(cvLinks ? { cvLinks } : {}),
     meta: {
       siteUrl: typeof meta.siteUrl === 'string' ? meta.siteUrl : DEFAULT_CV_CONFIG.meta.siteUrl,
       ogImage: typeof meta.ogImage === 'string' ? meta.ogImage : DEFAULT_CV_CONFIG.meta.ogImage,
@@ -72,13 +80,13 @@ export const extractYearsExperience = (paragraphs: string[]) => {
 }
 
 const parseIsoDate = (value?: string) => {
-  if (!value) {
+  if (!value || !/^\d{4}-\d{2}-\d{2}$/.test(value)) {
     return null
   }
 
   const date = new Date(`${value}T00:00:00Z`)
 
-  return Number.isNaN(date.getTime()) ? null : date
+  return Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== value ? null : date
 }
 
 export const calculateYearsExperienceFromDates = (
@@ -247,7 +255,7 @@ export const validateCvData = (data: unknown): NormalizationIssue[] => {
   return issues
 }
 
-export const assertValidCvData = (data: unknown): asserts data is CVData => {
+export function assertValidCvData(data: unknown): asserts data is CVData {
   const issues = validateCvData(data)
 
   if (issues.length > 0) {
@@ -408,9 +416,21 @@ const loadLanguageDataset = async (languageCode: string) => {
   if (!languageFileRequests.has(normalizedLanguageCode)) {
     languageFileRequests.set(
       normalizedLanguageCode,
-      $fetch<CVData>(getCvDataPath(normalizedLanguageCode), {
-        query: import.meta.client ? { v: Date.now() } : undefined,
-      }).then(normalizeCvData),
+      (async () => {
+        if (import.meta.server) {
+          // Nitro's internal fetch does not serve public assets while rendering.
+          // Bundle build-time JSON for SSR; the client still fetches runtime mounts.
+          const datasets = import.meta.glob<CVData>('../public/cv-data-*.json', { import: 'default' })
+          const load = datasets[`../public/cv-data-${normalizedLanguageCode}.json`]
+          if (!load) {
+            throw new Error(`Missing CV dataset: ${normalizedLanguageCode}`)
+          }
+          return normalizeCvData(await load())
+        }
+        return normalizeCvData(await $fetch<CVData>(getCvDataPath(normalizedLanguageCode), {
+          query: { v: Date.now() },
+        }))
+      })(),
     )
   }
 
@@ -425,9 +445,13 @@ const loadLanguageDataset = async (languageCode: string) => {
 /* Loads the shared, language-independent config once (cached). */
 const loadCvConfig = async () => {
   if (!configRequest) {
-    configRequest = $fetch(CONFIG_PATH, {
-      query: import.meta.client ? { v: Date.now() } : undefined,
-    })
+    configRequest = (async () => {
+      if (import.meta.server) {
+        const configs = import.meta.glob('../public/cv-config.json', { import: 'default' })
+        return configs['../public/cv-config.json']?.()
+      }
+      return $fetch(CONFIG_PATH, { query: { v: Date.now() } })
+    })()
       .then(normalizeCvConfig)
       .catch((error) => {
         configRequest = null
@@ -445,6 +469,10 @@ export const useCvData = () => {
   const isCvDataLoading = useState('cv-data-loading', () => false)
   const availableLanguages = useState<AvailableLanguage[]>('cv-available-languages', () => [])
   const activeLanguage = useState<string>('cv-active-language', () => DEFAULT_LANGUAGE_CODE)
+  // Components that display a current duration/year can share this serialized
+  // clock, instead of comparing the static build with the browser's current day.
+  const referenceDateIso = useState('cv-reference-date', () => new Date().toISOString())
+  const referenceDate = computed(() => new Date(referenceDateIso.value))
   const languageSelection = useState<LanguageSelectionMeta>('cv-language-selection', () => ({
     code: DEFAULT_LANGUAGE_CODE,
     source: 'fallback',
@@ -453,7 +481,12 @@ export const useCvData = () => {
   }))
   const hasTrackedInitialLanguage = useState<boolean>('cv-language-tracked', () => false)
   const uiCopy = computed<ResumeUiCopy>(() => getResumeUiCopy(activeLanguage.value))
+  const cvLink = computed(() =>
+    cvConfig.value?.cvLinks?.[activeLanguage.value] ?? cvConfig.value?.cvLink ?? '',
+  )
   const runtimeConfig = useRuntimeConfig()
+  const nuxtApp = useNuxtApp()
+  const route = useRoute()
   const { trackEvent } = useAnalytics()
 
   const loadAvailableLanguages = async () => {
@@ -476,15 +509,17 @@ export const useCvData = () => {
           throw new Error('English CV data is required and must remain valid.')
         }
 
-        availableLanguages.value = createAvailableLanguages(validCodes)
-        return availableLanguages.value
+        return createAvailableLanguages(validCodes)
       }).catch((error) => {
         availableLanguageRequest = null
         throw error
       })
     }
 
-    return availableLanguageRequest
+    // The request cache is shared on the server; the state belongs to this
+    // rendering request. Populate it even when another page filled the cache.
+    availableLanguages.value = await availableLanguageRequest
+    return availableLanguages.value
   }
 
   const applyLanguageSelection = async (
@@ -541,24 +576,32 @@ export const useCvData = () => {
     return cvConfig.value
   }
 
-  const loadCvData = async () => {
-    await Promise.all([loadAvailableLanguages(), loadConfig()])
-
-    if (cvData.value && availableLanguages.value.some((language) => language.code === activeLanguage.value)) {
-      return cvData.value
-    }
-
+  const loadCvData = async (options: { language?: string } = {}) => {
     try {
       isCvDataLoading.value = true
       cvDataError.value = null
 
-      const preferredLanguages = import.meta.client
+      await Promise.all([loadAvailableLanguages(), loadConfig()])
+
+      const pathLanguage = route.path.replace(/^\/+|\/+$/g, '')
+      const requestedLanguage = options.language ?? pathLanguage
+      const explicitLanguage = requestedLanguage ? normalizeLanguageCode(requestedLanguage) : null
+      if (explicitLanguage && !availableLanguages.value.some((language) => language.code === explicitLanguage)) {
+        throw new Error(`No valid CV data for language: ${explicitLanguage}`)
+      }
+      if (cvData.value && (!explicitLanguage || activeLanguage.value === explicitLanguage)) {
+        return cvData.value
+      }
+
+      // Never consult browser preferences during hydration: the first client
+      // render must use precisely the language serialized in the server HTML.
+      const preferredLanguages = import.meta.client && !nuxtApp.isHydrating
         ? resolveBrowserLanguagePreferences(window.navigator)
         : [DEFAULT_LANGUAGE_CODE]
       const availableCodes = availableLanguages.value.map((language) => language.code)
       const resolvedSelection = resolvePreferredLanguage(preferredLanguages, availableCodes, DEFAULT_LANGUAGE_CODE)
       const data = await applyLanguageSelection(
-        languageSelection.value.source === 'manual' ? activeLanguage.value : resolvedSelection.code,
+        explicitLanguage ?? (languageSelection.value.source === 'manual' ? activeLanguage.value : resolvedSelection.code),
         languageSelection.value.source === 'manual' ? 'manual' : resolvedSelection.source,
         languageSelection.value.source === 'manual' ? activeLanguage.value : resolvedSelection.requestedLanguage,
         languageSelection.value.source === 'manual' ? null : resolvedSelection.fallbackReason,
@@ -580,6 +623,62 @@ export const useCvData = () => {
       throw error
     } finally {
       isCvDataLoading.value = false
+    }
+  }
+
+  const refreshMountedCvData = async () => {
+    if (!import.meta.client) {
+      return
+    }
+
+    // Static HTML provides the initial content. Once hydration is complete,
+    // read the mounted JSON files afresh (including the language catalogue).
+    // Keep the rendered resume if a runtime mount is temporarily unavailable.
+    languageFileRequests.clear()
+    availableLanguageRequest = null
+    configRequest = null
+    try {
+      const publishedCodes = getPublishedLanguageCodes(runtimeConfig.public.cvDataLanguages)
+      const [results, config] = await Promise.all([
+        Promise.allSettled(publishedCodes.map(async (code) => {
+          const data = await loadLanguageDataset(code)
+          return { code, data }
+        })),
+        loadCvConfig().catch(() => cvConfig.value ?? DEFAULT_CV_CONFIG),
+      ])
+      const datasets = results.flatMap((result) => result.status === 'fulfilled' ? [result.value] : [])
+      const codes = datasets.map(({ code }) => code)
+      if (!codes.includes(DEFAULT_LANGUAGE_CODE)) {
+        throw new Error('English CV data is required and must remain valid.')
+      }
+      // Read manual state *after* fetching, so a choice made during the request
+      // wins. An explicit crawlable language URL also outranks browser settings.
+      const pathLanguage = route.path.replace(/^\/+|\/+$/g, '')
+      const preferences = languageSelection.value.source === 'manual'
+        ? [activeLanguage.value]
+        : pathLanguage ? [pathLanguage] : resolveBrowserLanguagePreferences(window.navigator)
+      const selection = resolvePreferredLanguage(preferences, codes)
+      const data = datasets.find(({ code }) => code === selection.code)!.data
+      cvConfig.value = config
+      availableLanguages.value = createAvailableLanguages(codes)
+      cvData.value = data
+      activeLanguage.value = selection.code
+      referenceDateIso.value = new Date().toISOString()
+      languageSelection.value = {
+        ...selection,
+        source: languageSelection.value.source === 'manual' ? 'manual' : selection.source,
+      }
+      cvDataError.value = null
+      if (!hasTrackedInitialLanguage.value && languageSelection.value.source !== 'manual') {
+        hasTrackedInitialLanguage.value = trackEvent('language_auto_resolved', {
+          resolved_language: selection.code,
+          requested_language: selection.requestedLanguage,
+          selection_source: selection.source,
+          fallback_reason: selection.fallbackReason,
+        })
+      }
+    } catch (error) {
+      cvDataError.value = error instanceof Error ? error.message : 'Unable to refresh CV data.'
     }
   }
 
@@ -616,15 +715,18 @@ export const useCvData = () => {
     // the single writer of this state.
     cvData,
     cvConfig: readonly(cvConfig),
+    cvLink: readonly(cvLink),
     cvDataError: readonly(cvDataError),
     isCvDataLoading: readonly(isCvDataLoading),
     availableLanguages: readonly(availableLanguages),
     activeLanguage: readonly(activeLanguage),
+    referenceDate: readonly(referenceDate),
     languageSelection: readonly(languageSelection),
     uiCopy: readonly(uiCopy),
     loadAvailableLanguages,
     loadConfig,
     loadCvData,
+    refreshMountedCvData,
     setActiveLanguage,
   }
 }

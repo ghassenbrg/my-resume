@@ -13,6 +13,7 @@
         class="lang-fill"
         role="progressbar"
         :aria-valuenow="lng.percentage"
+        :aria-valuetext="lng.level"
         aria-valuemin="0"
         aria-valuemax="100"
         :aria-label="lng.language"
@@ -23,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref, watch } from 'vue'
 import type { Language } from '~/types/cv'
 
 const props = withDefaults(
@@ -32,6 +34,7 @@ const props = withDefaults(
 
 const rowRef = ref<HTMLElement | null>(null)
 const width = ref(0)
+const revealed = ref(false)
 
 onMounted(() => {
   const el = rowRef.value
@@ -39,32 +42,40 @@ onMounted(() => {
     return
   }
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (prefersReduced || !('IntersectionObserver' in window)) {
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
+  const reveal = () => {
+    revealed.value = true
     width.value = props.lng.percentage
-    return
   }
-
   let timer = 0
 
-  const observer = new IntersectionObserver(
+  const observer = !motionPreference.matches && 'IntersectionObserver' in window ? new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          timer = window.setTimeout(() => {
-            width.value = props.lng.percentage
-          }, 120 + props.index * 90)
-          observer.unobserve(entry.target)
+          timer = window.setTimeout(reveal, 120 + props.index * 90)
+          observer?.unobserve(entry.target)
         }
       })
     },
     { threshold: 0.4 },
-  )
+  ) : null
 
-  observer.observe(el)
+  if (observer) observer.observe(el)
+  else reveal()
+
+  const onMotionChange = () => {
+    if (motionPreference.matches) {
+      window.clearTimeout(timer)
+      observer?.disconnect()
+      reveal()
+    }
+  }
+  motionPreference.addEventListener('change', onMotionChange)
   onBeforeUnmount(() => {
-    observer.disconnect()
+    observer?.disconnect()
     window.clearTimeout(timer)
+    motionPreference.removeEventListener('change', onMotionChange)
   })
 })
 
@@ -72,7 +83,7 @@ onMounted(() => {
 watch(
   () => props.lng.percentage,
   (value) => {
-    if (width.value !== 0) {
+    if (revealed.value) {
       width.value = value
     }
   },

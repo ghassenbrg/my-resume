@@ -1,5 +1,5 @@
 <template>
-  <header id="hero" class="hero" data-screen-label="hero">
+  <header id="hero" class="hero" data-screen-label="hero" tabindex="-1">
     <canvas ref="canvasRef" class="hero-canvas" aria-hidden="true"></canvas>
     <div class="hero-fade"></div>
 
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="hero-visual">
+      <div class="hero-visual" aria-hidden="true">
         <div class="hero-card">
           <div class="hero-card-top">
             <BrandMonogram :size="92" />
@@ -82,24 +82,24 @@
           </div>
           <div class="hero-card-terminal">
             <div class="term-line">
-              <span class="tk-key">role</span>: <span class="tk-str">"Application Engineer"</span>
+              <span class="tk-key">{{ uiCopy.hero.terminal.role }}</span>: <span class="tk-str">"{{ hero.title }}"</span>
             </div>
             <div class="term-line">
-              <span class="tk-key">stack</span>: [<span class="tk-str">Java, K8s, GCP</span>]
+              <span class="tk-key">{{ uiCopy.hero.terminal.stack }}</span>: [<span class="tk-str">Java, K8s, GCP</span>]
             </div>
             <div class="term-line">
-              <span class="tk-key">scale</span>: <span class="tk-num">25_000_000</span> members
+              <span class="tk-key">{{ uiCopy.hero.terminal.focus }}</span>: <span class="tk-str">"{{ uiCopy.hero.terminal.focusValue }}"</span>
             </div>
             <div class="term-line">
-              <span class="tk-key">base</span>: <span class="tk-str">"Fukuoka, JP 🇯🇵"</span>
+              <span class="tk-key">{{ uiCopy.hero.terminal.base }}</span>: <span class="tk-str">"{{ hero.location }}"</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="scroll-hint no-print">
-      <span>Scroll</span>
+    <div class="scroll-hint no-print" aria-hidden="true">
+      <span>{{ uiCopy.hero.scroll }}</span>
       <span class="scroll-track"><span class="scroll-thumb"></span></span>
     </div>
   </header>
@@ -109,7 +109,7 @@
 import AppIcon from '~/components/ui/AppIcon.vue'
 import BrandMonogram from '~/components/ui/BrandMonogram.vue'
 
-const { cvData, cvConfig, uiCopy } = useCvData()
+const { cvData, cvConfig, cvLink, uiCopy } = useCvData()
 const { trackFollowUpClick } = useAnalytics()
 
 const hero = computed(() => cvData.value?.hero ?? null)
@@ -119,7 +119,6 @@ const tagline = computed(
 
 // Shared, non-translatable values come from cv-config.json.
 const openToOpportunities = computed(() => cvConfig.value?.openToOpportunities ?? false)
-const cvLink = computed(() => cvConfig.value?.cvLink ?? '')
 const email = computed(() => cvConfig.value?.contact.email ?? '')
 const social = computed(() => cvConfig.value?.social ?? { github: '', linkedin: '' })
 
@@ -145,10 +144,10 @@ onMounted(() => {
     return
   }
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
   const css = getComputedStyle(document.documentElement)
-  const gold = (css.getPropertyValue('--gold') || '#e8a838').trim()
-  const teal = (css.getPropertyValue('--teal') || '#56c4b8').trim()
+  const gold = (css.getPropertyValue('--brand-gold') || '#e8a838').trim()
+  const teal = (css.getPropertyValue('--brand-teal') || '#56c4b8').trim()
 
   let raf = 0
   let width = 0
@@ -175,6 +174,7 @@ onMounted(() => {
       r: Math.random() * 1.6 + 0.6,
       c: Math.random() > 0.5 ? gold : teal,
     }))
+    if (motionPreference.matches) draw()
   }
 
   const draw = () => {
@@ -187,10 +187,12 @@ onMounted(() => {
 
     for (let i = 0; i < nodes.length; i += 1) {
       const a = nodes[i]
-      a.x += a.vx
-      a.y += a.vy
-      if (a.x < 0 || a.x > width) a.vx *= -1
-      if (a.y < 0 || a.y > height) a.vy *= -1
+      if (!motionPreference.matches) {
+        a.x += a.vx
+        a.y += a.vy
+        if (a.x < 0 || a.x > width) a.vx *= -1
+        if (a.y < 0 || a.y > height) a.vy *= -1
+      }
 
       for (let j = i + 1; j < nodes.length; j += 1) {
         const b = nodes[j]
@@ -215,26 +217,26 @@ onMounted(() => {
       ctx.globalAlpha = 1
     }
 
-    raf = requestAnimationFrame(draw)
+    if (!motionPreference.matches) raf = requestAnimationFrame(draw)
   }
 
   resize()
 
-  if (!prefersReduced) {
+  // Reduced motion renders a static frame; changes take effect during the session.
+  const onMotionChange = () => {
+    cancelAnimationFrame(raf)
     draw()
-  } else {
-    // Render a single static frame.
-    running = true
-    draw()
-    running = false
   }
+  if (!motionPreference.matches) draw()
 
   window.addEventListener('resize', resize)
+  motionPreference.addEventListener('change', onMotionChange)
 
   onBeforeUnmount(() => {
     running = false
     cancelAnimationFrame(raf)
     window.removeEventListener('resize', resize)
+    motionPreference.removeEventListener('change', onMotionChange)
   })
 })
 </script>

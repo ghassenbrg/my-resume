@@ -948,6 +948,41 @@
 }
 
 /* ---------------- PROJECTS ---------------- */
+.proj-group + .proj-group {
+  margin-top: clamp(48px, 6vw, 72px);
+}
+.proj-group-head {
+  margin-bottom: 22px;
+  max-width: 640px;
+}
+.proj-group-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(20px, 2.4vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.proj-group-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  border: 1px solid var(--border);
+  color: var(--text-mute);
+}
+.proj-group--personal .proj-group-count {
+  color: var(--gold);
+  border-color: color-mix(in oklab, var(--gold) 40%, transparent);
+  background: var(--glow-gold);
+}
+.proj-group-lead {
+  margin-top: 8px;
+  color: var(--text-soft);
+  font-size: 15px;
+}
 .proj-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -979,6 +1014,34 @@
 }
 .proj-card:hover::after {
   transform: scaleX(1);
+}
+/* Personal projects keep the accent bar on, so they read as the highlight. */
+.proj-card--personal {
+  border-color: color-mix(in oklab, var(--gold) 28%, var(--border));
+}
+.proj-card--personal::after {
+  transform: scaleX(1);
+}
+.proj-top-actions {
+  display: flex;
+  gap: 8px;
+}
+.proj-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.proj-status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  color: var(--teal);
+  border: 1px solid color-mix(in oklab, var(--teal) 40%, transparent);
+  background: color-mix(in oklab, var(--teal) 10%, transparent);
 }
 .proj-top {
   display: flex;
@@ -1021,8 +1084,8 @@
   letter-spacing: -0.01em;
 }
 .proj-role {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  align-items: flex-start;
   gap: 7px;
   margin-top: 7px;
   font-size: 13px;
@@ -1033,7 +1096,20 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.55em;
   background: var(--teal);
+}
+.proj-period {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-mute);
+}
+.proj-summary {
+  margin-top: 12px;
+  font-size: 14.5px;
+  color: var(--text-soft);
+  line-height: 1.55;
 }
 .proj-outcomes {
   list-style: none;
@@ -1516,4 +1592,22 @@
   .tl-dot-live {
     animation: none;
   }
+}
+
+/* Secondary projects stay compact; professional work belongs to its role. */
+.proj-grid--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.proj-grid--compact .proj-card { padding: 22px; }
+.proj-grid--compact .proj-top { margin-bottom: 12px; }
+.experience-projects { margin-top: 22px; border-top: 1px solid var(--border); padding-top: 16px; }
+.experience-projects summary { cursor: pointer; color: var(--teal); font-weight: 600; }
+.experience-project { margin-top: 20px; }
+.experience-project h4 { font-size: 16px; line-height: 1.5; }
+.experience-project h4 span { color: var(--text-mute); font-size: 12px; font-weight: 400; }
+.experience-project p, .experience-project li { font-size: 14px; color: var(--text-soft); margin-top: 8px; }
+.experience-project ul { margin: 8px 0; padding-left: 20px; }
+.experience-project .experience-project-tech { color: var(--text-mute); font-family: var(--font-mono); font-size: 12px; }
+@media (max-width: 560px) { .proj-grid--compact { grid-template-columns: 1fr; } }
+@media (max-width: 860px) {
+  /* The hero grows beyond the first screen on phones; avoid a floating hint over its card. */
+  .scroll-hint { display: none; }
 }

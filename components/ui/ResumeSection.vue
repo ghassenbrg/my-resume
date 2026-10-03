@@ -1,5 +1,5 @@
 <template>
-  <section :id="id" class="section" :data-screen-label="id">
+  <section :id="id" class="section" :data-screen-label="id" tabindex="-1">
     <div class="container">
       <div v-if="kicker || title" class="section-head reveal">
         <span v-if="kicker" class="kicker">{{ kicker }}</span>

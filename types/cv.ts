@@ -53,6 +53,7 @@ export interface CVConfig {
   openToOpportunities: boolean
   contact: {
     email: string
+    phone?: string
   }
   social: {
     github: string
@@ -60,6 +61,7 @@ export interface CVConfig {
   }
   /** Path/URL to the downloadable CV. */
   cvLink: string
+  cvLinks?: Record<string, string>
   meta: {
     siteUrl: string
     ogImage: string
@@ -111,13 +113,32 @@ export interface Experience {
   description: string
   achievements: string[]
   accentColor?: string
+  projects?: Project[]
 }
+
+/**
+ * `personal` = side projects / open source built on my own time;
+ * `professional` = client or employer work. Entries without a kind are
+ * treated as professional.
+ */
+export type ProjectKind = 'personal' | 'professional'
 
 export interface Project {
   title: string
   role: string
+  kind?: ProjectKind
+  /** Employer/client the project was delivered for (professional projects). */
+  company?: string
+  /** Free-form, already-localized period label, e.g. "2023 – 2024". */
+  period?: string
+  /** One-line pitch shown under the title. */
+  summary?: string
+  /** Short status badge, e.g. "v1.0 on npm" or "Live". */
+  status?: string
   link?: string
   linkLabel?: string
+  /** Source repository URL. */
+  repo?: string
   outcomes: string[]
   technologies: string[]
   featured?: boolean

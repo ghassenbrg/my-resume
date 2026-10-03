@@ -3,32 +3,31 @@
     "name": "Ghassen Bargougui",
     "title": "アプリケーションエンジニア",
     "location": "日本、福岡",
-    "tagline": "銀行・保険・カード決済プラットフォーム向けのバックエンドおよびフルスタックシステムを設計・構築しています。現在は楽天カードで API とハイブリッドクラウド基盤のモダナイゼーションに取り組んでいます。"
+    "tagline": "銀行・保険・カード決済向けに、Javaバックエンドシステムの開発と刷新に取り組んでいます。楽天カードでは、APIの刷新、ハイブリッドクラウドへの移行、デプロイの自動化を担当しています。",
+    "phone": "+81 70 8502 9039"
   },
   "about": {
     "paragraphs": [
-      "銀行、保険、カード決済分野のエンタープライズシステム向けに、バックエンドおよびフルスタックソリューションの設計と提供を行ってきた6年以上の経験を持つアプリケーションエンジニア。",
-      "現在は楽天カードのTechnology Incubation Teamに所属し、日本国内で2,500万人超の会員を支えるプラットフォームに向けて、ハイブリッドクラウド移行とAPIモダナイゼーションを推進。",
-      "Java、Helidon、MicroProfile、Kubernetes、GCPを実務で活用し、GitHub ActionsによるCI/CD、GKEデプロイ、構造化ログ、アプリケーション層とインフラ層の両面での本番障害対応に従事。",
-      "クリーンアーキテクチャ、コード品質、スケーラビリティ、チーム横断での実行力を重視し、アジャイル環境で安全かつ信頼性の高いシステムを提供。",
-      "英語とフランス語に堪能で、日本語は初級レベル。"
+      "Application Engineerとして、チュニジア、ルクセンブルク、日本で通算7年間、バックエンドおよびフルスタック開発に携わってきました。銀行・保険・カード決済分野で、Javaによる開発、API設計、安定したシステム提供に取り組んでいます。",
+      "楽天カードでは、上司およびプロジェクトマネージャーとともにハイブリッドクラウド移行を推進し、アプリケーション、CI/CD、インフラ、セキュリティの各チームと調整しています。Helidon、MicroProfile、Kubernetes、GCPを用いた実装や本番環境の障害対応も担当しています。",
+      "個人開発では、設計からリリースまで一貫して手がけています。編集可能なAI生成プレゼンテーションを作成するSlide Agent、個人・共同の資金管理を支援するPockito、字幕翻訳を行うSubMateを開発しています。アラビア語は母語、英語とフランス語はビジネスレベルで使用でき、日本語は基礎レベルです。"
     ],
     "highlights": [
       {
-        "value": "6+",
-        "label": "年以上の経験"
+        "value": "7",
+        "label": "実務経験（年）"
       },
       {
-        "value": "25M+",
-        "label": "楽天カードで対応する会員数"
+        "value": "3",
+        "label": "勤務経験のある国"
       },
       {
         "value": "50%",
-        "label": "API レスポンス時間を短縮"
+        "label": "VERMEGでのAPI応答時間短縮"
       },
       {
-        "value": "4",
-        "label": "勤務した国の数"
+        "value": "OCP",
+        "label": "Oracle Java SE 11 Developer認定"
       }
     ]
   },
@@ -53,20 +52,8 @@
         "icon": "java"
       },
       {
-        "name": "Java EE",
-        "icon": "javaee"
-      },
-      {
-        "name": "CDI",
-        "icon": "java"
-      },
-      {
         "name": "Hibernate",
         "icon": "hibernate"
-      },
-      {
-        "name": "JPA",
-        "icon": "jpa"
       },
       {
         "name": "Angular",
@@ -87,32 +74,33 @@
         "highlight": true
       },
       {
-        "name": "JavaScript",
-        "icon": "javascript"
-      },
-      {
         "name": "Node.js",
         "icon": "node"
+      }
+    ],
+    "モバイル・ブラウザ": [
+      {
+        "name": "Flutter",
+        "icon": "flutter"
       },
       {
-        "name": "HTML5",
-        "icon": "html"
+        "name": "Dart",
+        "icon": "dart"
       },
       {
-        "name": "CSS3",
-        "icon": "css"
+        "name": "Chrome Extensions (MV3)",
+        "icon": "chrome"
+      }
+    ],
+    "AI・エージェントツール": [
+      {
+        "name": "Model Context Protocol (MCP)",
+        "icon": "mcp",
+        "highlight": true
       },
       {
-        "name": "PrimeNG",
-        "icon": "primeng"
-      },
-      {
-        "name": "RxJS",
-        "icon": "rxjs"
-      },
-      {
-        "name": "NgRx（基礎）",
-        "icon": "ngrx"
+        "name": "LLM API連携",
+        "icon": "ai"
       }
     ],
     "データベース・データ処理": [
@@ -121,23 +109,15 @@
         "icon": "postgres"
       },
       {
-        "name": "MySQL",
-        "icon": "mysql"
-      },
-      {
         "name": "Oracle (PL/SQL)",
         "icon": "oracle"
       },
       {
-        "name": "MongoDB",
-        "icon": "mongodb"
-      },
-      {
-        "name": "Apache POI（Excel処理）",
-        "icon": "poi"
+        "name": "Redis",
+        "icon": "redis"
       }
     ],
-    "API開発": [
+    "API・メッセージング": [
       {
         "name": "RESTful API設計",
         "icon": "api"
@@ -147,18 +127,8 @@
         "icon": "openapi"
       },
       {
-        "name": "APIモダナイゼーション",
-        "icon": "api"
-      }
-    ],
-    "マイクロサービス・イベント駆動システム": [
-      {
         "name": "Kafka",
         "icon": "kafka"
-      },
-      {
-        "name": "Spring Cloud",
-        "icon": "springcloud"
       },
       {
         "name": "ActiveMQ",
@@ -191,41 +161,9 @@
       {
         "name": "Jenkins",
         "icon": "jenkins"
-      },
-      {
-        "name": "GitLab CI/CD",
-        "icon": "gitlab"
-      },
-      {
-        "name": "AWS",
-        "icon": "aws"
-      },
-      {
-        "name": "Cloud Logging",
-        "icon": "gcp"
-      },
-      {
-        "name": "Log4j2",
-        "icon": "log4j"
-      },
-      {
-        "name": "Nginx",
-        "icon": "nginx"
-      },
-      {
-        "name": "WildFly",
-        "icon": "wildfly"
-      },
-      {
-        "name": "Tomcat",
-        "icon": "tomcat"
-      },
-      {
-        "name": "Linuxサーバー運用",
-        "icon": "linux"
       }
     ],
-    "テスト・コード品質": [
+    "品質・セキュリティ・ツール": [
       {
         "name": "JUnit",
         "icon": "junit"
@@ -235,228 +173,324 @@
         "icon": "mockito"
       },
       {
-        "name": "結合テスト",
-        "icon": "test"
-      },
-      {
         "name": "SonarQube",
         "icon": "sonarqube"
       },
       {
-        "name": "コードレビューのベストプラクティス",
-        "icon": "coding"
-      }
-    ],
-    "セキュリティ": [
-      {
         "name": "Keycloak (OAuth2, OIDC, JWT)",
         "icon": "keycloak"
-      }
-    ],
-    "高性能コンピューティング": [
-      {
-        "name": "非同期処理",
-        "icon": "async"
-      },
-      {
-        "name": "マルチスレッド",
-        "icon": "threads"
       },
       {
         "name": "JProfiler",
         "icon": "jprofiler"
-      }
-    ],
-    "アジャイル・コラボレーション": [
-      {
-        "name": "Scrum",
-        "icon": "scrum"
-      },
-      {
-        "name": "Jira",
-        "icon": "jira"
       },
       {
         "name": "Git",
         "icon": "git"
-      },
-      {
-        "name": "Confluence",
-        "icon": "confluence"
       }
     ]
   },
   "experience": [
     {
       "company": "Rakuten Card",
-      "position": "アプリケーションエンジニア",
+      "position": "Application Engineer",
       "location": "日本、福岡",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "Technology Incubation Teamのメンバーとして、日本国内2,500万人超の会員を支える楽天カードのプラットフォーム向けに、ハイブリッドクラウド移行とAPIモダナイゼーションを主導。",
+      "description": "楽天カードのTechnology Incubation Teamに所属しています。上司およびプロジェクトマネージャーとともに、複数チームと連携してハイブリッドクラウド移行を推進し、APIの刷新に取り組んでいます。",
       "achievements": [
-        "CI/CDチームの参画前に、JSF、API、Engineモジュール向けの初期Kubernetesマニフェストとデプロイ構成を準備。",
-        "GCPおよびGKE上で稼働するワークロード向けに、デプロイメント、サービス、環境設定を設計・検証。",
-        "ビルド、DockerイメージのArtifact Registry公開、GKEへのデプロイを自動化するGitHub Actionsパイプラインを構築。",
-        "e-Navi APIをJDK 25とHelidon 4.3へ更新し、依存関係更新、CDI修正、テスト更新、引き継ぎドキュメント作成まで対応。",
-        "インフラおよびセキュリティチームと連携し、デプロイ失敗、SSL問題、GCPからオンプレミスへの接続問題を調査・解決。",
-        "CDI Beanのスコープ設定ミスを根本原因として特定し、Kafkaメッセージング問題を診断・修正。",
-        "Cloud Logging互換のため、Log4j2とカスタムフォーマッターを用いた構造化JSONログへアプリケーションログを再設計。",
-        "KubernetesマニフェストレベルでFilestoreのマウントと設定問題を修正し、デプロイの柔軟性を向上。",
-        "CI/CD、インフラ、セキュリティ、開発各チームの橋渡し役として、デリバリーの停滞を解消。"
+        "e-Navi APIをJDK 25とHelidon 4.3へ更新しました。依存関係とCDIの問題を解消し、テストの更新と引き継ぎ資料の作成まで担当しました。",
+        "ビルド、Artifact RegistryへのDockerイメージ公開、GKEへのデプロイを自動化するGitHub Actionsパイプラインを構築しました。",
+        "JSF、API、Engineモジュール向けにKubernetesのデプロイ構成を設計・検証し、サービス、環境設定、Filestoreのマウントに対応しました。",
+        "Log4j2と独自フォーマッターを用いて、アプリケーションログをCloud Logging対応の構造化JSON形式へ刷新しました。",
+        "インフラ・セキュリティチームと連携し、デプロイ、SSL、GCPとオンプレミス間の接続の問題を解消しました。また、Kafkaの不具合の原因となったCDI Beanのスコープ設定を特定・修正しました。",
+        "CI/CD、インフラ、セキュリティ、開発の各チーム間でアプリケーション要件を調整し、開発・リリースを妨げる課題を解消しました。"
       ]
     },
     {
       "company": "Sogeti (BGL BNP Paribas案件)",
-      "position": "ソフトウェアエンジニア",
+      "position": "Software Engineer",
       "location": "ルクセンブルク",
       "startDate": "2025-02-01",
       "endDate": "2025-11-30",
       "logo": "sogeti_logo.png",
-      "description": "アジャイルトライブ内で、安全性の高い社内向け銀行アプリケーションの保守と機能拡張を担当。",
+      "description": "BGL BNP Paribasの案件で、アジャイルのトライブ・スクワッド体制のもと、社内向け銀行アプリケーションの開発・保守を担当しました。",
       "achievements": [
-        "Java（Spring Boot、Hibernate）、Angular、PostgreSQL/Oracleを用いて社内アプリケーションを開発・保守。",
-        "セキュリティとパフォーマンスを重視したRESTful APIを構築・最適化。",
-        "Maven、Jenkins、Git、SonarQubeを用いたCI/CDパイプラインを実装。",
-        "アジャイルの各種セレモニーとコードレビューで部門横断的に連携。"
+        "Spring Boot、バッチ処理、Angular Materialを用いて、顧客の委任管理機能を開発しました。",
+        "HibernateとPostgreSQL/Oracleを用いた社内アプリケーションおよびREST APIを開発し、セキュリティと性能に配慮しました。",
+        "MavenとJenkinsでビルド・デプロイを自動化し、単体テスト、SonarQube、コードレビューで品質を確保しました。"
+      ],
+      "projects": [
+        {
+          "title": "BGL BNP Paribas — 委任管理",
+          "kind": "professional",
+          "role": "フルスタックエンジニア",
+          "company": "Sogeti · BGL BNP Paribas",
+          "period": "2025",
+          "summary": "リテールバンキング向けの顧客委任管理機能です。",
+          "outcomes": [
+            "Spring Bootのバッチ処理とAngular Materialを用いて、委任管理ワークフローを開発しました。",
+            "単体テストとSonarQubeの検査を整備し、MavenとJenkinsでビルド・デプロイを自動化しました。"
+          ],
+          "technologies": [
+            "Java",
+            "Spring Boot",
+            "Spring Batch",
+            "Angular",
+            "Angular Material",
+            "SonarQube",
+            "Jenkins"
+          ]
+        }
       ]
     },
     {
       "company": "CBTW",
-      "position": "Javaフルスタック開発者",
+      "position": "Java Full-Stack Engineer",
       "location": "ルクセンブルク",
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "logo": "cbtw_logo.png",
-      "description": "JavaとAngular技術を用いたエンタープライズWebアプリケーション開発。",
+      "description": "Spring Boot、Angular、PostgreSQLを用いて、業務用Webアプリケーションの開発とJavaサービスの刷新を担当しました。",
       "achievements": [
-        "Spring Boot、Angular、PostgreSQLを用いたエンタープライズWebアプリケーションを開発。",
-        "高性能なRESTful APIを構築し、マイクロサービス化によってスケーラビリティを改善。",
-        "JenkinsとDockerでデプロイを自動化し、手作業を削減。"
+        "Spring Boot、Angular、PostgreSQLを用いた業務アプリケーションを開発し、モノリシックな機能をマイクロサービスへ改修しました。",
+        "バージョン管理、セキュリティ、ドキュメント整備に配慮し、サービス連携用のREST APIを開発しました。",
+        "JenkinsとDockerでデプロイを自動化し、リリース時の手作業を削減しました。"
       ]
     },
     {
       "company": "VERMEG for Banking and Insurance",
-      "position": "ソフトウェアエンジニア",
+      "position": "Analyst Developer",
       "location": "チュニス、チュニジア",
       "startDate": "2019-10-01",
       "endDate": "2024-08-31",
       "logo": "vermeg_logo.png",
-      "description": "高トラフィックな保険・金融アプリケーション向けバックエンドエンジニアリングを主導。",
+      "description": "Software Developer（2019年10月～2022年12月）からAnalyst Developer（2023年1月～2024年8月）に昇格しました。保険・金融アプリケーションの主要なバックエンド機能を担当し、チーム横断でソリューション設計に携わりました。",
       "achievements": [
-        "高可用性と高性能を確保しながら、大量トランザクションAPIを設計・最適化。",
-        "Keycloakベースの認証とRBACを実装し、アクセスセキュリティを向上。",
-        "クエリ最適化とキャッシュ戦略により、API応答時間を50%短縮。",
-        "大量処理向けにActiveMQを使った自動ワークフローを構築し、効率を40%向上。",
-        "CI/CDパイプラインを管理し、円滑なデプロイとロールバック戦略を実現。"
+        "クエリの最適化とキャッシュ戦略により、API応答時間を50%短縮しました。",
+        "ActiveMQを用いた一括処理ワークフローを構築し、処理効率を40%向上させました。",
+        "主要なバックエンド機能を担当し、業務部門、アーキテクト、フレームワークチームと要件、マイクロサービス、API仕様を検討しました。",
+        "UML図とシーケンス図で設計を文書化し、チーム間の設計に関する問い合わせの主窓口を務めました。",
+        "Keycloakによる認証とロールベースのアクセス制御を実装し、CI/CDパイプラインとロールバック手順を管理しました。"
+      ],
+      "projects": [
+        {
+          "title": "SalesFlow",
+          "kind": "professional",
+          "role": "リードデベロッパー",
+          "company": "VERMEG",
+          "period": "2023 – 2024",
+          "summary": "Camunda BPMを用いた保険業務ワークフローの刷新です。",
+          "outcomes": [
+            "Camunda BPMベースのアーキテクチャへの移行を主導し、手作業のプロセスを30%削減しました。",
+            "機能分析と顧客ワークショップを実施し、マルチスレッドのバッチ処理を実装しました。",
+            "ActiveMQを大量処理に統合し、処理効率を40%向上させました。"
+          ],
+          "technologies": [
+            "Java",
+            "Spring Boot",
+            "Camunda",
+            "REST API",
+            "Batch Processing"
+          ]
+        },
+        {
+          "title": "PackManager",
+          "kind": "professional",
+          "role": "バックエンド開発者",
+          "company": "VERMEG",
+          "period": "2022 – 2023",
+          "summary": "保険商品の構成・設定を行うプラットフォームです。",
+          "outcomes": [
+            "保険商品設定用のAPIを開発し、保守性向上のために既存コードをリファクタリングしました。",
+            "JProfilerでプロファイリングを行い、メモリ使用量を削減するとともに、実行時間を35%短縮しました。"
+          ],
+          "technologies": [
+            "Java",
+            "REST API",
+            "JProfiler"
+          ]
+        },
+        {
+          "title": "Solife Digital & Generali Portal",
+          "kind": "professional",
+          "role": "フルスタック開発者",
+          "company": "VERMEG",
+          "outcomes": [
+            "保険ブローカー向けにAngularの画面とJavaバックエンドサービスを開発しました。",
+            "Keycloakのシングルサインオンと、BPMNに基づくユーザーフローを実装しました。"
+          ],
+          "technologies": [
+            "Angular",
+            "Java",
+            "Keycloak",
+            "BPMN"
+          ],
+          "summary": "保険ブローカー向けのWebアプリケーションです。"
+        },
+        {
+          "title": "Magikforms",
+          "kind": "professional",
+          "role": "バックエンド開発者",
+          "company": "VERMEG",
+          "outcomes": [
+            "文書処理用のJavaサービスを開発し、ActiveMQで大量のイベントを処理しました。",
+            "Keycloakの認可を組み込み、JProfilerでJavaヒープの使用状況を解析しました。"
+          ],
+          "technologies": [
+            "Java",
+            "ActiveMQ",
+            "Keycloak",
+            "JProfiler"
+          ],
+          "summary": "保険業務向けの文書・デジタルフォーム処理システムです。"
+        },
+        {
+          "title": "Insurance Pricing Module",
+          "kind": "professional",
+          "role": "フルスタック開発者",
+          "company": "VERMEG",
+          "period": "2020 – 2021",
+          "summary": "保険商品の料率設定と保険料計算を行う機能です。",
+          "outcomes": [
+            "クライアント側の入力検証を含む、商品設定と保険料計算の機能を開発しました。",
+            "Apache POIでExcelの料率テンプレートを処理し、データ連携を改善しました。"
+          ],
+          "technologies": [
+            "Java",
+            "Apache POI",
+            "Excel",
+            "Spring Boot"
+          ]
+        }
       ]
     }
   ],
   "projects": [
     {
+      "title": "Slide Agent",
+      "kind": "personal",
+      "role": "作成者・メンテナー",
+      "period": "2026",
+      "status": "npmパッケージ",
+      "summary": "AIが指示する構成を、編集可能なPowerPoint資料へ変換するオープンソースのプレゼンテーションエンジンです。",
+      "link": "https://slide-agent.ghassen.io",
+      "linkLabel": "サイトを見る",
+      "repo": "https://github.com/ghassenbrg/slide-agent",
+      "featured": true,
+      "outcomes": [
+        "グリッドベースの構成言語から、編集可能なグラフ・表、テーマカラー、埋め込みフォントを備えたPowerPointを生成するTypeScriptエンジンを開発しました。",
+        "フォントファイルに基づく文字の計測、レイアウトとコントラストの検査、OOXMLスキーマのオフライン検証を実装しました。",
+        "@slide-agent/coreとしてCLI、ライブラリAPI、MCPサーバーを提供しています。CSVを用いたテンプレートへの差し込みでは、AIモデルを呼び出さずに資料を生成できます。"
+      ],
+      "technologies": [
+        "TypeScript",
+        "Node.js",
+        "MCP",
+        "OOXML",
+        "LLM APIs",
+        "Vitest",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "title": "Pockito",
+      "kind": "personal",
+      "role": "開発者・フルスタックエンジニア",
+      "period": "2025 – 2026",
+      "status": "個人開発",
+      "summary": "共通の業務サービスを基盤に、モバイル・Web・AIエージェントから利用できる個人・共同の資金管理アプリです。",
+      "link": "https://pockito.ghassen.io",
+      "linkLabel": "アプリを開く",
+      "featured": true,
+      "outcomes": [
+        "共通の業務サービスにREST・MCPアダプターを接続するSpring Bootバックエンドと、Flutter・Nuxtクライアントを設計・開発しました。",
+        "Keycloak認証、MCPクライアント向けのOAuthディスカバリー、Redis Streamsを用いたイベント駆動の通知を実装しました。",
+        "Traefikによるルーティングを含むKubernetesのデプロイ・ロールバック用スクリプト、自動テスト、E2Eリリース検証を整備しました。"
+      ],
+      "technologies": [
+        "Java 25",
+        "Spring Boot",
+        "Flutter",
+        "Nuxt",
+        "PostgreSQL",
+        "Redis",
+        "Keycloak",
+        "Kubernetes",
+        "MCP"
+      ]
+    },
+    {
+      "title": "SubMate",
+      "kind": "personal",
+      "role": "作成者・メンテナー",
+      "period": "2026",
+      "status": "Chrome拡張機能",
+      "summary": "Netflix、TVer、Prime Videoの字幕を同期翻訳するChrome拡張機能です。標準では端末内で翻訳します。",
+      "link": "https://submate.ghassen.io",
+      "linkLabel": "サイトを見る",
+      "repo": "https://github.com/ghassenbrg/SubMate",
+      "featured": true,
+      "outcomes": [
+        "Chromeの端末内Translator APIを利用するManifest V3拡張機能を開発しました。ローカルキャッシュを備え、SubMate専用サーバー、アカウント、利用状況の収集は不要です。",
+        "共通基盤とサービス別アダプターを設計し、TTML/WebVTTの解析、TVerのHLSセグメント結合、全画面対応の同期字幕表示を実装しました。",
+        "利用者のAPIキーを使う任意のクラウド翻訳を追加しました。英語、日本語、フランス語、アラビア語に対応し、右から左への表示も実装しました。"
+      ],
+      "technologies": [
+        "TypeScript",
+        "Chrome Extensions (MV3)",
+        "Translator API",
+        "LLM APIs",
+        "IndexedDB",
+        "Vitest"
+      ]
+    },
+    {
       "title": "Orbit Ways",
+      "kind": "personal",
       "role": "フルスタックゲーム開発者",
+      "status": "プレイ可能",
+      "summary": "ゲームの状態をリアルタイムで同期する、ブラウザ向けの対戦型戦略ボードゲームです。",
       "link": "https://ghassen.io/orbitways",
       "linkLabel": "プレイ",
       "outcomes": [
-        "リアルタイム対戦型ボードゲームを開発",
-        "セッション管理、状態管理、マッチメイキング用のSpring Bootバックエンドを開発",
-        "リアルタイム通信のためにWebSocketを実装",
-        "AngularとIonicで動的なUIを構築",
-        "NGINXを安全なリバースプロキシとして利用し、アプリをDocker化"
+        "Spring Bootでセッション、ゲーム状態、マッチメイキングを実装し、WebSocketによる更新とAngular/Ionicの画面を開発しました。",
+        "Dockerでコンテナ化し、Nginxのリバースプロキシを構成しました。"
       ],
       "technologies": [
-        "Java",
         "Spring Boot",
-        "Redis",
         "WebSocket",
         "Angular",
-        "TypeScript",
+        "Ionic",
         "Docker",
         "Nginx"
-      ]
+      ],
+      "featured": false
     },
     {
-      "title": "SalesFlow",
-      "role": "リードデベロッパー",
+      "title": "Traffic Forward",
+      "kind": "personal",
+      "role": "作成者",
+      "period": "2026",
+      "status": "個人開発",
+      "summary": "一時的なAPIルーティング、HTTPデバッグ、リクエスト・レスポンス監査向けのSpring Bootサービスです。",
+      "repo": "https://github.com/ghassenbrg/traffic-forward",
       "outcomes": [
-        "手作業プロセスを30%削減",
-        "Camunda BPMと連携し、複雑なワークフローを自動化",
-        "マルチスレッド実行によるバッチ処理を実装"
+        "完全一致パス、変数、ワイルドカードに対応するYAMLルーティングを実装し、リクエストのデータを保持してHTTP転送を行えるようにしました。",
+        "処理時間と本文のプレビューを含むリクエスト・レスポンスログを実装し、Docker Composeで起動できるようにしました。"
       ],
       "technologies": [
-        "Java",
+        "Java 25",
         "Spring Boot",
-        "Camunda",
-        "REST API",
-        "Batch Processing"
-      ]
-    },
-    {
-      "title": "PackManager",
-      "role": "バックエンド開発者",
-      "outcomes": [
-        "保険パック設定向けの商品構成プラットフォームを構築",
-        "レガシーコードをリファクタリングし、保守しやすいモジュール構成へ改善",
-        "JProfilerを用いてコード品質を向上し、実行時メモリ使用量を削減"
+        "YAML",
+        "Docker"
       ],
-      "technologies": [
-        "Java",
-        "REST API",
-        "JProfiler"
-      ]
-    },
-    {
-      "title": "Solife Digital & Generali Portal",
-      "role": "フルスタック開発者",
-      "outcomes": [
-        "保険ブローカー向けの安全なWebアプリケーションを開発",
-        "Angularベースのフロントエンドを実装",
-        "KeycloakによるSSOを統合",
-        "JavaバックエンドでBPMN駆動のユーザーフローを構築"
-      ],
-      "technologies": [
-        "Angular",
-        "Java",
-        "Keycloak",
-        "BPMN"
-      ]
-    },
-    {
-      "title": "Magikforms",
-      "role": "バックエンド開発者",
-      "outcomes": [
-        "保険業務自動化向けの文書処理システムを設計",
-        "ActiveMQを用いて大量イベントフローを管理",
-        "Keycloak認可により安全な文書生成を実現",
-        "JProfilerでJavaヒープ使用量を計測・最適化"
-      ],
-      "technologies": [
-        "Java",
-        "ActiveMQ",
-        "Keycloak",
-        "JProfiler"
-      ]
-    },
-    {
-      "title": "Insurance Pricing Module",
-      "role": "フルスタック開発者",
-      "outcomes": [
-        "Excel連携の保険料設定システムを構築",
-        "クライアント側バリデーションとデータ整合性を改善",
-        "Apache POIによるExcelテンプレート処理で迅速な更新を実現"
-      ],
-      "technologies": [
-        "Java",
-        "Apache POI",
-        "Excel",
-        "Spring Boot"
-      ]
+      "featured": false
     }
   ],
   "education": [
     {
-      "degree": "ソフトウェア工学エンジニア学位",
+      "degree": "エンジニア学位（ソフトウェアアーキテクチャ工学）",
       "institution": "ESPRIT（私立高等工学技術学校）",
       "location": "チュニス、チュニジア",
       "period": "2019年9月 – 2023年7月"

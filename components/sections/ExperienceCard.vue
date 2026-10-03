@@ -39,14 +39,14 @@
 
       <p v-if="exp.description" class="tl-desc">{{ exp.description }}</p>
 
-      <ul v-if="achievements.length" class="ach-list">
+      <ul v-if="achievements.length" :id="`achievements-${index}`" class="ach-list">
         <li v-for="(achievement, i) in visibleAchievements" :key="i" class="ach-item">
           <span class="ach-tick"></span>
           <span>{{ achievement }}</span>
         </li>
       </ul>
 
-      <button v-if="needsToggle" class="ach-toggle" type="button" @click="open = !open">
+      <button v-if="needsToggle" class="ach-toggle" type="button" :aria-expanded="open" :aria-controls="`achievements-${index}`" @click="open = !open">
         {{ open ? uiCopy.actions.showLess : `${uiCopy.actions.showMore} (${achievements.length})` }}
         <AppIcon
           name="chevron"
@@ -54,6 +54,18 @@
           :style="{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform .3s' }"
         />
       </button>
+
+      <details v-if="exp.projects?.length" class="experience-projects">
+        <summary>{{ projectLabel }} ({{ exp.projects.length }})</summary>
+        <article v-for="project in exp.projects" :key="project.title" class="experience-project">
+          <h4>{{ project.title }} <span v-if="project.period">{{ project.period }}</span></h4>
+          <p v-if="project.summary">{{ project.summary }}</p>
+          <ul v-if="project.outcomes?.length">
+            <li v-for="outcome in project.outcomes" :key="outcome">{{ outcome }}</li>
+          </ul>
+          <p class="experience-project-tech">{{ project.technologies.join(' · ') }}</p>
+        </article>
+      </details>
     </div>
   </div>
 </template>
@@ -67,8 +79,9 @@ import { revealDelay } from '~/utils/reveal'
 
 const props = defineProps<{ exp: Experience; index: number }>()
 
-const { uiCopy } = useCvData()
+const { uiCopy, activeLanguage, referenceDate } = useCvData()
 
+const projectLabel = computed(() => ({ en: 'Selected company projects', fr: "Projets d’entreprise sélectionnés", jp: '主な業務プロジェクト' } as Record<string, string>)[activeLanguage.value] ?? 'Selected company projects')
 const COLLAPSED = 3
 const open = ref(false)
 
@@ -80,10 +93,10 @@ const visibleAchievements = computed(() =>
 )
 
 const dateRange = computed(() =>
-  formatDateRange(props.exp.startDate, props.exp.endDate, uiCopy.value.meta.present),
+  formatDateRange(props.exp.startDate, props.exp.endDate, uiCopy.value.meta.present, activeLanguage.value),
 )
 const duration = computed(() =>
-  formatDuration(props.exp.startDate, props.exp.endDate, uiCopy.value.meta.durationUnits),
+  formatDuration(props.exp.startDate, props.exp.endDate, uiCopy.value.meta.durationUnits, referenceDate.value),
 )
 
 // Real logos sit on a clean white tile so any brand mark stays legible in both

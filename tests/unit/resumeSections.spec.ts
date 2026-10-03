@@ -25,6 +25,22 @@ describe('resume content contract', () => {
     expect(data.experience.length).toBeGreaterThan(0)
     expect(data.experience.every((entry) => entry.startDate && entry.company)).toBe(true)
   })
+
+  it('publishes the same personal and professional projects in every language', () => {
+    const projectsFor = (lang: string) =>
+      (JSON.parse(readSource(`public/cv-data-${lang}.json`)) as CVData).projects
+
+    const reference = projectsFor('en')
+    const signature = (projects: CVData['projects']) =>
+      projects.map((project) => `${project.kind}:${project.link ?? ''}:${project.repo ?? ''}`)
+
+    expect(reference.some((project) => project.kind === 'personal')).toBe(true)
+    expect(reference.every((project) => project.kind === 'personal' || project.kind === 'professional')).toBe(true)
+
+    for (const lang of ['fr', 'jp']) {
+      expect(signature(projectsFor(lang))).toEqual(signature(reference))
+    }
+  })
 })
 
 describe('section implementation guards', () => {
@@ -44,6 +60,30 @@ describe('section implementation guards', () => {
     expect(source).toContain('exp.logo')
     expect(source).toContain('company-logo')
     expect(source).toContain('/${exp.logo}')
+  })
+
+  it('maps every skill category in every language to a glyph', () => {
+    const source = readSource('components/ui/SkillGlyph.vue')
+
+    for (const lang of ['en', 'fr', 'jp']) {
+      const { skills } = JSON.parse(readSource(`public/cv-data-${lang}.json`)) as CVData
+
+      for (const category of Object.keys(skills)) {
+        expect(source, `${lang}: ${category}`).toMatch(
+          new RegExp(`['"]${category.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}['"]: '`),
+        )
+      }
+    }
+  })
+
+  it('features three personal products and associates company projects with their roles', () => {
+    for (const lang of ['en', 'fr', 'jp']) {
+      const data = JSON.parse(readSource(`public/cv-data-${lang}.json`)) as CVData
+      expect(data.projects.filter(project => project.featured).map(project => project.title)).toEqual(['Slide Agent', 'Pockito', 'SubMate'])
+      expect(data.projects.every(project => project.kind === 'personal')).toBe(true)
+      expect(data.projects.map(project => project.title)).not.toContain('TermLoom')
+      expect(data.experience.some(experience => experience.projects?.length)).toBe(true)
+    }
   })
 
   it('drives the hero from the data-driven tagline and animated backdrop', () => {

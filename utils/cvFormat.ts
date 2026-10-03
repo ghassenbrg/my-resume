@@ -41,10 +41,13 @@ export const tileGradient = (
   return `linear-gradient(140deg, oklch(${light} ${lightChroma} ${hue}), oklch(${dark} ${darkChroma} ${hue}))`
 }
 
-const formatMonthYear = (iso: string): string => {
+/* Resume language code → BCP 47 locale for date formatting ('jp' is our alias for Japanese). */
+const DATE_LOCALES: Record<string, string> = { en: 'en-US', fr: 'fr-FR', jp: 'ja-JP', ja: 'ja-JP' }
+
+const formatMonthYear = (iso: string, language = 'en'): string => {
   const date = new Date(`${iso}T00:00:00`)
 
-  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+  return date.toLocaleDateString(DATE_LOCALES[language] ?? 'en-US', { month: 'short', year: 'numeric' })
 }
 
 /* Date range formatting from ISO startDate / endDate. */
@@ -52,9 +55,10 @@ export const formatDateRange = (
   start: string,
   end: string | undefined,
   presentLabel: string,
+  language = 'en',
 ): string => {
-  const formattedStart = formatMonthYear(start)
-  const formattedEnd = end ? formatMonthYear(end) : presentLabel
+  const formattedStart = formatMonthYear(start, language)
+  const formattedEnd = end ? formatMonthYear(end, language) : presentLabel
 
   return `${formattedStart} — ${formattedEnd}`
 }

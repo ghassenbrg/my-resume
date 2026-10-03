@@ -30,9 +30,14 @@ import jira from '@iconify-icons/devicon/jira'
 import git from '@iconify-icons/devicon/git'
 import confluence from '@iconify-icons/devicon/confluence'
 import openapi from '@iconify-icons/devicon/openapi'
+import flutter from '@iconify-icons/devicon/flutter'
+import dart from '@iconify-icons/devicon/dart'
+import redis from '@iconify-icons/devicon/redis'
+import chrome from '@iconify-icons/devicon/chrome'
 // Brand logos not in the devicon set (still offline objects → SSR-rendered).
 import kubernetes from '@iconify-icons/logos/kubernetes'
 import aws from '@iconify-icons/logos/aws'
+import rust from '@iconify-icons/logos/rust'
 
 /**
  * Maps a skill's `icon` key (from cv-data-*.json) to a brand icon.
@@ -76,8 +81,13 @@ const SKILL_ICONS: Record<string, IconifyIcon> = {
   confluence,
   openapi,
   api: openapi,
+  flutter,
+  dart,
+  redis,
+  chrome,
   // Not in the devicon set — sourced from the offline "logos" package.
   kubernetes,
+  rust,
   aws,
   // keycloak has no brand logo in either offline set, so it degrades to a
   // text-only chip (same as the other unmapped niche skills).

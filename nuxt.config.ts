@@ -49,13 +49,26 @@ export default defineNuxtConfig({
   },
   nitro: {
     compressPublicAssets: true,
+    prerender: {
+      routes: ['/', ...cvDataLanguages.filter((code) => code !== 'en').map((code) => `/${code === 'jp' ? 'ja' : code}`)],
+      failOnError: true,
+    },
+  },
+  hooks: {
+    'pages:extend'(pages) {
+      // Reuse the resume page without changing the UI agent's index.vue.
+      for (const code of cvDataLanguages.filter((language) => language !== 'en')) {
+        pages.push({
+          name: `resume-${code}`,
+          path: `/${code === 'jp' ? 'ja' : code}`,
+          file: resolve(process.cwd(), 'pages/index.vue'),
+        })
+      }
+    },
   },
   runtimeConfig: {
     public: {
       cvDataLanguages,
-      emailjsServiceId: process.env.NUXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-      emailjsTemplateId: process.env.NUXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-      emailjsPublicKey: process.env.NUXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
     },
   },
 })

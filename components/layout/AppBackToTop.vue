@@ -4,6 +4,7 @@
     :class="{ show }"
     type="button"
     :aria-label="uiCopy.actions.backToTop"
+    :tabindex="show ? 0 : -1"
     @click="scrollToTop"
   >
     <AppIcon name="up" :size="18" />
@@ -23,6 +24,7 @@ const onScroll = () => {
 const scrollToTop = () => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
   window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })
+  document.getElementById('hero')?.focus({ preventScroll: true })
 }
 
 onMounted(() => {

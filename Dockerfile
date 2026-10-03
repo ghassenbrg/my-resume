@@ -3,14 +3,6 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-ARG NUXT_PUBLIC_EMAILJS_SERVICE_ID=""
-ARG NUXT_PUBLIC_EMAILJS_TEMPLATE_ID=""
-ARG NUXT_PUBLIC_EMAILJS_PUBLIC_KEY=""
-
-ENV NUXT_PUBLIC_EMAILJS_SERVICE_ID=$NUXT_PUBLIC_EMAILJS_SERVICE_ID
-ENV NUXT_PUBLIC_EMAILJS_TEMPLATE_ID=$NUXT_PUBLIC_EMAILJS_TEMPLATE_ID
-ENV NUXT_PUBLIC_EMAILJS_PUBLIC_KEY=$NUXT_PUBLIC_EMAILJS_PUBLIC_KEY
-
 COPY package*.json ./
 # Match the npm version that generated package-lock.json (lockfileVersion 3, npm 11).
 # node:22-alpine ships npm 10, which misreads nested optional wasm deps as missing.
@@ -24,10 +16,6 @@ FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/.output/public /usr/share/nginx/html
-COPY docker-entrypoint.d/40-runtime-config.sh /docker-entrypoint.d/40-runtime-config.sh
-
-RUN chmod +x /docker-entrypoint.d/40-runtime-config.sh
-
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]

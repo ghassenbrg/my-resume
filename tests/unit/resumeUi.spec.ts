@@ -24,8 +24,8 @@ describe('resume UI registry', () => {
     expect([...SECTION_IDS]).toEqual([
       'hero',
       'about',
-      'skills',
       'experience',
+      'skills',
       'projects',
       'education',
       'contact',
@@ -35,8 +35,8 @@ describe('resume UI registry', () => {
   it('navigates every section except the hero', () => {
     expect([...NAV_SECTION_IDS]).toEqual([
       'about',
-      'skills',
       'experience',
+      'skills',
       'projects',
       'education',
       'contact',

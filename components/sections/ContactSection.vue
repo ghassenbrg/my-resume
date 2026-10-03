@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="section contact-section" data-screen-label="contact">
+  <section id="contact" class="section contact-section" data-screen-label="contact" tabindex="-1">
     <div class="container">
       <div class="contact-card card reveal">
         <div class="contact-glow"></div>
@@ -68,11 +68,10 @@
 <script setup lang="ts">
 import AppIcon from '~/components/ui/AppIcon.vue'
 
-const { cvConfig, uiCopy } = useCvData()
+const { cvConfig, cvLink, uiCopy } = useCvData()
 const { trackFollowUpClick } = useAnalytics()
 
-// Contact/social links + cvLink are shared, non-translatable config.
+// Contact/social links are shared, non-translatable config.
 const email = computed(() => cvConfig.value?.contact.email ?? '')
-const cvLink = computed(() => cvConfig.value?.cvLink ?? '')
 const social = computed(() => cvConfig.value?.social ?? { github: '', linkedin: '' })
 </script>

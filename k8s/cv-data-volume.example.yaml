@@ -32,6 +32,18 @@ spec:
               mountPath: /usr/share/nginx/html/CV_Ghassen_Bargougui.pdf
               subPath: CV_Ghassen_Bargougui.pdf
               readOnly: true
+            - name: cv-pdf
+              mountPath: /usr/share/nginx/html/CV_Ghassen_Bargougui-en.pdf
+              subPath: CV_Ghassen_Bargougui-en.pdf
+              readOnly: true
+            - name: cv-pdf
+              mountPath: /usr/share/nginx/html/CV_Ghassen_Bargougui-fr.pdf
+              subPath: CV_Ghassen_Bargougui-fr.pdf
+              readOnly: true
+            - name: cv-pdf
+              mountPath: /usr/share/nginx/html/CV_Ghassen_Bargougui-jp.pdf
+              subPath: CV_Ghassen_Bargougui-jp.pdf
+              readOnly: true
       volumes:
         - name: cv-data
           configMap:
@@ -39,6 +51,8 @@ spec:
         - name: cv-config
           configMap:
             name: resume-cv-config
+        # PDF sets can exceed the 1 MiB ConfigMap limit. Populate this PVC
+        # with all language PDFs and the English compatibility alias.
         - name: cv-pdf
-          configMap:
-            name: resume-cv-pdf
+          persistentVolumeClaim:
+            claimName: resume-cv-pdf

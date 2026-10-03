@@ -32,7 +32,7 @@
       >
         <div class="skill-group-head">
           <span class="skill-cat-icon">
-            <SkillGlyph :category="group.category" :index="group.index" />
+            <SkillGlyph :category="group.category" />
           </span>
           <h3 class="skill-cat-name">{{ group.category }}</h3>
           <span class="skill-count">{{ group.items.length }}</span>
@@ -60,6 +60,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import AppIcon from '~/components/ui/AppIcon.vue'
 import SkillGlyph from '~/components/ui/SkillGlyph.vue'

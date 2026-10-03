@@ -74,9 +74,6 @@ trackSectionView('about')
 
 - `navigation_click`: Fired from the section navigation when a visitor jumps to a section.
 - `section_view`: Fired once per section when it becomes the active viewport section.
-- `contact_form_submit`: Fired when the contact form is submitted after validation passes.
-- `contact_form_success`: Fired after EmailJS accepts the message submission.
-- `contact_form_error`: Fired when contact submission fails.
 - `follow_up_click`: Fired when a visitor opens a CV, email, GitHub, or LinkedIn follow-up link.
 - `language_auto_resolved`: Fired when the resume resolves its initial language from browser
   preferences or falls back to English.
@@ -88,9 +85,6 @@ trackSectionView('about')
 |-------|---------|
 | `navigation_click` | `section` |
 | `section_view` | `section` |
-| `contact_form_submit` | `source` |
-| `contact_form_success` | `source` |
-| `contact_form_error` | `source`, `reason` |
 | `follow_up_click` | `label`, `destination` |
 | `language_auto_resolved` | `resolved_language`, `requested_language`, `selection_source`, `fallback_reason` |
 | `language_switched` | `resolved_language`, `requested_language`, `selection_source`, `fallback_reason` |

@@ -1,8 +1,8 @@
 <template>
   <HeroSection />
   <AboutSection />
-  <SkillsSection />
   <ExperienceSection />
+  <SkillsSection />
   <ProjectsSection />
   <CredentialsSection />
   <ContactSection />
@@ -16,10 +16,4 @@ import ExperienceSection from '~/components/sections/ExperienceSection.vue'
 import ProjectsSection from '~/components/sections/ProjectsSection.vue'
 import CredentialsSection from '~/components/sections/CredentialsSection.vue'
 import ContactSection from '~/components/sections/ContactSection.vue'
-
-const { loadCvData } = useCvData()
-
-onMounted(() => {
-  void loadCvData()
-})
 </script>

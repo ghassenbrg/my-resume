@@ -17,9 +17,9 @@
 <script setup lang="ts">
 import BrandMonogram from '~/components/ui/BrandMonogram.vue'
 
-const { cvData, uiCopy } = useCvData()
+const { cvData, uiCopy, referenceDate } = useCvData()
 
 const name = computed(() => cvData.value?.hero.name ?? 'Ghassen Bargougui')
 const role = computed(() => cvData.value?.hero.title ?? '')
-const year = new Date().getFullYear()
+const year = computed(() => referenceDate.value.getUTCFullYear())
 </script>

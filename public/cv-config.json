@@ -1,13 +1,14 @@
 {
   "openToOpportunities": false,
   "contact": {
-    "email": "ghassen.brg16@gmail.com"
+    "email": "ghassen.brg16@gmail.com",
+    "phone": "+81 70 8502 9039"
   },
   "social": {
     "github": "https://github.com/ghassenbrg",
     "linkedin": "https://www.linkedin.com/in/ghassenbrg"
   },
-  "cvLink": "/CV_Ghassen_Bargougui.pdf",
+  "cvLink": "/CV_Ghassen_Bargougui-en.pdf",
   "meta": {
     "siteUrl": "https://ghassen.io",
     "ogImage": "/og-image.png"
@@ -17,5 +18,10 @@
   },
   "display": {
     "languagePercentage": false
+  },
+  "cvLinks": {
+    "en": "/CV_Ghassen_Bargougui-en.pdf",
+    "fr": "/CV_Ghassen_Bargougui-fr.pdf",
+    "jp": "/CV_Ghassen_Bargougui-jp.pdf"
   }
 }
