@@ -17,6 +17,14 @@ Reviewed against the user's current LinkedIn profile in their signed-in Chrome s
 - Employer percentage claims (API response time, ActiveMQ efficiency, PackManager execution time, manual processes) were replaced with qualitative outcomes on 3 October 2026 because their measurement basis was not established. Reintroduce a number only with a defined measurement. Removed unsupported personal-project benchmarks and counts.
 - Rakuten work now includes the confirmed performance testing (k6/JMeter), Cloud Logging and Kafka/Confluent logging, and application/infrastructure design. The internal agent application is intentionally omitted until its disclosure and delivery stage are confirmed.
 
+### Public wording update — 6 October 2026
+
+The user advised avoiding exact technology versions and potentially confidential details. This supersedes the earlier wording decisions about Rakuten implementation evidence. English, French, and Japanese summaries and experience now describe Java modernization, cloud migration, deployment design and fallback planning, performance testing, observability, API/service integration, local build/deployment automation, and cross-team delivery. Shared leadership remains attributed to the user, manager, and project manager; no completed migration or unreleased product launch is claimed.
+
+Removed the deployed JDK/framework versions, internal team and application/module names, storage configuration, logging destinations, pipeline destinations, and specific defect/root-cause details from public Rakuten prose. Pockito's technology list also uses Java without a version. General technology skills remain in the skills section; the Java SE 11 designation stays as part of the earned Oracle certification. Local development automation and fallback planning reflect the user's recent work context. The downloadable PDFs are regenerated from these same datasets.
+
+Verification on 6 October 2026: `npm run validate` passed (63 tests, TypeScript checking, static generation). All six PDF pages were rendered and visually inspected; each translation remains two pages and extracted text has no removed version/internal details or broken Japanese glyphs. Built JSON/PDF files match the updated sources, and all three generated language routes omit the removed details. Changes are local; production has not been updated by this change.
+
 ## Presentation
 
 Experience precedes Skills. There are 39 skills in seven groups ordered by emphasis (Java application engineering, cloud delivery, performance/observability first). Slide Agent, Pockito, and SubMate are featured; Orbit Ways and Traffic Forward are compact personal entries. TermLoom and the Rust skill are removed. Client projects remain attached to the appropriate employment entries, with expandable details; additional achievements use a native disclosure so they are present in the initial HTML.

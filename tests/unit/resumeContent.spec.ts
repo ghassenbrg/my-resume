@@ -71,11 +71,15 @@ describe('published resume content', () => {
     }
   })
 
-  it('describes the internal Rakuten work generically, without naming an agent application', () => {
+  it('keeps Rakuten work and summaries free of deployment versions and internal implementation details', () => {
     for (const lang of LANGUAGES) {
-      const rakuten = datasets[lang].experience[0]
+      const data = datasets[lang]
+      const rakuten = data.experience[0]
       expect(rakuten.company).toBe('Rakuten')
-      expect(JSON.stringify(rakuten), lang).not.toMatch(/agent|エージェント/i)
+      expect(JSON.stringify(rakuten), lang).not.toMatch(/agent|エージェント|\bEngine\b/i)
+      const publicWork = JSON.stringify({ meta: data.meta, hero: data.hero, about: data.about, rakuten })
+      expect(publicWork, lang).not.toMatch(/JDK\s*\d+|Helidon\s*\d+(?:\.\d+)*|\be-Navi\b|Technology Incubation|\bJSF\b|Filestore|Artifact Registry|CDI|Confluent|LLM/i)
+      expect(JSON.stringify(data.projects), lang).not.toMatch(/\b(?:Java|JDK|Helidon)\s+\d+(?:\.\d+)*/i)
     }
   })
 
@@ -107,11 +111,11 @@ describe('PDF evidence selection', () => {
     expect(selected.roles.map((role) => role.position)).toEqual(['Analyst Developer', 'Software Developer'])
   })
 
-  it('keeps the audited performance, observability, security and delivery evidence in the English PDF', () => {
+  it('keeps public performance, observability, security and delivery evidence in the English PDF', () => {
     const content = selectPdfContent(datasets.en)
     const text = JSON.stringify(content)
 
-    for (const evidence of ['k6', 'JMeter', 'Cloud Logging', 'Kafka/Confluent', 'CDI bean scope', 'Keycloak', 'rollback', 'JProfiler', 'Camunda', 'GKE', 'Redis-backed session management', 'LLM API integration', '@slide-agent/core', 'MCP server', 'right-to-left', 'Kubernetes deployment and rollback']) {
+    for (const evidence of ['k6', 'JMeter', 'Cloud Logging', 'Keycloak', 'rollback', 'JProfiler', 'Camunda', 'session management', 'Automated local builds and deployments', 'fallback plans', '@slide-agent/core', 'MCP server', 'right-to-left', 'Kubernetes deployment and rollback']) {
       expect(text, evidence).toContain(evidence)
     }
     expect(content.featuredProjects.map((project) => project.title)).toEqual(['Slide Agent', 'Pockito', 'SubMate'])

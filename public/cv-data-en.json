@@ -8,16 +8,16 @@
     "title": "Application Engineer",
     "headline": "Java Applications, Cloud & Platform Engineering",
     "location": "Fukuoka, Japan",
-    "tagline": "I build and modernize Java applications and the cloud platforms they run on. At Rakuten, in the Technology Incubation Team working on Rakuten Card systems, my work spans hybrid-cloud migration, Kubernetes deployments, API development, performance testing, and application observability.",
+    "tagline": "I build and modernize Java applications and the cloud platforms they run on. At Rakuten, I work on financial systems across application development, cloud migration, performance testing, and observability.",
     "phone": "+81 70 8502 9039"
   },
   "about": {
     "paragraphs": [
       "I am an Application Engineer with seven years of Java and full-stack experience in banking, insurance, and card payments, across Tunisia, Luxembourg, and Japan. My work sits where application code meets the platform it runs on: API design, deployment, performance diagnosis, and reliable delivery.",
-      "At Rakuten, I help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams. Hands-on, I design application and infrastructure changes, build Kubernetes deployments and pipelines, run performance tests with k6 and JMeter, and adapt application logging for Cloud Logging and Kafka/Confluent.",
+      "At Rakuten, I help lead cloud migration work alongside my manager and project manager, coordinating with development, infrastructure, CI/CD, and security teams. I design application and infrastructure changes, validate deployments, investigate performance bottlenecks, and improve logging. I also automate local builds and deployments so teammates can get their development environments running more easily.",
       "Outside work, I build products end to end: Slide Agent, an open-source engine for generating editable PowerPoint presentations; Pockito, an app for personal and shared finances; and SubMate, a Chrome extension for subtitle translation."
     ],
-    "profile": "Application Engineer with seven years of Java and full-stack experience across banking, insurance, and card payments in Tunisia, Luxembourg, and Japan. At Rakuten (Technology Incubation Team, Rakuten Card systems), my work spans hybrid-cloud migration, application and infrastructure design, Kubernetes delivery, CI/CD, performance testing, and observability. Creator of the Slide Agent, Pockito, and SubMate personal projects.",
+    "profile": "Application Engineer with seven years of Java and full-stack experience across banking, insurance, and card payments in Tunisia, Luxembourg, and Japan. At Rakuten, I work on application modernization, cloud migration, performance testing, observability, and development automation, with shared project leadership and cross-team coordination. Creator of Slide Agent, Pockito, and SubMate.",
     "highlights": [
       {
         "value": "7",
@@ -28,8 +28,8 @@
         "label": "Countries worked across"
       },
       {
-        "value": "JDK 25",
-        "label": "Rakuten Card e-Navi API upgrade"
+        "value": "Java",
+        "label": "Application modernization"
       },
       {
         "value": "OCP",
@@ -221,15 +221,15 @@
       "location": "Fukuoka, Japan",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "In the Technology Incubation Team, I work on Rakuten Card systems across Java application development and cloud/platform engineering, and help lead a hybrid-cloud migration alongside my manager and project manager, coordinating implementation with development, infrastructure, CI/CD, and security teams.",
+      "description": "Work on financial applications across Java development and cloud/platform engineering. Help lead cloud migration work alongside my manager and project manager, coordinating design and implementation with development, infrastructure, CI/CD, and security teams.",
       "achievements": [
-        "Upgraded the e-Navi API to JDK 25 and Helidon 4.3, resolving dependency and CDI issues, updating tests, and documenting the handover.",
-        "Designed and validated Kubernetes deployments for the JSF, API, and Engine modules as part of the hybrid-cloud migration, including services, environment configuration, and Filestore mounts.",
-        "Run performance tests with k6 and JMeter, diagnose bottlenecks, and address them through application-design changes or resource adjustments.",
-        "Reworked application logging as structured JSON for Cloud Logging (Log4j2 with a custom formatter); currently helping move file-based application and trace logs to Kafka/Confluent.",
-        "Develop Java APIs with Redis-backed session management, service-to-service calls, and LLM API integration on Kubernetes infrastructure.",
-        "Resolved deployment, SSL, and GCP-to-on-premises connectivity issues with infrastructure and security teams, and traced a Kafka messaging issue to an incorrect CDI bean scope.",
-        "Built a GitHub Actions pipeline for builds, Docker image publishing to Artifact Registry, and GKE deployments."
+        "Modernized Java services, resolved dependency and compatibility issues, updated tests, and documented the handover.",
+        "Design and validate cloud deployments, including networking, resource configuration, and fallback plans, with infrastructure and security teams.",
+        "Run performance tests with k6 and JMeter, investigate bottlenecks, and improve application design or resource allocation based on the results.",
+        "Improve structured application logging and trace handling to support monitoring and troubleshooting.",
+        "Develop Java APIs and service integrations, including session management and communication between application components.",
+        "Automated local builds and deployments to make development environment setup repeatable and easier for teammates.",
+        "Build CI/CD pipelines and work with partner teams to resolve deployment and connectivity issues, review designs, and support reliable delivery."
       ],
       "pdf": {
         "achievements": [
@@ -501,7 +501,7 @@
         "Built Kubernetes deployment and rollback scripts with Traefik routing, plus automated tests and end-to-end release checks."
       ],
       "technologies": [
-        "Java 25",
+        "Java",
         "Spring Boot",
         "Flutter",
         "Nuxt",
@@ -585,7 +585,7 @@
         "Added request/response logging with timing and body previews, and packaged the service for Docker Compose."
       ],
       "technologies": [
-        "Java 25",
+        "Java",
         "Spring Boot",
         "YAML",
         "Docker"
