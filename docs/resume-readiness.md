@@ -25,6 +25,19 @@ Removed the deployed JDK/framework versions, internal team and application/modul
 
 Verification on 6 October 2026: `npm run validate` passed (63 tests, TypeScript checking, static generation). All six PDF pages were rendered and visually inspected; each translation remains two pages and extracted text has no removed version/internal details or broken Japanese glyphs. Built JSON/PDF files match the updated sources, and all three generated language routes omit the removed details. Changes are local; production has not been updated by this change.
 
+### Full CV editorial review — 6 October 2026
+
+- Shortened the profile and search description to make the professional focus easier to scan. The profile emphasizes Java/full-stack development, financial domains, cloud delivery, performance, and team coordination.
+- Sogeti: retained the confirmed client assignment, banking workflows, API/data work, and delivery/quality practices. Removed its duplicate project entry because the same evidence is already in the employment bullets.
+- CBTW: tightened the service-modernization and API bullets while retaining full-stack scope and deployment automation.
+- VERMEG: made the progression from Software Developer to Analyst Developer explicit and led with requirements analysis and design. Replaced company-specific project names with localized descriptions. The PDF prints the two selected project examples; the website retains the full project list.
+- Personal projects: shortened descriptions and implementation-heavy bullets while retaining product purpose, individual contributions, published distribution, deployment/testing, and localization evidence. No adoption, performance, or business metrics were added.
+- Reviewed skills, education, certification, dates, and language levels against the existing verified record. Retained those facts and the privacy choices above; official job titles remain untranslated. General technology names and protocol/platform designations remain, without deployed runtime versions.
+
+This review improves wording and consistency using the existing verified content; it does not claim a fresh external verification of employers, credentials, or project adoption.
+
+Validation: all 63 unit tests, TypeScript checking, and static generation passed. The three PDFs remain tagged, selectable-text, two-page documents. All six pages were inspected; the skills block now stays together across page breaks. Final generated JSON/PDF files match the source files, and the language routes contain the revised wording. No deployment was performed.
+
 ## Presentation
 
 Experience precedes Skills. There are 39 skills in seven groups ordered by emphasis (Java application engineering, cloud delivery, performance/observability first). Slide Agent, Pockito, and SubMate are featured; Orbit Ways and Traffic Forward are compact personal entries. TermLoom and the Rust skill are removed. Client projects remain attached to the appropriate employment entries, with expandable details; additional achievements use a native disclosure so they are present in the initial HTML.

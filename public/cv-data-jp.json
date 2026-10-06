@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Ghassen Bargougui | Application Engineer — Javaアプリケーション・クラウド基盤",
-    "description": "福岡の楽天でApplication Engineerとして、楽天カードのシステムに携わっています。Java、API、金融システムの開発経験は7年。Kubernetesによるデプロイ、性能テスト、可観測性の改善に携わり、AIを活用した個人開発にも取り組んでいます。"
+    "description": "日本で働くApplication Engineer。金融ソフトウェア開発の経験は7年。Java API、クラウドへのデプロイ、性能改善に携わり、個人開発にも取り組んでいます。"
   },
   "hero": {
     "name": "Ghassen Bargougui",
@@ -13,11 +13,11 @@
   },
   "about": {
     "paragraphs": [
-      "アプリケーションエンジニア（Application Engineer）として、チュニジア、ルクセンブルク、日本で通算7年間、銀行・保険・カード決済分野のJavaおよびフルスタック開発に携わってきました。アプリケーションのコードと、それを動かす基盤の両方にまたがる領域、つまりAPI設計、デプロイ、性能問題の調査、安定したリリースに取り組んでいます。",
+      "Application Engineerとして、チュニジア、ルクセンブルク、日本で通算7年間、Javaおよびフルスタック開発に携わってきました。銀行・保険・カード決済分野で、業務要件の分析やAPI設計から、アプリケーションのデプロイ、性能問題の調査まで担当しています。",
       "楽天では、上司およびプロジェクトマネージャーとともにクラウド移行の推進に携わり、開発、インフラ、CI/CD、セキュリティの各チームと調整しています。アプリケーションとインフラの設計変更、デプロイの検証、性能問題の調査、ログ出力の改善を担当しています。また、チームメンバーが開発環境を整えやすいよう、ローカルでのビルドとデプロイを自動化しています。",
       "個人開発では、設計からリリースまで一貫して手がけています。編集可能なPowerPoint資料を生成するオープンソースのエンジンSlide Agent、個人のお金や共同の支出を管理するアプリPockito、字幕を翻訳するChrome拡張機能SubMateを開発しています。"
     ],
-    "profile": "チュニジア、ルクセンブルク、日本で通算7年間、銀行・保険・カード決済分野のJavaおよびフルスタック開発に携わってきました。楽天のApplication Engineerとして、アプリケーション刷新、クラウド移行、性能テスト、可観測性の改善、開発作業の自動化を担当し、上司やプロジェクトマネージャーとともにプロジェクト推進とチーム間の調整を行っています。個人開発ではSlide Agent、Pockito、SubMateを開発しています。",
+    "profile": "チュニジア、ルクセンブルク、日本で通算7年間、銀行・保険・カード決済分野のJavaおよびフルスタック開発に携わってきました。サービスの開発・刷新、API設計、クラウドへのデプロイを担当しています。開発に加え、性能分析、リリース作業の自動化、開発チーム間の調整にも取り組んでいます。",
     "highlights": [
       {
         "value": "7",
@@ -221,7 +221,7 @@
       "location": "福岡（日本）",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "金融アプリケーションのJava開発とクラウド・プラットフォーム関連の業務を担当しています。上司およびプロジェクトマネージャーとともにクラウド移行の推進に携わり、開発、インフラ、CI/CD、セキュリティの各チームと設計・実装面の調整を行っています。",
+      "description": "金融アプリケーションとクラウド基盤の開発を担当しています。上司およびプロジェクトマネージャーとともにクラウド移行を推進し、開発に関わる各チームと調整しています。",
       "achievements": [
         "Javaサービスを刷新し、依存関係や互換性の問題を解消しました。テストの更新と引き継ぎ資料の作成まで担当しました。",
         "インフラ・セキュリティチームと連携し、ネットワーク、リソース設定、代替手段を含むクラウドのデプロイ構成を設計・検証しています。",
@@ -251,34 +251,11 @@
       "startDate": "2025-02-01",
       "endDate": "2025-11-30",
       "logo": "sogeti_logo.png",
-      "description": "BGL BNP Paribas向けに、リテールバンキングの顧客マンデート（委任）管理を含む社内向け銀行業務アプリケーションの開発・保守を担当しました。",
+      "description": "BGL BNP Paribas向けの案件で、リテールバンキング業務アプリケーションの開発・保守を担当しました。",
       "achievements": [
-        "Spring Boot、Spring Batch、Angular Materialを用いて、顧客マンデート（委任）管理機能を開発しました。",
-        "HibernateとPostgreSQL/Oracleを用いて、社内アプリケーション向けのREST APIとデータアクセス処理を開発しました。",
-        "MavenとJenkinsでビルド・デプロイを自動化し、単体テスト、SonarQubeによる解析、コードレビューで品質を維持しました。"
-      ],
-      "projects": [
-        {
-          "title": "BGL BNP Paribas — マンデート（委任）管理",
-          "kind": "professional",
-          "role": "フルスタックエンジニア",
-          "company": "Sogeti · BGL BNP Paribas",
-          "period": "2025",
-          "summary": "リテールバンキング向けの顧客マンデート（委任）管理機能です。",
-          "outcomes": [
-            "Spring Batchによるバッチ処理とAngular Materialの画面で、マンデート管理のワークフローを開発しました。",
-            "単体テストとSonarQubeの検査を整備し、MavenとJenkinsでビルド・デプロイのパイプラインを自動化しました。"
-          ],
-          "technologies": [
-            "Java",
-            "Spring Boot",
-            "Spring Batch",
-            "Angular",
-            "Angular Material",
-            "SonarQube",
-            "Jenkins"
-          ]
-        }
+        "Spring Bootサービス、Spring Batchのバッチ処理、Angular Materialの画面を用いて、顧客マンデート（委任）管理のワークフローを実装しました。",
+        "Hibernate、PostgreSQL、Oracleを用いて、REST APIとデータ永続化層を開発しました。",
+        "MavenとJenkinsでビルド・デプロイを自動化し、単体テスト、SonarQubeのチェック、コードレビューを実施しました。"
       ],
       "pdf": {
         "achievements": [
@@ -295,10 +272,10 @@
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "logo": "cbtw_logo.png",
-      "description": "Spring Boot、Angular、PostgreSQLを用いて、Javaサービスの刷新とWebアプリケーションの開発を担当しました。",
+      "description": "Spring Boot、Angular、PostgreSQLを用いて、フルスタックのWebアプリケーション開発とJavaサービスの刷新を担当しました。",
       "achievements": [
-        "Javaサービス刷新の一環として、モノリシックなアプリケーションの機能をマイクロサービスへ分割・改修しました。",
-        "APIのバージョニングとセキュリティ要件を踏まえ、サービス連携用のREST APIを開発・文書化しました。",
+        "モノリシックなアプリケーションの構成要素をマイクロサービスへ分割・改修しました。",
+        "バージョニングとセキュリティ要件を踏まえ、サービス連携用のREST APIを開発・文書化しました。",
         "JenkinsとDockerでデプロイを自動化し、リリース時の手作業を削減しました。"
       ],
       "pdf": {
@@ -328,16 +305,16 @@
       "startDate": "2019-10-01",
       "endDate": "2024-08-31",
       "logo": "vermeg_logo.png",
-      "description": "保険・金融アプリケーションのバックエンドサービスを開発・保守し、Analyst Developerとしては機能分析とチーム横断のソリューション設計も担当しました。",
+      "description": "Software DeveloperからAnalyst Developerへと役割が広がり、保険・金融アプリケーションのバックエンド開発に加え、要件分析とソリューション設計を担当しました。",
       "achievements": [
+        "業務部門、アーキテクト、フレームワークチームと協力し、業務要件をバックエンド設計やAPI仕様に落とし込みました。",
         "クエリの最適化とキャッシュの導入により、APIの応答時間を改善しました。",
-        "担当するバックエンドのコンポーネントに責任を持ち、業務部門、アーキテクト、フレームワークチームと要件、マイクロサービス、API仕様を検討しました。",
-        "UML図とシーケンス図で設計を文書化し、チーム間の設計に関する問い合わせの主窓口を務めました。",
+        "UML図とシーケンス図でソリューションを文書化し、チーム間の設計方針を調整しました。",
         "Keycloakによる認証とロールベースのアクセス制御を実装し、CI/CDパイプラインとロールバック手順を管理しました。"
       ],
       "projects": [
         {
-          "title": "SalesFlow",
+          "title": "保険業務ワークフローの刷新",
           "kind": "professional",
           "role": "リードデベロッパー",
           "company": "VERMEG",
@@ -358,7 +335,7 @@
           ]
         },
         {
-          "title": "PackManager",
+          "title": "保険商品の構成管理",
           "kind": "professional",
           "role": "バックエンド開発者",
           "company": "VERMEG",
@@ -375,7 +352,7 @@
           ]
         },
         {
-          "title": "Solife Digital & Generali Portal",
+          "title": "保険ブローカー向けポータル",
           "kind": "professional",
           "role": "フルスタック開発者",
           "company": "VERMEG",
@@ -392,7 +369,7 @@
           ]
         },
         {
-          "title": "Magikforms",
+          "title": "文書・フォーム処理",
           "kind": "professional",
           "role": "バックエンド開発者",
           "company": "VERMEG",
@@ -409,7 +386,7 @@
           ]
         },
         {
-          "title": "Insurance Pricing Module",
+          "title": "保険料の算出",
           "kind": "professional",
           "role": "フルスタック開発者",
           "company": "VERMEG",
@@ -430,9 +407,9 @@
       "pdf": {
         "achievements": [
           0,
-          3,
           1,
-          2
+          2,
+          3
         ],
         "projects": [
           {
@@ -459,15 +436,15 @@
       "role": "作成者・メンテナー",
       "period": "2026",
       "status": "オープンソース・npmパッケージ",
-      "summary": "ネイティブのグラフとレイアウト検証を備え、編集可能なPowerPoint資料を生成するオープンソースのエンジンとMCPツールです。",
+      "summary": "コードやAIツールから編集可能なPowerPoint資料を生成するオープンソースのツールです。",
       "link": "https://slide-agent.ghassen.io",
       "linkLabel": "サイトを見る",
       "repo": "https://github.com/ghassenbrg/slide-agent",
       "featured": true,
       "outcomes": [
-        "グリッドベースの構成言語から、編集可能なグラフ・表、テーマカラー、埋め込みフォントを備えたPowerPointを生成するTypeScriptエンジンを開発しました。",
-        "フォントファイルに基づく文字の計測、レイアウトとコントラストの検査、OOXMLスキーマのオフライン検証を実装しました。",
-        "@slide-agent/coreとしてnpmで公開し、CLI、ライブラリAPI、MCPサーバーを提供しています。CSVを用いたテンプレートへの差し込みでは、AIモデルを呼び出さずに資料を生成できます。"
+        "構造化されたレイアウトから、PowerPoint標準のグラフ、表、テーマ、埋め込みフォントを生成するTypeScriptエンジンを開発しました。",
+        "フォントに基づく文字の計測、レイアウトとコントラストの検査、OOXMLのオフライン検証を実装しました。",
+        "@slide-agent/coreをnpmで公開し、CLI、ライブラリAPI、MCPサーバーを提供しています。CSVからテンプレートへデータを差し込む機能も実装しました。"
       ],
       "technologies": [
         "TypeScript",
@@ -491,14 +468,14 @@
       "role": "作成者・フルスタックエンジニア",
       "period": "2025 – 2026",
       "status": "個人開発",
-      "summary": "個人のお金や共同の支出を管理するアプリです。FlutterとNuxtのクライアントと、REST・MCPインターフェースを備えたSpring Bootサービスで構成しています。",
+      "summary": "個人のお金や共同の支出を管理する、モバイル・Web対応のアプリです。",
       "link": "https://pockito.ghassen.io",
       "linkLabel": "アプリを開く",
       "featured": true,
       "outcomes": [
-        "REST・MCPの各アダプターが共通の業務サービスを利用するSpring Bootバックエンドを設計し、Flutter・Nuxtクライアントを開発しました。",
+        "Flutter・NuxtクライアントとSpring Bootバックエンドを開発し、REST・MCPインターフェースで業務ロジックを共通化しました。",
         "Keycloak認証、MCPクライアント向けのOAuthディスカバリー、Redis Streamsを用いたイベント駆動の通知を実装しました。",
-        "Traefikによるルーティングを含むKubernetesのデプロイ・ロールバック用スクリプト、自動テスト、E2Eリリース検証を整備しました。"
+        "Kubernetesのデプロイとロールバックを自動化し、自動テストとE2Eリリース検証を整備しました。"
       ],
       "technologies": [
         "Java",
@@ -524,15 +501,15 @@
       "role": "作成者・メンテナー",
       "period": "2026",
       "status": "オープンソース・Chrome拡張機能",
-      "summary": "Netflix、TVer、Prime Videoの字幕を同期翻訳するChrome拡張機能です。標準では端末内で翻訳し、任意でクラウドの翻訳サービスも利用できます。",
+      "summary": "Netflix、TVer、Prime Videoの字幕を翻訳するChrome拡張機能です。端末内の翻訳と、任意のクラウド翻訳に対応しています。",
       "link": "https://submate.ghassen.io",
       "linkLabel": "サイトを見る",
       "repo": "https://github.com/ghassenbrg/SubMate",
       "featured": true,
       "outcomes": [
-        "Chromeの端末内Translator APIを利用するManifest V3拡張機能を開発しました。ローカルキャッシュを備え、SubMate専用のサーバーやアカウントは不要で、利用状況データ（テレメトリー）を収集しません。",
-        "共通基盤とサービス別アダプターを設計し、TTML/WebVTTの解析、TVerのHLSセグメント結合、全画面対応の同期字幕表示を実装しました。",
-        "利用者自身のAPIキーを使う任意のクラウド翻訳を追加しました。英語、日本語、フランス語、アラビア語の画面表示に対応し、右から左への表示も実装しました。"
+        "ChromeのTranslator APIによる端末内翻訳とローカルキャッシュを実装しました。専用サーバーやユーザーアカウントは不要です。",
+        "共通の字幕処理基盤とサービス別アダプターを設計し、全画面対応の同期字幕表示を実装しました。",
+        "利用者自身のAPIキーを使う任意のクラウド翻訳を追加し、英語、日本語、フランス語、アラビア語の画面表示と右から左への表示に対応しました。"
       ],
       "technologies": [
         "TypeScript",

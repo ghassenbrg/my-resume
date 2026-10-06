@@ -19,7 +19,8 @@ const factsOf = (data: CVData) => ({
     startDate: entry.startDate,
     endDate: entry.endDate,
     achievements: entry.achievements.length,
-    projects: entry.projects?.map((project) => [project.title.split(' — ')[0], project.period, project.outcomes.length, project.technologies]),
+    // Company project titles are localized descriptions, not product identifiers.
+    projects: entry.projects?.map((project) => [project.kind, project.company, project.period, project.outcomes.length, project.technologies]),
     pdf: entry.pdf,
   })),
   projects: data.projects.map((project) => [project.title, project.period, project.link, project.repo, project.featured, project.outcomes.length, project.technologies, project.pdf]),
@@ -106,8 +107,8 @@ describe('PDF evidence selection', () => {
     const selected = selectExperience(entry)
 
     expect(selected.achievements).toEqual([entry.achievements[3], entry.achievements[0]])
-    expect(selected.projects).toEqual([{ title: 'PackManager', period: '2022 – 2023', outcomes: [entry.projects![1].outcomes[1]] }])
-    expect(selected.otherProjects.map((project) => project.title)).not.toContain('PackManager')
+    expect(selected.projects).toEqual([{ title: 'Insurance Product Configuration', period: '2022 – 2023', outcomes: [entry.projects![1].outcomes[1]] }])
+    expect(selected.otherProjects.map((project) => project.title)).not.toContain('Insurance Product Configuration')
     expect(selected.roles.map((role) => role.position)).toEqual(['Analyst Developer', 'Software Developer'])
   })
 

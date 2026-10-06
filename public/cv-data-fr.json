@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Ghassen Bargougui | Application Engineer — Java et plateformes cloud",
-    "description": "Application Engineer chez Rakuten à Fukuoka, au Japon, sur les systèmes de Rakuten Card. Sept ans d’expérience en Java, API et systèmes financiers, avec déploiements Kubernetes, tests de performance, observabilité et projets personnels intégrant l’IA."
+    "description": "Application Engineer au Japon, avec sept ans d’expérience dans les logiciels financiers. API Java, déploiement cloud, performance et projets personnels."
   },
   "hero": {
     "name": "Ghassen Bargougui",
@@ -13,11 +13,11 @@
   },
   "about": {
     "paragraphs": [
-      "Je suis Application Engineer, avec sept ans d’expérience en développement Java et full-stack dans la banque, l’assurance et les paiements par carte, en Tunisie, au Luxembourg et au Japon. Mon travail se situe à la jonction entre le code applicatif et la plateforme qui l’exécute : conception d’API, déploiement, diagnostic de performances et fiabilité des livraisons.",
+      "Je suis Application Engineer, avec sept ans d’expérience Java et full-stack en Tunisie, au Luxembourg et au Japon. J’ai travaillé dans la banque, l’assurance et les paiements par carte, de l’analyse des besoins métier et la conception d’API au déploiement et à la résolution des problèmes de performance.",
       "Chez Rakuten, je contribue au pilotage de travaux de migration cloud aux côtés de mon responsable et du chef de projet, en coordination avec les équipes de développement, d’infrastructure, CI/CD et sécurité. Je conçois des évolutions applicatives et d’infrastructure, je valide des déploiements, j’analyse les problèmes de performance et j’améliore la journalisation. J’automatise aussi les builds et les déploiements locaux pour faciliter la mise en place des environnements de développement de l’équipe.",
       "En dehors du travail, je développe des produits de bout en bout : Slide Agent, un moteur open source de génération de présentations PowerPoint éditables ; Pockito, une application de gestion des finances personnelles et partagées ; et SubMate, une extension Chrome de traduction de sous-titres."
     ],
-    "profile": "Application Engineer avec sept ans d’expérience Java et full-stack dans la banque, l’assurance et les paiements par carte, en Tunisie, au Luxembourg et au Japon. Chez Rakuten, je travaille sur la modernisation applicative, la migration cloud, les tests de performance, l’observabilité et l’automatisation du développement, avec un pilotage partagé et une coordination entre équipes. Créateur de Slide Agent, Pockito et SubMate.",
+    "profile": "Application Engineer avec sept ans d’expérience Java et full-stack dans la banque, l’assurance et les paiements par carte, en Tunisie, au Luxembourg et au Japon. Développement et modernisation de services, conception d’API et déploiement cloud. Une pratique qui associe développement, analyse des performances, automatisation des livraisons et coordination entre équipes.",
     "highlights": [
       {
         "value": "7",
@@ -221,7 +221,7 @@
       "location": "Fukuoka, Japon",
       "startDate": "2025-12-01",
       "logo": "rakuten_logo.png",
-      "description": "Développement d’applications financières en Java et ingénierie cloud et plateforme. Contribution au pilotage de travaux de migration cloud aux côtés de mon responsable et du chef de projet, avec coordination de la conception et de la mise en œuvre entre les équipes de développement, d’infrastructure, CI/CD et sécurité.",
+      "description": "Développement d’applications financières et d’infrastructures cloud. Contribution au pilotage de la migration cloud aux côtés de mon responsable et du chef de projet, en coordination avec les équipes d’ingénierie.",
       "achievements": [
         "Modernisation de services Java, résolution des problèmes de dépendances et de compatibilité, mise à jour des tests et documentation de la passation.",
         "Conception et validation de déploiements cloud, notamment le réseau, la configuration des ressources et les plans de repli, avec les équipes infrastructure et sécurité.",
@@ -251,34 +251,11 @@
       "startDate": "2025-02-01",
       "endDate": "2025-11-30",
       "logo": "sogeti_logo.png",
-      "description": "Développement et maintenance d’applications bancaires internes pour BGL BNP Paribas, notamment la gestion des mandats clients de la banque de détail.",
+      "description": "Développement et maintenance d’applications de banque de détail en mission chez BGL BNP Paribas.",
       "achievements": [
-        "Livraison de fonctionnalités de gestion des mandats clients avec Spring Boot, Spring Batch et Angular Material.",
-        "Développement d’API REST et de l’accès aux données Hibernate pour des applications internes (PostgreSQL, Oracle).",
-        "Automatisation des builds et des déploiements avec Maven et Jenkins ; qualité du code assurée par les tests unitaires, l’analyse SonarQube et les revues de code."
-      ],
-      "projects": [
-        {
-          "title": "BGL BNP Paribas — Gestion des mandats",
-          "kind": "professional",
-          "role": "Ingénieur full-stack",
-          "company": "Sogeti · BGL BNP Paribas",
-          "period": "2025",
-          "summary": "Gestion des mandats clients pour la banque de détail.",
-          "outcomes": [
-            "Développement des workflows de mandats avec des traitements Spring Batch et des écrans Angular Material.",
-            "Ajout de tests unitaires et de contrôles SonarQube, et automatisation des pipelines de build et de déploiement avec Maven et Jenkins."
-          ],
-          "technologies": [
-            "Java",
-            "Spring Boot",
-            "Spring Batch",
-            "Angular",
-            "Angular Material",
-            "SonarQube",
-            "Jenkins"
-          ]
-        }
+        "Mise en œuvre des workflows de mandats clients, des traitements Spring Batch aux écrans Angular Material, avec des services Spring Boot.",
+        "Développement d’API REST et de couches de persistance avec Hibernate, PostgreSQL et Oracle.",
+        "Automatisation des builds et des déploiements avec Maven et Jenkins ; maintenance des tests unitaires, contrôles SonarQube et revues de code."
       ],
       "pdf": {
         "achievements": [
@@ -295,10 +272,10 @@
       "startDate": "2024-09-01",
       "endDate": "2025-01-31",
       "logo": "cbtw_logo.png",
-      "description": "Modernisation de services Java et développement d’applications web avec Spring Boot, Angular et PostgreSQL.",
+      "description": "Développement d’applications web full-stack et modernisation de services Java avec Spring Boot, Angular et PostgreSQL.",
       "achievements": [
-        "Refactorisation de composants monolithiques en microservices lors de la modernisation des services Java.",
-        "Conception et documentation d’API REST d’intégration, en tenant compte du versionnement et de la sécurité.",
+        "Refactorisation de composants applicatifs monolithiques en microservices.",
+        "Développement et documentation d’API REST d’intégration, avec prise en compte du versionnement et des exigences de sécurité.",
         "Automatisation des déploiements avec Jenkins et Docker, réduisant les étapes manuelles de livraison."
       ],
       "pdf": {
@@ -328,16 +305,16 @@
       "startDate": "2019-10-01",
       "endDate": "2024-08-31",
       "logo": "vermeg_logo.png",
-      "description": "Développement et maintenance de services backend pour des applications d’assurance et financières, puis, en tant qu’Analyst Developer, prise en charge de l’analyse fonctionnelle et de la conception de solutions entre équipes.",
+      "description": "Évolution de Software Developer à Analyst Developer, associant développement backend pour l’assurance et la finance, analyse des besoins et conception de solutions.",
       "achievements": [
+        "Traduction des besoins métier en conceptions backend et contrats d’API, avec les équipes métier, architecture et framework.",
         "Amélioration des temps de réponse des API par l’optimisation des requêtes et la mise en cache.",
-        "Prise en charge des composants backend qui m’étaient confiés, en lien avec les équipes métier, architecture et framework (besoins, microservices, contrats d’API).",
-        "Documentation des conceptions (diagrammes UML et de séquence) ; interlocuteur principal des équipes sur la conception.",
-        "Mise en œuvre de l’authentification et du contrôle d’accès par rôles avec Keycloak ; gestion des pipelines CI/CD et des stratégies de retour arrière."
+        "Documentation des solutions par des diagrammes UML et de séquence, et coordination des décisions de conception entre équipes.",
+        "Mise en œuvre de l’authentification et du contrôle d’accès par rôles avec Keycloak ; maintenance des pipelines CI/CD et des procédures de retour arrière."
       ],
       "projects": [
         {
-          "title": "SalesFlow",
+          "title": "Modernisation des workflows d’assurance",
           "kind": "professional",
           "role": "Développeur principal",
           "company": "VERMEG",
@@ -358,7 +335,7 @@
           ]
         },
         {
-          "title": "PackManager",
+          "title": "Configuration de produits d’assurance",
           "kind": "professional",
           "role": "Développeur backend",
           "company": "VERMEG",
@@ -375,7 +352,7 @@
           ]
         },
         {
-          "title": "Solife Digital & Generali Portal",
+          "title": "Portails pour courtiers en assurance",
           "kind": "professional",
           "role": "Développeur full-stack",
           "company": "VERMEG",
@@ -392,7 +369,7 @@
           ]
         },
         {
-          "title": "Magikforms",
+          "title": "Traitement de documents et formulaires",
           "kind": "professional",
           "role": "Développeur backend",
           "company": "VERMEG",
@@ -409,7 +386,7 @@
           ]
         },
         {
-          "title": "Insurance Pricing Module",
+          "title": "Tarification d’assurance",
           "kind": "professional",
           "role": "Développeur full-stack",
           "company": "VERMEG",
@@ -430,9 +407,9 @@
       "pdf": {
         "achievements": [
           0,
-          3,
           1,
-          2
+          2,
+          3
         ],
         "projects": [
           {
@@ -459,15 +436,15 @@
       "role": "Créateur & mainteneur",
       "period": "2026",
       "status": "Open source · package npm",
-      "summary": "Moteur open source et outils MCP générant des présentations PowerPoint éditables (graphiques natifs, validation de mise en page).",
+      "summary": "Outil open source de génération de présentations PowerPoint éditables à partir de code et d’outils d’IA.",
       "link": "https://slide-agent.ghassen.io",
       "linkLabel": "Voir le site",
       "repo": "https://github.com/ghassenbrg/slide-agent",
       "featured": true,
       "outcomes": [
-        "Développement d’un moteur TypeScript qui compile un langage de composition par grille en PowerPoint natif, avec graphiques et tableaux éditables, couleurs de thème et polices intégrées.",
-        "Mesure du texte à partir des fichiers de police, contrôles de mise en page et de contraste, et validation hors ligne des schémas OOXML.",
-        "Publication du moteur sur npm sous @slide-agent/core, avec une CLI, une API de bibliothèque et un serveur MCP ; le remplissage de modèles génère des présentations à partir d’un CSV sans appel à un modèle d’IA."
+        "Développement d’un moteur TypeScript générant des graphiques, tableaux, thèmes et polices intégrées PowerPoint à partir de mises en page structurées.",
+        "Mesure du texte à partir des polices, contrôles de mise en page et de contraste, et validation OOXML hors ligne.",
+        "Publication de @slide-agent/core sur npm avec une CLI, une API de bibliothèque et un serveur MCP ; ajout du remplissage de modèles à partir de CSV."
       ],
       "technologies": [
         "TypeScript",
@@ -491,14 +468,14 @@
       "role": "Créateur & ingénieur full-stack",
       "period": "2025 – 2026",
       "status": "Projet personnel",
-      "summary": "Application de gestion des finances personnelles et partagées : clients Flutter et Nuxt, service Spring Boot (REST, MCP).",
+      "summary": "Application de gestion des finances personnelles et partagées, avec des clients mobile et web.",
       "link": "https://pockito.ghassen.io",
       "linkLabel": "Ouvrir l’app",
       "featured": true,
       "outcomes": [
-        "Conception d’un backend Spring Boot dans lequel les adaptateurs REST et MCP partagent un même service métier, et développement des clients Flutter et Nuxt.",
+        "Développement de clients Flutter et Nuxt et d’un backend Spring Boot, avec une logique métier commune aux interfaces REST et MCP.",
         "Intégration de l’authentification Keycloak, de la découverte OAuth pour les clients MCP et de notifications événementielles avec Redis Streams.",
-        "Scripts Kubernetes de déploiement et de retour arrière avec routage Traefik ; tests automatisés et contrôles de livraison de bout en bout."
+        "Automatisation des déploiements et retours arrière Kubernetes, avec tests automatisés et contrôles de livraison de bout en bout."
       ],
       "technologies": [
         "Java",
@@ -524,15 +501,15 @@
       "role": "Créateur & mainteneur",
       "period": "2026",
       "status": "Open source · extension Chrome",
-      "summary": "Extension Chrome de traduction synchronisée des sous-titres sur Netflix, TVer et Prime Video, avec traduction locale par défaut et fournisseurs cloud facultatifs.",
+      "summary": "Extension Chrome de traduction des sous-titres sur Netflix, TVer et Prime Video, en local ou via des fournisseurs cloud facultatifs.",
       "link": "https://submate.ghassen.io",
       "linkLabel": "Voir le site",
       "repo": "https://github.com/ghassenbrg/SubMate",
       "featured": true,
       "outcomes": [
-        "Extension Manifest V3 sur l’API Translator locale de Chrome : cache local, ni serveur SubMate, ni compte, ni télémétrie.",
-        "Adaptateurs par plateforme sur un cœur commun : analyse TTML/WebVTT, assemblage des segments HLS de TVer et sous-titres synchronisés en plein écran.",
-        "Traduction cloud facultative avec la clé API de l’utilisateur ; interface traduite en anglais, japonais, français et arabe, avec prise en charge de l’écriture de droite à gauche."
+        "Traduction sur l’appareil et cache local via l’API Translator de Chrome, sans serveur dédié ni compte utilisateur.",
+        "Conception d’un cœur commun de traitement des sous-titres, avec adaptateurs par plateforme et affichage synchronisé en plein écran.",
+        "Ajout de fournisseurs cloud facultatifs utilisant la clé API de l’utilisateur ; interface en anglais, japonais, français et arabe, avec prise en charge de l’écriture de droite à gauche."
       ],
       "technologies": [
         "TypeScript",

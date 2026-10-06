@@ -53,10 +53,9 @@ const render = (lang, d) => {
     const projects = e.projects.length
       ? `<p class="sub">${l.companyProjects}</p><ul>${e.projects.map(p => `<li><b>${escape(p.title)}</b>${p.period ? paren(when(p.period), lang) : ''}${colon(lang)}${escape(lead(p.outcomes.join(lang === 'jp' ? '' : ' '), lang))}</li>`).join('')}</ul>`
       : ''
-    const others = e.otherProjects.length
-      ? `<p class="small">${l.otherCompanyProjects}${colon(lang)}${e.otherProjects.map(p => `${escape(p.title)}${p.period ? paren(when(p.period), lang) : ''}`).join(sep(lang))}</p>`
-      : ''
-    return `<article>${roles}<p>${escape(e.description)}</p>${bullets(e.achievements)}${projects}${others}</article>`
+    // Keep the PDF focused on the selected project evidence. The website
+    // carries the full company-project list and its expandable details.
+    return `<article>${roles}<p>${escape(e.description)}</p>${bullets(e.achievements)}${projects}</article>`
   }).join('')
 
   const skills = content.skills.map(s => `<p><b>${escape(s.category)}${colon(lang)}</b>${escape(s.names.join(sep(lang)))}</p>`).join('')
@@ -82,7 +81,7 @@ const render = (lang, d) => {
     .nowrap { white-space: nowrap; }
     p { margin-top: 3px; } ul { margin: 3px 0 0; padding-left: 14px; } li { margin-bottom: 1px; break-inside: avoid; }
     .sub { font-weight: bold; margin-top: 4px; break-after: avoid; } .sub + ul { break-inside: avoid; } .small { font-size: 8.8pt; color: #435465; }
-    .skills p { margin: 0 0 2px; } .education p { margin: 0 0 4px; }
+    .skills { break-inside: avoid; } .skills p { margin: 0 0 2px; } .education p { margin: 0 0 4px; }
     body.jp { font-family: 'CV Noto Sans JP', sans-serif; font-size: 9pt; line-height: 1.38; } .jp h1 { font-size: 20pt; letter-spacing: 0; } .jp h3 { font-size: 9.6pt; }
     </style></head><body class="${lang}">${body}</body></html>`
 }
