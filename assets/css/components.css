@@ -641,7 +641,7 @@
 }
 .skill-tab.active {
   color: #0a0a12;
-  background: var(--accent-grad);
+  background: var(--cta-grad);
   border-color: transparent;
   font-weight: 600;
 }
@@ -1074,7 +1074,7 @@
 }
 .proj-link-btn:hover {
   color: #0a0a12;
-  background: var(--accent-grad);
+  background: var(--cta-grad);
   border-color: transparent;
   transform: translateY(-2px);
 }
@@ -1293,7 +1293,7 @@
 }
 .cert-link:hover {
   color: #0a0a12;
-  background: var(--accent-grad);
+  background: var(--cta-grad);
   border-color: transparent;
 }
 .lang-card {
@@ -1490,7 +1490,7 @@
 }
 .back-top:hover {
   color: #0a0a12;
-  background: var(--accent-grad);
+  background: var(--cta-grad);
   border-color: transparent;
 }
 
