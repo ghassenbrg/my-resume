@@ -2,7 +2,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <BrandMonogram :size="44" :radius="12" :glow="false" />
+        <BrandMonogram :size="44" :glow="false" />
         <div>
           <div class="footer-name">{{ name }}</div>
           <div class="footer-role">{{ role }}</div>

@@ -2,7 +2,7 @@
   <nav ref="navRef" class="nav no-print" :class="{ 'nav-scrolled': scrolled }" :aria-label="uiCopy.a11y.primaryNav">
     <div class="container nav-inner">
       <a class="nav-brand" href="#hero" @click="handleNavClick('hero')">
-        <BrandMonogram :size="38" :radius="11" :glow="false" />
+        <BrandMonogram :size="38" :glow="false" />
         <span class="nav-brand-name">{{ brandName }}</span>
       </a>
 

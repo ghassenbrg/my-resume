@@ -14,7 +14,7 @@
     "ogImage": "/og-image.png"
   },
   "theme": {
-    "default": "dark"
+    "default": "light"
   },
   "display": {
     "languagePercentage": false

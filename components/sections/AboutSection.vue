@@ -17,7 +17,12 @@
         </p>
       </div>
 
-      <div v-if="highlights.length" class="about-stats">
+      <div class="about-side">
+        <figure class="about-illo illo reveal" aria-hidden="true">
+          <img src="/illustrations/snib-about-laptop.webp" alt="" width="720" height="635" loading="lazy" decoding="async" />
+        </figure>
+
+        <div v-if="highlights.length" class="about-stats">
         <div
           v-for="(highlight, index) in highlights"
           :key="index"
@@ -26,6 +31,7 @@
         >
           <span class="stat-val grad-text">{{ highlight.value }}</span>
           <span class="stat-label">{{ highlight.label }}</span>
+        </div>
         </div>
       </div>
     </div>

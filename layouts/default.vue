@@ -30,10 +30,10 @@ useRevealObserver(
 // honor the config's default theme.
 //
 // Note: the pre-paint script (app.vue) reads only localStorage, and the config
-// is fetched client-side, so a *non-dark* config default would apply one frame
-// after first paint (a brief dark→light flash on a visitor's very first load
-// only). The shipped default is "dark", which matches the pre-paint default, so
-// there is no flash in practice.
+// is fetched client-side, so a *non-light* config default would apply one frame
+// after first paint (a brief light→dark flash on a visitor's very first load
+// only). The shipped default is "light" (the paper look), which matches the
+// pre-paint default, so there is no flash in practice.
 onMounted(async () => {
   await loadConfig()
 

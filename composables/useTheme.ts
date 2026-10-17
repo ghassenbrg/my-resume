@@ -1,4 +1,4 @@
-/* Dark / light theme state. Default = dark; the choice is remembered per
+/* Paper (light) / night (dark) theme state. Default = light; the choice is remembered per
  * visitor in localStorage and reflected on <html data-theme>. A pre-paint
  * inline script (see app.vue) applies the stored value before hydration to
  * avoid a flash; this composable keeps Vue state in sync afterwards. */
@@ -8,7 +8,7 @@ export type ThemeName = 'dark' | 'light'
 const STORAGE_KEY = 'cv-theme'
 
 export const useTheme = () => {
-  const theme = useState<ThemeName>('cv-theme', () => 'dark')
+  const theme = useState<ThemeName>('cv-theme', () => 'light')
 
   // Whether the visitor has an explicit saved preference (vs. a default).
   const hasStoredPreference = useState<boolean>('cv-theme-stored', () => false)

@@ -2,7 +2,7 @@
   <div
     class="monogram"
     :class="{ 'monogram-glow': glow }"
-    :style="{ width: `${size}px`, height: `${size}px`, borderRadius: `${radius}px` }"
+    :style="{ width: `${size}px`, height: `${size}px` }"
     aria-hidden="true"
   >
     <span class="mono-text" :style="{ fontSize: `${size * 0.42}px` }">{{ text }}</span>
@@ -12,19 +12,17 @@
 </template>
 
 <script setup lang="ts">
-/* Brand monogram tile derived from the GB logo. Ported from the design's
- * <Monogram>. Purely decorative (aria-hidden). */
+/* Brand monogram: "GB" inside an ink-rimmed paper disc (the Snib head shape),
+ * with an orange underline and spark. Purely decorative (aria-hidden). */
 withDefaults(
   defineProps<{
     size?: number
     text?: string
-    radius?: number
     glow?: boolean
   }>(),
   {
     size: 116,
     text: 'GB',
-    radius: 26,
     glow: true,
   },
 )

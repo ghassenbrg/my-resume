@@ -27,7 +27,7 @@ export const DEFAULT_CV_CONFIG: CVConfig = {
   social: { github: '', linkedin: '' },
   cvLink: '',
   meta: { siteUrl: '', ogImage: '/og-image.png' },
-  theme: { default: 'dark' },
+  theme: { default: 'light' },
   display: { languagePercentage: true },
 }
 
@@ -64,7 +64,7 @@ export const normalizeCvConfig = (data: unknown): CVConfig => {
       ogImage: typeof meta.ogImage === 'string' ? meta.ogImage : DEFAULT_CV_CONFIG.meta.ogImage,
     },
     theme: {
-      default: theme.default === 'light' ? 'light' : 'dark',
+      default: theme.default === 'dark' ? 'dark' : 'light',
     },
     display: {
       // Shown by default; only an explicit `false` hides the value.

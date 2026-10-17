@@ -2,8 +2,11 @@
   <section id="contact" class="section contact-section" data-screen-label="contact" tabindex="-1">
     <div class="container">
       <div class="contact-card card reveal">
-        <div class="contact-glow"></div>
+        <figure class="contact-illo illo" aria-hidden="true">
+          <img src="/illustrations/snib-contact-wave.webp" alt="" width="720" height="720" loading="lazy" decoding="async" />
+        </figure>
 
+        <div class="contact-body">
         <span class="kicker">{{ uiCopy.sections.contactKicker }}</span>
 
         <h2 class="contact-title">
@@ -59,6 +62,7 @@
             <AppIcon name="linkedin" :size="17" />
             {{ uiCopy.actions.linkedin }}
           </a>
+        </div>
         </div>
       </div>
     </div>

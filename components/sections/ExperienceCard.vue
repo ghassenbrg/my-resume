@@ -6,7 +6,7 @@
 
     <div class="tl-card card">
       <div class="tl-head">
-        <div class="company-logo" :style="logoStyle">
+        <div class="company-logo" :class="{ 'company-logo--initials': !exp.logo }">
           <img
             v-if="exp.logo"
             :src="`/${exp.logo}`"
@@ -91,10 +91,9 @@
 </template>
 
 <script setup lang="ts">
-import type { CSSProperties } from 'vue'
 import AppIcon from '~/components/ui/AppIcon.vue'
 import type { Experience } from '~/types/cv'
-import { formatDateRange, formatDuration, initials, tileGradient } from '~/utils/cvFormat'
+import { formatDateRange, formatDuration, initials } from '~/utils/cvFormat'
 import { revealDelay } from '~/utils/reveal'
 
 const props = defineProps<{ exp: Experience; index: number }>()
@@ -120,11 +119,5 @@ const dateRange = computed(() =>
 )
 const duration = computed(() =>
   formatDuration(props.exp.startDate, props.exp.endDate, uiCopy.value.meta.durationUnits, referenceDate.value),
-)
-
-// Real logos sit on a clean white tile so any brand mark stays legible in both
-// themes; companies without a logo fall back to a hue-tinted initial monogram.
-const logoStyle = computed<CSSProperties>(() =>
-  props.exp.logo ? { background: '#ffffff' } : { background: tileGradient(props.exp.company) },
 )
 </script>

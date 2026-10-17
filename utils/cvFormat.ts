@@ -17,30 +17,6 @@ export const initials = (name: string): string => {
   return (words[0][0] + words[1][0]).toUpperCase()
 }
 
-/* Deterministic hue per string -> tints monogram tiles for variety. */
-export const hueOf = (value: string): number => {
-  let hash = 0
-
-  for (let index = 0; index < value.length; index += 1) {
-    hash = value.charCodeAt(index) + ((hash << 5) - hash)
-  }
-
-  return Math.abs(hash) % 360
-}
-
-/* Tile gradient background derived from a string (oklch keeps tints tasteful). */
-export const tileGradient = (
-  value: string,
-  light = 0.32,
-  dark = 0.2,
-  lightChroma = 0.07,
-  darkChroma = 0.05,
-): string => {
-  const hue = hueOf(value)
-
-  return `linear-gradient(140deg, oklch(${light} ${lightChroma} ${hue}), oklch(${dark} ${darkChroma} ${hue}))`
-}
-
 /* Resume language code → BCP 47 locale for date formatting ('jp' is our alias for Japanese). */
 const DATE_LOCALES: Record<string, string> = { en: 'en-US', fr: 'fr-FR', jp: 'ja-JP', ja: 'ja-JP' }
 

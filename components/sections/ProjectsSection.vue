@@ -28,7 +28,7 @@
           :style="revealDelay(Math.min(index, 5))"
         >
           <div class="proj-top">
-            <div class="proj-glyph" :style="{ background: tileGradient(project.title, 0.3, 0.18, 0.08) }">
+            <div class="proj-glyph">
               <span>{{ initials(project.title) }}</span>
             </div>
             <div class="proj-top-actions">
@@ -106,7 +106,7 @@ import { computed } from 'vue'
 import AppIcon from '~/components/ui/AppIcon.vue'
 import ResumeSection from '~/components/ui/ResumeSection.vue'
 import type { Project } from '~/types/cv'
-import { initials, tileGradient } from '~/utils/cvFormat'
+import { initials } from '~/utils/cvFormat'
 import { revealDelay } from '~/utils/reveal'
 
 const { cvData, uiCopy, activeLanguage } = useCvData()

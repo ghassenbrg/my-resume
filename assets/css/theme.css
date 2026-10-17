@@ -1,81 +1,79 @@
 /* ============================================================================
  * THEME TOKENS & BASE STYLES
- * Brand DNA derived from the logo: dark navy tile, cream text,
- * gold (#e8a838) -> teal (#56c4b8) accent gradient, rounded tiles.
- * Ported from the Claude Design handoff (MyResume.html).
+ * Mr. Snib sheet look: warm paper, bold rounded ink outlines, flat fills,
+ * vivid orange for energy marks and calls to action, pale peach for panels and
+ * contact shadows. Dark mode is the sheets' charcoal "night scene": the same
+ * drawing on a charcoal backdrop, with the ink outlines turned to paper.
  * ==========================================================================*/
 
 :root {
-  /* Keep bright brand colors for filled controls and dark decorative surfaces. */
-  --brand-gold: #e8a838;
-  --brand-teal: #56c4b8;
-  --gold: var(--brand-gold);
-  --teal: var(--brand-teal);
-  --accent-grad: linear-gradient(100deg, var(--gold) 0%, var(--teal) 100%);
-  --cta-grad: linear-gradient(100deg, var(--brand-gold) 0%, var(--brand-teal) 100%);
-  --cta-text: #0a0a12;
+  /* Fixed brand colors (identical in both themes). */
+  --brand-ink: #111111;
+  --brand-paper: #fff8ef;
+  --brand-orange: #ff6b2d;
+  --brand-peach: #ffe4d2;
+  --on-orange: #111111;
 
   /* Type */
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-display: "Shantell Sans", "Zen Maru Gothic", "Nunito", system-ui, sans-serif;
+  --font-body: "Nunito", "Zen Maru Gothic", system-ui, sans-serif;
 
-  /* Radii */
-  --r-sm: 10px;
-  --r-md: 16px;
-  --r-lg: 22px;
-  --r-xl: 30px;
+  /* Ink strokes */
+  --stroke: 2.5px;
+
+  /* Slightly uneven radii read as hand-drawn rather than machined. */
+  --r-sm: 12px 10px 13px 9px / 10px 13px 9px 12px;
+  --r-md: 18px 14px 20px 13px / 14px 20px 13px 18px;
+  --r-lg: 26px 20px 28px 18px / 20px 28px 18px 26px;
+  --r-xl: 36px 28px 40px 26px / 28px 40px 26px 36px;
+  --r-pill: 999px;
 
   /* Layout */
   --maxw: 1180px;
-  --nav-h: 72px;
+  --nav-h: 74px;
 
   /* Motion */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ---------- DARK (default) ---------- */
+/* ---------- LIGHT: warm paper (default) ---------- */
 :root,
-[data-theme="dark"] {
-  --bg: #09090f;
-  --bg-2: #0e0e18;
-  --panel: #14141f;
-  --panel-2: #1a1a2a;
-  --panel-hi: #1f1f30;
-  --border: rgba(245, 240, 232, 0.09);
-  --border-strong: rgba(245, 240, 232, 0.16);
-  --text: #f5f0e8;
-  --text-soft: #c5c1d0;
-  --text-mute: #87849a;
-  --shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.85);
-  --glow-gold: rgba(232, 168, 56, 0.16);
-  --glow-teal: rgba(86, 196, 184, 0.16);
-  --chip-bg: rgba(245, 240, 232, 0.04);
-  --grid-line: rgba(245, 240, 232, 0.045);
-  color-scheme: dark;
+[data-theme="light"] {
+  --bg: #fff8ef;
+  --bg-2: #fff1e3;
+  --panel: #ffffff;
+  --peach: #ffe4d2;
+  --peach-2: #ffd5bb;
+  --line: #111111;
+  --line-soft: rgba(17, 17, 17, 0.14);
+  --text: #111111;
+  --text-soft: #3b342d;
+  --text-mute: #6b6158;
+  --orange: #ff6b2d;
+  /* Orange that passes AA as text on paper and white. */
+  --orange-text: #c2410c;
+  --shadow-drop: #ffd5bb;
+  --shadow-ink: #111111;
+  color-scheme: light;
 }
 
-/* ---------- LIGHT ---------- */
-[data-theme="light"] {
-  /* AA text contrast on the light surfaces, including tinted badges. */
-  --gold: #805300;
-  --teal: #146b62;
-  --bg: #f4f1ea;
-  --bg-2: #efeae0;
-  --panel: #ffffff;
-  --panel-2: #faf7f1;
-  --panel-hi: #ffffff;
-  --border: rgba(20, 20, 31, 0.1);
-  --border-strong: rgba(20, 20, 31, 0.18);
-  --text: #16161f;
-  --text-soft: #3c3a47;
-  --text-mute: #6f6c7d;
-  --shadow: 0 22px 50px -26px rgba(40, 36, 28, 0.35);
-  --glow-gold: rgba(128, 83, 0, 0.08);
-  --glow-teal: rgba(20, 107, 98, 0.08);
-  --chip-bg: rgba(20, 20, 31, 0.035);
-  --grid-line: rgba(20, 20, 31, 0.05);
-  color-scheme: light;
+/* ---------- DARK: charcoal night scene ---------- */
+[data-theme="dark"] {
+  --bg: #161411;
+  --bg-2: #1c1915;
+  --panel: #221e19;
+  --peach: #3a281c;
+  --peach-2: #4a3121;
+  --line: #f3e9dc;
+  --line-soft: rgba(255, 248, 239, 0.16);
+  --text: #fff8ef;
+  --text-soft: #e2d7c9;
+  --text-mute: #b0a497;
+  --orange: #ff7a3d;
+  --orange-text: #ff925f;
+  --shadow-drop: #0b0a08;
+  --shadow-ink: #000000;
+  color-scheme: dark;
 }
 
 * {
@@ -92,8 +90,8 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 16.5px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background 0.5s var(--ease), color 0.4s var(--ease);
@@ -105,10 +103,10 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  line-height: 1.08;
+  font-weight: 700;
+  line-height: 1.12;
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 p {
   margin: 0;
@@ -129,12 +127,12 @@ button {
   color: inherit;
 }
 ::selection {
-  background: var(--brand-gold);
-  color: var(--cta-text);
+  background: var(--brand-orange);
+  color: var(--brand-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 3px solid var(--orange);
   outline-offset: 3px;
 }
 
@@ -146,7 +144,7 @@ button {
   padding: 0 28px;
 }
 .section {
-  padding: clamp(72px, 11vw, 132px) 0;
+  padding: clamp(72px, 10vw, 124px) 0;
   position: relative;
 }
 
@@ -158,8 +156,9 @@ button {
   z-index: 1000;
   transform: translateY(calc(-100% - 16px));
   border-radius: var(--r-sm);
-  background: var(--brand-gold);
-  color: var(--cta-text);
+  border: var(--stroke) solid var(--brand-ink);
+  background: var(--brand-orange);
+  color: var(--on-orange);
   padding: 10px 16px;
   font-family: var(--font-display);
   font-weight: 700;
@@ -169,30 +168,50 @@ button {
   transform: translateY(0);
 }
 
-/* Section kicker / heading rhythm */
+/* Section kicker: a peach caption pill, as on the reference sheets. */
 .kicker {
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  letter-spacing: 0.28em;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-mute);
+  color: var(--text);
+  background: var(--peach);
+  padding: 6px 16px 5px 12px;
+  border-radius: var(--r-pill);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
+/* Three orange energy ticks in front of the label. */
 .kicker::before {
   content: "";
-  width: 26px;
-  height: 2px;
-  background: var(--accent-grad);
-  border-radius: 2px;
+  width: 20px;
+  height: 16px;
+  flex-shrink: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 18' fill='none' stroke='%23ff6b2d' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M3 13 6 4M10 14 11 2M16 14l3-8'/%3E%3C/svg%3E")
+    center / contain no-repeat;
 }
 .section-title {
-  font-size: clamp(30px, 4.4vw, 46px);
+  font-size: clamp(32px, 4.6vw, 50px);
   margin-top: 18px;
+  font-weight: 800;
+  position: relative;
+  padding-bottom: 20px;
+}
+/* A short orange brush stroke under each section title. */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  bottom: 0;
+  width: 132px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 132 14' fill='none'%3E%3Cpath d='M4 9.5C30 5 58 3.5 86 4.5c14 .5 28 1.8 42 3.6' stroke='%23ff6b2d' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E")
+    left center / contain no-repeat;
 }
 .section-head {
-  margin-bottom: clamp(36px, 5vw, 60px);
+  margin-bottom: clamp(36px, 5vw, 56px);
   max-width: 720px;
 }
 .section-lead {
@@ -202,72 +221,72 @@ button {
   max-width: 640px;
 }
 
-/* Gradient text */
+/* Accent text (kept under its historical name): flat orange, no gradient. */
 .grad-text {
-  background: var(--accent-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--orange-text);
 }
 
-/* Buttons */
+/* Buttons: chunky ink outline with a solid drop that presses in. */
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 12px 20px;
-  border-radius: 999px;
-  font-size: 14.5px;
-  font-weight: 600;
+  padding: 11px 20px;
+  border-radius: var(--r-pill);
+  font-size: 15px;
+  font-weight: 700;
   font-family: var(--font-display);
-  letter-spacing: -0.01em;
-  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
-    background 0.25s var(--ease), border-color 0.25s var(--ease);
-  border: 1px solid transparent;
+  border: var(--stroke) solid var(--line);
+  box-shadow: 0 4px 0 var(--shadow-ink);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease),
+    background 0.25s var(--ease);
   white-space: nowrap;
 }
 .btn svg {
   width: 17px;
   height: 17px;
 }
-.btn-primary {
-  background: var(--cta-grad);
-  color: var(--cta-text);
-  box-shadow: 0 10px 30px -10px var(--glow-gold);
-}
-
-/* The terminal keeps its dark surface in both themes. */
-.hero-card-terminal {
-  --gold: var(--brand-gold);
-  --teal: var(--brand-teal);
-}
-
-.back-top.no-print:hover {
-  background: var(--cta-grad);
-  color: var(--cta-text);
-}
-.btn-primary:hover {
+.btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 38px -10px var(--glow-gold);
+  box-shadow: 0 6px 0 var(--shadow-ink);
+}
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 var(--shadow-ink);
+}
+.btn-primary {
+  background: var(--brand-orange);
+  color: var(--on-orange);
+  border-color: var(--brand-ink);
 }
 .btn-ghost {
-  background: var(--chip-bg);
+  background: var(--panel);
   color: var(--text);
-  border-color: var(--border-strong);
 }
 .btn-ghost:hover {
-  transform: translateY(-2px);
-  border-color: var(--gold);
-  background: var(--panel-hi);
+  background: var(--peach);
 }
 
-/* Cards */
+/* Cards: sheet panels with an ink outline and a peach contact shadow. */
 .card {
   background: var(--panel);
-  border: 1px solid var(--border);
+  border: var(--stroke) solid var(--line);
   border-radius: var(--r-lg);
-  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease),
-    box-shadow 0.35s var(--ease), background 0.35s var(--ease);
+  box-shadow: 0 6px 0 var(--shadow-drop);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease),
+    background 0.3s var(--ease);
+}
+
+/* Generated illustrations are drawn on paper; keep that paper in both themes. */
+.illo {
+  background: var(--brand-paper);
+  border: var(--stroke) solid var(--line);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+}
+.illo img {
+  width: 100%;
+  height: auto;
 }
 
 /* Scroll reveal */
@@ -299,19 +318,19 @@ button {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--panel-hi);
+  background: var(--peach-2);
   border-radius: 8px;
   border: 3px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-mute);
+  background: var(--orange);
 }
 
 /* Print: clean CV fallback for "Download CV" */

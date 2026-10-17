@@ -1,29 +1,17 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="tile" x1="22" y1="18" x2="108" y2="116" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1a1a2e"/>
-      <stop offset="1" stop-color="#09090f"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="34" y1="94" x2="94" y2="94" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#e8a838"/>
-      <stop offset="1" stop-color="#56c4b8"/>
-    </linearGradient>
-  </defs>
-
-  <!-- <rect width="128" height="128" rx="26" fill="#09090f"/> -->
-  <rect x="12" y="12" width="104" height="104" rx="22" fill="url(#tile)" stroke="#2a2a44" stroke-width="2"/>
-  <path d="M34 94H94" stroke="url(#accent)" stroke-width="6" stroke-linecap="round"/>
-
+  <!-- "GB" in an ink-rimmed paper disc (the Mr. Snib head), orange underline and spark. -->
+  <circle cx="60" cy="68" r="50" fill="#fff8ef" stroke="#111111" stroke-width="9"/>
   <text
-    x="64"
-    y="78"
+    x="60"
+    y="82"
     text-anchor="middle"
-    fill="#f5f0e8"
-    font-family="Space Grotesk, Inter, system-ui, sans-serif"
-    font-size="54"
-    font-weight="700"
-    letter-spacing="-1"
+    fill="#111111"
+    font-family="Shantell Sans, Nunito, system-ui, sans-serif"
+    font-size="44"
+    font-weight="800"
   >GB</text>
-
-  <circle cx="96" cy="32" r="5" fill="#e8a838"/>
+  <path d="M38 96c14-3 30-4 44-2" stroke="#ff6b2d" stroke-width="7" stroke-linecap="round"/>
+  <g stroke="#ff6b2d" stroke-width="7" stroke-linecap="round">
+    <path d="M100 26l4-14M110 36l12-10M114 50l12-2"/>
+  </g>
 </svg>

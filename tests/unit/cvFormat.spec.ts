@@ -2,9 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   formatDateRange,
   formatDuration,
-  hueOf,
   initials,
-  tileGradient,
 } from '~/utils/cvFormat'
 
 describe('cvFormat helpers', () => {
@@ -13,19 +11,6 @@ describe('cvFormat helpers', () => {
     expect(initials('CBTW')).toBe('CB')
     expect(initials('VERMEG for Banking and Insurance')).toBe('VF')
     expect(initials('Rakuten Card')).toBe('RC')
-  })
-
-  it('produces a deterministic hue in the 0–359 range', () => {
-    const hue = hueOf('Rakuten Card')
-
-    expect(hue).toBe(hueOf('Rakuten Card'))
-    expect(hue).toBeGreaterThanOrEqual(0)
-    expect(hue).toBeLessThan(360)
-  })
-
-  it('builds an oklch tile gradient from a label', () => {
-    expect(tileGradient('Orbit Ways')).toContain('oklch(')
-    expect(tileGradient('Orbit Ways')).toMatch(/linear-gradient/)
   })
 
   it('formats an open-ended date range with the present label', () => {

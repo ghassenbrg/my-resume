@@ -7,19 +7,31 @@
   <title>Page not found — Ghassen Bargougui</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <style>
-    :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; }
-    main { max-width: 38rem; padding: 2rem; }
-    h1 { font-size: clamp(2rem, 6vw, 3rem); }
-    p { line-height: 1.7; }
-    ul { padding-left: 1.5rem; line-height: 2.5; }
-    a { color: inherit; text-underline-offset: .25em; }
-    a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+    :root {
+      --bg: #fff8ef; --panel: #ffffff; --peach: #ffe4d2; --line: #111111;
+      --text: #111111; --soft: #3b342d; --orange: #ff6b2d;
+      color-scheme: light dark;
+      font-family: "Nunito", system-ui, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #161411; --panel: #221e19; --peach: #3a281c; --line: #f3e9dc; --text: #fff8ef; --soft: #e2d7c9; }
+    }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: var(--bg); color: var(--text); }
+    main { max-width: 40rem; padding: 2rem 1rem; display: grid; gap: 1.25rem; justify-items: start; }
+    img { width: min(240px, 60vw); height: auto; background: #fff8ef; border: 3px solid var(--line); border-radius: 36px 28px 40px 26px / 28px 40px 26px 36px; transform: rotate(-2deg); }
+    .code { margin: 0; font-weight: 800; letter-spacing: .12em; background: var(--peach); padding: .3rem 1rem; border-radius: 999px; }
+    h1 { margin: 0; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.1; }
+    p { margin: 0; line-height: 1.7; color: var(--soft); }
+    ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: .75rem; }
+    a { display: inline-block; color: var(--text); font-weight: 700; text-decoration: none; background: var(--panel); border: 2.5px solid var(--line); border-radius: 999px; padding: .55rem 1.1rem; box-shadow: 0 4px 0 var(--line); }
+    a:hover { background: var(--orange); color: #111111; }
+    a:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }
   </style>
 </head>
 <body>
   <main>
-    <p>404</p>
+    <img src="/illustrations/snib-404-magnifier.webp" alt="" width="640" height="640">
+    <p class="code">404</p>
     <h1>Page not found</h1>
     <p>The page or file you requested could not be found. Visit Ghassen Bargougui’s resume in your preferred language:</p>
     <ul>

@@ -1,0 +1,138 @@
+{
+  "verifiedOn": "2026-10-09",
+  "profile": "https://www.linkedin.com/in/ghassenbrg/",
+  "primaryLanguage": "en",
+  "headlines": {
+    "fr": "Application Engineer chez Rakuten | Java & plateformes cloud | Spring Boot, Kubernetes, GCP | Développement d’outils IA et pour développeurs",
+    "ja": "楽天のアプリケーションエンジニア | Java・クラウド基盤 | Spring Boot・Kubernetes・GCP | AI・開発者向けツール開発"
+  },
+  "abouts": {
+    "fr": "Je développe et modernise des applications Java et les plateformes cloud sur lesquelles elles s’exécutent. Je suis Application Engineer chez Rakuten au Japon, avec sept ans d’expérience en Java et en développement full-stack dans la banque, l’assurance et les paiements par carte, en Tunisie, au Luxembourg et au Japon.\n\nMon travail relie le développement à la mise en production : conception d’API, migration cloud, tests de performance, observabilité et CI/CD. Chez Rakuten, je contribue au pilotage des migrations aux côtés de mon responsable et du chef de projet, en coordonnant les équipes d’ingénierie. J’automatise aussi les builds locaux et les déploiements pour faciliter la configuration des environnements de développement de mes collègues.\n\nEn parallèle, je crée des produits de bout en bout :\n• Slide Agent — un outil open source pour générer des présentations PowerPoint modifiables à partir de code et d’outils d’IA.\n• Pockito — une application de gestion des finances personnelles et partagées, disponible sur mobile et sur le web.\n• SubMate — une extension Chrome de traduction de sous-titres, avec traduction sur l’appareil et option cloud.\n\nJe suis Oracle Certified Professional, Java SE 11 Developer. Je parle arabe, anglais et français, et j’apprends le japonais.\n\nProjets et CV : https://ghassen.io",
+    "ja": "Javaアプリケーションと、それを支えるクラウド基盤の開発・モダナイゼーションに取り組んでいます。現在は日本の楽天でApplication Engineerとして勤務しています。チュニジア、ルクセンブルク、日本で、銀行・保険・カード決済分野のJavaおよびフルスタック開発に7年間携わってきました。\n\nAPI設計、クラウド移行、性能テスト、可観測性、CI/CDを通じて、アプリケーション開発からデリバリーまでをつなぐ仕事をしています。楽天では、上司およびプロジェクトマネージャーとともに移行の推進を担い、エンジニアリングチーム間の調整を行っています。また、チームメンバーが開発環境を構築しやすいよう、ローカルビルドやデプロイを自動化しています。\n\n業務外では、個人プロジェクトとして製品を一貫して開発しています。\n• Slide Agent — コードやAIツールから、編集可能なPowerPoint資料を生成するオープンソースのツールキット。\n• Pockito — 個人・共有の家計管理に使える、モバイル・Webアプリ。\n• SubMate — デバイス上での翻訳と、任意で利用できるクラウド翻訳に対応した、字幕翻訳用のChrome拡張機能。\n\nOracle Certified Professional, Java SE 11 Developerの資格を取得しています。アラビア語、英語、フランス語を話し、日本語は学習中です。\n\nプロジェクト・職務経歴： https://ghassen.io"
+  },
+  "roles": {
+    "rakuten": {
+      "fr": {
+        "title": "Application Engineer",
+        "description": "Développement d’applications financières et de leur infrastructure cloud, en associant ingénierie Java, mise en production, analyse des performances et automatisation pour les développeurs.\n• Contribution au pilotage de la migration cloud aux côtés de mon responsable et du chef de projet, avec coordination des équipes de développement, d’infrastructure, de livraison et de sécurité.\n• Modernisation des services Java, résolution des problèmes de dépendances et de compatibilité, et maintien des tests et de la documentation technique.\n• Conception et validation des déploiements : configuration des ressources, connectivité et plans de repli.\n• Réalisation de tests de performance, analyse des goulots d’étranglement et amélioration de la conception des applications et de l’allocation des ressources.\n• Développement d’API et d’intégrations entre services, et amélioration des logs structurés et de la gestion des traces pour faciliter le diagnostic.\n• Automatisation des builds locaux, des déploiements de développement et des workflows CI/CD pour rendre la configuration reproductible et fiabiliser la livraison."
+      },
+      "ja": {
+        "title": "アプリケーションエンジニア（Application Engineer）",
+        "description": "金融アプリケーションとクラウド基盤の開発を担当。Javaアプリケーション開発、クラウド環境へのデリバリー、性能分析、開発者向け自動化に取り組んでいます。\n• 上司およびプロジェクトマネージャーとともにクラウド移行を推進し、開発・インフラ・デリバリー・セキュリティ各チームを調整。\n• Javaサービスをモダナイズし、依存関係や互換性の問題を解決。テストと技術文書を保守。\n• リソース設定、接続性、切り戻し計画を含め、デプロイを設計・検証。\n• 性能テストでボトルネックを調査し、その結果をアプリケーション設計とリソース配分の改善に反映。\n• APIとサービス連携を開発し、障害調査に向けて構造化ログとトレース処理を改善。\n• ローカルビルド、開発環境へのデプロイ、CI/CDワークフローを自動化し、再現可能な環境構築と安定したデリバリーを支援。"
+      }
+    },
+    "sogeti": {
+      "fr": {
+        "title": "Ingénieur logiciel",
+        "description": "Développement et maintenance d’applications de banque de détail en mission chez BGL BNP Paribas.\n• Mise en œuvre de workflows de mandats clients avec Spring Batch, des services Spring Boot et des écrans Angular Material.\n• Développement d’API REST et de couches de persistance avec Hibernate, PostgreSQL et Oracle.\n• Automatisation des builds et des déploiements avec Maven et Jenkins, et maintien des tests unitaires, des contrôles SonarQube et des revues de code."
+      },
+      "ja": {
+        "title": "ソフトウェアエンジニア",
+        "description": "BGL BNP Paribasへのアサインにて、リテールバンキング向けアプリケーションを開発・保守。\n• Spring Batch処理、Spring Bootサービス、Angular Material画面を用いて、顧客の委任手続きを扱うワークフローを実装。\n• Hibernate、PostgreSQL、Oracleを用いてREST APIと永続化層を開発。\n• MavenとJenkinsでビルド・デプロイを自動化し、単体テスト、SonarQubeチェック、コードレビューを実施。"
+      }
+    },
+    "cbtw": {
+      "fr": {
+        "title": "Ingénieur Java full-stack",
+        "description": "Développement d’applications web full-stack et modernisation de services Java avec Spring Boot, Angular et PostgreSQL.\n• Refactorisation de composants d’applications monolithiques en microservices.\n• Conception et documentation d’API REST pour l’intégration de services, avec prise en compte du versionnement et des exigences de sécurité.\n• Automatisation des déploiements avec Jenkins et Docker pour réduire les étapes manuelles de mise en production."
+      },
+      "ja": {
+        "title": "Javaフルスタックエンジニア",
+        "description": "Spring Boot、Angular、PostgreSQLを用いて、フルスタックWebアプリケーションを開発し、Javaサービスをモダナイズ。\n• モノリシックなアプリケーションの構成要素をマイクロサービスへリファクタリング。\n• サービス連携用のREST APIを開発・文書化し、バージョン管理とセキュリティ要件に対応。\n• JenkinsとDockerでデプロイを自動化し、リリース時の手作業を削減。"
+      }
+    },
+    "vermegAnalyst": {
+      "fr": {
+        "title": "Analyste développeur",
+        "description": "Développement back-end associé à l’analyse des besoins et à la conception de solutions pour des applications bancaires et d’assurance.\n• Traduction des besoins métier en conceptions back-end et contrats d’API avec les équipes métier, architecture et framework.\n• Pilotage de la modernisation de workflows d’assurance avec Camunda BPM, appuyé par l’analyse fonctionnelle et des ateliers clients.\n• Mise en œuvre de traitements batch multithreadés et d’intégrations ActiveMQ pour les workflows de traitement en masse.\n• Documentation des solutions avec UML et des diagrammes de séquence, et coordination des décisions de conception entre équipes."
+      },
+      "ja": {
+        "title": "アナリスト・デベロッパー",
+        "description": "銀行・保険向けアプリケーションにおいて、バックエンド開発と要件分析・ソリューション設計を担当。\n• 業務・アーキテクチャ・フレームワーク各チームと協力し、業務要件をバックエンド設計とAPI仕様に落とし込み。\n• 機能分析と顧客ワークショップを通じて、Camunda BPMを用いた保険業務ワークフローの刷新を主導。\n• 大量処理向けにマルチスレッドのバッチ処理とActiveMQ連携を実装。\n• UMLとシーケンス図でソリューションを文書化し、チーム間の設計判断を調整。"
+      }
+    },
+    "vermegDev": {
+      "fr": {
+        "title": "Développeur logiciel",
+        "description": "Développement de services back-end Java et d’interfaces Angular pour des applications d’assurance, des portails courtiers et le traitement de documents.\n• Création de fonctionnalités applicatives et d’API REST avec Java, Spring Boot et Angular.\n• Intégration de l’authentification et des autorisations avec Keycloak, et de traitements en masse avec ActiveMQ.\n• Développement de la configuration de produits d’assurance et du calcul des primes, avec traitement de modèles de tarification Excel à l’aide d’Apache POI.\n• Analyse des performances applicatives et amélioration du code existant par profilage et refactorisation."
+      },
+      "ja": {
+        "title": "ソフトウェア開発者",
+        "description": "保険アプリケーション、保険代理店向けポータル、文書処理のために、JavaバックエンドサービスとAngular画面を開発。\n• Java、Spring Boot、Angularでアプリケーション機能とREST APIを実装。\n• Keycloakによる認証・認可と、ActiveMQを用いた大量処理を組み込み。\n• 保険商品設定と保険料計算機能を開発し、Apache POIでExcel料金テンプレートを処理。\n• プロファイリングとリファクタリングを通じて、アプリケーションの性能を調査し、既存コードを改善。"
+      }
+    },
+    "proxym": {
+      "fr": {
+        "title": "Stagiaire développeur full-stack",
+        "description": "Contribution à Mystart, une plateforme dédiée à l’entrepreneuriat, dans le cadre de mon stage de développement full-stack.\n• Création d’interfaces responsives avec Angular et Bootstrap et d’un tableau de bord d’administration avec EJS.\n• Mise en œuvre de fonctionnalités back-end avec Node.js, Express.js et MongoDB."
+      },
+      "ja": {
+        "title": "フルスタック開発インターン",
+        "description": "フルスタック開発のインターンシップで、起業支援プラットフォームMystartの開発に参加。\n• AngularとBootstrapによるレスポンシブ画面と、EJSによる管理ダッシュボードを開発。\n• Node.js、Express.js、MongoDBでバックエンド機能を実装。"
+      }
+    },
+    "design": {
+      "fr": {
+        "title": "Graphiste indépendant",
+        "description": "Conception d’interfaces web, de flyers et de visuels pour les réseaux sociaux, à partir des briefs et de l’identité de marque des clients. Cette première expérience en design nourrit aujourd’hui ma façon de concevoir des interfaces logicielles et de présenter mon travail technique."
+      },
+      "ja": {
+        "title": "フリーランス・グラフィックデザイナー",
+        "description": "顧客の依頼内容とブランド方針に沿って、Web画面、チラシ、SNS向けビジュアルを制作。この初期のデザイン経験は、現在のソフトウェア画面設計や技術的な成果の伝え方にも活かしています。"
+      }
+    }
+  },
+  "education": {
+    "esprit": {
+      "fr": {
+        "degree": "Diplôme national d'ingénieur",
+        "field": "Architecture logicielle"
+      },
+      "ja": {
+        "school": "ESPRIT（École Supérieure Privée d’Ingénierie et de Technologies）",
+        "degree": "エンジニア学位（Diplôme d’ingénieur）",
+        "field": "ソフトウェアアーキテクチャ工学"
+      }
+    },
+    "isimm": {
+      "fr": {
+        "school": "ISIMM | Institut Supérieur d’Informatique et de Mathématiques de Monastir",
+        "degree": "Licence",
+        "field": "Informatique"
+      },
+      "ja": {
+        "school": "ISIMM（モナスティール高等情報・数学学院）",
+        "degree": "学士",
+        "field": "情報科学"
+      }
+    },
+    "school": {
+      "fr": {
+        "school": "Lycée Bourguiba, Monastir",
+        "degree": "Baccalauréat",
+        "field": "Informatique"
+      },
+      "ja": {
+        "school": "ブルギバ高校（モナスティール）",
+        "degree": "バカロレア（高校卒業資格）",
+        "field": "情報科学"
+      }
+    }
+  },
+  "sharedSections": [
+    "Projects",
+    "Featured",
+    "Skills",
+    "Licenses & certifications",
+    "Languages",
+    "Volunteering"
+  ],
+  "notes": [
+    "English approved content retained and verified.",
+    "School entries associated with LinkedIn school pages can display the canonical school name.",
+    "Employment and education dates retained.",
+    "No new post published.",
+    "Japanese proficiency remains elementary/learning.",
+    "Exact employer runtime/framework versions and internal system/team names omitted."
+  ]
+}

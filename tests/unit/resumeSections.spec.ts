@@ -86,10 +86,10 @@ describe('section implementation guards', () => {
     }
   })
 
-  it('drives the hero from the data-driven tagline and animated backdrop', () => {
+  it('drives the hero from the data-driven tagline and illustrated portrait', () => {
     const source = readSource('components/sections/HeroSection.vue')
 
-    expect(source).toContain('hero-canvas')
+    expect(source).toContain('hero-portrait')
     expect(source).toContain('tagline')
     expect(source).toContain('uiCopy.actions.downloadCV')
   })

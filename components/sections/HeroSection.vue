@@ -1,7 +1,7 @@
 <template>
   <header id="hero" class="hero" data-screen-label="hero" tabindex="-1">
-    <canvas ref="canvasRef" class="hero-canvas" aria-hidden="true"></canvas>
-    <div class="hero-fade"></div>
+    <!-- Static doodle backdrop (replaces the old animated network canvas). -->
+    <div class="hero-doodles" aria-hidden="true"></div>
 
     <div v-if="hero" class="container hero-inner">
       <div class="hero-copy">
@@ -74,30 +74,32 @@
         </div>
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-card">
-          <div class="hero-card-top">
-            <BrandMonogram :size="92" />
-            <div class="hc-meta">
-              <span class="hc-name">{{ hero.name }}</span>
-              <span class="hc-role">{{ hero.title }}</span>
-            </div>
-          </div>
-          <div class="hero-card-terminal">
-            <div class="term-line">
-              <span class="tk-key">{{ uiCopy.hero.terminal.role }}</span>: <span class="tk-str">"{{ hero.title }}"</span>
-            </div>
-            <div class="term-line">
-              <span class="tk-key">{{ uiCopy.hero.terminal.stack }}</span>: [<span class="tk-str">Java, K8s, GCP</span>]
-            </div>
-            <div class="term-line">
-              <span class="tk-key">{{ uiCopy.hero.terminal.focus }}</span>: <span class="tk-str">"{{ uiCopy.hero.terminal.focusValue }}"</span>
-            </div>
-            <div class="term-line">
-              <span class="tk-key">{{ uiCopy.hero.terminal.base }}</span>: <span class="tk-str">"{{ hero.location }}"</span>
-            </div>
-          </div>
-        </div>
+      <div class="hero-visual">
+        <span class="hero-blob" aria-hidden="true"></span>
+        <figure class="hero-portrait illo">
+          <img
+            src="/illustrations/hero-portrait.webp"
+            :alt="hero.name"
+            width="1000"
+            height="1000"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+        <!-- Orange energy marks drawn around the panel, as on the Snib sheets. -->
+        <svg class="hero-marks" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+          <g stroke="#ff6b2d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M318 30l6-22M340 44l16-16M350 70l22-6" />
+            <path d="M22 318l-14 10M30 340l-20 4M44 356l-12 16" />
+            <path d="M372 300c-14 4-10 18 2 16s16 12 2 18" />
+          </g>
+          <path
+            d="M44 52l7 15 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z"
+            stroke="#ff6b2d"
+            stroke-width="6"
+            stroke-linejoin="round"
+          />
+        </svg>
       </div>
     </div>
 
@@ -110,7 +112,6 @@
 
 <script setup lang="ts">
 import AppIcon from '~/components/ui/AppIcon.vue'
-import BrandMonogram from '~/components/ui/BrandMonogram.vue'
 
 const { cvData, cvConfig, cvLink, uiCopy } = useCvData()
 const { trackFollowUpClick } = useAnalytics()
@@ -124,122 +125,4 @@ const tagline = computed(
 const openToOpportunities = computed(() => cvConfig.value?.openToOpportunities ?? false)
 const email = computed(() => cvConfig.value?.contact.email ?? '')
 const social = computed(() => cvConfig.value?.social ?? { github: '', linkedin: '' })
-
-const canvasRef = ref<HTMLCanvasElement | null>(null)
-
-interface Node {
-  x: number
-  y: number
-  vx: number
-  vy: number
-  r: number
-  c: string
-}
-
-onMounted(() => {
-  const canvas = canvasRef.value
-  if (!canvas) {
-    return
-  }
-
-  const ctx = canvas.getContext('2d')
-  if (!ctx) {
-    return
-  }
-
-  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
-  const css = getComputedStyle(document.documentElement)
-  const gold = (css.getPropertyValue('--brand-gold') || '#e8a838').trim()
-  const teal = (css.getPropertyValue('--brand-teal') || '#56c4b8').trim()
-
-  let raf = 0
-  let width = 0
-  let height = 0
-  let nodes: Node[] = []
-  let running = true
-
-  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light'
-
-  const resize = () => {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    width = canvas.clientWidth
-    height = canvas.clientHeight
-    canvas.width = width * dpr
-    canvas.height = height * dpr
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-
-    const count = Math.round(Math.min(64, Math.max(26, (width * height) / 22000)))
-    nodes = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.22,
-      vy: (Math.random() - 0.5) * 0.22,
-      r: Math.random() * 1.6 + 0.6,
-      c: Math.random() > 0.5 ? gold : teal,
-    }))
-    if (motionPreference.matches) draw()
-  }
-
-  const draw = () => {
-    if (!running) {
-      return
-    }
-
-    ctx.clearRect(0, 0, width, height)
-    const lineBase = isLight() ? '20,20,31' : '245,240,232'
-
-    for (let i = 0; i < nodes.length; i += 1) {
-      const a = nodes[i]
-      if (!motionPreference.matches) {
-        a.x += a.vx
-        a.y += a.vy
-        if (a.x < 0 || a.x > width) a.vx *= -1
-        if (a.y < 0 || a.y > height) a.vy *= -1
-      }
-
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const b = nodes[j]
-        const dx = a.x - b.x
-        const dy = a.y - b.y
-        const d = Math.hypot(dx, dy)
-        if (d < 122) {
-          ctx.strokeStyle = `rgba(${lineBase},${(1 - d / 122) * (isLight() ? 0.1 : 0.13)})`
-          ctx.lineWidth = 1
-          ctx.beginPath()
-          ctx.moveTo(a.x, a.y)
-          ctx.lineTo(b.x, b.y)
-          ctx.stroke()
-        }
-      }
-
-      ctx.fillStyle = a.c
-      ctx.globalAlpha = isLight() ? 0.55 : 0.7
-      ctx.beginPath()
-      ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2)
-      ctx.fill()
-      ctx.globalAlpha = 1
-    }
-
-    if (!motionPreference.matches) raf = requestAnimationFrame(draw)
-  }
-
-  resize()
-
-  // Reduced motion renders a static frame; changes take effect during the session.
-  const onMotionChange = () => {
-    cancelAnimationFrame(raf)
-    draw()
-  }
-  if (!motionPreference.matches) draw()
-
-  window.addEventListener('resize', resize)
-  motionPreference.addEventListener('change', onMotionChange)
-
-  onBeforeUnmount(() => {
-    running = false
-    cancelAnimationFrame(raf)
-    window.removeEventListener('resize', resize)
-    motionPreference.removeEventListener('change', onMotionChange)
-  })
-})
 </script>

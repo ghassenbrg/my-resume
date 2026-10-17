@@ -180,7 +180,7 @@ describe('shared cv-config normalization', () => {
     expect(config.contact.email).toBe('hi@example.com')
     expect(config.social).toEqual(DEFAULT_CV_CONFIG.social)
     expect(config.cvLink).toBe(DEFAULT_CV_CONFIG.cvLink)
-    expect(config.theme.default).toBe('dark')
+    expect(config.theme.default).toBe('light')
   })
 
   it('passes through a complete config and constrains the theme default', () => {
@@ -190,7 +190,7 @@ describe('shared cv-config normalization', () => {
       social: { github: 'https://gh', linkedin: 'https://li' },
       cvLink: '/cv.pdf',
       meta: { siteUrl: 'https://site', ogImage: '/og.png' },
-      theme: { default: 'light' },
+      theme: { default: 'dark' },
       display: { languagePercentage: false },
     })
 
@@ -200,10 +200,10 @@ describe('shared cv-config normalization', () => {
       social: { github: 'https://gh', linkedin: 'https://li' },
       cvLink: '/cv.pdf',
       meta: { siteUrl: 'https://site', ogImage: '/og.png' },
-      theme: { default: 'light' },
+      theme: { default: 'dark' },
       display: { languagePercentage: false },
     })
-    expect(normalizeCvConfig({ theme: { default: 'weird' } }).theme.default).toBe('dark')
+    expect(normalizeCvConfig({ theme: { default: 'weird' } }).theme.default).toBe('light')
   })
 
   it('shows the language percentage by default and hides it only on explicit false', () => {
